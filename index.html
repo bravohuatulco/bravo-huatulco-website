@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bravo Huatulco — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0C1F3F;
+    --ocean: #1A5276;
+    --gold: #C9A84C;
+    --gold-light: rgba(201,168,76,0.15);
+    --cream: #FAF8F3;
+    --muted: rgba(255,255,255,0.5);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    font-family: 'Jost', sans-serif;
+    background: var(--navy);
+    color: #fff;
+    overflow: hidden;
+  }
+
+  /* === ANIMATED OCEAN BACKGROUND === */
+  .bg {
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(26,82,118,0.6) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(12,31,63,0.8) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(10,25,50,1) 0%, #060f1e 100%);
+    z-index: 0;
+  }
+
+  /* Animated wave lines */
+  .waves {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    opacity: 0.18;
+  }
+  .wave {
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    border-radius: 40%;
+    background: linear-gradient(to bottom, rgba(26,82,118,0.6), transparent);
+    animation: waveRoll linear infinite;
+  }
+  .wave:nth-child(1) { height: 600px; bottom: -300px; animation-duration: 18s; }
+  .wave:nth-child(2) { height: 500px; bottom: -270px; animation-duration: 24s; animation-delay: -6s; opacity: 0.7; }
+  .wave:nth-child(3) { height: 400px; bottom: -240px; animation-duration: 30s; animation-delay: -12s; opacity: 0.5; }
+  @keyframes waveRoll {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Star particles */
+  .stars {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+  }
+  .star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.1; transform: scale(0.8); }
+    to   { opacity: 0.7; transform: scale(1.2); }
+  }
+
+  /* Horizontal gold line accent */
+  .gold-horizon {
+    position: fixed;
+    left: 0; right: 0;
+    top: 58%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.4) 30%, rgba(201,168,76,0.4) 70%, transparent);
+    z-index: 1;
+    animation: fadeIn 3s ease 1s both;
+  }
+
+  /* === MAIN CONTENT === */
+  .container {
+    position: relative;
+    z-index: 10;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 3rem;
+    animation: fadeUp 1.2s ease 0.2s both;
+  }
+  .logo span { color: var(--gold); }
+
+  .eyebrow {
+    font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 1.4rem;
+    animation: fadeUp 1.2s ease 0.5s both;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    font-weight: 300;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    animation: fadeUp 1.2s ease 0.7s both;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.8rem auto;
+    animation: expandW 1.2s ease 1s both;
+  }
+  @keyframes expandW {
+    from { width: 0; opacity: 0; }
+    to   { width: 48px; opacity: 1; }
+  }
+
+  .tagline {
+    font-size: clamp(0.85rem, 2vw, 1.05rem);
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    animation: fadeUp 1.2s ease 1.1s both;
+  }
+
+  .location-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 3rem;
+    animation: fadeUp 1.2s ease 1.3s both;
+  }
+  .location-pill span { color: var(--gold); font-size: 0.9rem; }
+
+  .contact-block {
+    animation: fadeUp 1.2s ease 1.5s both;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .contact-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.4rem;
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.3rem;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 2px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.73rem;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    transition: all 0.25s;
+  }
+  .contact-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+  .contact-btn.primary {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .contact-btn.primary:hover {
+    background: #d4b560;
+    border-color: #d4b560;
+    color: var(--navy);
+  }
+
+  /* Bottom strip */
+  .bottom-strip {
+    position: fixed;
+    bottom: 2rem;
+    left: 0; right: 0;
+    z-index: 10;
+    text-align: center;
+    animation: fadeIn 1.5s ease 2s both;
+  }
+  .bottom-strip p {
+    font-size: 0.63rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Lang toggle */
+  .lang-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 20;
+    display: flex;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    animation: fadeIn 1s ease 0.5s both;
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.7rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .lang-btn.active {
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 20px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @media (max-width: 480px) {
+    .contact-links { flex-direction: column; align-items: center; }
+    h1 { font-size: clamp(2.5rem, 15vw, 4rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background layers -->
+<div class="bg"></div>
+<div class="waves">
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
+<div class="stars" id="stars"></div>
+<div class="gold-horizon"></div>
+
+<!-- Language toggle -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('es')">ES</button>
+</div>
+
+<!-- Main content -->
+<div class="container">
+
+  <div class="logo"><span>Bravo</span> Huatulco</div>
+
+  <p class="eyebrow" id="t-eyebrow">Something beautiful is coming</p>
+
+  <h1>
+    <span id="t-h1a">Almost</span><br>
+    <em id="t-h1b">There.</em>
+  </h1>
+
+  <div class="divider"></div>
+
+  <p class="tagline" id="t-tagline">
+    Our full website is launching soon with detailed listings, availability calendars, and direct booking for our boutique condos at Nirú Las Casitas.
+  </p>
+
+  <div class="location-pill">
+    <span>📍</span> Nirú Las Casitas · Santa Cruz · Huatulco, Oaxaca
+  </div>
+
+  <div class="contact-block">
+    <div class="contact-label" id="t-contact-label">Inquire now — we're ready to take bookings</div>
+    <div class="contact-links">
+      <a class="contact-btn primary" href="mailto:mattfrenchrn@gmail.com" id="t-btn-email">
+        ✉ Email Us
+      </a>
+      <a class="contact-btn" href="https://wa.me/13167681700" target="_blank">
+        💬 WhatsApp Mateo
+      </a>
+      <a class="contact-btn" href="https://wa.me/13167795084" target="_blank">
+        💬 WhatsApp Francisco
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bottom strip -->
+<div class="bottom-strip">
+  <p id="t-foot">Boutique Condo Rentals · Nirú Las Casitas · Santa Cruz · Huatulco, Oaxaca, México</p>
+</div>
+
+<script>
+// Generate stars
+const starField = document.getElementById('stars');
+for (let i = 0; i < 90; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2 + 0.5;
+  s.style.cssText = `
+    width:${size}px; height:${size}px;
+    top:${Math.random()*100}%;
+    left:${Math.random()*100}%;
+    animation-duration:${2+Math.random()*4}s;
+    animation-delay:${Math.random()*4}s;
+  `;
+  starField.appendChild(s);
+}
+
+// Bilingual
+const T = {
+  en: {
+    eyebrow: 'Something beautiful is coming',
+    h1a: 'Almost',
+    h1b: 'There.',
+    tagline: 'Our full website is launching soon with detailed listings, availability calendars, and direct booking for our boutique condos at Nirú Las Casitas.',
+    contactLabel: 'Inquire now — we\'re ready to take bookings',
+    email: '✉ Email Us',
+    foot: 'Boutique Condo Rentals · Nirú Las Casitas · Santa Cruz · Huatulco, Oaxaca, México'
+  },
+  es: {
+    eyebrow: 'Algo hermoso está por llegar',
+    h1a: 'Casi',
+    h1b: 'Listos.',
+    tagline: 'Nuestro sitio web completo llegará pronto con listados detallados, calendarios de disponibilidad y reservas directas para nuestros condominios boutique en Nirú Las Casitas.',
+    contactLabel: 'Consúltenos ahora — ya tomamos reservaciones',
+    email: '✉ Escríbenos',
+    foot: 'Renta de Condominios Boutique · Nirú Las Casitas · Santa Cruz · Huatulco, Oaxaca, México'
+  }
+};
+
+let lang = 'en';
+function setLang(l) {
+  lang = l;
+  const t = T[l];
+  document.getElementById('t-eyebrow').textContent = t.eyebrow;
+  document.getElementById('t-h1a').textContent = t.h1a;
+  document.getElementById('t-h1b').textContent = t.h1b;
+  document.getElementById('t-tagline').textContent = t.tagline;
+  document.getElementById('t-contact-label').textContent = t.contactLabel;
+  document.getElementById('t-btn-email').innerHTML = t.email;
+  document.getElementById('t-foot').textContent = t.foot;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent === l.toUpperCase());
+  });
+}
+</script>
+</body>
+</html>
