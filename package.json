@@ -1,0 +1,9 @@
+{
+  "name": "bravo-huatulco",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bravo Huatulco — boutique condo rentals website (static HTML + Vercel serverless functions for form submission).",
+  "dependencies": {
+    "resend": "^4.0.1"
+  }
+}
