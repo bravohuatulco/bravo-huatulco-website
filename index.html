@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bravo Huatulco — Boutique Condo Rentals, Nirú Las Casitas</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMwQzFGM0YiLz48cGF0aCBkPSJNOCA0MiBRMTYgMzYgMjQgNDIgUTMyIDQ4IDQwIDQyIFE0OCAzNiA1NiA0MiBMNTYgNTYgUTQ4IDUwIDQwIDU2IFEzMiA2MiAyNCA1NiBRMTYgNTAgOCA1NiBaIiBmaWxsPSIjQzlBODRDIiBvcGFjaXR5PSIwLjkiLz48dGV4dCB4PSIxMiIgeT0iMzkiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjMwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0M5QTg0QyI+QjwvdGV4dD48L3N2Zz4=">
-<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMwQzFGM0YiLz48cGF0aCBkPSJNOCA0MiBRMTYgMzYgMjQgNDIgUTMyIDQ4IDQwIDQyIFE0OCAzNiA1NiA0MiBMNTYgNTYgUTQ4IDUwIDQwIDU2IFEzMiA2MiAyNCA1NiBRMTYgNTAgOCA1NiBaIiBmaWxsPSIjQzlBODRDIiBvcGFjaXR5PSIwLjkiLz48dGV4dCB4PSIxMiIgeT0iMzkiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjMwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0M5QTg0QyI+QjwvdGV4dD48L3N2Zz4=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -281,7 +279,7 @@ section{padding:5.5rem 2rem;}
 .review-author{font-size:.72rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.1em;}
 .review-source{font-size:.65rem;color:var(--muted);}
 .reviews-cta{text-align:center;margin-top:2.5rem;}
-.reviews-cta p{font-size:.875rem;color:var(--muted);margin-bottom:1rem;}.reviews-coming-soon{text-align:center;padding:3.5rem 2rem;background:#fff;border-radius:6px;border:1px solid var(--border);}.reviews-cs-icon{font-size:1.6rem;color:var(--gold);margin-bottom:1.2rem;opacity:.7;}.reviews-cs-msg{font-size:1.1rem;color:var(--navy);font-family:"Cormorant Garamond",serif;font-style:italic;margin-bottom:.55rem;line-height:1.65;}.reviews-cs-cta{font-size:.8rem;color:var(--muted);font-weight:300;margin-bottom:1.6rem;}
+.reviews-cta p{font-size:.875rem;color:var(--muted);margin-bottom:1rem;}.review-google-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-g-dot{width:9px;height:9px;border-radius:50%;background:conic-gradient(#4285F4 0deg 90deg,#EA4335 90deg 180deg,#FBBC05 180deg 270deg,#34A853 270deg 360deg);flex-shrink:0;display:inline-block;}.review-visited{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ocean);background:rgba(26,82,118,.07);border:1px solid rgba(26,82,118,.15);border-radius:2px;padding:.15rem .45rem;margin-left:.4rem;}.review-es-block{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);}.review-text-es{font-size:.875rem;color:#1A5276;line-height:1.78;font-weight:300;font-style:italic;margin:0 0 .5rem;}.review-translator-note{font-size:.62rem;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:.55rem;line-height:1.5;font-style:normal;margin:0;}
 
 /* ABOUT */
 #about{background:#fff;}
@@ -410,8 +408,6 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
   .gpanel{grid-template-columns:1fr 1fr;}
   .niru-photos{grid-template-columns:1fr;}
   .niru-ph-wide img,.niru-ph img{height:200px;}
-  #stories{padding-left:1.25rem;padding-right:1.25rem;}
-  .dist-row{grid-template-columns:minmax(0,1fr) auto auto;gap:.4rem;}
 }
 @media(max-width:600px){
   .props-grid{grid-template-columns:1fr;}
@@ -726,10 +722,10 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
     <p class="eyebrow" data-i18n="rev_ey">Guest Experiences</p>
     <h2 class="sec-title" data-i18n="rev_title">What Our Guests Say</h2>
     <div class="gold-bar"></div>
-    <div class="reviews-coming-soon">
-      <div class="reviews-cs-icon">✦</div>
-      <p class="reviews-cs-msg" data-i18n="rev_soon">Our first guests are arriving soon — real reviews will appear here as they come in.</p>
-      <p class="reviews-cs-cta" data-i18n="rev_cta">Have you stayed with us? We'd love to hear from you.</p>
+    <p class="sec-sub" data-i18n="rev_sub">Our guests speak for themselves. New reviews are added as they arrive.</p>
+    <div class="reviews-grid" id="reviewsGrid"><!-- populated by renderReviews() --></div>
+    <div class="reviews-cta">
+      <p>Have you stayed with us? We'd love your feedback.</p>
       <a class="btn-gold" href="https://g.page/r/CbuRDCFWTRx3EAI/review" target="_blank" data-i18n="rev_google">Leave Us a Google Review ↗</a>
     </div>
   </div>
@@ -951,8 +947,8 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
         <p class="contact-desc" data-i18n="cont_desc">Send us an inquiry and we'll respond within 24 hours with availability, pricing, and everything you need to make your Huatulco visit unforgettable.</p>
         <div class="contact-items">
           <div class="ci"><div class="ci-icon">✉️</div><div><div class="ci-lbl" data-i18n="ci_email">Email</div><div class="ci-val"><a href="mailto:reservations@bravohuatulco.com">reservations@bravohuatulco.com</a></div></div></div>
-          <div class="ci"><div class="ci-icon">📱</div><div><div class="ci-lbl" data-i18n="ci_mateo">WhatsApp — Mateo</div><div class="ci-val"><a href="https://wa.me/13167681700" data-i18n="ci_whatsapp_link" target="_blank" rel="noopener">Open WhatsApp chat ↗</a></div></div></div>
-          <div class="ci"><div class="ci-icon">📱</div><div><div class="ci-lbl" data-i18n="ci_fco">WhatsApp — Francisco</div><div class="ci-val"><a href="https://wa.me/13167795084" data-i18n="ci_whatsapp_link" target="_blank" rel="noopener">Open WhatsApp chat ↗</a></div></div></div>
+          <div class="ci"><div class="ci-icon">📱</div><div><div class="ci-lbl" data-i18n="ci_mateo">WhatsApp — Mateo</div><div class="ci-val"><a href="https://wa.me/13167681700" data-i18n="ci_whatsapp_link">Open WhatsApp chat ↗</a></div></div></div>
+          <div class="ci"><div class="ci-icon">📱</div><div><div class="ci-lbl" data-i18n="ci_fco">WhatsApp — Francisco</div><div class="ci-val"><a href="https://wa.me/13167795084" data-i18n="ci_whatsapp_link">Open WhatsApp chat ↗</a></div></div></div>
         </div>
       </div>
       <div class="form-card">
@@ -1072,7 +1068,7 @@ en:{
   dist_p7:"La Bocana surf beach",dist_d7:"17 min drive · 11.6 km",
   dist_p8:"Huatulco Int'l Airport (HUX)",dist_d8:"21 min drive · 17.5 km",
   rev_ey:"Guest Experiences",rev_title:"What Our Guests Say",
-  rev_soon:"Our first guests are arriving soon — real reviews will appear here as they come in.",rev_cta:"Have you stayed with us? We'd love to hear from you.",rev_sub:"",
+  rev_sub:"Our guests speak for themselves. New reviews are added as they arrive.",
   rev_google:"Leave Us a Google Review ↗",
   about_ey:"Our Story",about_title:"Francisco &<br>Mateo Bravo",
   about_p1:"What begins with a dream of a slower, sun-drenched life in Mexico is, for Francisco and Mateo Bravo, now a reality in the making. After more than a decade managing a portfolio of rental properties in Kansas, USA — supporting dozens of tenants — they're channeling that same dedication into something far more beautiful.",
@@ -1220,7 +1216,7 @@ es:{
   dist_p7:"Playa La Bocana (surf)",dist_d7:"17 min en auto · 11.6 km",
   dist_p8:"Aeropuerto Internacional de Huatulco (HUX)",dist_d8:"21 min en auto · 17.5 km",
   rev_ey:"Experiencias de Huéspedes",rev_title:"Lo Que Dicen Nuestros Huéspedes",
-  rev_soon:"Nuestros primeros huéspedes están llegando pronto — las reseñas reales aparecerán aquí a medida que lleguen.",rev_cta:"¿Se hospedó con nosotros? Nos encantaría saber de usted.",rev_sub:"",
+  rev_sub:"Nuestros huéspedes hablan por sí mismos. Las nuevas reseñas se agregan a medida que llegan.",
   rev_google:"Déjenos una Reseña en Google ↗",
   about_ey:"Nuestra Historia",about_title:"Francisco y<br>Mateo Bravo",
   about_p1:"Lo que comienza con el sueño de una vida más tranquila y soleada en México es, para Francisco y Mateo Bravo, una realidad en construcción. Después de más de una década administrando propiedades en Kansas, EE.UU., están canalizando esa misma dedicación en algo mucho más hermoso.",
@@ -1333,6 +1329,7 @@ function setLang(l){
                es:['Sala','Cocina','Recámara Principal','2a Recámara','Balcón','Vista','Baños']};
   document.querySelectorAll('#racelGTabs .gtab').forEach((btn,i)=>{btn.textContent=GCAT[l][i];});
   if(document.getElementById('calOverlay').classList.contains('open')) renderCalendar();
+  renderReviews();
 }
 
 /* === GALLERY === */
@@ -1371,7 +1368,7 @@ function closeLB(){document.getElementById('lbOverlay').classList.remove('open')
 
 /* === CALENDAR === */
 const RATES={lucky:{low:110,high:175,peak:245},rico:{low:135,high:185,peak:255}};
-function getSeason(d){const m=d.getMonth()+1,day=d.getDate();if((m===12&&day>=17)||(m===1&&day<=7))return'peak';if(m>=5&&m<=11)return'low';return'high';}
+function getSeason(d){const m=d.getMonth()+1,day=d.getDate();if((m===12&&day>=17)||(m===1&&day<=7))return'peak';if(m>=5&&m<=10)return'low';return'high';}
 function getRate(prop,d){return RATES[prop][getSeason(d)];}
 function isPeak(d){return getSeason(d)==='peak';}
 const BOOKED={
@@ -1479,29 +1476,61 @@ function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'}
 function submitForm(e){e.preventDefault();document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
 
 
-// GUEST REVIEWS — array populated when real reviews are ready
-// Add objects with: { stars (1-5), text, author, property, source }
-const guestReviews = [];
+// ═══════════════════════════════════════════════════════
+// GUEST REVIEWS — Edit this array to add/update reviews.
+// stars: integer 1–5
+// property: optional label shown as a tag (e.g. "Casa Lucky", "Casa Racél")
+// source: where/when they stayed (e.g. "Airbnb · March 2025")
+// ═══════════════════════════════════════════════════════
+const guestReviews = [
+  {
+    stars: 5,
+    property: "Casa Racél",
+    visited: "Also visited Casa Lucky",
+    visitedES: "También visitó Casa Lucky",
+    text: "If I could give this place more than 5 stars, I absolutely would. This beach house was the perfect mix of peaceful relaxation and fun. From the moment we arrived, it felt like a little slice of paradise. The condo itself was beautiful, clean, and incredibly comfortable — everything you'd want for a stress-free getaway. But the real magic? Location. Being just steps away from some of the best spots to visit made the entire trip effortless. Whether we wanted to explore, grab food, hang at the beach, grab a boat ride, or just wander, everything was right there. Mornings were slow and peaceful with coffee and ocean views, while the afternoons and evenings were full of laughter, good food, and adventure. It truly gave us the best of both worlds — quiet when we wanted it and excitement when we didn't. We left feeling refreshed, happy, and already talking about when we can come back. Highly recommend this place to anyone looking for a perfect beach escape!",
+    textES: "Si pudiera dar más de 5 estrellas a este lugar, absolutamente lo haría. Esta casa de playa fue la combinación perfecta de relajación tranquila y diversión. Desde el momento en que llegamos, se sintió como un pequeño paraíso. El condominio en sí era hermoso, limpio e increíblemente cómodo — todo lo que uno querría para unas vacaciones sin estrés. ¿Pero la verdadera magia? La ubicación. Estar a solo pasos de algunos de los mejores lugares para visitar hizo que todo el viaje fuera sin esfuerzo. Ya fuera para explorar, comer algo, estar en la playa, dar un paseo en bote o simplemente caminar, todo estaba justo ahí. Las mañanas eran tranquilas y apacibles con café y vistas al mar, mientras que las tardes y las noches estaban llenas de risas, buena comida y aventuras. Verdaderamente nos dio lo mejor de dos mundos — tranquilidad cuando la queríamos y emoción cuando no. Nos fuimos sintiéndonos renovados, felices y ya hablando de cuándo podemos volver. ¡Muy recomendado para cualquiera que busque la escapada de playa perfecta!",
+    author: "Melissa",
+    date: "May 4, 2026",
+    isGoogle: true
+  }
+];
 
 function renderStars(n) {
   let s = '';
   for (let i = 1; i <= 5; i++) {
-    s += i <= n ? '<span class="review-star">★</span>' : '<span class="review-star review-star-empty">☆</span>';
+    s += i <= n
+      ? '<span class="review-star">★</span>'
+      : '<span class="review-star review-star-empty">☆</span>';
   }
   return s;
 }
 
 function renderReviews() {
   const grid = document.getElementById('reviewsGrid');
-  if (!grid || !guestReviews.length) return;
-  grid.innerHTML = guestReviews.map(r => `
+  if (!grid) return;
+  const isES = lang === 'es';
+  grid.innerHTML = guestReviews.map(r => {
+    const bodyText = (isES && r.textES) ? r.textES : r.text;
+    const transNote = (isES && r.textES)
+      ? `<div class="review-es-block"><p class="review-text-es">"${r.textES}"</p><p class="review-translator-note">Traducido al español desde la reseña original en inglés · Translated to Spanish from the original English review.</p></div>`
+      : '';
+    const esBlock = isES ? transNote : '';
+    const enBlock = !isES ? `<p class="review-text">"${r.text}"</p>` : '';
+    const visitedTag = r.visited ? `<span class="review-visited">${isES && r.visitedES ? r.visitedES : r.visited}</span>` : '';
+    const sourceLine = r.isGoogle
+      ? `<div class="review-google-tag"><span class="review-g-dot"></span> Google Review · ${r.date}</div>`
+      : `<div class="review-source">${r.date || r.source || ''}</div>`;
+    return `
     <div class="review-card">
       <div class="review-stars">${renderStars(r.stars)}</div>
-      ${r.property ? `<div class="review-property-tag">${r.property}</div>` : ''}
-      <p class="review-text">"${r.text}"</p>
-      <div class="review-author">${r.author}</div>
-      <div class="review-source">${r.source}</div>
-    </div>`).join('');
+      ${r.property ? `<span class="review-property-tag">${r.property}</span>${visitedTag}` : ''}
+      ${enBlock}
+      ${esBlock}
+      <div class="review-author" style="margin-top:.85rem">${r.author}</div>
+      ${sourceLine}
+    </div>`;
+  }).join('');
 }
 document.addEventListener('DOMContentLoaded', renderReviews);
 </script>
