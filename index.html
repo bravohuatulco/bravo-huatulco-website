@@ -384,6 +384,24 @@ section{padding:4rem 2rem;}
 .f-success-txt{font-size:.9rem;color:var(--muted);line-height:1.75;}
 .f-success-again{display:inline-block;margin-top:1.5rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);cursor:pointer;font-weight:600;font-family:'Jost',sans-serif;border:none;background:transparent;padding:0;}
 .f-success-again:hover{color:var(--navy);}
+.f-steps{display:grid;gap:1.1rem;margin:1.5rem 0;text-align:left;}
+.f-step{display:flex;align-items:flex-start;gap:.9rem;}
+.f-step-num{flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:var(--navy);color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;}
+.f-step-body{}
+.f-step-title{font-size:.84rem;font-weight:600;color:var(--navy);margin-bottom:.18rem;}
+.f-step-desc{font-size:.78rem;color:var(--muted);line-height:1.55;}
+.suc-breakdown{background:#f9f7f2;border:1px solid var(--border);border-radius:6px;padding:1.2rem 1.4rem;margin:1rem 0 .6rem;text-align:left;}
+.suc-breakdown-prop{font-size:.75rem;font-weight:600;color:var(--navy);letter-spacing:.05em;text-transform:uppercase;margin-bottom:.6rem;}
+.suc-breakdown-dates{font-size:.78rem;color:var(--muted);margin-bottom:.75rem;}
+.suc-breakdown-rows{display:grid;gap:.3rem;border-top:1px solid var(--border);padding-top:.75rem;}
+.suc-breakdown-row{display:flex;justify-content:space-between;font-size:.84rem;color:var(--navy);}
+.suc-breakdown-row.discount{color:var(--teal);}
+.suc-breakdown-row.tax{color:var(--muted);font-size:.77rem;}
+.suc-breakdown-row.total{font-weight:700;font-size:.95rem;border-top:1px solid var(--border);padding-top:.5rem;margin-top:.2rem;}
+.f-deposit-box{background:linear-gradient(135deg,#FAF6E8 0%,#fff 100%);border:1px solid var(--gold);border-radius:6px;padding:1rem 1.25rem;margin:1.1rem 0;text-align:center;}
+.f-deposit-label{font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.3rem;}
+.f-deposit-amt{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--navy);font-weight:600;line-height:1.1;}
+.f-deposit-note{font-size:.73rem;color:var(--muted);margin-top:.3rem;line-height:1.5;}
 
 /* QUOTE CARRYOVER PANEL — appears above form when guest arrives from calendar */
 .quote-panel{display:none;background:linear-gradient(135deg,#FAF6E8 0%,#fff 100%);border:1px solid var(--gold);border-radius:6px;padding:1.4rem 1.5rem;margin-bottom:1.75rem;position:relative;}
@@ -993,7 +1011,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
       <div class="form-card">
         <div id="formWrap">
           <div class="form-hed" data-i18n="form_h">Request a Booking</div>
-          <div class="form-sub" data-i18n="form_s">We'll confirm availability and send a detailed quote within 24 hours.</div>
+          <div class="form-sub" data-i18n="form_s">Select dates for an instant quote &middot; We confirm availability, then send a Stripe payment link for your 30% deposit.</div>
 
           <!-- QUOTE CARRYOVER PANEL — populated when guest clicks "Book Direct & Save" in calendar -->
           <div class="quote-panel" id="quotePanel">
@@ -1044,7 +1062,40 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         <div class="f-success" id="formSuccess">
           <div class="f-success-icon">🌊</div>
           <div class="f-success-title" data-i18n="suc_t">You're One Step Closer!</div>
-          <p class="f-success-txt" data-i18n="suc_d">Thank you for reaching out. We'll be in touch within 24 hours.</p>
+          <p class="f-success-txt" data-i18n="suc_d">Your request is in. Here's what happens next:</p>
+          <div class="suc-breakdown" id="sucBreakdown" style="display:none">
+            <div class="suc-breakdown-prop" id="sucBkProp"></div>
+            <div class="suc-breakdown-dates" id="sucBkDates"></div>
+            <div class="suc-breakdown-rows" id="sucBkRows"></div>
+          </div>
+          <div class="f-deposit-box" id="sucDepositBox" style="display:none">
+            <div class="f-deposit-label" id="sucDepositLabel">Your 30% Deposit</div>
+            <div class="f-deposit-amt" id="sucDepositAmt"></div>
+            <div class="f-deposit-note" id="sucDepositNote">We'll send a Stripe payment link to your email once we confirm your dates.</div>
+          </div>
+          <div class="f-steps">
+            <div class="f-step">
+              <div class="f-step-num">1</div>
+              <div class="f-step-body">
+                <div class="f-step-title" data-i18n="suc_s1t">We verify your dates</div>
+                <div class="f-step-desc" data-i18n="suc_s1d">We check our calendar and confirm availability — usually within a few hours.</div>
+              </div>
+            </div>
+            <div class="f-step">
+              <div class="f-step-num">2</div>
+              <div class="f-step-body">
+                <div class="f-step-title" data-i18n="suc_s2t">You receive a Stripe payment link</div>
+                <div class="f-step-desc" data-i18n="suc_s2d">We email you a secure link for your 30% deposit — no Stripe account required.</div>
+              </div>
+            </div>
+            <div class="f-step">
+              <div class="f-step-num">3</div>
+              <div class="f-step-body">
+                <div class="f-step-title" data-i18n="suc_s3t">Your reservation is confirmed</div>
+                <div class="f-step-desc" data-i18n="suc_s3d">Once the deposit clears, your dates are locked and we send arrival details.</div>
+              </div>
+            </div>
+          </div>
           <button class="f-success-again" onclick="resetForm()" data-i18n="suc_again">Have another question? →</button>
         </div>
       </div>
@@ -1189,15 +1240,19 @@ en:{
   ci_email:"Email",ci_mateo:"WhatsApp — Mateo",ci_fco:"WhatsApp — Francisco",
   disc_h:"🎁 Why Book Direct?",
   disc_d:"Booking directly on our site means platform fees stay in your pocket — not Airbnb's. Expect a lower rate, faster responses, and a more personal experience from inquiry to checkout.",
-  form_h:"Request a Booking",form_s:"We'll confirm availability and send a detailed quote within 24 hours.",
+  form_h:"Request a Booking",form_s:"Select dates for an instant quote · We confirm availability, then send a Stripe payment link for your 30% deposit.",
   fl_name:"Full Name *",fl_email:"Email *",fl_phone:"Phone / WhatsApp",
   fl_prop:"Property *",fl_in:"Check-In *",fl_out:"Check-Out *",
   fl_guests:"Guests *",fl_msg:"Message or Special Requests",
   ph_name:"Your name",ph_email:"your@email.com",ph_phone:"+1 (555) 000-0000",
   ph_msg:"Tell us about your trip, any questions, or special requests...",
-  f_btn:"Send Inquiry →",
-  suc_t:"You're One Step Closer!",suc_d:"Thank you for reaching out. We'll be in touch within 24 hours with availability and everything you need to plan your perfect Huatulco stay.",
+  f_btn:"Send Inquiry →",f_btn_book:"Request to Book →",
+  suc_t:"You're One Step Closer!",suc_d:"Your request is in. Here's what happens next:",
   suc_again:"Have another question? →",
+  suc_dep_lbl:"Your 30% Deposit",suc_dep_note:"We'll send a Stripe payment link to your email once we confirm your dates.",
+  suc_s1t:"We verify your dates",suc_s1d:"We check our calendar and confirm availability — usually within a few hours.",
+  suc_s2t:"You receive a Stripe payment link",suc_s2d:"We email you a secure link for your 30% deposit — no Stripe account required.",
+  suc_s3t:"Your reservation is confirmed",suc_s3d:"Once the deposit clears, your dates are locked and we send arrival details.",
   quote_ey:"From your selection",
   quote_h:"Your Quote",
   quote_clear:"Clear ✕",
@@ -1352,15 +1407,19 @@ es:{
   ci_email:"Correo",ci_mateo:"WhatsApp — Mateo",ci_fco:"WhatsApp — Francisco",ci_whatsapp_link:"Abrir chat de WhatsApp ↗",
   disc_h:"🎁 ¿Por Qué Reservar Directo?",
   disc_d:"Reservar directamente en nuestro sitio significa que las comisiones de plataforma se quedan en su bolsillo. Los huéspedes suelen ahorrar alrededor de 40% en promedio frente a las plataformas principales. También recibe precios más claros, respuestas más rápidas y atención más personal antes de su llegada.",
-  form_h:"Solicitar una Reservación",form_s:"Confirmaremos disponibilidad y enviaremos una cotización en 24 horas.",
+  form_h:"Solicitar una Reservación",form_s:"Seleccione fechas para una cotización instantánea · Confirmamos disponibilidad y enviamos un enlace de pago Stripe para su depósito del 30%.",
   fl_name:"Nombre Completo *",fl_email:"Correo Electrónico *",fl_phone:"Teléfono / WhatsApp",
   fl_prop:"Propiedad *",fl_in:"Llegada *",fl_out:"Salida *",
   fl_guests:"Huéspedes *",fl_msg:"Mensaje o Solicitudes Especiales",
   ph_name:"Su nombre",ph_email:"su@correo.com",ph_phone:"+1 (555) 000-0000",
   ph_msg:"Cuéntenos sobre su viaje...",
-  f_btn:"Enviar Consulta →",
-  suc_t:"¡Está Un Paso Más Cerca!",suc_d:"Gracias por contactarnos. Le responderemos en 24 horas.",
+  f_btn:"Enviar Consulta →",f_btn_book:"Solicitar Reservación →",
+  suc_t:"¡Está Un Paso Más Cerca!",suc_d:"Su solicitud fue enviada. Esto es lo que sigue:",
   suc_again:"¿Tiene otra pregunta? →",
+  suc_dep_lbl:"Su Depósito del 30%",suc_dep_note:"Le enviaremos un enlace de pago Stripe a su correo cuando confirmemos sus fechas.",
+  suc_s1t:"Verificamos sus fechas",suc_s1d:"Consultamos nuestro calendario y confirmamos disponibilidad — generalmente en pocas horas.",
+  suc_s2t:"Recibe un enlace de pago Stripe",suc_s2d:"Le enviamos un enlace seguro para su depósito del 30% — sin necesidad de cuenta.",
+  suc_s3t:"Su reservación queda confirmada",suc_s3d:"Una vez procesado el depósito, sus fechas quedan aseguradas y enviamos detalles de llegada.",
   quote_ey:"De su selección",
   quote_h:"Su Cotización",
   quote_clear:"Borrar ✕",
@@ -1433,6 +1492,9 @@ function setLang(l){
   if(document.getElementById('calOverlay').classList.contains('open')) renderCalendar();
   if(currentQuote) renderQuotePanel();
   renderReviews();
+  // Refresh deposit box language if success screen is visible
+  const sucScreen = document.getElementById('formSuccess');
+  if(sucScreen && sucScreen.style.display === 'block' && currentQuote) showSuccessWithDeposit();
 }
 
 /* === GALLERY === */
@@ -1655,6 +1717,9 @@ function bookDirectFromCal(){
   if(co) co.value = currentQuote.outISO;
 
   renderQuotePanel();
+  // Update button to "Request to Book"
+  const submitBtnBDC = document.querySelector('#bookingForm .f-submit');
+  if(submitBtnBDC) submitBtnBDC.textContent = T[lang].f_btn_book || 'Request to Book →';
 
   // If a prior inquiry was submitted, reset back to the form so guest can submit again
   const successEl = document.getElementById('formSuccess');
@@ -1699,10 +1764,120 @@ function renderQuotePanel(){
   panel.classList.add('show');
 }
 
+function isSpecialBooking(quote){
+  // Special = 28+ nights OR any night falls in peak season (Dec 17 – Jan 7)
+  if(quote.nights >= 28) return true;
+  const inDate = new Date(quote.inISO + 'T12:00:00');
+  const outDate = new Date(quote.outISO + 'T12:00:00');
+  const d = new Date(inDate);
+  while(d < outDate){
+    if(getSeason(d) === 'peak') return true;
+    d.setDate(d.getDate() + 1);
+  }
+  return false;
+}
+
+function getDueNow(quote){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const inDate = new Date(quote.inISO + 'T12:00:00');
+  const daysUntil = Math.round((inDate - today) / 86400000);
+  const special = isSpecialBooking(quote);
+  const threshold = special ? 90 : 30;
+  const isFull = daysUntil <= threshold;
+  return { amount: isFull ? quote.grand : Math.round(quote.grand * 0.30), isFull, daysUntil, threshold, special };
+}
+
+function showSuccessWithDeposit(){
+  const depositBox  = document.getElementById('sucDepositBox');
+  const depositAmt  = document.getElementById('sucDepositAmt');
+  const depositLbl  = document.getElementById('sucDepositLabel');
+  const depositNote = document.getElementById('sucDepositNote');
+  if(!depositBox || !depositAmt) return;
+  if(!currentQuote || !currentQuote.grand){ depositBox.style.display = 'none'; return; }
+
+  const due  = getDueNow(currentQuote);
+  const isES = lang === 'es';
+
+  depositAmt.textContent = '$' + due.amount + ' USD';
+
+  if(depositLbl){
+    depositLbl.textContent = due.isFull
+      ? (isES ? 'Pago Total Requerido' : 'Full Payment Due')
+      : (isES ? 'Su Depósito del 30%'  : 'Your 30% Deposit');
+  }
+
+  if(depositNote){
+    if(due.isFull){
+      const d = due.daysUntil, th = due.threshold;
+      depositNote.textContent = isES
+        ? 'Su llegada es en ' + d + ' día' + (d === 1 ? '' : 's') +
+          ' — se requiere pago total por nuestra política de ' + th + ' días. Le enviamos el enlace de pago Stripe al confirmar disponibilidad.'
+        : 'Your check-in is in ' + d + ' day' + (d === 1 ? '' : 's') +
+          ' — full payment is required per our ' + th + '-day policy. We’ll send your Stripe payment link once we confirm availability.';
+    } else {
+      depositNote.textContent = isES
+        ? 'Le enviaremos un enlace de pago Stripe a su correo cuando confirmemos sus fechas.'
+        : 'We’ll send a Stripe payment link to your email once we confirm your dates.';
+    }
+  }
+
+  depositBox.style.display = 'block';
+
+  // Itemized breakdown
+  const bkBox   = document.getElementById('sucBreakdown');
+  const bkProp  = document.getElementById('sucBkProp');
+  const bkDates = document.getElementById('sucBkDates');
+  const bkRows  = document.getElementById('sucBkRows');
+  if(bkBox && bkRows){
+    const t = T[lang], q = currentQuote;
+    const opts = {month:'short', day:'numeric'}, loc = isES ? 'es-MX' : 'en-US';
+    const inD  = new Date(q.inISO  + 'T12:00:00');
+    const outD = new Date(q.outISO + 'T12:00:00');
+    if(bkProp)  bkProp.textContent  = PROP_NAMES[q.prop] || q.prop;
+    if(bkDates) bkDates.textContent = inD.toLocaleDateString(loc, opts) + ' → ' + outD.toLocaleDateString(loc, opts) + ' · ' + q.nights + ' ' + t.cal_nights;
+    let rows = '<div class="suc-breakdown-row"><span>' + q.nights + ' ' + t.cal_nights + ' × $' + q.avg + ' avg</span><span>$' + q.total + '</span></div>';
+    if(q.discPct > 0) rows += '<div class="suc-breakdown-row discount"><span>' + q.discPct + '% ' + (isES ? 'descuento' : 'discount') + '</span><span>-$' + q.discAmt + '</span></div>';
+    rows += '<div class="suc-breakdown-row tax"><span>' + t.cal_vat  + '</span><span>$' + q.vat   + '</span></div>';
+    rows += '<div class="suc-breakdown-row tax"><span>' + t.cal_ish  + '</span><span>$' + q.ish   + '</span></div>';
+    rows += '<div class="suc-breakdown-row"><span>'     + t.cal_clean + '</span><span>$' + q.clean + '</span></div>';
+    rows += '<div class="suc-breakdown-row total"><span>' + (isES ? 'Total estimado' : 'Estimated Total') + '</span><span>$' + q.grand + ' <small style="font-weight:400;font-size:.78em;color:var(--muted)">USD</small></span></div>';
+    rows += '<div style="text-align:right;font-style:italic;font-size:.72rem;color:var(--muted);margin-top:.1rem">≈ $' + fxMXN(q.grand).toLocaleString('en-US') + ' MXN</div>';
+    bkRows.innerHTML = rows;
+    bkBox.style.display = 'block';
+  }
+}
+
+function recalcFormQuote(){
+  const prop = document.getElementById('formProp').value;
+  const inVal = document.getElementById('formCheckIn').value;
+  const outVal = document.getElementById('formCheckOut').value;
+  if(prop === 'racel' || !inVal || !outVal){ clearQuote(); return; }
+  const inDate = new Date(inVal + 'T12:00:00');
+  const outDate = new Date(outVal + 'T12:00:00');
+  if(isNaN(inDate) || isNaN(outDate) || outDate <= inDate){ clearQuote(); return; }
+  const nights = Math.round((outDate - inDate) / 86400000);
+  if(nights < 1){ clearQuote(); return; }
+  let total = 0; const d = new Date(inDate);
+  while(d < outDate){ total += getRate(prop, d); d.setDate(d.getDate() + 1); }
+  const avg = Math.round(total / nights);
+  let discPct = 0; if(nights >= 28) discPct = 20; else if(nights >= 21) discPct = 15;
+  const discAmt = Math.round(total * discPct / 100), sub = total - discAmt;
+  const clean = prop === 'lucky' ? 50 : 75;
+  const vat = Math.round(sub * 0.16), ish = Math.round(sub * 0.05), grand = sub + vat + ish + clean;
+  const pad = n => String(n).padStart(2, '0');
+  const ymd = dt => dt.getFullYear() + '-' + pad(dt.getMonth() + 1) + '-' + pad(dt.getDate());
+  currentQuote = { prop, inISO: ymd(inDate), outISO: ymd(outDate), nights, avg, total, discPct, discAmt, sub, clean, vat, ish, grand };
+  renderQuotePanel();
+  const btn = document.querySelector('#bookingForm .f-submit');
+  if(btn) btn.textContent = T[lang].f_btn_book || 'Request to Book →';
+}
+
 function clearQuote(){
   currentQuote = null;
   const panel = document.getElementById('quotePanel');
   if(panel) panel.classList.remove('show');
+  const btn = document.querySelector('#bookingForm .f-submit');
+  if(btn) btn.textContent = T[lang].f_btn || 'Send Inquiry →';
 }
 
 function waitlistFromCal(){
@@ -1833,6 +2008,7 @@ async function submitForm(e){
       if(res.ok){
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;
+        showSuccessWithDeposit();
         document.getElementById('formWrap').style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
         return;
@@ -1856,6 +2032,7 @@ async function submitForm(e){
   setTimeout(()=>{
     submitBtn.disabled = false;
     submitBtn.textContent = originalBtnText;
+    showSuccessWithDeposit();
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   }, 600);
@@ -1873,6 +2050,10 @@ function resetForm(){
     btn.disabled = false;
     btn.textContent = T[lang].f_btn || 'Send Inquiry →';
   }
+  const depositBox = document.getElementById('sucDepositBox');
+  if(depositBox) depositBox.style.display = 'none';
+  const bkBox = document.getElementById('sucBreakdown');
+  if(bkBox) bkBox.style.display = 'none';
 }
 
 
@@ -1932,7 +2113,13 @@ function renderReviews() {
     </div>`;
   }).join('');
 }
-document.addEventListener('DOMContentLoaded', renderReviews);
+document.addEventListener('DOMContentLoaded', ()=>{
+  renderReviews();
+  ['formProp','formCheckIn','formCheckOut'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.addEventListener('change', recalcFormQuote);
+  });
+});
 </script>
 </body>
 </html>
