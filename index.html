@@ -193,6 +193,7 @@ section{padding:5.5rem 2rem;}
 .sk-peak{background:rgba(12,31,63,.14);border:1px solid rgba(12,31,63,.2);color:var(--navy);}
 .sk-label{font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:.15rem;font-size:.62rem;}
 .sk-price{font-family:'Cormorant Garamond',serif;font-size:1.15rem;}
+.sk-mxn{display:block;font-size:.62rem;color:var(--muted);font-style:italic;margin-top:.18rem;}
 .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
 .cal-month-lbl{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--navy);}
 .cal-arrow{background:none;border:1px solid var(--border);border-radius:2px;width:34px;height:34px;cursor:pointer;font-size:1rem;color:var(--navy);transition:all .2s;}
@@ -648,9 +649,9 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
         <span data-i18n="cal_wl_msg">Casa Rico opens January 2027. Browse pricing and contact us to secure your spot.</span>
       </div>
       <div class="season-key">
-        <div class="sk-item sk-low"><span class="sk-label" id="skLowL">Low Season</span><span class="sk-price" id="skLowP">$110/night</span></div>
-        <div class="sk-item sk-high"><span class="sk-label" id="skHighL">High Season</span><span class="sk-price" id="skHighP">$175/night</span></div>
-        <div class="sk-item sk-peak"><span class="sk-label" id="skPeakL">Holiday / Peak</span><span class="sk-price" id="skPeakP">$245/night</span></div>
+        <div class="sk-item sk-low"><span class="sk-label" id="skLowL">Low Season</span><span class="sk-price" id="skLowP">$110/night</span><span class="sk-mxn" id="skLowM">≈ $1,930 MXN</span></div>
+        <div class="sk-item sk-high"><span class="sk-label" id="skHighL">High Season</span><span class="sk-price" id="skHighP">$175/night</span><span class="sk-mxn" id="skHighM">≈ $3,060 MXN</span></div>
+        <div class="sk-item sk-peak"><span class="sk-label" id="skPeakL">Holiday / Peak</span><span class="sk-price" id="skPeakP">$245/night</span><span class="sk-mxn" id="skPeakM">≈ $4,290 MXN</span></div>
       </div>
       <div class="cal-fx-note" data-i18n="cal_fx_note">Prices in USD · Approx. $17.50 MXN per USD (updated May 2026)</div>
       <div class="cal-nav">
@@ -1506,6 +1507,9 @@ function renderCalendar(){
   document.getElementById('skLowP').textContent='$'+r.low+'/night';
   document.getElementById('skHighP').textContent='$'+r.high+'/night';
   document.getElementById('skPeakP').textContent='$'+r.peak+'/night';
+  document.getElementById('skLowM').textContent='≈ $'+fxMXN(r.low).toLocaleString('en-US')+' MXN';
+  document.getElementById('skHighM').textContent='≈ $'+fxMXN(r.high).toLocaleString('en-US')+' MXN';
+  document.getElementById('skPeakM').textContent='≈ $'+fxMXN(r.peak).toLocaleString('en-US')+' MXN';
   document.getElementById('skLowL').innerHTML=t.cal_low_k;
   document.getElementById('skHighL').innerHTML=t.cal_high_k;
   document.getElementById('skPeakL').innerHTML=t.cal_peak_k;
