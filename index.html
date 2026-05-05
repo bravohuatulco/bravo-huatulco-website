@@ -1640,6 +1640,8 @@ function bookDirectFromCal(){
     successEl.style.display = 'none';
     wrapEl.style.display = 'block';
     document.getElementById('formError').classList.remove('show');
+    const btn = document.querySelector('#bookingForm .f-submit');
+    if(btn){ btn.disabled = false; btn.textContent = T[lang].f_btn || 'Send Inquiry →'; }
   }
 
   closeCal();
@@ -1697,6 +1699,8 @@ function waitlistFromCal(){
     successEl.style.display = 'none';
     wrapEl.style.display = 'block';
     document.getElementById('formError').classList.remove('show');
+    const btn = document.querySelector('#bookingForm .f-submit');
+    if(btn){ btn.disabled = false; btn.textContent = T[lang].f_btn || 'Send Inquiry →'; }
   }
   closeCal();
   setTimeout(()=>{ goTo('contact'); }, 80);
@@ -1803,6 +1807,8 @@ async function submitForm(e){
         body: JSON.stringify(payload)
       });
       if(res.ok){
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
         document.getElementById('formWrap').style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
         return;
@@ -1837,6 +1843,12 @@ function resetForm(){
   clearQuote();
   document.getElementById('formSuccess').style.display = 'none';
   document.getElementById('formWrap').style.display = 'block';
+  // Defensive: ensure submit button is enabled and showing the right label
+  const btn = document.querySelector('#bookingForm .f-submit');
+  if(btn){
+    btn.disabled = false;
+    btn.textContent = T[lang].f_btn || 'Send Inquiry →';
+  }
 }
 
 
