@@ -1202,7 +1202,8 @@ en:{
   cal_book_lbl:"Choose how to book:",
   cal_airbnb:"Book via Airbnb",cal_direct:"Book Direct & Save",
   cal_sync:"Calendar syncs with Airbnb & VRBO via iCal · Links activate once listings go live",
-  cal_min7:"Holiday period requires 5-night minimum (Dec 17 – Jan 7)",
+  cal_min7:"Holiday period (Dec 17 – Jan 7) requires a 5-night minimum stay",
+  cal_min3:"A 3-night minimum stay is required",
   cal_wl_title:"Pricing Preview · Opens January 2027",
   cal_wl_msg:"Casa Rico opens January 2027. Browse pricing and contact us to secure your spot on the waitlist.",
   cal_wl_btn:"Join Waitlist — Contact Us",
@@ -1362,7 +1363,8 @@ es:{
   cal_book_lbl:"Elija cómo reservar:",
   cal_airbnb:"Reservar en Airbnb",cal_direct:"Reservar Directo y Ahorrar",
   cal_sync:"El calendario se sincroniza con Airbnb y VRBO vía iCal",
-  cal_min7:"Temporada navideña requiere mínimo 5 noches (17 Dic–7 Ene)",
+  cal_min7:"El período festivo (17 dic – 7 ene) requiere una estadía mínima de 5 noches",
+  cal_min3:"Se requiere una estadía mínima de 3 noches",
   cal_wl_title:"Vista de Precios · Apertura Enero 2027",
   cal_wl_msg:"Casa Rico abre enero 2027. Explore precios y contáctenos para asegurar su lugar.",
   cal_wl_btn:"Lista de Espera — Contáctenos",
@@ -1455,6 +1457,13 @@ const RATES={lucky:{low:110,high:175,peak:245},rico:{low:135,high:185,peak:255}}
 function getSeason(d){const m=d.getMonth()+1,day=d.getDate();if((m===12&&day>=17)||(m===1&&day<=7))return'peak';if(m>=5&&m<=10)return'low';return'high';}
 function getRate(prop,d){return RATES[prop][getSeason(d)];}
 function isPeak(d){return getSeason(d)==='peak';}
+function getMinNights(checkIn){
+  const m=checkIn.getMonth(),d=checkIn.getDate();
+  // 5-night minimum only for check-ins Dec 17 – Jan 2 (holiday core)
+  // Jan 3–7 check-ins drop to 3 nights — a Jan 5 + 3 night stay exits Jan 8, which is fine
+  if((m===11&&d>=17)||(m===0&&d<=2))return 5;
+  return 3;
+}
 const BOOKED={
   lucky:[],
   rico:[]
@@ -1523,9 +1532,14 @@ function pickDate(d){
   if(!calIn||(calIn&&calOut)){calIn=d;calOut=null;}
   else if(d<=calIn){calIn=d;calOut=null;}
   else{
-    const minN=isPeak(calIn)?5:3;
+    const minN=getMinNights(calIn);
     const minOut=new Date(calIn.getTime()+minN*86400000);
-    if(d<minOut){document.getElementById('calMinNote').textContent=T[lang].cal_min7;setTimeout(()=>{document.getElementById('calMinNote').textContent='';},3500);return;}
+    if(d<minOut){
+      const msg=minN===5?T[lang].cal_min7:T[lang].cal_min3;
+      document.getElementById('calMinNote').textContent=msg;
+      setTimeout(()=>{document.getElementById('calMinNote').textContent='';},3500);
+      return;
+    }
     calOut=d;showSummary();
   }
   renderCalendar();
@@ -1618,6 +1632,16 @@ function bookDirectFromCal(){
   if(co) co.value = currentQuote.outISO;
 
   renderQuotePanel();
+
+  // If a prior inquiry was submitted, reset back to the form so guest can submit again
+  const successEl = document.getElementById('formSuccess');
+  const wrapEl = document.getElementById('formWrap');
+  if(successEl && successEl.style.display === 'block'){
+    successEl.style.display = 'none';
+    wrapEl.style.display = 'block';
+    document.getElementById('formError').classList.remove('show');
+  }
+
   closeCal();
   setTimeout(()=>{ goTo('contact'); }, 80);
 }
