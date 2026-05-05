@@ -111,7 +111,7 @@ section{padding:5.5rem 2rem;}
 .ps-low .ps-price{color:#1A5276;}
 .ps-high .ps-price{color:#1E8449;}
 .ps-peak .ps-price{color:#C0392B;}
-.ps-night{font-size:.55rem;color:var(--muted);display:block;margin-top:.1rem;}
+.ps-night{font-size:.55rem;color:var(--muted);display:block;margin-top:.1rem;}.ps-cur{font-size:.6rem;color:var(--muted);font-weight:400;vertical-align:middle;}.ps-mxn{font-size:.62rem;color:var(--muted);font-style:italic;margin:.08rem 0 .18rem;}.cal-fx-note{font-size:.63rem;color:var(--muted);font-style:italic;text-align:right;margin:-.3rem 0 .9rem;}.qpn-fx{margin-top:.25rem;}
 .ps-usd{font-size:.6rem;text-align:center;color:var(--muted);margin-bottom:1.1rem;letter-spacing:.06em;}
 
 .card-btn{width:100%;padding:.875rem;background:var(--navy);color:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.73rem;letter-spacing:.13em;text-transform:uppercase;font-weight:500;transition:background .25s;border-radius:2px;margin-top:.5rem;text-decoration:none;display:block;text-align:center;}
@@ -531,19 +531,19 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
               <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 30</div>
-              <div class="ps-price">$110</div>
+              <div class="ps-price">$110 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $1,930 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-high">
               <div class="ps-season" data-i18n="p_high">High Season</div>
               <div class="ps-dates" data-i18n="p_high_d">Dec 1–16 · Jan 8–Apr 30</div>
-              <div class="ps-price">$175</div>
+              <div class="ps-price">$175 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,060 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-peak">
               <div class="ps-season" data-i18n="p_peak">Holiday / Peak</div>
               <div class="ps-dates" data-i18n="p_peak_d">Dec 17 – Jan 7</div>
-              <div class="ps-price">$245</div>
+              <div class="ps-price">$245 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,290 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
@@ -575,19 +575,19 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
               <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 30</div>
-              <div class="ps-price">$135</div>
+              <div class="ps-price">$135 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,360 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-high">
               <div class="ps-season" data-i18n="p_high">High Season</div>
               <div class="ps-dates" data-i18n="p_high_d">Dec 1–16 · Jan 8–Apr 30</div>
-              <div class="ps-price">$185</div>
+              <div class="ps-price">$185 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,240 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-peak">
               <div class="ps-season" data-i18n="p_peak">Holiday / Peak</div>
               <div class="ps-dates" data-i18n="p_peak_d">Dec 17 – Jan 7</div>
-              <div class="ps-price">$255</div>
+              <div class="ps-price">$255 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,460 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
@@ -652,6 +652,7 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
         <div class="sk-item sk-high"><span class="sk-label" id="skHighL">High Season</span><span class="sk-price" id="skHighP">$175/night</span></div>
         <div class="sk-item sk-peak"><span class="sk-label" id="skPeakL">Holiday / Peak</span><span class="sk-price" id="skPeakP">$245/night</span></div>
       </div>
+      <div class="cal-fx-note" data-i18n="cal_fx_note">Prices in USD · Approx. $17.50 MXN per USD (updated May 2026)</div>
       <div class="cal-nav">
         <button class="cal-arrow" onclick="calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCalendar()">&#8249;</button>
         <div class="cal-month-lbl" id="calMonthLbl"></div>
@@ -1001,6 +1002,7 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
             <div class="quote-panel-dates" id="quotePanelDates"></div>
             <div class="quote-panel-rows" id="quotePanelRows"></div>
             <div class="quote-panel-note" data-i18n="quote_note">We'll honor this quote when we confirm your booking. Electricity beyond the included fair-use cap is settled at checkout based on actual use.</div>
+            <div class="quote-panel-note qpn-fx" data-i18n="quote_fx_note"></div>
           </div>
 
           <div class="f-error" id="formError"></div>
@@ -1084,7 +1086,7 @@ en:{
   lucky_gallery_btn:"Browse Photos",
   p_low:"Low Season",p_high:"High Season",p_peak:"Holiday / Peak",
   p_low_d:"May 1 – Nov 30",p_high_d:"Dec 1–16 · Jan 8–Apr 30",p_peak_d:"Dec 17 – Jan 7",
-  per_n:"/ night",usd_note:"Nightly rates in USD · Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking, as required by Mexican law.",
+  per_n:"/ night",usd_note:"Rates in USD and MXN · Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking, as required by Mexican law.",
   lucky_btn:"Check Availability & Book",
   rico_unit:"2 Bed · 2 Bath · 2nd Floor · Nirú Las Casitas",
   rico_sz:"121.7 m² / 1,310 ft²",rico_sl:"Sleeps 6",rico_view:"Elevated Ocean Views",
@@ -1148,9 +1150,9 @@ en:{
   pol_pets_v:"Guest pets not permitted — though our dachshund Diego may make an occasional appearance.",pol_smoke_v:"Not permitted",pol_quiet_v:"10:00 PM – 8:00 AM",
   pol_clean:"Cleaning Fee",pol_elec:"Electricity",
   pol_d21:"21+ nights",pol_d28:"28+ nights",pol_tax:"Taxes",
-  pol_clean_v:"$50 per booking (Casa Lucky) · $75 per booking (Casa Rico / Racél)",pol_elec_v:"Included in the nightly rate for normal daily use. An overage charge may apply for exceptional consumption.",
+  pol_clean_v:"$50 USD per booking (Casa Lucky) · $75 USD per booking (Casa Rico / Racél) — approx. $875 / $1,310 MXN",pol_elec_v:"Included in the nightly rate for normal daily use. An overage charge may apply for exceptional consumption.",
   pol_d21_v:"15% off",pol_d28_v:"20% off",pol_tax_v:"16% VAT + 5% ISH (Oaxacan lodging tax) added at booking",
-  pol_curr:"Currency",pol_curr_v:"USD",
+  pol_curr:"Currency",pol_curr_v:"USD (charged) · MXN shown for reference",
   pay_std_h:"Standard Weekly Bookings",
   pay_std_1:"<strong>30% deposit</strong> due at time of booking",
   pay_std_2:"Balance due <strong>30 days</strong> before arrival",
@@ -1189,6 +1191,7 @@ en:{
   quote_h:"Your Quote",
   quote_clear:"Clear ✕",
   quote_note:"We'll honor this quote when we confirm your booking. Electricity beyond the included fair-use cap is settled at checkout based on actual use.",
+  quote_fx_note:"Charged in USD. MXN amount approximate at $17.50 MXN per USD (updated May 2026).",
   quote_prop:"Property",quote_dates:"Dates",quote_subtotal:"Subtotal",
   err_send:"We couldn't submit your inquiry online. Please email us directly at <a href=\"mailto:reservations@bravohuatulco.com\">reservations@bravohuatulco.com</a> or use WhatsApp.",
   sending:"Sending…",
@@ -1208,6 +1211,7 @@ en:{
   cal_wl_msg:"Casa Rico opens January 2027. Browse pricing and contact us to secure your spot on the waitlist.",
   cal_wl_btn:"Join Waitlist — Contact Us",
   cal_notice:"Dates shown reflect estimated availability. Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking.",
+  cal_fx_note:"Prices in USD · Approx. $17.50 MXN per USD (updated May 2026)",
   stories_ey:"Behind the Names",
   stories_title:"The Stories Behind Our Casitas",
   stories_sub:"Every name carries a story worth telling — of family, of love, and of lives well lived. When you stay with us, you stay in their honor.",
@@ -1245,7 +1249,7 @@ es:{
   lucky_gallery_btn:"Ver Fotos",
   p_low:"Temporada Baja",p_high:"Temporada Alta",p_peak:"Temporada Navideña",
   p_low_d:"1 May – 30 Nov",p_high_d:"1–16 Dic · 8 Ene–30 Abr",p_peak_d:"17 Dic – 7 Ene",
-  per_n:"/ noche",usd_note:"Tarifas por noche en USD · Los impuestos (16% IVA + 5% ISH) y el cargo de limpieza se agregan al reservar, conforme a la ley mexicana.",
+  per_n:"/ noche",usd_note:"Tarifas en USD y MXN · Los impuestos (16% IVA + 5% ISH) y el cargo de limpieza se agregan al reservar, conforme a la ley mexicana.",
   lucky_btn:"Ver Disponibilidad y Reservar",
   rico_unit:"2 Recámaras · 2 Baños · 2do Piso · Nirú Las Casitas",
   rico_sz:"121.7 m²",rico_sl:"Hasta 6 personas",rico_view:"Vistas Elevadas al Océano",
@@ -1309,9 +1313,9 @@ es:{
   pol_pets_v:"No se permiten mascotas de huéspedes — aunque nuestro perro salchicha Diego podría hacer una aparición ocasional.",pol_smoke_v:"No permitido",pol_quiet_v:"10:00 PM – 8:00 AM",
   pol_clean:"Cargo de Limpieza",pol_elec:"Electricidad",
   pol_d21:"21+ noches",pol_d28:"28+ noches",pol_tax:"Impuestos",
-  pol_clean_v:"$50 USD por reserva (Casa Lucky) · $75 USD por reserva (Casa Rico / Racél)",pol_elec_v:"Incluida en la tarifa por noche para el uso diario normal. Puede aplicarse un cargo adicional por consumo excepcional.",
+  pol_clean_v:"$50 USD por reserva (Casa Lucky) · $75 USD por reserva (Casa Rico / Racél) — aprox. $875 / $1,310 MXN",pol_elec_v:"Incluida en la tarifa por noche para el uso diario normal. Puede aplicarse un cargo adicional por consumo excepcional.",
   pol_d21_v:"15% descuento",pol_d28_v:"20% descuento",pol_tax_v:"16% de IVA + 5% de ISH (impuesto de hospedaje) agregados al reservar",
-  pol_curr:"Moneda",pol_curr_v:"USD",
+  pol_curr:"Moneda",pol_curr_v:"USD (cobrado) · MXN como referencia",
   pay_std_h:"Reservas Semanales Estándar",
   pay_std_1:"<strong>30% de depósito</strong> al momento de la reserva",
   pay_std_2:"Saldo restante <strong>30 días</strong> antes de la llegada",
@@ -1350,6 +1354,7 @@ es:{
   quote_h:"Su Cotización",
   quote_clear:"Borrar ✕",
   quote_note:"Honraremos esta cotización al confirmar su reservación. La electricidad que exceda el uso razonable incluido se liquida al final de la estancia según el consumo real.",
+  quote_fx_note:"Cobrado en USD. El monto en MXN es aproximado a $17.50 MXN por USD (actualizado mayo 2026).",
   quote_prop:"Propiedad",quote_dates:"Fechas",quote_subtotal:"Subtotal",
   err_send:"No pudimos enviar su consulta en línea. Escríbanos directamente a <a href=\"mailto:reservations@bravohuatulco.com\">reservations@bravohuatulco.com</a> o use WhatsApp.",
   sending:"Enviando…",
@@ -1369,6 +1374,7 @@ es:{
   cal_wl_msg:"Casa Rico abre enero 2027. Explore precios y contáctenos para asegurar su lugar.",
   cal_wl_btn:"Lista de Espera — Contáctenos",
   cal_notice:"Las fechas mostradas reflejan disponibilidad estimada. Los impuestos (16% IVA + 5% ISH) y el cargo de limpieza se agregan al reservar.",
+  cal_fx_note:"Precios en USD · Aprox. $17.50 MXN por USD (actualizado mayo 2026)",
   stories_ey:"Detrás de los Nombres",
   stories_title:"Las Historias Detrás de Nuestras Casitas",
   stories_sub:"Cada nombre lleva una historia que vale la pena contar — de familia, de amor y de vidas bien vividas. Cuando te quedas con nosotros, te quedas en su honor.",
@@ -1454,6 +1460,8 @@ function closeLB(){document.getElementById('lbOverlay').classList.remove('open')
 
 /* === CALENDAR === */
 const RATES={lucky:{low:110,high:175,peak:245},rico:{low:135,high:185,peak:255}};
+const FX_MXN=17.5;
+const fxMXN=(usd)=>Math.round(usd*FX_MXN/10)*10;
 function getSeason(d){const m=d.getMonth()+1,day=d.getDate();if((m===12&&day>=17)||(m===1&&day<=7))return'peak';if(m>=5&&m<=10)return'low';return'high';}
 function getRate(prop,d){return RATES[prop][getSeason(d)];}
 function isPeak(d){return getSeason(d)==='peak';}
@@ -1670,7 +1678,8 @@ function renderQuotePanel(){
   rows += '<div class="quote-panel-row tax"><span>'+t.cal_vat+'</span><span>$'+q.vat+'</span></div>';
   rows += '<div class="quote-panel-row tax"><span>'+t.cal_ish+'</span><span>$'+q.ish+'</span></div>';
   rows += '<div class="quote-panel-row"><span>'+t.cal_clean+'</span><span>$'+q.clean+'</span></div>';
-  rows += '<div class="quote-panel-row total"><span>'+t.cal_total+'</span><span>$'+q.grand+'</span></div>';
+  rows += '<div class="quote-panel-row total"><span>'+t.cal_total+'</span><span>$'+q.grand+' <small style="font-size:.75em;font-weight:400;color:var(--muted)">USD</small></span></div>';
+  rows += '<div style="text-align:right;font-style:italic;font-size:.72rem;color:var(--muted);margin-top:.15rem">≈ $'+fxMXN(q.grand).toLocaleString('en-US')+' MXN</div>';
   document.getElementById('quotePanelRows').innerHTML = rows;
   panel.classList.add('show');
 }
