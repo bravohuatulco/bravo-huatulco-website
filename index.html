@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bravo Huatulco — Boutique Condo Rentals, Nirú Las Casitas</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMwQzFGM0YiLz48cGF0aCBkPSJNOCA0MiBRMTYgMzYgMjQgNDIgUTMyIDQ4IDQwIDQyIFE0OCAzNiA1NiA0MiBMNTYgNTYgUTQ4IDUwIDQwIDU2IFEzMiA2MiAyNCA1NiBRMTYgNTAgOCA1NiBaIiBmaWxsPSIjQzlBODRDIiBvcGFjaXR5PSIwLjkiLz48dGV4dCB4PSIxMiIgeT0iMzkiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjMwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0M5QTg0QyI+QjwvdGV4dD48L3N2Zz4=">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMwQzFGM0YiLz48cGF0aCBkPSJNOCA0MiBRMTYgMzYgMjQgNDIgUTMyIDQ4IDQwIDQyIFE0OCAzNiA1NiA0MiBMNTYgNTYgUTQ4IDUwIDQwIDU2IFEzMiA2MiAyNCA1NiBRMTYgNTAgOCA1NiBaIiBmaWxsPSIjQzlBODRDIiBvcGFjaXR5PSIwLjkiLz48dGV4dCB4PSIxMiIgeT0iMzkiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjMwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0M5QTg0QyI+QjwvdGV4dD48L3N2Zz4=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -408,6 +410,8 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
   .gpanel{grid-template-columns:1fr 1fr;}
   .niru-photos{grid-template-columns:1fr;}
   .niru-ph-wide img,.niru-ph img{height:200px;}
+  #stories{padding-left:1.25rem;padding-right:1.25rem;}
+  .dist-row{grid-template-columns:minmax(0,1fr) auto auto;gap:.4rem;}
 }
 @media(max-width:600px){
   .props-grid{grid-template-columns:1fr;}
@@ -725,7 +729,7 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
     <p class="sec-sub" data-i18n="rev_sub">Our guests speak for themselves. New reviews are added as they arrive.</p>
     <div class="reviews-grid" id="reviewsGrid"><!-- populated by renderReviews() --></div>
     <div class="reviews-cta">
-      <p>Have you stayed with us? We'd love your feedback.</p>
+      <p data-i18n="rev_cta">Have you stayed with us? We'd love your feedback.</p>
       <a class="btn-gold" href="https://g.page/r/CbuRDCFWTRx3EAI/review" target="_blank" data-i18n="rev_google">Leave Us a Google Review ↗</a>
     </div>
   </div>
@@ -1070,6 +1074,7 @@ en:{
   rev_ey:"Guest Experiences",rev_title:"What Our Guests Say",
   rev_sub:"Our guests speak for themselves. New reviews are added as they arrive.",
   rev_google:"Leave Us a Google Review ↗",
+  rev_cta:"Have you stayed with us? We'd love your feedback.",
   about_ey:"Our Story",about_title:"Francisco &<br>Mateo Bravo",
   about_p1:"What begins with a dream of a slower, sun-drenched life in Mexico is, for Francisco and Mateo Bravo, now a reality in the making. After more than a decade managing a portfolio of rental properties in Kansas, USA — supporting dozens of tenants — they're channeling that same dedication into something far more beautiful.",
   about_p2:"Mateo holds a PhD from the University of Kansas and spent over 20 years in senior healthcare leadership. Francisco, a Mexico native, brings decades of hospitality experience and has served as their full-time property manager for years. Together they bring the professionalism of seasoned landlords and the genuine warmth of true hosts.",
@@ -1218,6 +1223,7 @@ es:{
   rev_ey:"Experiencias de Huéspedes",rev_title:"Lo Que Dicen Nuestros Huéspedes",
   rev_sub:"Nuestros huéspedes hablan por sí mismos. Las nuevas reseñas se agregan a medida que llegan.",
   rev_google:"Déjenos una Reseña en Google ↗",
+  rev_cta:"¿Se ha hospedado con nosotros? Nos encantaría conocer su opinión.",
   about_ey:"Nuestra Historia",about_title:"Francisco y<br>Mateo Bravo",
   about_p1:"Lo que comienza con el sueño de una vida más tranquila y soleada en México es, para Francisco y Mateo Bravo, una realidad en construcción. Después de más de una década administrando propiedades en Kansas, EE.UU., están canalizando esa misma dedicación en algo mucho más hermoso.",
   about_p2:"Mateo tiene un doctorado de la Universidad de Kansas y pasó más de 20 años en puestos de liderazgo en salud. Francisco, originario de México, aporta décadas de experiencia en hospitalidad y ha sido administrador de propiedades de tiempo completo por años. Juntos ofrecen la profesionalidad de propietarios experimentados y la calidez genuina de verdaderos anfitriones.",
