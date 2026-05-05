@@ -1680,16 +1680,17 @@ function clearQuote(){
 }
 
 function waitlistFromCal(){
-  // Set the property dropdown to whichever calendar is open
+  // If the guest selected dates, run the full quote-carryover flow (same as Book Direct)
+  if(calIn && calOut){ bookDirectFromCal(); return; }
+
+  // No dates selected — just set the property dropdown and reset the form if needed
   const propSelect = document.getElementById('formProp');
   if(propSelect){
     for(let i=0; i<propSelect.options.length; i++){
       if(propSelect.options[i].value === calProp){ propSelect.selectedIndex = i; break; }
     }
   }
-  // No bookable quote for a waitlist — clear any prior quote panel
   clearQuote();
-  // If a prior submission is showing the success screen, reset to the form
   const successEl = document.getElementById('formSuccess');
   const wrapEl = document.getElementById('formWrap');
   if(successEl && successEl.style.display === 'block'){
