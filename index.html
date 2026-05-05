@@ -1568,7 +1568,8 @@ function showSummary(){
   rows+=`<div class="cal-sum-row tax"><span>${t.cal_vat}</span><span>$${vat}</span></div>`;
   rows+=`<div class="cal-sum-row tax"><span>${t.cal_ish}</span><span>$${ish}</span></div>`;
   rows+=`<div class="cal-sum-row"><span>${t.cal_clean}</span><span>$${clean}</span></div>`;
-  rows+=`<div class="cal-sum-row total"><span>${t.cal_total}</span><span>$${grand}</span></div>`;
+  rows+=`<div class="cal-sum-row total"><span>${t.cal_total}</span><span>$${grand} <small style="font-size:.75em;font-weight:400;color:var(--muted)">USD</small></span></div>`;
+  rows+=`<div style="text-align:right;font-style:italic;font-size:.72rem;color:var(--muted);margin-top:.15rem">≈ $${fxMXN(grand).toLocaleString('en-US')} MXN</div>`;
   document.getElementById('sumRows').innerHTML=rows;
   document.getElementById('calBookLbl').textContent=t.cal_book_lbl;
   document.getElementById('btnAirbnb').textContent='✈ '+t.cal_airbnb;
