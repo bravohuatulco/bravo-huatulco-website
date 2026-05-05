@@ -671,7 +671,7 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
           </div>
         </div>
         <div id="calWlBtnWrap" style="display:none">
-          <button class="card-btn" style="margin-top:.5rem" onclick="closeCal();goTo('contact')" data-i18n="cal_wl_btn">Join Waitlist — Contact Us</button>
+          <button class="card-btn" style="margin-top:.5rem" onclick="waitlistFromCal()" data-i18n="cal_wl_btn">Join Waitlist — Contact Us</button>
         </div>
         <p class="cal-footer-note" id="calFootNote"></p>
       </div>
@@ -1677,6 +1677,28 @@ function clearQuote(){
   currentQuote = null;
   const panel = document.getElementById('quotePanel');
   if(panel) panel.classList.remove('show');
+}
+
+function waitlistFromCal(){
+  // Set the property dropdown to whichever calendar is open
+  const propSelect = document.getElementById('formProp');
+  if(propSelect){
+    for(let i=0; i<propSelect.options.length; i++){
+      if(propSelect.options[i].value === calProp){ propSelect.selectedIndex = i; break; }
+    }
+  }
+  // No bookable quote for a waitlist — clear any prior quote panel
+  clearQuote();
+  // If a prior submission is showing the success screen, reset to the form
+  const successEl = document.getElementById('formSuccess');
+  const wrapEl = document.getElementById('formWrap');
+  if(successEl && successEl.style.display === 'block'){
+    successEl.style.display = 'none';
+    wrapEl.style.display = 'block';
+    document.getElementById('formError').classList.remove('show');
+  }
+  closeCal();
+  setTimeout(()=>{ goTo('contact'); }, 80);
 }
 
 // ═══════════════════════════════════════════════════════════════
