@@ -381,6 +381,8 @@ section{padding:5.5rem 2rem;}
 .f-success-icon{font-size:3.2rem;margin-bottom:1rem;}
 .f-success-title{font-family:'Cormorant Garamond',serif;font-size:2.1rem;color:var(--navy);margin-bottom:.75rem;}
 .f-success-txt{font-size:.9rem;color:var(--muted);line-height:1.75;}
+.f-success-again{display:inline-block;margin-top:1.5rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);cursor:pointer;font-weight:600;font-family:'Jost',sans-serif;border:none;background:transparent;padding:0;}
+.f-success-again:hover{color:var(--navy);}
 
 /* QUOTE CARRYOVER PANEL — appears above form when guest arrives from calendar */
 .quote-panel{display:none;background:linear-gradient(135deg,#FAF6E8 0%,#fff 100%);border:1px solid var(--gold);border-radius:6px;padding:1.4rem 1.5rem;margin-bottom:1.75rem;position:relative;}
@@ -1035,6 +1037,7 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
           <div class="f-success-icon">🌊</div>
           <div class="f-success-title" data-i18n="suc_t">You're One Step Closer!</div>
           <p class="f-success-txt" data-i18n="suc_d">Thank you for reaching out. We'll be in touch within 24 hours.</p>
+          <button class="f-success-again" onclick="resetForm()" data-i18n="suc_again">Have another question? →</button>
         </div>
       </div>
     </div>
@@ -1181,6 +1184,7 @@ en:{
   ph_msg:"Tell us about your trip, any questions, or special requests...",
   f_btn:"Send Inquiry →",
   suc_t:"You're One Step Closer!",suc_d:"Thank you for reaching out. We'll be in touch within 24 hours with availability and everything you need to plan your perfect Huatulco stay.",
+  suc_again:"Have another question? →",
   quote_ey:"From your selection",
   quote_h:"Your Quote",
   quote_clear:"Clear ✕",
@@ -1340,6 +1344,7 @@ es:{
   ph_msg:"Cuéntenos sobre su viaje...",
   f_btn:"Enviar Consulta →",
   suc_t:"¡Está Un Paso Más Cerca!",suc_d:"Gracias por contactarnos. Le responderemos en 24 horas.",
+  suc_again:"¿Tiene otra pregunta? →",
   quote_ey:"De su selección",
   quote_h:"Su Cotización",
   quote_clear:"Borrar ✕",
@@ -1709,15 +1714,15 @@ async function submitForm(e){
 
   // Build a structured payload that flattens nicely in Formspree's email view
   const payload = {
-    Name: data.name,
-    Email: data.email,
-    Phone: data.phone || '(not provided)',
-    Property: PROP_NAMES[data.property] || data.property,
-    'Check-In': data.checkIn,
-    'Check-Out': data.checkOut,
-    Guests: data.guests,
-    Message: data.message || '(none)',
-    Language: data.language === 'es' ? 'Spanish' : 'English',
+    name: data.name,
+    email: data.email,
+    phone: data.phone || '(not provided)',
+    property: PROP_NAMES[data.property] || data.property,
+    'check-in': data.checkIn,
+    'check-out': data.checkOut,
+    guests: data.guests,
+    message: data.message || '(none)',
+    language: data.language === 'es' ? 'Spanish' : 'English',
     _replyto: data.email
   };
   if(currentQuote){
@@ -1777,6 +1782,14 @@ async function submitForm(e){
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   }, 600);
+}
+
+function resetForm(){
+  document.getElementById('bookingForm').reset();
+  document.getElementById('formError').classList.remove('show');
+  clearQuote();
+  document.getElementById('formSuccess').style.display = 'none';
+  document.getElementById('formWrap').style.display = 'block';
 }
 
 
