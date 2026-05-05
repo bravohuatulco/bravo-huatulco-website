@@ -382,6 +382,27 @@ section{padding:5.5rem 2rem;}
 .f-success-title{font-family:'Cormorant Garamond',serif;font-size:2.1rem;color:var(--navy);margin-bottom:.75rem;}
 .f-success-txt{font-size:.9rem;color:var(--muted);line-height:1.75;}
 
+/* QUOTE CARRYOVER PANEL — appears above form when guest arrives from calendar */
+.quote-panel{display:none;background:linear-gradient(135deg,#FAF6E8 0%,#fff 100%);border:1px solid var(--gold);border-radius:6px;padding:1.4rem 1.5rem;margin-bottom:1.75rem;position:relative;}
+.quote-panel.show{display:block;animation:quoteFadeIn .4s ease-out;}
+@keyframes quoteFadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.quote-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.6rem;}
+.quote-panel-eyebrow{font-size:.62rem;color:var(--gold);text-transform:uppercase;letter-spacing:.13em;font-weight:600;margin-bottom:.2rem;}
+.quote-panel-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--navy);line-height:1.1;}
+.quote-clear{background:transparent;border:1px solid transparent;color:var(--muted);cursor:pointer;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600;padding:.4rem .6rem;border-radius:2px;flex-shrink:0;transition:all .2s;}
+.quote-clear:hover{color:var(--navy);border-color:var(--border);}
+.quote-panel-prop{font-size:1rem;color:var(--navy);font-weight:600;margin-bottom:.15rem;}
+.quote-panel-dates{font-size:.82rem;color:var(--muted);margin-bottom:1rem;}
+.quote-panel-rows{display:grid;gap:.42rem;padding-top:.85rem;border-top:1px solid rgba(201,168,76,.32);margin-bottom:.85rem;}
+.quote-panel-row{display:flex;justify-content:space-between;font-size:.85rem;color:var(--navy);}
+.quote-panel-row.discount{color:var(--teal);}
+.quote-panel-row.tax{color:var(--muted);font-size:.78rem;}
+.quote-panel-row.total{font-weight:700;font-size:.98rem;border-top:1px solid rgba(201,168,76,.32);padding-top:.55rem;margin-top:.3rem;}
+.quote-panel-note{font-size:.72rem;color:var(--muted);font-style:italic;line-height:1.55;margin-top:.2rem;}
+.f-error{display:none;background:#FDEDEC;border-left:3px solid #C0392B;padding:.85rem 1rem;border-radius:0 3px 3px 0;margin-bottom:1rem;font-size:.82rem;color:#922B21;line-height:1.55;}
+.f-error.show{display:block;}
+.f-error a{color:#922B21;text-decoration:underline;font-weight:600;}
+
 footer{background:#07101F;padding:3rem 2rem;text-align:center;}
 .foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:#fff;margin-bottom:.6rem;}
 .foot-logo span{color:var(--gold);}
@@ -644,7 +665,7 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
           <div class="cal-book-label" id="calBookLbl">Choose how to book:</div>
           <div class="cal-book-btns">
             <a id="btnAirbnb" class="book-btn book-airbnb" href="https://www.airbnb.com/h/bravohuatulco" target="_blank">✈ Book via Airbnb</a>
-            <a id="btnDirect" class="book-btn book-direct" onclick="closeCal();goTo('contact')">⭐ Book Direct & Save</a>
+            <a id="btnDirect" class="book-btn book-direct" onclick="bookDirectFromCal()">⭐ Book Direct & Save</a>
           </div>
         </div>
         <div id="calWlBtnWrap" style="display:none">
@@ -964,31 +985,49 @@ footer{background:#07101F;padding:3rem 2rem;text-align:center;}
         <div id="formWrap">
           <div class="form-hed" data-i18n="form_h">Request a Booking</div>
           <div class="form-sub" data-i18n="form_s">We'll confirm availability and send a detailed quote within 24 hours.</div>
-          <form onsubmit="submitForm(event)">
+
+          <!-- QUOTE CARRYOVER PANEL — populated when guest clicks "Book Direct & Save" in calendar -->
+          <div class="quote-panel" id="quotePanel">
+            <div class="quote-panel-head">
+              <div>
+                <div class="quote-panel-eyebrow" data-i18n="quote_ey">From your selection</div>
+                <div class="quote-panel-title" data-i18n="quote_h">Your Quote</div>
+              </div>
+              <button type="button" class="quote-clear" onclick="clearQuote()" data-i18n="quote_clear">Clear ✕</button>
+            </div>
+            <div class="quote-panel-prop" id="quotePanelProp"></div>
+            <div class="quote-panel-dates" id="quotePanelDates"></div>
+            <div class="quote-panel-rows" id="quotePanelRows"></div>
+            <div class="quote-panel-note" data-i18n="quote_note">We'll honor this quote when we confirm your booking. Electricity beyond the included fair-use cap is settled at checkout based on actual use.</div>
+          </div>
+
+          <div class="f-error" id="formError"></div>
+
+          <form id="bookingForm" onsubmit="submitForm(event)">
             <div class="form-row2">
-              <div class="fg"><label class="fl" data-i18n="fl_name">Full Name *</label><input class="fi" required data-i18n-ph="ph_name" placeholder="Your name"></div>
-              <div class="fg"><label class="fl" data-i18n="fl_email">Email *</label><input class="fi" type="email" required data-i18n-ph="ph_email" placeholder="your@email.com"></div>
+              <div class="fg"><label class="fl" data-i18n="fl_name">Full Name *</label><input id="formName" name="name" class="fi" required data-i18n-ph="ph_name" placeholder="Your name"></div>
+              <div class="fg"><label class="fl" data-i18n="fl_email">Email *</label><input id="formEmail" name="email" class="fi" type="email" required data-i18n-ph="ph_email" placeholder="your@email.com"></div>
             </div>
             <div class="form-row2">
-              <div class="fg"><label class="fl" data-i18n="fl_phone">Phone / WhatsApp</label><input class="fi" data-i18n-ph="ph_phone" placeholder="+1 (555) 000-0000"></div>
+              <div class="fg"><label class="fl" data-i18n="fl_phone">Phone / WhatsApp</label><input id="formPhone" name="phone" class="fi" data-i18n-ph="ph_phone" placeholder="+1 (555) 000-0000"></div>
               <div class="fg"><label class="fl" data-i18n="fl_prop">Property *</label>
-                <select class="fs">
-                  <option>Casa Lucky (1 Bed — Available Now)</option>
-                  <option>Casa Rico (2 Bed — Waitlist 2027)</option>
-                  <option>Casa Rac&#233;l (2 Bed — Discount Code Request)</option>
+                <select id="formProp" name="property" class="fs">
+                  <option value="lucky">Casa Lucky (1 Bed — Available Now)</option>
+                  <option value="rico">Casa Rico (2 Bed — Waitlist 2027)</option>
+                  <option value="racel">Casa Rac&#233;l (2 Bed — Discount Code Request)</option>
                 </select>
               </div>
             </div>
             <div class="form-row2">
-              <div class="fg"><label class="fl" data-i18n="fl_in">Check-In *</label><input class="fi" type="date" required></div>
-              <div class="fg"><label class="fl" data-i18n="fl_out">Check-Out *</label><input class="fi" type="date" required></div>
+              <div class="fg"><label class="fl" data-i18n="fl_in">Check-In *</label><input id="formCheckIn" name="checkIn" class="fi" type="date" required></div>
+              <div class="fg"><label class="fl" data-i18n="fl_out">Check-Out *</label><input id="formCheckOut" name="checkOut" class="fi" type="date" required></div>
             </div>
             <div class="form-row2">
               <div class="fg"><label class="fl" data-i18n="fl_guests">Guests *</label>
-                <select class="fs"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+                <select id="formGuests" name="guests" class="fs"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
               </div>
             </div>
-            <div class="fg"><label class="fl" data-i18n="fl_msg">Message or Special Requests</label><textarea class="fta" data-i18n-ph="ph_msg" placeholder="Tell us about your trip..."></textarea></div>
+            <div class="fg"><label class="fl" data-i18n="fl_msg">Message or Special Requests</label><textarea id="formMsg" name="message" class="fta" data-i18n-ph="ph_msg" placeholder="Tell us about your trip..."></textarea></div>
             <button type="submit" class="f-submit" data-i18n="f_btn">Send Inquiry →</button>
           </form>
         </div>
@@ -1142,6 +1181,13 @@ en:{
   ph_msg:"Tell us about your trip, any questions, or special requests...",
   f_btn:"Send Inquiry →",
   suc_t:"You're One Step Closer!",suc_d:"Thank you for reaching out. We'll be in touch within 24 hours with availability and everything you need to plan your perfect Huatulco stay.",
+  quote_ey:"From your selection",
+  quote_h:"Your Quote",
+  quote_clear:"Clear ✕",
+  quote_note:"We'll honor this quote when we confirm your booking. Electricity beyond the included fair-use cap is settled at checkout based on actual use.",
+  quote_prop:"Property",quote_dates:"Dates",quote_subtotal:"Subtotal",
+  err_send:"We couldn't submit your inquiry online. Please email us directly at <a href=\"mailto:reservations@bravohuatulco.com\">reservations@bravohuatulco.com</a> or use WhatsApp.",
+  sending:"Sending…",
   foot_tag:"Nirú Las Casitas · Santa Cruz · Huatulco, Oaxaca, Mexico",
   foot_copy:"© 2026 Bravo Huatulco · BravoHuatulco.com · All rights reserved",
   cal_avail:"Available",cal_booked:"Booked",cal_sel:"Selected",
@@ -1294,6 +1340,13 @@ es:{
   ph_msg:"Cuéntenos sobre su viaje...",
   f_btn:"Enviar Consulta →",
   suc_t:"¡Está Un Paso Más Cerca!",suc_d:"Gracias por contactarnos. Le responderemos en 24 horas.",
+  quote_ey:"De su selección",
+  quote_h:"Su Cotización",
+  quote_clear:"Borrar ✕",
+  quote_note:"Honraremos esta cotización al confirmar su reservación. La electricidad que exceda el uso razonable incluido se liquida al final de la estancia según el consumo real.",
+  quote_prop:"Propiedad",quote_dates:"Fechas",quote_subtotal:"Subtotal",
+  err_send:"No pudimos enviar su consulta en línea. Escríbanos directamente a <a href=\"mailto:reservations@bravohuatulco.com\">reservations@bravohuatulco.com</a> o use WhatsApp.",
+  sending:"Enviando…",
   foot_tag:"Nirú Las Casitas · Santa Cruz · Huatulco, Oaxaca, México",
   foot_copy:"© 2026 Bravo Huatulco · BravoHuatulco.com · Todos los derechos reservados",
   cal_avail:"Disponible",cal_booked:"Reservado",cal_sel:"Seleccionado",
@@ -1354,6 +1407,7 @@ function setLang(l){
     el.innerHTML=l==='es'?el.getAttribute('data-i18n-es'):el.getAttribute('data-i18n-en');
   });
   if(document.getElementById('calOverlay').classList.contains('open')) renderCalendar();
+  if(currentQuote) renderQuotePanel();
   renderReviews();
 }
 
@@ -1498,7 +1552,232 @@ function showSummary(){
 window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
 window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCal();closeLB();}});
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.getElementById('mobileMenu').classList.remove('open');}
-function submitForm(e){e.preventDefault();document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
+
+// ═══════════════════════════════════════════════════════════════
+// BOOKING INQUIRY EMAIL DELIVERY — CONFIGURATION
+// ───────────────────────────────────────────────────────────────
+// To enable real email delivery to reservations@bravohuatulco.com:
+//   1. Sign up at https://formspree.io (free tier = 50 inquiries/month)
+//   2. In Formspree, set the delivery address to reservations@bravohuatulco.com
+//   3. Create a new form — Formspree gives you an endpoint like
+//      https://formspree.io/f/abcd1234. Copy just the ID part ("abcd1234").
+//   4. Paste it below, replacing 'YOUR_FORMSPREE_ID'.
+//
+// Until configured, "Send Inquiry" opens the guest's email client with a
+// pre-filled message (mailto:) — guaranteed delivery, just one extra click.
+// ═══════════════════════════════════════════════════════════════
+const BRAVO_FORMSPREE_ID = 'xykowagb';
+const BRAVO_INQUIRY_EMAIL = 'reservations@bravohuatulco.com';
+
+// ═══════════════════════════════════════════════════════════════
+// QUOTE CARRYOVER — calendar → contact form
+// ═══════════════════════════════════════════════════════════════
+let currentQuote = null;
+const PROP_NAMES = {lucky:'Casa Lucky', rico:'Casa Rico', racel:'Casa Rac\u00e9l'};
+
+function bookDirectFromCal(){
+  if(!calIn || !calOut){ closeCal(); goTo('contact'); return; }
+  const nights = Math.round((calOut - calIn) / 86400000);
+  let total = 0; const d = new Date(calIn);
+  while(d < calOut){ total += getRate(calProp, d); d.setDate(d.getDate()+1); }
+  const avg = Math.round(total / nights);
+  let discPct = 0;
+  if(nights >= 28) discPct = 20;
+  else if(nights >= 21) discPct = 15;
+  const discAmt = Math.round(total * discPct / 100);
+  const sub = total - discAmt;
+  const clean = calProp === 'lucky' ? 50 : 75;
+  const vat = Math.round(sub * 0.16);
+  const ish = Math.round(sub * 0.05);
+  const grand = sub + vat + ish + clean;
+  const pad = n => String(n).padStart(2,'0');
+  const ymd = dt => dt.getFullYear()+'-'+pad(dt.getMonth()+1)+'-'+pad(dt.getDate());
+
+  currentQuote = {
+    prop: calProp,
+    inISO: ymd(calIn),
+    outISO: ymd(calOut),
+    nights, avg, total, discPct, discAmt, sub, clean, vat, ish, grand
+  };
+
+  // Populate form fields
+  const propSelect = document.getElementById('formProp');
+  if(propSelect){
+    for(let i=0; i<propSelect.options.length; i++){
+      if(propSelect.options[i].value === calProp){ propSelect.selectedIndex = i; break; }
+    }
+  }
+  const ci = document.getElementById('formCheckIn');
+  const co = document.getElementById('formCheckOut');
+  if(ci) ci.value = currentQuote.inISO;
+  if(co) co.value = currentQuote.outISO;
+
+  renderQuotePanel();
+  closeCal();
+  setTimeout(()=>{ goTo('contact'); }, 80);
+}
+
+function renderQuotePanel(){
+  const panel = document.getElementById('quotePanel');
+  if(!panel) return;
+  if(!currentQuote){ panel.classList.remove('show'); return; }
+  const t = T[lang], q = currentQuote;
+  const opts = {month:'long', day:'numeric', year:'numeric'};
+  const loc = lang === 'es' ? 'es-MX' : 'en-US';
+  const inDate = new Date(q.inISO + 'T12:00:00');
+  const outDate = new Date(q.outISO + 'T12:00:00');
+
+  document.getElementById('quotePanelProp').textContent = PROP_NAMES[q.prop];
+  document.getElementById('quotePanelDates').textContent =
+    inDate.toLocaleDateString(loc, opts) + ' → ' + outDate.toLocaleDateString(loc, opts) +
+    ' · ' + q.nights + ' ' + t.cal_nights;
+
+  let rows = '<div class="quote-panel-row"><span>'+q.nights+' '+t.cal_nights+' \u00d7 $'+q.avg+' avg</span><span>$'+q.total+'</span></div>';
+  if(q.discPct > 0){
+    rows += '<div class="quote-panel-row discount"><span>'+q.discPct+'% '+(lang==='es'?'descuento':'discount')+'</span><span>-$'+q.discAmt+'</span></div>';
+  }
+  rows += '<div class="quote-panel-row tax"><span>'+t.cal_vat+'</span><span>$'+q.vat+'</span></div>';
+  rows += '<div class="quote-panel-row tax"><span>'+t.cal_ish+'</span><span>$'+q.ish+'</span></div>';
+  rows += '<div class="quote-panel-row"><span>'+t.cal_clean+'</span><span>$'+q.clean+'</span></div>';
+  rows += '<div class="quote-panel-row total"><span>'+t.cal_total+'</span><span>$'+q.grand+'</span></div>';
+  document.getElementById('quotePanelRows').innerHTML = rows;
+  panel.classList.add('show');
+}
+
+function clearQuote(){
+  currentQuote = null;
+  const panel = document.getElementById('quotePanel');
+  if(panel) panel.classList.remove('show');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// FORM SUBMISSION — Formspree primary, mailto fallback
+// ═══════════════════════════════════════════════════════════════
+function buildInquiryBody(d){
+  const L = (en, es) => lang === 'es' ? es : en;
+  let body = L('Hello Bravo Huatulco team,\n\nI would like to inquire about a stay.\n\n',
+               'Hola equipo de Bravo Huatulco,\n\nMe gustar\u00eda consultar sobre una estancia.\n\n');
+  body += L('Name','Nombre')+': '+d.name+'\n';
+  body += L('Email','Correo')+': '+d.email+'\n';
+  if(d.phone) body += L('Phone','Tel\u00e9fono')+': '+d.phone+'\n';
+  body += L('Property','Propiedad')+': '+(PROP_NAMES[d.property]||d.property)+'\n';
+  body += L('Check-In','Llegada')+': '+d.checkIn+'\n';
+  body += L('Check-Out','Salida')+': '+d.checkOut+'\n';
+  body += L('Guests','Hu\u00e9spedes')+': '+d.guests+'\n';
+  if(d.message) body += '\n'+L('Message','Mensaje')+':\n'+d.message+'\n';
+  if(d.quote){
+    body += '\n'+L('--- Quote shown on website ---','--- Cotizaci\u00f3n mostrada en el sitio ---')+'\n';
+    body += L('Property','Propiedad')+': '+PROP_NAMES[d.quote.prop]+'\n';
+    body += L('Dates','Fechas')+': '+d.quote.inISO+' \u2192 '+d.quote.outISO+' ('+d.quote.nights+' '+L('nights','noches')+')\n';
+    body += L('Average nightly rate','Tarifa promedio')+': $'+d.quote.avg+'\n';
+    body += L('Subtotal','Subtotal')+': $'+d.quote.total+'\n';
+    if(d.quote.discPct > 0){
+      body += L('Length-of-stay discount','Descuento por estancia larga')+': '+d.quote.discPct+'% (-$'+d.quote.discAmt+')\n';
+    }
+    body += L('Federal VAT (16%)','IVA Federal (16%)')+': $'+d.quote.vat+'\n';
+    body += L('Lodging Tax / ISH (5%)','Impuesto de Hospedaje / ISH (5%)')+': $'+d.quote.ish+'\n';
+    body += L('Cleaning fee','Limpieza')+': $'+d.quote.clean+'\n';
+    body += L('Estimated total','Total estimado')+': $'+d.quote.grand+'\n';
+  }
+  body += '\n'+L('Thank you!','\u00a1Gracias!');
+  return body;
+}
+
+async function submitForm(e){
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('.f-submit');
+  const errBox = document.getElementById('formError');
+  const originalBtnText = submitBtn.textContent;
+  errBox.classList.remove('show');
+  submitBtn.disabled = true;
+  submitBtn.textContent = T[lang].sending || 'Sending…';
+
+  const data = {
+    name: document.getElementById('formName').value.trim(),
+    email: document.getElementById('formEmail').value.trim(),
+    phone: document.getElementById('formPhone').value.trim(),
+    property: document.getElementById('formProp').value,
+    checkIn: document.getElementById('formCheckIn').value,
+    checkOut: document.getElementById('formCheckOut').value,
+    guests: document.getElementById('formGuests').value,
+    message: document.getElementById('formMsg').value.trim(),
+    language: lang,
+    submittedAt: new Date().toISOString(),
+    quote: currentQuote
+  };
+
+  // Build a structured payload that flattens nicely in Formspree's email view
+  const payload = {
+    Name: data.name,
+    Email: data.email,
+    Phone: data.phone || '(not provided)',
+    Property: PROP_NAMES[data.property] || data.property,
+    'Check-In': data.checkIn,
+    'Check-Out': data.checkOut,
+    Guests: data.guests,
+    Message: data.message || '(none)',
+    Language: data.language === 'es' ? 'Spanish' : 'English',
+    _replyto: data.email
+  };
+  if(currentQuote){
+    payload['— Quote Shown —'] = '———————————————';
+    payload['Quoted Property'] = PROP_NAMES[currentQuote.prop];
+    payload['Quoted Dates'] = currentQuote.inISO + ' → ' + currentQuote.outISO;
+    payload['Quoted Nights'] = currentQuote.nights;
+    payload['Quoted Avg Rate'] = '$' + currentQuote.avg;
+    payload['Quoted Subtotal'] = '$' + currentQuote.total;
+    if(currentQuote.discPct > 0){
+      payload['Quoted Discount'] = currentQuote.discPct + '% (-$' + currentQuote.discAmt + ')';
+    }
+    payload['Quoted VAT (16%)'] = '$' + currentQuote.vat;
+    payload['Quoted ISH (5%)'] = '$' + currentQuote.ish;
+    payload['Quoted Cleaning'] = '$' + currentQuote.clean;
+    payload['Quoted TOTAL'] = '$' + currentQuote.grand;
+    payload._subject = 'Booking Inquiry — ' + PROP_NAMES[currentQuote.prop] +
+                       ' · ' + currentQuote.inISO + ' → ' + currentQuote.outISO +
+                       ' · $' + currentQuote.grand;
+  } else {
+    payload._subject = 'Booking Inquiry — ' + (PROP_NAMES[data.property] || 'Bravo Huatulco');
+  }
+
+  const formspreeConfigured = BRAVO_FORMSPREE_ID && BRAVO_FORMSPREE_ID !== 'YOUR_FORMSPREE_ID';
+
+  if(formspreeConfigured){
+    try{
+      const res = await fetch('https://formspree.io/f/' + BRAVO_FORMSPREE_ID, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      if(res.ok){
+        document.getElementById('formWrap').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+        return;
+      }
+      throw new Error('Formspree ' + res.status);
+    } catch(err){
+      console.warn('Formspree failed, falling back to mailto:', err);
+      // fall through to mailto
+    }
+  }
+
+  // Mailto fallback (also used until Formspree is configured)
+  const subject = payload._subject;
+  const body = buildInquiryBody(data);
+  const mailto = 'mailto:' + BRAVO_INQUIRY_EMAIL +
+                 '?subject=' + encodeURIComponent(subject) +
+                 '&body=' + encodeURIComponent(body);
+  window.location.href = mailto;
+
+  // Show success after a short delay (we can't confirm the user actually sent)
+  setTimeout(()=>{
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }, 600);
+}
 
 
 // ═══════════════════════════════════════════════════════
