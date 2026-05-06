@@ -543,13 +543,13 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
           <div class="price-seasons">
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
-              <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 30</div>
+              <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 14</div>
               <div class="ps-price">$110 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $1,930 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-high">
               <div class="ps-season" data-i18n="p_high">High Season</div>
-              <div class="ps-dates" data-i18n="p_high_d">Dec 1–16 · Jan 8–Apr 30</div>
+              <div class="ps-dates" data-i18n="p_high_d">Nov 15 – Dec 16 · Jan 8 – Apr 30</div>
               <div class="ps-price">$175 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,060 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
@@ -587,13 +587,13 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
           <div class="price-seasons">
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
-              <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 30</div>
+              <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 14</div>
               <div class="ps-price">$135 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,360 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-high">
               <div class="ps-season" data-i18n="p_high">High Season</div>
-              <div class="ps-dates" data-i18n="p_high_d">Dec 1–16 · Jan 8–Apr 30</div>
+              <div class="ps-dates" data-i18n="p_high_d">Nov 15 – Dec 16 · Jan 8 – Apr 30</div>
               <div class="ps-price">$185 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,240 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
@@ -636,13 +636,13 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
           <div class="price-seasons">
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
-              <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 30</div>
+              <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 14</div>
               <div class="ps-price">$135 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,360 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-high">
               <div class="ps-season" data-i18n="p_high">High Season</div>
-              <div class="ps-dates" data-i18n="p_high_d">Dec 1–16 · Jan 8–Apr 30</div>
+              <div class="ps-dates" data-i18n="p_high_d">Nov 15 – Dec 16 · Jan 8 – Apr 30</div>
               <div class="ps-price">$195 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,410 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
@@ -1471,7 +1471,7 @@ en:{
   lucky_about_btn:"About This Space",
   lucky_gallery_btn:"Browse Photos",
   p_low:"Low Season",p_high:"High Season",p_peak:"Holiday / Peak",
-  p_low_d:"May 1 – Nov 30",p_high_d:"Dec 1–16 · Jan 8–Apr 30",p_peak_d:"Dec 17 – Jan 7",
+  p_low_d:"May 1 – Nov 14",p_high_d:"Nov 15 – Dec 16 · Jan 8 – Apr 30",p_peak_d:"Dec 17 – Jan 7",
   per_n:"/ night",usd_note:"Rates in USD and MXN · Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking, as required by Mexican law.",
   lucky_btn:"Check Availability & Book",
   rico_unit:"2 Bed · 2 Bath · 2nd Floor · Nirú Las Casitas",
@@ -1633,7 +1633,7 @@ es:{
   lucky_about_btn:"Acerca de Este Espacio",
   lucky_gallery_btn:"Ver Fotos",
   p_low:"Temporada Baja",p_high:"Temporada Alta",p_peak:"Temporada Navideña",
-  p_low_d:"1 May – 30 Nov",p_high_d:"1–16 Dic · 8 Ene–30 Abr",p_peak_d:"17 Dic – 7 Ene",
+  p_low_d:"1 May – 14 Nov",p_high_d:"15 Nov – 16 Dic · 8 Ene – 30 Abr",p_peak_d:"17 Dic – 7 Ene",
   per_n:"/ noche",usd_note:"Tarifas en USD y MXN · Los impuestos (16% IVA + 5% ISH) y el cargo de limpieza se agregan al reservar, conforme a la ley mexicana.",
   lucky_btn:"Ver Disponibilidad y Reservar",
   rico_unit:"2 Recámaras · 2 Baños · 2do Piso · Nirú Las Casitas",
@@ -1849,7 +1849,7 @@ function closeLB(){document.getElementById('lbOverlay').classList.remove('open')
 const RATES={lucky:{low:110,high:175,peak:245},rico:{low:135,high:185,peak:255},racel:{low:135,high:195,peak:270}};
 const FX_MXN=17.5;
 const fxMXN=(usd)=>Math.round(usd*FX_MXN/10)*10;
-function getSeason(d){const m=d.getMonth()+1,day=d.getDate();if((m===12&&day>=17)||(m===1&&day<=7))return'peak';if(m>=5&&m<=10)return'low';return'high';}
+function getSeason(d){const m=d.getMonth()+1,day=d.getDate();if((m===12&&day>=17)||(m===1&&day<=7))return'peak';if(m>=5&&m<=10)return'low';if(m===11&&day<=14)return'low';return'high';}
 function getRate(prop,d){return RATES[prop][getSeason(d)];}
 function isPeak(d){return getSeason(d)==='peak';}
 function getMinNights(checkIn){
