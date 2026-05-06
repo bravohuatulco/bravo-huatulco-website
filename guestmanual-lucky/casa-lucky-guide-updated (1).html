@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Lucky — Bravo Huatulco Guest Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:      #0C1F3F;
+    --ocean:     #1A5276;
+    --sky:       #2E86C1;
+    --teal:      #48C9B0;
+    --gold:      #C9A84C;
+    --cream:     #FAF8F3;
+    --cream-dark:#EDE8DC;
+    --rust:      #8B4513;
+    --white:     #FFFFFF;
+    --text:      #0C1F3F;
+    --muted:     #6B8CAE;
+    --border:    rgba(12,31,63,0.12);
+    /* aliases for template compatibility */
+    --teal-dark: #0C1F3F;
+    --teal-light:#2E86C1;
+    --sand:      #FAF8F3;
+    --sand-dark: #EDE8DC;
+    --coral:     #8B4513;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav ul {
+    display: inline-flex;
+    list-style: none;
+    padding: 0 1rem;
+  }
+  nav ul li a {
+    display: block;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.80);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul li a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--ocean) 55%, var(--sky) 100%);
+    color: white;
+    padding: 3.5rem 1.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+  }
+  .hero-tagline {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+    font-weight: 300;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    text-align: left;
+  }
+  .hero-meta-item .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .hero-meta-item .value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.22em;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.75rem, 5vw, 2.4rem);
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+  }
+
+  /* ── WELCOME NOTE ── */
+  .welcome-note {
+    background: var(--cream-dark);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .welcome-note p {
+    color: var(--navy);
+    opacity: 0.82;
+    font-size: 0.95rem;
+    line-height: 1.88;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+  .welcome-note p:last-child { margin-bottom: 0; }
+  .welcome-sig {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-top: 1rem;
+  }
+
+  /* ── WIFI CARD ── */
+  .wifi-card {
+    background: var(--ocean);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .wifi-icon { font-size: 2rem; flex-shrink: 0; }
+  .wifi-info .wifi-network {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  .wifi-info .wifi-name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--gold);
+  }
+  .wifi-info .wifi-pass-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.5rem;
+  }
+  .wifi-info .wifi-pass {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* ── INFO GRID ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+    margin-top: 1.25rem;
+  }
+  .info-card {
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 1.1rem;
+  }
+  .info-card .ic-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .info-card .ic-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .info-card .ic-value {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-top: 0.2rem;
+  }
+  .info-card .ic-note {
+    font-size: 0.82rem;
+    color: var(--navy);
+    opacity: 0.7;
+    margin-top: 0.25rem;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .info-card.full { grid-column: 1 / -1; }
+
+  /* ── PROPERTY GUIDE ── */
+  .guide-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .guide-item:last-child { border-bottom: none; }
+  .guide-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--cream-dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .guide-content h4 {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+  }
+  .guide-content p {
+    font-size: 0.92rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.82;
+    font-weight: 300;
+  }
+  .guide-content p strong { color: var(--navy); opacity: 1; font-weight: 600; }
+
+  /* ── RULES ── */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    background: var(--cream-dark);
+    border-radius: 10px;
+    padding: 0.9rem;
+  }
+  .rule-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1; margin-top: 1px; }
+  .rule-text h5 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .rule-text p {
+    font-size: 0.8rem;
+    color: var(--navy);
+    opacity: 0.72;
+    line-height: 1.6;
+    margin-top: 0.2rem;
+    font-weight: 300;
+  }
+
+  /* ── TIPS & TRICKS ── */
+  .tip-item {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .tip-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--gold);
+    border-radius: 4px 0 0 4px;
+  }
+  .tip-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .tip-emoji { font-size: 1.2rem; }
+  .tip-title {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .tip-body {
+    font-size: 0.92rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.82;
+    font-weight: 300;
+  }
+  .tip-body strong { color: var(--navy); opacity: 1; font-weight: 600; }
+  .spanish-phrase {
+    display: inline-block;
+    background: var(--cream-dark);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-style: italic;
+    color: var(--navy);
+    font-weight: 600;
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+  }
+
+  /* ── ACTIVITIES ── */
+  .activity-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 0.875rem;
+  }
+  .activity-header {
+    background: var(--ocean);
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .activity-emoji { font-size: 1.6rem; }
+  .activity-title-wrap {}
+  .activity-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+  .activity-subtitle {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.15rem;
+  }
+  .activity-body {
+    padding: 1rem 1.25rem;
+  }
+  .activity-desc {
+    font-size: 0.92rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.82;
+    margin-bottom: 0.75rem;
+    font-weight: 300;
+  }
+  .activity-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+  .activity-meta-item {
+    font-size: 0.78rem;
+    color: var(--text);
+  }
+  .activity-meta-item span {
+    color: var(--muted);
+    display: block;
+    font-size: 0.67rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .activity-includes {
+    font-size: 0.8rem;
+    color: var(--navy);
+    opacity: 0.65;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+  .activity-pack {
+    font-size: 0.78rem;
+    color: var(--navy);
+    opacity: 0.6;
+    margin-top: 0.25rem;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  /* ── RESTAURANTS ── */
+  .restaurant-card {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .restaurant-card:last-child { border-bottom: none; }
+  .rest-emoji {
+    width: 42px;
+    height: 42px;
+    background: var(--cream-dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .rest-content {}
+  .rest-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--navy);
+  }
+  .rest-vibe {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    margin: 0.2rem 0;
+  }
+  .rest-desc {
+    font-size: 0.88rem;
+    color: var(--navy);
+    opacity: 0.75;
+    line-height: 1.78;
+    font-weight: 300;
+  }
+  .rest-phone {
+    font-size: 0.78rem;
+    color: var(--navy);
+    opacity: 0.55;
+    font-weight: 300;
+    margin-top: 0.35rem;
+    font-style: italic;
+  }
+
+  /* ── THINGS TO DO ── */
+  .things-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .thing-item {
+    background: var(--cream-dark);
+    border-radius: 4px;
+    padding: 0.9rem 1rem;
+  }
+  .thing-emoji { display: none; }
+  .thing-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.2rem;
+  }
+  .thing-desc {
+    font-size: 0.82rem;
+    color: var(--navy);
+    opacity: 0.72;
+    line-height: 1.65;
+    margin-top: 0.3rem;
+    font-weight: 300;
+  }
+
+  /* ── GETTING AROUND ── */
+  .transport-item {
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 0.85rem 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+  .transport-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .transport-icon { font-size: 1.3rem; }
+  .transport-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+  }
+  .transport-body {
+    font-size: 0.92rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.82;
+    font-weight: 300;
+  }
+  .transport-body strong { color: var(--navy); opacity: 1; font-weight: 600; }
+  .driver-list {
+    margin-top: 0.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+  .driver-item {
+    background: white;
+    border-radius: 8px;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.78rem;
+  }
+  .driver-item .driver-name { font-weight: 700; color: var(--navy); }
+  .driver-item .driver-phone { color: var(--muted); }
+
+  /* ── CHECKOUT ── */
+  .checkout-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .checkout-item:last-child { border-bottom: none; }
+  .checkout-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--ocean);
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .checkout-text h5 {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .checkout-text p {
+    font-size: 0.88rem;
+    color: var(--navy);
+    opacity: 0.75;
+    line-height: 1.75;
+    margin-top: 0.2rem;
+    font-weight: 300;
+  }
+
+  /* ── EMERGENCY ── */
+  .emergency-card {
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .emergency-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--ocean);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .emergency-content h4 {
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+  .emergency-content p {
+    font-size: 0.88rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.78;
+    font-weight: 300;
+  }
+  .emergency-content a {
+    color: var(--sky);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .emergency-highlight {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .emergency-highlight .emergency-icon { background: rgba(255,255,255,0.15); }
+  .emergency-highlight h4 { color: var(--gold); }
+  .emergency-highlight p { color: rgba(255,255,255,0.75); }
+  .emergency-highlight a { color: var(--gold); }
+
+  /* ── BEACH ROUTE ── */
+  .beach-route {
+    background: linear-gradient(135deg, var(--navy), var(--ocean));
+    border-radius: 14px;
+    padding: 1.5rem;
+    color: white;
+    margin-top: 1rem;
+  }
+  .beach-route h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .route-step {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    align-items: flex-start;
+  }
+  .route-step:last-child { margin-bottom: 0; }
+  .step-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+  .route-step p {
+    font-size: 0.92rem;
+    line-height: 1.78;
+    color: rgba(255,255,255,0.82);
+    font-weight: 300;
+  }
+
+  /* ── NIGHTLIFE ── */
+  .nightlife-card {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nightlife-card:last-child { border-bottom: none; }
+  .nl-icon {
+    width: 40px;
+    height: 40px;
+    display: none;
+  }
+  .nl-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.2rem; }
+  .nl-desc { font-size: 0.88rem; color: var(--navy); opacity: 0.75; line-height: 1.78; margin-top: 0.2rem; font-weight: 300; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  footer .footer-tagline {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+  }
+  footer p { font-size: 0.82rem; line-height: 1.6; }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── SECTION ACCENTS ── */
+  .sand-section { background: var(--cream-dark); }
+  .teal-section { background: var(--navy); color: white; }
+  .teal-section .section-label { color: var(--gold); opacity: 0.7; }
+  .teal-section .section-title { color: var(--gold); }
+
+  /* ── CATEGORY BADGES ── */
+  .badge {
+    display: inline-block;
+    display: inline-block;
+    background: none;
+    color: var(--navy);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+  }
+  .badge.teal { background: var(--ocean); color: white; }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    width: 44px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 0;
+    margin: 1rem 0 1.75rem;
+  }
+
+
+  /* ═══════════════════════════════════════════════════
+     TOP-HALF REFINEMENT — match bottom-half aesthetic
+  ═══════════════════════════════════════════════════ */
+
+  /* 1 · Hide all emoji containers in the top half */
+  .guide-icon,
+  .rule-icon,
+  .tip-emoji,
+  .wifi-icon,
+  .info-card .ic-icon,
+  .transport-icon { display: none; }
+
+  /* 2 · Guide items — editorial serif titles */
+  .guide-item { gap: 0; }
+  .guide-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    line-height: 1.2;
+  }
+
+  /* 3 · Rules — serif titles, no icon gap */
+  .rule-item { gap: 0; flex-direction: column; padding: 1rem; }
+  .rule-text h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: none;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.25rem;
+  }
+
+  /* 4 · Tips — serif titles, tighter header */
+  .tip-header { gap: 0; margin-bottom: 0.5rem; }
+  .tip-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+
+  /* 5 · Transport — serif titles */
+  .transport-header { gap: 0; margin-bottom: 0.5rem; }
+  .transport-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+
+  /* 6 · WiFi card — keep dark panel, remove icon gap */
+  .wifi-card { gap: 0; padding: 1.5rem 1.75rem; }
+  .wifi-network { margin-bottom: 0.15rem; }
+  .wifi-info .wifi-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .wifi-info .wifi-pass {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* 7 · Info cards — rely on label + value, no icon */
+  .info-card { padding: 1.1rem; }
+  .info-card .ic-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-top: 0.15rem;
+  }
+
+  /* 8 · Beach route header — serif */
+  .beach-route h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  /* 9 · Welcome signature — slightly larger */
+  .welcome-sig {
+    font-size: 1.25rem;
+    letter-spacing: 0.01em;
+  }
+
+  /* 10 · Hero unit label — tighten */
+  .hero-meta-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="#welcome">Welcome</a></li>
+    <li><a href="#home">Your Home</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#tips">Tips</a></li>
+    <li><a href="#beach">Beach</a></li>
+    <li><a href="#around">Getting Around</a></li>
+    <li><a href="#activities">Experiences</a></li>
+    <li><a href="#eat">Eat</a></li>
+    <li><a href="#todo">Do</a></li>
+    <li><a href="#nightlife">Nightlife</a></li>
+    <li><a href="#emergency">Emergency</a></li>
+    <li><a href="#checkout">Checkout</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Bravo Huatulco · Nirú Las Casitas</div>
+  <h1>Welcome to<br><em>Casa Lucky</em></h1>
+  <div class="hero-tagline">Where the Sierra Madre Meets the Sea</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="label">Check-in</div>
+      <div class="value">4:00 PM</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Check-out</div>
+      <div class="value">11:00 AM</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Unit</div>
+      <div class="value">E001 · Ground Floor</div>
+    </div>
+  </div>
+</div>
+
+<!-- WELCOME -->
+<section id="welcome">
+  <div class="section-label">A Note from Your Hosts</div>
+  <div class="section-title">¡Bienvenidos!</div>
+  <div class="welcome-note">
+    <p>We are so glad you're here. Casa Lucky is our little piece of paradise on the Oaxacan Pacific coast — a ground-floor retreat tucked into the beautiful Nirú complex on the Santa Cruz coastline, where the mountains meet the sea in a way that still takes our breath away every time.</p>
+    <p>We put this guide together because we want your time here to feel effortless. Whether it's finding the foot wash at the beach gate, knowing which taxi fare is fair, or discovering a hidden waterfall in the Sierra Madre — consider this your insider companion.</p>
+    <p>If anything is ever less than wonderful, please reach out to our local team — Javier or Osmar — right away. They take great care of our guests on the ground. For anything else, we're always reachable too.</p>
+    <p>Life is beautiful, no matter what. Now go enjoy Huatulco.</p>
+    <div class="welcome-sig">— Mateo & Francisco</div>
+  </div>
+  <div class="wifi-card">
+    <div class="wifi-icon">📶</div>
+    <div class="wifi-info">
+      <div class="wifi-network">Wi-Fi Network</div>
+      <div class="wifi-name">NiruE001</div>
+      <div class="wifi-pass-label">Password</div>
+      <div class="wifi-pass">NiruE001:-)</div>
+    </div>
+  </div>
+  <div class="info-grid" style="margin-top:1rem;">
+    <div class="info-card">
+      <div class="ic-icon">🔑</div>
+      <div class="ic-label">Property Support</div>
+      <div class="ic-value">Javier &amp; Osmar</div>
+      <div class="ic-note">Javier: +52 958 128 3047<br>Osmar: +52 971 132 3057</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">📬</div>
+      <div class="ic-label">Booking Questions</div>
+      <div class="ic-value">Bravo Huatulco</div>
+      <div class="ic-note">reservations@<br>bravohuatulco.com</div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUR HOME -->
+<section id="home" class="sand-section">
+  <div class="section-label">Getting Comfortable</div>
+  <div class="section-title">Your Home at Casa Lucky</div>
+  <div class="section-divider"></div>
+
+  <div class="guide-item">
+    <div class="guide-icon">🚪</div>
+    <div class="guide-content">
+      <h4>Entry Door</h4>
+      <p>You enter Casa Lucky through the <strong>private patio</strong>. The metal patio door is secured with an <strong>electronic lock</strong> — your access code will be provided before arrival. The door <strong>locks automatically</strong> whenever it closes, so you're always secured.</p>
+      <p>Once inside, you'll find an <strong>additional manual lock</strong> on the back of the door — similar to a traditional deadbolt. Use it whenever you want extra privacy inside the condo.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">🪟</div>
+    <div class="guide-content">
+      <h4>Interior Sliding Patio Doors</h4>
+      <p>Casa Lucky has two interior sliding glass doors — one in the <strong>living room</strong> and one in the <strong>bedroom</strong> — that open onto the patio. Both can be <strong>locked from the inside</strong> for added privacy. They are not lockable from the exterior, which is perfectly fine — the secure outer entry door protects the entire patio.</p>
+      <p><strong>Important:</strong> Please keep the sliding doors <strong>fully closed</strong> whenever you leave the condo or whenever the <strong>air conditioning is running</strong>. Open doors let the cool air escape quickly and put extra strain on the AC unit.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">❄️</div>
+    <div class="guide-content">
+      <h4>Air Conditioning</h4>
+      <p>Set the AC to <strong>Cooling Mode</strong> (snowflake icon on the remote) and keep it above <strong>20°C</strong> to prevent the unit from overworking. Please turn the AC off whenever you leave the condo — this helps us keep electricity use sustainable for everyone.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">💧</div>
+    <div class="guide-content">
+      <h4>Drinking Water</h4>
+      <p>Casa Lucky has a <strong>3-stage UV water filtration system</strong> installed under the kitchen sink. The filtered outlet is right next to the regular faucet. This water is safe and clean to drink. <strong>Tip:</strong> Fill the provided jug and refrigerate it — cold filtered water is always ready. Fill the ice cube trays in the freezer too! Note: the first second or two from the filtered tap may be warm due to the UV light heating up — just let it run briefly.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">📺</div>
+    <div class="guide-content">
+      <h4>TV & Streaming</h4>
+      <p>Smart TVs are available in both the <strong>living room</strong> and <strong>bedroom</strong>. Log in with your own streaming accounts — and please remember to <strong>log out before you check out</strong>.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">🔌</div>
+    <div class="guide-content">
+      <h4>Floating Shelf Electronics</h4>
+      <p>The floating shelf in the living room has several electronics that <strong>must remain plugged in at all times</strong> — please do not unplug them. They power the <strong>electronic door lock</strong>, the <strong>Wi-Fi equipment</strong>, and the <strong>automatic outdoor watering system</strong>. The lights on these devices are normal and expected.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">🔒</div>
+    <div class="guide-content">
+      <h4>Safe Box</h4>
+      <p>The safe is located in the <strong>bedroom closet</strong>. To set your own code: find the small plastic button <strong>behind the battery cover, towards the bottom of the door</strong> — press it and you'll hear a beep. Enter your chosen code (<strong>at least 4 digits</strong>) and press <strong>E</strong> to enter. No second confirmation needed — the safe is now set to your code.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">🌐</div>
+    <div class="guide-content">
+      <h4>Internet Reboot</h4>
+      <p>If the Wi-Fi drops, unplug the router, wait 10 seconds, then plug back in. Wait for all lights to stabilize. If it still doesn't work, contact Javier or Osmar.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">👕</div>
+    <div class="guide-content">
+      <h4>Laundry</h4>
+      <p>Washer and dryer are available for your use. The laundry area has <strong>three sliding doors</strong> — keep the door <strong>nearest the air discharge filter fully open</strong> when running the dryer. The <strong>air discharge filter</strong> is mounted on the wall nearby and has a <strong>tray at the bottom</strong> — fill this tray with water before using the dryer for the first time. <strong>Clean the dryer lint screen after every load</strong> — a clogged screen will stop the machine. Keep both the <strong>washer and dryer doors open</strong> when not in use to prevent moisture buildup.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">🚿</div>
+    <div class="guide-content">
+      <h4>Hot Water & Pressure</h4>
+      <p>Water in Huatulco is stored in rooftop tanks, so what feels like "cold" water may be lukewarm — totally normal! During busy high season, hot water pressure can occasionally dip. Running one shower at a time helps.</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">♻️</div>
+    <div class="guide-content">
+      <h4>Trash</h4>
+      <p>The outdoor trash receptacles in the complex are labeled <strong>Organic</strong>, <strong>Inorganic</strong>, and <strong>Recyclable</strong>. There is no expectation that you sort trash in the indoor bins — just gather everything and bring it to the appropriate outdoor receptacle at checkout (or whenever the indoor bins are full).</p>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-icon">🌿</div>
+    <div class="guide-content">
+      <h4>Plants</h4>
+      <p>Casa Lucky has a few plants that would love a drink once a week while you're here. Much appreciated!</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOUSE RULES -->
+<section id="rules">
+  <div class="section-label">A Friendly Reminder</div>
+  <div class="section-title">Property Rules</div>
+  <div class="section-divider"></div>
+  <div class="rules-grid">
+    <div class="rule-item">
+      <div class="rule-icon">🚭</div>
+      <div class="rule-text">
+        <h5>No Smoking</h5>
+        <p>No smoking inside the condo, on the <strong>patio or terrace</strong>, or in any common area including the pool.</p>
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">🎉</div>
+      <div class="rule-text">
+        <h5>No Parties</h5>
+        <p>Respect our neighbors — keep noise down after 9 PM.</p>
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">🐾</div>
+      <div class="rule-text">
+        <h5>No Pets</h5>
+        <p>We love animals, but pets are not permitted at the property.</p>
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">👗</div>
+      <div class="rule-text">
+        <h5>No Hanging</h5>
+        <p>Do not hang towels, clothing, or linens on exterior walls. An <strong>outdoor drying rack</strong> is provided — please use it.</p>
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">🏊</div>
+      <div class="rule-text">
+        <h5>Pool Use</h5>
+        <p>No glass near the pool. Rinse off before entering — an <strong>outdoor shower is available near the community pool</strong>.</p>
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">🏖️</div>
+      <div class="rule-text">
+        <h5>No Sand Inside</h5>
+        <p>Rinse off before entering the condo. Wash stations are located at the <strong>Nirú Beach Club gate</strong> and at the <strong>community pool entrance</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS & TRICKS -->
+<section id="tips" class="sand-section">
+  <div class="section-label">Insider Knowledge</div>
+  <div class="section-title">Tips & Tricks</div>
+  <div class="section-divider"></div>
+
+  <div class="tip-item">
+    <div class="tip-header">
+      <span class="tip-emoji">🦶</span>
+      <span class="tip-title">Foot Wash at the Nirú Gate</span>
+    </div>
+    <p class="tip-body">Just inside the open double gate to the Nirú Beach Club — on the <strong>left side as you're facing the gate</strong> — there's a small outdoor foot wash station (available when the gate is open). There's also a wash station at the <strong>community pool entrance</strong>. Use either on your way back from the beach to rinse sand off your feet before heading up to the condo. Your floors will thank you.</p>
+  </div>
+
+  <div class="tip-item">
+    <div class="tip-header">
+      <span class="tip-emoji">🛍️</span>
+      <span class="tip-title">Shopping at Chedraui</span>
+    </div>
+    <p class="tip-body">Mexico charges for plastic bags, so bring a reusable bag when heading to Chedraui. There are a couple in the kitchen drawers at Casa Lucky — feel free to use them and leave them behind for the next guest. If you forget, reusable bags at the store cost just a couple of pesos.<br><br>
+    <strong>Grocery bagger tip:</strong> At checkout, a local bagger will offer to pack your groceries. This is a meaningful community service — they work for tips only. <strong>5–10 pesos</strong> is great for a regular shop; <strong>10–20 pesos</strong> is appreciated for a full cart. If you prefer to pack yourself, you can politely say:<br>
+    <span class="spanish-phrase">«No gracias, yo puedo solo/sola.»</span><br>
+    (No thank you, I can do it myself.)</p>
+  </div>
+
+  <div class="tip-item">
+    <div class="tip-header">
+      <span class="tip-emoji">🚕</span>
+      <span class="tip-title">Taxi Tips</span>
+    </div>
+    <p class="tip-body">Taxis are the easiest way to get around. A ride to <strong>La Crucecita</strong> or <strong>Chedraui</strong> typically runs about <strong>50 pesos</strong>. No need to tip taxi drivers.<br><br>
+    <strong>Always ask the fare before getting in:</strong><br>
+    <span class="spanish-phrase">«¿Cuánto cuesta al [destino]?»</span><br>
+    (How much to [destination]?)<br><br>
+    <strong>Taxi colors matter:</strong> Taxis in the area are color-coded by the zone they serve. Make a note of the color of the taxi you take — if you leave something behind, it'll help you track down the right driver.<br><br>
+    For guaranteed English-speaking drivers, see the contacts in the Getting Around section below.</p>
+  </div>
+
+  <div class="tip-item">
+    <div class="tip-header">
+      <span class="tip-emoji">🧊</span>
+      <span class="tip-title">Where to Get Ice</span>
+    </div>
+    <p class="tip-body">There are several small tienditas near the beach that sell ice, cold beer, alcohol, and snacks. Far easier to grab a bag of ice there than trying to get it back from Chedraui in the heat. Stock up on your way back from the beach!</p>
+  </div>
+
+  <div class="tip-item">
+    <div class="tip-header">
+      <span class="tip-emoji">💳</span>
+      <span class="tip-title">Adding a Tip at Restaurants</span>
+    </div>
+    <p class="tip-body">Tipping is similar to back home — 10–15% is standard and appreciated. Some restaurants have card machines with a built-in tip button, but many don't, and your server won't always ask. If you want to add a tip to your card payment, simply say:<br>
+    <span class="spanish-phrase">«Quisiera agregar propina a la cuenta, por favor.»</span><br>
+    (I'd like to add a tip to the bill, please.)<br><br>
+    It's also nice to carry smaller peso bills for tips at casual spots, beach vendors, and tour guides.</p>
+  </div>
+
+  <div class="tip-item">
+    <div class="tip-header">
+      <span class="tip-emoji">💰</span>
+      <span class="tip-title">Pesos at the Beach</span>
+    </div>
+    <p class="tip-body">Cash is king at the beach. The vendors at Huatulco's bays — fresh coconuts, ceviche, fresh juice, handmade crafts — are all cash-only. But beyond convenience, bringing a little extra to spend with local vendors is one of the most meaningful ways to support the community here. A few pesos goes a long way.</p>
+  </div>
+
+
+</section>
+
+<!-- BEACH ACCESS -->
+<section id="beach">
+  <div class="section-label">A Nirú Exclusive</div>
+  <div class="section-title">Getting to the Beach</div>
+  <div class="section-divider"></div>
+  <p style="font-size:0.9rem; color:var(--muted); line-height:1.65; margin-bottom:1rem;">As a Nirú Las Casitas guest, you enjoy a <strong style="color:var(--teal-dark);">private walkway</strong> that takes you directly toward the beach — a route most visitors never see. Here's how to navigate it:</p>
+
+  <div class="beach-route">
+    <h4>🗺️ Your Private Beach Route</h4>
+    <div class="route-step">
+      <div class="step-dot">1</div>
+      <p>Walking from the Nirú Las Casitas parking lot toward the condo, you'll pass the pickleball courts and gym. At that point you'll notice the <strong>private walkway veering off to the left</strong> — that's your beach route. (When returning to the condo from the parking lot, continue to the <strong>right</strong> to head up to the unit.) The walkway runs past the Nirú Beach Club.</p>
+    </div>
+    <div class="route-step">
+      <div class="step-dot">2</div>
+      <p>The walkway exits at the <strong>Nirú Beach Club entrance gate</strong>. The key left in the condo opens this locked door.</p>
+    </div>
+    <div class="route-step">
+      <div class="step-dot">3</div>
+      <p>After exiting, <strong>close and lock the door behind you</strong>.</p>
+    </div>
+    <div class="route-step">
+      <div class="step-dot">4</div>
+      <p>Turn <strong>right</strong>, walk under the tree leaning over the sidewalk, and follow the <strong>"Playa" letters</strong> painted on the building that houses the Doña Celia restaurant.</p>
+    </div>
+    <div class="route-step">
+      <div class="step-dot">5</div>
+      <p>On your way back, use the <strong>foot wash station on the left</strong> just inside the gate to rinse the sand off before heading up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GETTING AROUND -->
+<section id="around" class="sand-section">
+  <div class="section-label">Huatulco</div>
+  <div class="section-title">Getting Around</div>
+  <div class="section-divider"></div>
+
+  <div class="transport-item">
+    <div class="transport-header">
+      <span class="transport-icon">🚶</span>
+      <span class="transport-title">Walking</span>
+    </div>
+    <p class="transport-body">Huatulco is a walkable town. Santa Cruz's waterfront, restaurants, and market are all reachable on foot from the complex.</p>
+  </div>
+
+  <div class="transport-item">
+    <div class="transport-header">
+      <span class="transport-icon">🚕</span>
+      <span class="transport-title">Taxis</span>
+    </div>
+    <p class="transport-body">Santa Cruz taxis are regularly available near the Santa Cruz marina, or can be flagged down on any main street. Always confirm the fare before getting in: <span class="spanish-phrase" style="display:inline;">«¿Cuánto cuesta al [destino]?»</span><br><br>
+    <strong>English-speaking drivers you can call or WhatsApp directly:</strong></p>
+    <div class="driver-list">
+      <div class="driver-item"><div class="driver-name">David Aguilar</div><div class="driver-phone">+52 958 143 8001 &nbsp;&middot;&nbsp; Call or WhatsApp</div></div>
+      <div class="driver-item"><div class="driver-name">Bernardo</div><div class="driver-phone">+52 958 111 2445 &nbsp;&middot;&nbsp; Call or WhatsApp</div></div>
+    </div>
+  </div>
+
+  <div class="transport-item">
+    <div class="transport-header">
+      <span class="transport-icon">🚗</span>
+      <span class="transport-title">Rental Car</span>
+    </div>
+    <p class="transport-body">A rental car is a great option if you plan to explore beyond Huatulco — especially for the coffee region, waterfalls, or day trips. Contact Javier or Osmar for local recommendations.</p>
+  </div>
+
+  <div class="transport-item">
+    <div class="transport-header">
+      <span class="transport-icon">✈️</span>
+      <span class="transport-title">Airport Transfers &amp; Private Driver</span>
+    </div>
+    <p class="transport-body">For airport pickups, multi-stop shopping runs, or any time you need a larger, comfortable vehicle — we use <strong>Daniel Figueroa</strong> personally. Danny speaks perfect English and Spanish (with roots in both countries), knows Huatulco inside and out, and goes above and beyond for every guest.<br><br>
+    <strong>Daniel Figueroa &nbsp;&middot;&nbsp; +52 958 115 4361 &nbsp;&middot;&nbsp; Call or WhatsApp</strong><br><br>
+    Daniel also runs <strong>Bacaanda Travel Huatulco</strong>, his own tour company. He offers waterfall tours, coffee plantation tours, and turtle release experiences — and can customize any trip to fit your interests. Find him on Facebook: <em>Bacaanda Travel Huatulco</em>.</p>
+  </div>
+
+  <div class="transport-item">
+    <div class="transport-header">
+      <span class="transport-icon">📱</span>
+      <span class="transport-title">Food Delivery</span>
+    </div>
+    <p class="transport-body">Download the <strong>Yum! Delivery</strong> app to order from local restaurants right to the condo. Available on the App Store and Google Play.</p>
+  </div>
+
+  <div class="transport-item">
+    <div class="transport-header">
+      <span class="transport-icon">🏧</span>
+      <span class="transport-title">ATMs & Banks</span>
+    </div>
+    <p class="transport-body">Use the main bank ATMs for best reliability: <strong>HSBC</strong> in La Crucecita, or <strong>Scotiabank / Banamex</strong> in Santa Cruz.</p>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <div class="section-label">Rated by Travelers</div>
+  <div class="section-title">Experiences Guests Love</div>
+  <div class="section-divider"></div>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.6;">These are Huatulco's top-rated tours and excursions, drawn from TripAdvisor's most reviewed and highest-rated experiences. Search any of these by name on TripAdvisor for full details, pricing, availability, and to book directly.</p>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Tour to Copalitilla Magical Waterfalls</div>
+        <div class="activity-subtitle">Sierra Madre · Swimming · All Ages</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">Deep in the Sierra Madre jungle, a series of spectacular waterfalls feed crystal-clear swimming pools. The day includes a cave passage, a 15-foot platform jump, a coffee tasting stop, and a lesson on medicinal plants from community guides. One of the most-reviewed tours in Huatulco — and one of the best.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>6+ hours</div>
+        <div class="activity-meta-item"><span>From</span>$53 / adult</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 4.9 &nbsp;(235 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; English-speaking guides available</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Huatulco Ocean Eco Adventures</div>
+        <div class="activity-subtitle">Open Ocean · Wildlife · Dolphins &amp; Whales</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">Goes far beyond the standard bay tour into open water where dolphins, sea turtles, manta rays, and humpback whales (in season) are spotted regularly. An expert naturalist guide with exceptional wildlife knowledge makes this more than just a boat ride — reviewers consistently call it a highlight of their entire trip.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>4–5 hours</div>
+        <div class="activity-meta-item"><span>From</span>$83 / adult</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 4.9 &nbsp;(124 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; English-speaking guides available</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Full Day Tour of the Bays of Huatulco</div>
+        <div class="activity-subtitle">On the Water · All Day · Best Value</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">The classic full-day boat tour covering all 7 bays — swimming, snorkeling, sunbathing, and the famous Bufadero blowhole. Includes water and refreshments, music on board, professional photos, and stops at two beaches. The best-value introduction to Huatulco's coastline, especially for first-time visitors.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>7–8 hours</div>
+        <div class="activity-meta-item"><span>From</span>$40 / adult</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 4.3 &nbsp;(123 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; English-speaking guides available</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Huatulco Walking Food Tour</div>
+        <div class="activity-subtitle">Culinary · La Crucecita · Come Hungry</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">A guided walk through La Crucecita with tastings at 7–8 local spots along the way. Led by knowledgeable local guides, this is the perfect first-day activity — it introduces you to the neighborhood while filling you with great food. Generous portions at every stop.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>3 hours</div>
+        <div class="activity-meta-item"><span>From</span>$75 / adult</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 4.9 &nbsp;(83 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; English-speaking guides available</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">3 Levels of Huatulco — The Coffee Experience</div>
+        <div class="activity-subtitle">Sierra Madre · Coffee Plantation · Cultural</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">An excursion unique to this stretch of the Mexican coast — you travel through three elevation zones (sea level up to 4,400 ft) with a biologist guide, visiting a world-class coffee plantation. Meet the farmers, learn the full process from cherry to cup, and enjoy a traditional lunch with juice and mezcal at Caf&eacute; Suprema. Oaxacan coffee is globally renowned; this trip shows you exactly why.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>5–6 hours</div>
+        <div class="activity-meta-item"><span>From</span>$80 / adult</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 5.0 &nbsp;(35 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; English-speaking guides available</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Tip Top Tacos</div>
+        <div class="activity-subtitle">Street Food · Culinary · Likely to Sell Out</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">A curated street food and taco experience led by a knowledgeable local guide through Huatulco's best taco spots. Fun, flavorful, and culturally rich — frequently sells out, so book early if this is on your list.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>3–4 hours</div>
+        <div class="activity-meta-item"><span>From</span>$70 / adult</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 4.8 &nbsp;(24 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; English-speaking guides available</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Waterfalls &amp; Nature Day-Trip Experience</div>
+        <div class="activity-subtitle">Sierra Madre · Eco-Friendly · Hotel Pickup</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">An eco-focused full day into the Sierra Madre Mountains with hotel pickup included. Watch for tropical birds and reptiles, swim at Emerald Falls, and enjoy a Mexican lunch with beverages. Benefits local communities and provides access to spots most visitors never find on their own.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>6+ hours</div>
+        <div class="activity-meta-item"><span>From</span>$87 / adult</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 4.8 &nbsp;(13 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; Lunch &amp; beverages included</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Huatulco Bah&iacute;as Tour</div>
+        <div class="activity-subtitle">On the Water · All Day · Snorkeling</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">A full-day boat tour exploring 7 of Huatulco's 9 bays — swimming, snorkeling, and sunbathing at multiple beaches. Snorkel gear available to rent on board. A relaxed, well-priced option for guests who want to spend the day on the water with fewer structured stops.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>6+ hours</div>
+        <div class="activity-meta-item"><span>From</span>$50 / adult</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 4.6 &nbsp;(67 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; English-speaking guides available</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Unique Turtle Sanctuary &amp; Sunset Experience</div>
+        <div class="activity-subtitle">Wildlife · Conservation · Seasonal</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">Help release baby sea turtles into the Pacific Ocean, then stay on the beach to watch the sun set over the water. A meaningful, once-in-a-lifetime conservation experience — best on low-moon nights for the most dramatic effect. Hotel pickup included. Seasonal, so check availability ahead of your stay.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>6+ hours</div>
+        <div class="activity-meta-item"><span>From</span>$62 / adult</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 4.9 &nbsp;(10 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; Hotel pickup included</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Exclusive 7 Bays by Panga Boat or Yacht</div>
+        <div class="activity-subtitle">Private · On the Water · Premium Experience</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">A private tour of the 7 bays at your own pace — dolphins, whale watching (in season), snorkeling, and fresh seafood included. Significantly more personal than the group tours, with a private guide and photo service. Ideal for couples, families, or small groups who want a premium, unhurried day on the water.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Duration</span>6–7 hours</div>
+        <div class="activity-meta-item"><span>From</span>$246 / group</div>
+        <div class="activity-meta-item"><span>Rating</span>&#11088; 4.5 &nbsp;(19 reviews)</div>
+      </div>
+      <p class="activity-includes">&#10003; Free cancellation up to 24 hours &nbsp;&middot;&nbsp; Private guide &nbsp;&middot;&nbsp; Snorkeling &amp; seafood included</p>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">
+      <div class="activity-title-wrap">
+        <div class="activity-name">Bacaanda Travel Huatulco — Private Tours with Daniel Figueroa</div>
+        <div class="activity-subtitle">Custom · Waterfall · Coffee · Turtle Release</div>
+      </div>
+    </div>
+    <div class="activity-body">
+      <p class="activity-desc">Daniel is our personal driver and tour guide in Huatulco, and someone we trust completely. Through his company Bacaanda Travel Huatulco, he offers waterfall tours, coffee plantation tours, and turtle release experiences — and can design a completely custom itinerary around whatever you want to explore. Danny is bilingual (English and Spanish), deeply knowledgeable, and goes the extra mile for every guest.</p>
+      <div class="activity-meta">
+        <div class="activity-meta-item"><span>Contact</span>+52 958 115 4361</div>
+        <div class="activity-meta-item"><span>Book via</span>Call or WhatsApp</div>
+        <div class="activity-meta-item"><span>Find on</span>Facebook: Bacaanda Travel Huatulco</div>
+      </div>
+      <p class="activity-includes">&#10003; Custom itineraries available &nbsp;&middot;&nbsp; Private tours &nbsp;&middot;&nbsp; Bilingual guide &nbsp;&middot;&nbsp; Personally recommended by your hosts</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE TO EAT -->
+<section id="eat" class="sand-section">
+  <div class="section-label">Huatulco's Table</div>
+  <div class="section-title">Where to Eat</div>
+  <div class="section-divider"></div>
+  <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;font-style:italic;">Hours and locations change — we recommend Googling before you go. Most spots have English-speaking staff.</p>
+
+  <div class="badge">Breakfast & Brunch</div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Café Niszul</div>
+      <div class="rest-vibe">Breakfast & Brunch · Steps from Our Gate</div>
+      <p class="rest-desc">Steps from Nirú Las Casitas' main entrance, Café Niszul is a genuine gem for breakfast and brunch. A perfect first stop before a beach day — and one of our personal favorites. Don't miss it.</p>
+      <div class="rest-phone">958 100 1020</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Itoo</div>
+      <div class="rest-vibe">Breakfast · Santa Cruz Beach</div>
+      <p class="rest-desc">A great breakfast spot near Santa Cruz Beach — perfect for chilaquiles and authentic Mexican flavors to start your day right.</p>
+      <div class="rest-phone">958 119 9074</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">El Cajún</div>
+      <div class="rest-vibe">Breakfast, Lunch & Dinner · Marina Park</div>
+      <p class="rest-desc">Run by chefs Chelsey and Mark, El Cajún does a brilliant breakfast sandwich and breakfast burrito. A couple of our favorites — especially with a hot cappuccino.</p>
+      <div class="rest-phone">958 117 4502</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Mercader</div>
+      <div class="rest-vibe">Breakfast to Dinner · Thai Fusion · Near Santa Cruz</div>
+      <p class="rest-desc">Half a block from the Santa Cruz square. Thai fusion flair with excellent breakfast, fish & chips, Pad Thai, and a beet chocolate cake that's worth saving room for. Don't miss this one.</p>
+      <div class="rest-phone">958 587 0623</div>
+    </div>
+  </div>
+
+  <div class="badge" style="margin-top:1.5rem;">Sandwiches &amp; Café</div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Simple</div>
+      <div class="rest-vibe">Gourmet Sandwiches, Burgers &amp; Deli · Crucecita · Walkable</div>
+      <p class="rest-desc">From chef María Beltranena, Simple delivers handcrafted gourmet sandwiches, smash burgers, and house-cured charcuterie in a relaxed indoor/outdoor setting. Rated 4.9/5 and a consistent crowd favorite. Save room for dessert — the cheesecake and banana bread are legendary. On Wednesdays and Saturdays, fresh cinnamon buns sell out fast. Open Mon–Sat, noon to 9 PM.</p>
+      <div class="rest-phone">958 121 0518</div>
+    </div>
+  </div>
+
+  <div class="badge" style="margin-top:1.5rem;">Seafood</div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Arrecife Grill & Bar</div>
+      <div class="rest-vibe">Seafood · Tostadas · Cocktails</div>
+      <p class="rest-desc">Outstanding seafood tostadas and creative cocktails — every dish looks so good you won't know what to order first. A favorite for presentation and flavor lovers.</p>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Don Crudelio</div>
+      <div class="rest-vibe">Seafood · Downtown</div>
+      <p class="rest-desc">Downtown Huatulco's go-to for fresh fish and shellfish prepared with both classic and innovative techniques. Exceptional service.</p>
+      <div class="rest-phone">958 174 3790</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">La Tosta</div>
+      <div class="rest-vibe">Seafood Tostadas</div>
+      <p class="rest-desc">Creamy, inventive seafood tostadas with unique ingredients. A fresh, flavorful bite you'll want to return for.</p>
+      <div class="rest-phone">722 844 0556</div>
+    </div>
+  </div>
+
+  <div class="badge" style="margin-top:1.5rem;">Dinner Worth Dressing For</div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Rocoto</div>
+      <div class="rest-vibe">Fine Dining · Chef Claudia</div>
+      <p class="rest-desc">Chef Claudia's quaint and inviting restaurant doesn't disappoint — fresh-caught seafood, tantalizing steak, and fresh salads. Make a reservation in high season.</p>
+      <div class="rest-phone">958 688 1778</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Terra Cotta</div>
+      <div class="rest-vibe">Fine Dining · A/C · Downtown</div>
+      <p class="rest-desc">Excellent service, lovely food, and gloriously air-conditioned. If you want to feel pampered over a nice meal, this is your spot.</p>
+      <div class="rest-phone">958 587 1135</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Romero</div>
+      <div class="rest-vibe">Brunch & Dinner · Outdoor Terrace</div>
+      <p class="rest-desc">A one-of-a-kind spot with a charming outdoor terrace, creative chef-driven dishes, and a cozy, relaxed vibe. Perfect for a flavorful brunch in the heart of town.</p>
+      <div class="rest-phone">958 131 0721</div>
+    </div>
+  </div>
+
+  <div class="badge" style="margin-top:1rem;">Local & Street Food</div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">La Casa del Arbol</div>
+      <div class="rest-vibe">Tlayudas · Casual Outdoor</div>
+      <p class="rest-desc">Home of the best tlayudas in town. Great prices, fast service, relaxed outdoor setting. The burgers are also a hit.</p>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Guiexhuba — Tlayudas y Garnachas</div>
+      <div class="rest-vibe">Oaxacan Street Food · Budget-Friendly</div>
+      <p class="rest-desc">Bold Oaxacan flavor, authentic tlayudas, tostadas, and sopes at unbeatable prices. A true local gem.</p>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Los Parados</div>
+      <div class="rest-vibe">Oaxacan · Local Favorite</div>
+      <p class="rest-desc">Famous for crispy tlayudas, alambres, and flavorful tripe tacos. Cozy atmosphere and friendly service — popular with locals and tourists alike.</p>
+      <div class="rest-phone">958 587 6967</div>
+    </div>
+  </div>
+
+  <div class="badge" style="margin-top:1rem;">Italian & International</div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Oro Negro</div>
+      <div class="rest-vibe">Wood-Fired Pizza · Italian · Santa Cruz</div>
+      <p class="rest-desc">The wood-fired pizzas are the main draw — crispy crust, generous toppings, and a half-and-half option if you can't decide. Feeling adventurous? Ask about the <strong>chapulines (fried grasshopper) pizza</strong> — a true only-in-Oaxaca experience. Lasagna, pasta, and coconut shrimp round out the menu. Reservations recommended in high season.</p>
+      <div class="rest-phone">958 587 0112</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Tono Shika</div>
+      <div class="rest-vibe">Sushi · Premium</div>
+      <p class="rest-desc">A top sushi spot with fresh ingredients, excellent service, and perfectly crafted cocktails. Every bite feels like premium quality.</p>
+      <div class="rest-phone">958 109 7877</div>
+    </div>
+  </div>
+
+  <div class="badge" style="margin-top:1.5rem;">Beachfront Dining</div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Ve El Mar</div>
+      <div class="rest-vibe">Seafood · Ocean View · Santa Cruz Bay</div>
+      <p class="rest-desc">With over 45 years of tradition, Ve El Mar sits right at the edge of Santa Cruz Bay with tables at the water and sweeping views of the coastline. Grilled mahi, coconut shrimp, and the campechana cocktail are standouts. The service is warm and the vibe is wonderfully unhurried. One of our personal favorites for a long seafood lunch or a sunset dinner. Open daily 8 AM – 10 PM.</p>
+      <div class="rest-phone">958 219 6560</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Restaurante Macuil</div>
+      <div class="rest-vibe">Mexican · Seafood · Santa Cruz Beachfront</div>
+      <p class="rest-desc">Right on the sand next to the Santa Cruz pier, Macuil is a fantastic spot to eat, drink, and linger at the beach. Shrimp tacos, fresh ceviche, and the habanero-mango aguachile are standouts. Complimentary beach loungers for diners — so order a round of drinks and make an afternoon of it. Live music twice a week. Open daily 11 AM – 6 PM.</p>
+      <div class="rest-phone">958 587 0606</div>
+    </div>
+  </div>
+
+  <div class="badge" style="margin-top:1.5rem;">Bars &amp; Cantinas</div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Maz+Mezcal</div>
+      <div class="rest-vibe">Mexican · Mezcal Bar · La Crucecita</div>
+      <p class="rest-desc">A fun, hip cantina in La Crucecita with a great mezcal selection and solid Mexican kitchen. Order the <strong>tlayudas</strong> — giant crispy tortillas piled high with toppings, kind of like an open-faced quesadilla and an Oaxacan staple worth trying. Shrimp tacos, arrachera, and mezcal cocktails are all crowd favorites. Open late daily until 2 AM.</p>
+      <div class="rest-phone">958 106 9413</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Tequila Taberna Y Café</div>
+      <div class="rest-vibe">Taberna · Live Music · Sports · La Crucecita</div>
+      <p class="rest-desc">Ranked #1 bar in Huatulco on TripAdvisor. This Canadian-owned gem on the La Crucecita square serves smoked meats, nachos, and a staggering selection of artisanal, additive-free tequilas. The margaritas are exceptional — try the espresso or the spicy Sriracha version. Live music, sports on TV, and a warm, welcoming vibe. Closed Mondays; open Tue–Sun 11 AM–midnight.</p>
+      <div class="rest-phone">+1 403-896-1147</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Xipol</div>
+      <div class="rest-vibe">Sports Bar · Open-Air · La Crucecita Town Square</div>
+      <p class="rest-desc">The go-to spot to catch a game in Huatulco — big screens everywhere showing hockey, soccer, baseball, basketball, even curling. Open-air layout with a great cross-breeze, solid Mexican menu (the fish tacos and guacamole are standouts), cold beers, and excellent margaritas. Owner Carlos is famously helpful and friendly. Right across from the church on the main square. Open daily 7:30 AM – 11 PM.</p>
+      <div class="rest-phone">958 105 1678</div>
+    </div>
+  </div>
+
+  <div class="badge" style="margin-top:1.5rem;">Coffee</div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Caf&eacute; Huatulco</div>
+      <div class="rest-vibe">Coffee &amp; Caf&eacute; · Santa Cruz Square · Live Music</div>
+      <p class="rest-desc">Nestled in the kiosk at the heart of the Santa Cruz square, this beloved local institution has been serving coffee grown on the owner's own mountain plantation for over 25 years. A gorgeous shaded setting — great for lingering over a latte with views of the plaza. Catch it in the evening for live guitar music and the sound of birds coming in to roost in the trees above. Open daily 8 AM – 11:30 PM.</p>
+      <div class="rest-phone">958 587 1228</div>
+    </div>
+  </div>
+  <div class="restaurant-card">
+    <div class="rest-content">
+      <div class="rest-name">Casa Mayor</div>
+      <div class="rest-vibe">Coffee · Two Downtown Locations</div>
+      <p class="rest-desc">One of the most beautiful places in Huatulco to enjoy a coffee — great views and peaceful downtown atmosphere. Two locations to choose from.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THINGS TO DO -->
+<section id="todo">
+  <div class="section-label">Huatulco</div>
+  <div class="section-title">Things to Do</div>
+  <div class="section-divider"></div>
+  <div class="things-grid">
+    <div class="thing-item">
+      <div class="thing-name">Huatulco's Bays</div>
+      <p class="thing-desc">9 bays and 36 beaches. Explore by boat — ask about the Bays Tour.</p>
+    </div>
+    <div class="thing-item">
+      <div class="thing-name">La Crucecita Church</div>
+      <p class="thing-desc">Home to the largest Virgen de Guadalupe ceiling painting in all of Latin America.</p>
+    </div>
+    <div class="thing-item">
+      <div class="thing-name">Huatulco Viewpoint</div>
+      <p class="thing-desc">The iconic HUATULCO sign with sweeping bay views. A classic photo stop.</p>
+    </div>
+    <div class="thing-item">
+      <div class="thing-name">Organic Market</div>
+      <p class="thing-desc">Local producers, handmade crafts, fresh food. Low season: 1st & 3rd Saturday. High season: every Saturday.</p>
+    </div>
+    <div class="thing-item">
+      <div class="thing-name">Santa Cruz Dock</div>
+      <p class="thing-desc">The main hub for boats, local crafts, souvenirs, and the waterfront scene.</p>
+    </div>
+    <div class="thing-item">
+      <div class="thing-name">Market 3 de Mayo</div>
+      <p class="thing-desc">Authentic indoor market — fruit, vegetables, clothing, and local trinkets. Just east of the main plaza.</p>
+    </div>
+    <div class="thing-item">
+      <div class="thing-name">The Lighthouse</div>
+      <p class="thing-desc">A favorite local viewpoint overlooking the immensity of the Pacific. Bring your camera.</p>
+    </div>
+    <div class="thing-item">
+      <div class="thing-name">Chedraui & Soriana</div>
+      <p class="thing-desc">The main supermarkets for groceries, wine, liquor, and household supplies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NIGHTLIFE -->
+<section id="nightlife" class="sand-section">
+  <div class="section-label">After Dark</div>
+  <div class="section-title">A Little Nightlife</div>
+  <div class="section-divider"></div>
+  <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Huatulco is relaxed — it's not Cancún — and that's exactly how we like it. Here are some genuinely fun spots for an evening if you're looking for some nightlife fun.</p>
+
+  <div class="nightlife-card">
+    <div>
+      <div class="nl-name">Bie'che</div>
+      <p class="nl-desc">On the second floor above Xipol — enjoy one of the best views of Central Park with a really nice ambiance, VIP service, and excellent cocktails.</p>
+    </div>
+  </div>
+  <div class="nightlife-card">
+    <div>
+      <div class="nl-name">Maz + Mezcal</div>
+      <p class="nl-desc">Dine with views of the town zócalo while enjoying tacos, tlayudas, mezcalinas, and great music. A perfect post-dinner hangout spot.</p>
+    </div>
+  </div>
+  <div class="nightlife-card">
+    <div>
+      <div class="nl-name">Xipol</div>
+      <p class="nl-desc">At the zócalo — a great place to hang with friends, enjoy cold beers, and soak in the plaza energy.</p>
+    </div>
+  </div>
+  <div class="nightlife-card">
+    <div>
+      <div class="nl-name">Chahue Corner by Sea Soul</div>
+      <p class="nl-desc">Chahue Beach's favorite — breakfast, lunch, or dinner under open sky. Coffee shops to seafood, with a genuine ocean breeze.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY -->
+<section id="emergency">
+  <div class="section-label">We Hope You Never Need This</div>
+  <div class="section-title">Emergency Contacts</div>
+  <div class="section-divider"></div>
+  <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;">Calling from a US or Canadian cell phone? Dial <strong>+52</strong> before any local number.</p>
+
+  <div class="emergency-highlight">
+    <div class="emergency-icon">🏠</div>
+    <div class="emergency-content">
+      <h4>Your Property Contact</h4>
+      <p><strong style="color:white;">Javier</strong>: <a href="tel:+529581283047">+52 958 128 3047</a> &nbsp;|&nbsp; <strong style="color:white;">Osmar</strong>: <a href="tel:+529711323057">+52 971 132 3057</a><br>
+      For any property questions, maintenance, or urgent needs during your stay.</p>
+    </div>
+  </div>
+
+  <div class="emergency-card">
+    <div class="emergency-icon">⚕️</div>
+    <div class="emergency-content">
+      <h4>Medical — English Speaking</h4>
+      <p>Dr. Javier de Jesús Velasco: <a href="tel:+529585876230">958 587 6230</a><br>
+      Dr. Andres Gonzalez: <a href="tel:+529585876065">958 587 6065</a><br>
+      Medical Center Oromed: <a href="tel:+529585872297">958 587 2297</a><br>
+      <em style="font-size:0.75rem;">Lote 13, Manzana 9, Sector L</em></p>
+    </div>
+  </div>
+
+  <div class="emergency-card">
+    <div class="emergency-icon">💊</div>
+    <div class="emergency-content">
+      <h4>Pharmacy</h4>
+      <p>Farmacia inside Chedraui (Blvd. Chahue)<br>
+      Farmacias del Ahorro: Blvrd Chahue 17, H2<br>
+      Farmacias más Ahorro: Bugambilia 305, Local 2</p>
+    </div>
+  </div>
+
+  <div class="emergency-card">
+    <div class="emergency-icon">🦷</div>
+    <div class="emergency-content">
+      <h4>Dentists — English Speaking</h4>
+      <p>Dr. Wilfreddy Marín: <a href="tel:+529585870380">958 587 0380</a> (WhatsApp: 958 107 9068)<br>
+      Bright Smiles Huatulco: <a href="tel:+529581151758">958 115 1758</a></p>
+    </div>
+  </div>
+
+  <div class="emergency-card">
+    <div class="emergency-icon">🚒</div>
+    <div class="emergency-content">
+      <h4>Emergency Services</h4>
+      <p>Fire Department: <a href="tel:+529585870847">958 587 0847</a><br>
+      Tourist Auxiliary Police: <a href="tel:+529585834080">958 583 4080</a><br>
+      State Transit Police: <a href="tel:+529586885696">958 688 5696</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKOUT -->
+<section id="checkout" class="sand-section">
+  <div class="section-label">Before You Go</div>
+  <div class="section-title">Checkout Checklist</div>
+  <div class="section-divider"></div>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">Check-out is at <strong>11:00 AM</strong>. A quick run through this list means a smooth departure for you — and helps us get ready for the next guests.</p>
+
+  <div class="checkout-item">
+    <div class="checkout-num">1</div>
+    <div class="checkout-text">
+      <h5>Take Out Garbage</h5>
+      <p>All garbage and recycling bagged and left at the appropriate bins — separated as described in the Property Guide.</p>
+    </div>
+  </div>
+  <div class="checkout-item">
+    <div class="checkout-num">2</div>
+    <div class="checkout-text">
+      <h5>Turn Off All Devices</h5>
+      <p>AC, fans, lights, and all appliances off. Log out of any streaming accounts on the Smart TV.</p>
+    </div>
+  </div>
+  <div class="checkout-item">
+    <div class="checkout-num">3</div>
+    <div class="checkout-text">
+      <h5>Close All Windows & Blinds</h5>
+      <p>Leave all doors and blinds closed when you leave the property.</p>
+    </div>
+  </div>
+  <div class="checkout-item">
+    <div class="checkout-num">4</div>
+    <div class="checkout-text">
+      <h5>Kitchen — Dishes Put Away</h5>
+      <p>Please wash and put away any dishes used during your stay.</p>
+    </div>
+  </div>
+  <div class="checkout-item">
+    <div class="checkout-num">5</div>
+    <div class="checkout-text">
+      <h5>Linens — No Need to Wash</h5>
+      <p>Leave all dirty linens, towels, and bedding piled near the main door.</p>
+    </div>
+  </div>
+  <div class="checkout-item">
+    <div class="checkout-num">6</div>
+    <div class="checkout-text">
+      <h5>Towels — Separate Pile</h5>
+      <p>Spread wet or damp towels out to air — gather dry towels in a separate pile from linens.</p>
+    </div>
+  </div>
+  <div class="checkout-item">
+    <div class="checkout-num">7</div>
+    <div class="checkout-text">
+      <h5>Return All Keys</h5>
+      <p>Leave all key sets (including the beach gate key) in the designated place. Lost key sets incur a $25 USD replacement fee.</p>
+    </div>
+  </div>
+
+  <div style="text-align:center; padding: 1.5rem 0 0.5rem; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.15rem; color:var(--navy);">
+    We hope you enjoyed your stay.<br>Come back soon.
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bravo Huatulco</div>
+  <div class="footer-tagline">Where the Sierra Madre Meets the Sea</div>
+  <p>Casa Lucky · Unit E001 · Nirú Las Casitas, Santa Cruz, Huatulco, Oaxaca<br>
+  <a href="mailto:reservations@bravohuatulco.com">reservations@bravohuatulco.com</a><br>
+  Property Support: Javier (+52 958 128 3047) &amp; Osmar (+52 971 132 3057)</p>
+</footer>
+
+</body>
+</html>
