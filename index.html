@@ -221,6 +221,9 @@ section{padding:4rem 2rem;}
 
 .book-direct{background:var(--gold);color:var(--navy);}
 .book-direct:hover{background:#d4b560;}
+.book-vrbo{background:#1B5E8A;color:#fff;}
+.book-vrbo:hover{background:#164e76;}
+.book-btn-full{grid-column:1/-1;}
 .cal-footer-note{font-size:.69rem;color:var(--muted);text-align:center;margin-top:.85rem;font-style:italic;}
 
 /* NIRU SECTION */
@@ -698,7 +701,8 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
           <div class="cal-book-label" id="calBookLbl">Choose how to book:</div>
           <div class="cal-book-btns">
             <a id="btnAirbnb" class="book-btn book-airbnb" href="https://www.airbnb.com/h/bravohuatulco" target="_blank">✈ Book via Airbnb</a>
-            <a id="btnDirect" class="book-btn book-direct" onclick="bookDirectFromCal()">⭐ Book Direct & Save</a>
+            <a id="btnVrbo" class="book-btn book-vrbo" href="https://www.vrbo.com/5258815" target="_blank" style="display:none;">🏠 Book via VRBO</a>
+            <a id="btnDirect" class="book-btn book-direct book-btn-full" onclick="bookDirectFromCal()">⭐ Book Direct & Save</a>
           </div>
         </div>
         <div id="calWlBtnWrap" style="display:none">
@@ -1588,7 +1592,7 @@ en:{
   cal_nights:"nights",cal_nightly:"Nightly rate (avg)",
   cal_clean:"Cleaning fee",cal_vat:"Federal VAT (16%)",cal_ish:"Lodging Tax · ISH (5%)",cal_total:"Estimated total",
   cal_book_lbl:"Choose how to book:",
-  cal_airbnb:"Book via Airbnb",cal_direct:"Book Direct & Save",
+  cal_airbnb:"Book via Airbnb",cal_direct:"Book Direct & Save",cal_vrbo:"Book via VRBO",
   cal_sync:"Calendar syncs with Airbnb & VRBO via iCal · Links activate once listings go live",
   cal_min7:"Holiday period (Dec 17 – Jan 7) requires a 5-night minimum stay",
   cal_min3:"A 3-night minimum stay is required",
@@ -1750,7 +1754,7 @@ es:{
   cal_nights:"noches",cal_nightly:"Tarifa por noche (prom.)",
   cal_clean:"Cargo de limpieza",cal_vat:"IVA Federal (16%)",cal_ish:"Impuesto de Hospedaje · ISH (5%)",cal_total:"Total estimado",
   cal_book_lbl:"Elija cómo reservar:",
-  cal_airbnb:"Reservar en Airbnb",cal_direct:"Reservar Directo y Ahorrar",
+  cal_airbnb:"Reservar en Airbnb",cal_direct:"Reservar Directo y Ahorrar",cal_vrbo:"Reservar en VRBO",
   cal_sync:"El calendario se sincroniza con Airbnb y VRBO vía iCal",
   cal_min7:"El período festivo (17 dic – 7 ene) requiere una estadía mínima de 5 noches",
   cal_min3:"Se requiere una estadía mínima de 3 noches",
@@ -1875,6 +1879,7 @@ const RICO_START=new Date(2027,0,1);
 const LUCKY_START=new Date(2026,4,15); /* May 15, 2026 — earliest bookable date for Casa Lucky */
 const RACEL_START=new Date(2026,4,26); /* May 26, 2026 — Bayside transition date */
 const AIRBNB_URLS={lucky:'https://www.airbnb.com/h/bravohuatulco',rico:'https://www.airbnb.com/h/bravohuatulco',racel:'https://www.airbnb.com/h/bravohuatulco-casaracel'};
+const VRBO_URLS={lucky:'https://www.vrbo.com/5258815'};
 function openCal(prop){
   calProp=prop;calIn=null;calOut=null;
   if(prop==='rico'){calYear=2027;calMonth=0;}else{const n=new Date();calYear=n.getFullYear();calMonth=n.getMonth();}
@@ -1882,6 +1887,8 @@ function openCal(prop){
   document.getElementById('calTitle').textContent=titles[prop]||'Casa Lucky';
   const abLink=document.getElementById('btnAirbnb');
   if(abLink) abLink.href=AIRBNB_URLS[prop]||AIRBNB_URLS.lucky;
+  const vrboBtn=document.getElementById('btnVrbo');
+  if(vrboBtn){const vrboUrl=VRBO_URLS[prop];vrboBtn.style.display=vrboUrl?'flex':'none';if(vrboUrl)vrboBtn.href=vrboUrl;}
   const isWL=prop==='rico';
   document.getElementById('calWlBlock').style.display=isWL?'block':'none';
   document.getElementById('calBookBlock').style.display=isWL?'none':'block';
@@ -1975,6 +1982,7 @@ function showSummary(){
   document.getElementById('calBookLbl').textContent=t.cal_book_lbl;
   document.getElementById('btnAirbnb').textContent='✈ '+t.cal_airbnb;
   document.getElementById('btnDirect').textContent='⭐ '+t.cal_direct;
+  const vb=document.getElementById('btnVrbo');if(vb&&vb.style.display!=='none')vb.textContent='🏠 '+t.cal_vrbo;
   document.getElementById('calFootNote').textContent=t.cal_sync;
   document.getElementById('calSummary').classList.add('show');
 }
