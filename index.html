@@ -1862,7 +1862,12 @@ function getMinNights(checkIn){
 const BOOKED={
   lucky:[],
   rico:[],
-  racel:[]
+  racel:[
+    /* Bayside Vacations existing reservations — checkout date kept open for same-day turnover */
+    {s:new Date(2026,7,26), e:new Date(2026,8,2)},  /* Aug 26 – Sep 2, 2026 */
+    {s:new Date(2026,8,27), e:new Date(2026,9,1)},  /* Sep 27 – Oct 1, 2026 */
+    {s:new Date(2027,0,4),  e:new Date(2027,1,28)}  /* Jan 4 – Feb 28, 2027 */
+  ]
 };
 function isBooked(prop,d){return BOOKED[prop].some(r=>d>=r.s&&d<r.e);}
 let calProp='lucky',calYear,calMonth,calIn=null,calOut=null;
