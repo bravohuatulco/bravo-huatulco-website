@@ -22,6 +22,7 @@
     --text:      #0C1F3F;
     --muted:     #6B8CAE;
     --border:    rgba(12,31,63,0.12);
+    /* aliases for template compatibility */
     --teal-dark: #0C1F3F;
     --teal-light:#2E86C1;
     --sand:      #FAF8F3;
@@ -30,7 +31,9 @@
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
+
   html { scroll-behavior: smooth; }
+
   body {
     font-family: 'Jost', sans-serif;
     background: var(--cream);
@@ -42,38 +45,33 @@
 
   /* ── NAV ── */
   nav {
-    position: sticky; top: 0; z-index: 100;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     background: var(--navy);
-    overflow-x: auto; white-space: nowrap;
-    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
   nav::-webkit-scrollbar { display: none; }
-  nav ul { display: inline-flex; list-style: none; padding: 0 1rem; padding-right: 5.5rem; }
+  nav ul {
+    display: inline-flex;
+    list-style: none;
+    padding: 0 1rem;
+  }
   nav ul li a {
-    display: block; padding: 0.85rem 1rem;
-    color: rgba(255,255,255,0.80); text-decoration: none;
-    font-size: 0.75rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s;
+    display: block;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.80);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
   }
   nav ul li a:hover { color: var(--gold); }
-
-  /* ── LANG TOGGLE ── */
-  .lang-toggle {
-    position: fixed; top: 0; right: 0; z-index: 200;
-    display: flex; align-items: center;
-    background: var(--navy);
-    padding: 0 0.5rem;
-    height: 44px;
-  }
-  .lang-btn {
-    background: none; border: none;
-    color: rgba(255,255,255,0.72);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.68rem; font-weight: 600;
-    letter-spacing: 0.1em; padding: 0.38rem 0.72rem;
-    cursor: pointer; transition: all 0.2s; text-transform: uppercase;
-  }
-  .lang-btn.active { background: var(--gold); color: var(--navy); border-radius: 20px; }
 
   /* ── HERO ── */
   .hero {
@@ -82,166 +80,887 @@
       linear-gradient(160deg, rgba(12,31,63,0.35) 0%, rgba(26,82,118,0.25) 55%, rgba(135,206,235,0.15) 100%),
       url('/guestmanual-racel/images/guide-hero-market.jpg') center 40% / cover no-repeat,
       linear-gradient(160deg, var(--navy) 0%, var(--ocean) 55%, var(--sky) 100%);
-    color: white; padding: 3.5rem 1.5rem 3rem;
-    position: relative; overflow: hidden;
+    color: white;
+    padding: 3.5rem 1.5rem 3rem;
+    position: relative;
+    overflow: hidden;
   }
   .hero::before {
     content: '';
-    position: absolute; inset: 0;
+    position: absolute;
+    inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     pointer-events: none;
   }
   .hero > * { position: relative; }
-  .hero-logo { width: 150px; max-width: 40%; height: auto; margin-bottom: 1.25rem; display: block; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
-  .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600; text-shadow: 0 1px 3px rgba(12,31,63,0.5); }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 8vw, 3.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; text-shadow: 0 2px 8px rgba(12,31,63,0.45); }
-  .hero h1 em { font-style: italic; font-weight: 400; color: var(--gold); }
-  .hero-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.92); letter-spacing: 0.22em; text-transform: uppercase; margin-top: 0.75rem; font-weight: 400; text-shadow: 0 1px 4px rgba(12,31,63,0.6); }
-  .hero-meta { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
-  .hero-meta-item { text-align: left; }
-  .hero-meta-item .label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.78); text-shadow: 0 1px 2px rgba(12,31,63,0.5); }
-  .hero-meta-item .value { font-size: 0.95rem; font-weight: 600; color: var(--gold); text-shadow: 0 1px 3px rgba(12,31,63,0.55); }
+  .hero-logo {
+    width: 150px;
+    max-width: 40%;
+    height: auto;
+    margin-bottom: 1.25rem;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(12,31,63,0.5);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 8px rgba(12,31,63,0.45);
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+  }
+  .hero-tagline {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+    font-weight: 400;
+    text-shadow: 0 1px 4px rgba(12,31,63,0.6);
+  }
+  .hero-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    text-align: left;
+  }
+  .hero-meta-item .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
+    text-shadow: 0 1px 2px rgba(12,31,63,0.5);
+  }
+  .hero-meta-item .value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-shadow: 0 1px 3px rgba(12,31,63,0.55);
+  }
 
   /* ── SECTIONS ── */
-  section { padding: 2.5rem 1.5rem; border-bottom: 1px solid var(--border); }
+  section {
+    padding: 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
   section:last-child { border-bottom: none; }
-  .sand-section { background: var(--cream-dark); }
-  .section-label { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.75rem, 5vw, 2.4rem); font-weight: 600; color: var(--navy); margin-bottom: 1.25rem; line-height: 1.15; }
-  .section-divider { width: 40px; height: 2px; background: var(--gold); margin-bottom: 1.5rem; }
 
-  /* Guide images */
-  .guide-img-wrap { margin: 1.25rem 0 1.5rem; }
-  .guide-img { width: 100%; height: auto; display: block; border-radius: 10px; box-shadow: 0 6px 18px rgba(12,31,63,0.12); }
-  .guide-img-cap { font-size: 0.72rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; letter-spacing: 0.02em; text-align: center; }
-
+  /* Inline body imagery */
+  .guide-img-wrap {
+    margin: 1.25rem 0 1.5rem;
+  }
+  .guide-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(12, 31, 63, 0.12);
+  }
+  .guide-img-cap {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.5rem;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+  /* Hide English-only Spanish-teaching phrases when language is ES */
   html[lang="es"] .en-only { display: none; }
 
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.22em;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.75rem, 5vw, 2.4rem);
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+  }
+
   /* ── WELCOME NOTE ── */
-  .welcome-note { background: var(--cream-dark); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; padding: 1.5rem; margin-bottom: 1.5rem; }
-  .welcome-note p { color: var(--navy); opacity: 0.82; font-size: 0.95rem; line-height: 1.88; margin-bottom: 1rem; font-weight: 300; }
+  .welcome-note {
+    background: var(--cream-dark);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .welcome-note p {
+    color: var(--navy);
+    opacity: 0.82;
+    font-size: 0.95rem;
+    line-height: 1.88;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
   .welcome-note p:last-child { margin-bottom: 0; }
-  .welcome-sig { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--navy); margin-top: 1rem; }
+  .welcome-sig {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-top: 1rem;
+  }
 
   /* ── WIFI CARD ── */
-  .wifi-card { background: var(--ocean); border-radius: 14px; padding: 1.25rem 1.5rem; color: white; display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+  .wifi-card {
+    background: var(--ocean);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
   .wifi-icon { font-size: 2rem; flex-shrink: 0; }
-  .wifi-info .wifi-network { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
-  .wifi-info .wifi-name { font-weight: 700; font-size: 1.05rem; color: var(--gold); }
-  .wifi-info .wifi-pass-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 0.5rem; }
-  .wifi-info .wifi-pass { font-weight: 600; font-size: 1rem; }
+  .wifi-info .wifi-network {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  .wifi-info .wifi-name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--gold);
+  }
+  .wifi-info .wifi-pass-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.5rem;
+  }
+  .wifi-info .wifi-pass {
+    font-weight: 600;
+    font-size: 1rem;
+  }
 
   /* ── INFO GRID ── */
-  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; margin-top: 1.25rem; }
-  .info-card { background: var(--cream-dark); border-radius: 12px; padding: 1.1rem; }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+    margin-top: 1.25rem;
+  }
+  .info-card {
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 1.1rem;
+  }
   .info-card .ic-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
-  .info-card .ic-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .info-card .ic-value { font-weight: 600; font-size: 0.9rem; color: var(--navy); margin-top: 0.2rem; }
-  .info-card .ic-note { font-size: 0.82rem; color: var(--navy); opacity: 0.7; margin-top: 0.25rem; line-height: 1.6; font-weight: 300; }
+  .info-card .ic-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .info-card .ic-value {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-top: 0.2rem;
+  }
+  .info-card .ic-note {
+    font-size: 0.82rem;
+    color: var(--navy);
+    opacity: 0.7;
+    margin-top: 0.25rem;
+    line-height: 1.6;
+    font-weight: 300;
+  }
   .info-card.full { grid-column: 1 / -1; }
 
   /* ── PROPERTY GUIDE ── */
-  .guide-item { display: flex; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--border); }
+  .guide-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
   .guide-item:last-child { border-bottom: none; }
-  .guide-icon { width: 44px; height: 44px; background: var(--cream-dark); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
-  .guide-content h4 { font-weight: 700; font-size: 0.78rem; color: var(--navy); margin-bottom: 0.3rem; letter-spacing: 0.02em; text-transform: uppercase; }
-  .guide-content p { font-size: 0.92rem; color: var(--navy); opacity: 0.78; line-height: 1.82; font-weight: 300; }
+  .guide-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--cream-dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .guide-content h4 {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+  }
+  .guide-content p {
+    font-size: 0.92rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.82;
+    font-weight: 300;
+  }
   .guide-content p strong { color: var(--navy); opacity: 1; font-weight: 600; }
 
   /* ── RULES ── */
-  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem; }
-  .rule-item { display: flex; align-items: flex-start; gap: 0.6rem; background: var(--cream-dark); border-radius: 10px; padding: 0.9rem; }
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    background: var(--cream-dark);
+    border-radius: 10px;
+    padding: 0.9rem;
+  }
   .rule-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1; margin-top: 1px; }
-  .rule-text h5 { font-size: 0.8rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; }
-  .rule-text p { font-size: 0.8rem; color: var(--navy); opacity: 0.72; line-height: 1.6; margin-top: 0.2rem; font-weight: 300; }
+  .rule-text h5 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .rule-text p {
+    font-size: 0.8rem;
+    color: var(--navy);
+    opacity: 0.72;
+    line-height: 1.6;
+    margin-top: 0.2rem;
+    font-weight: 300;
+  }
 
-  /* ── TIPS ── */
-  .tip-item { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.2rem; margin-bottom: 0.75rem; position: relative; }
-  .tip-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--gold); border-radius: 4px 0 0 4px; }
-  .tip-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+  /* ── TIPS & TRICKS ── */
+  .tip-item {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .tip-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--gold);
+    border-radius: 4px 0 0 4px;
+  }
+  .tip-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
   .tip-emoji { font-size: 1.2rem; }
-  .tip-title { font-weight: 700; font-size: 0.88rem; color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; }
-  .tip-body { font-size: 0.92rem; color: var(--navy); opacity: 0.78; line-height: 1.82; font-weight: 300; }
+  .tip-title {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .tip-body {
+    font-size: 0.92rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.82;
+    font-weight: 300;
+  }
   .tip-body strong { color: var(--navy); opacity: 1; font-weight: 600; }
-  .spanish-phrase { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--navy); display: block; margin: 0.25rem 0; }
-
-  /* ── BEACH ROUTE ── */
-  .beach-route { background: var(--cream-dark); border-radius: 14px; padding: 1.25rem; margin-top: 1rem; }
-  .beach-route h4 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--navy); margin-bottom: 1rem; }
-  .route-step { display: flex; gap: 0.85rem; margin-bottom: 0.9rem; }
-  .route-step:last-child { margin-bottom: 0; }
-  .step-dot { width: 26px; height: 26px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; flex-shrink: 0; margin-top: 3px; }
-  .route-step p { font-size: 0.88rem; color: var(--navy); opacity: 0.82; line-height: 1.7; font-weight: 300; }
-  .route-step p strong { opacity: 1; font-weight: 600; }
-
-  /* ── TRANSPORT ── */
-  .transport-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
-  .transport-item:last-child { border-bottom: none; }
-  .transport-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
-  .transport-icon { font-size: 1.2rem; }
-  .transport-title { font-weight: 700; font-size: 0.85rem; color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; }
-  .transport-body { font-size: 0.9rem; color: var(--navy); opacity: 0.78; line-height: 1.75; font-weight: 300; }
-  .transport-body strong { opacity: 1; font-weight: 600; }
-  .driver-list { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .driver-item { background: var(--cream-dark); border-radius: 10px; padding: 0.75rem 1rem; }
-  .driver-name { font-weight: 700; font-size: 0.88rem; color: var(--navy); }
-  .driver-phone { font-size: 0.82rem; color: var(--muted); margin-top: 0.1rem; }
+  .spanish-phrase {
+    display: inline-block;
+    background: var(--cream-dark);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-style: italic;
+    color: var(--navy);
+    font-weight: 600;
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+  }
 
   /* ── ACTIVITIES ── */
-  .activity-card { background: var(--cream-dark); border-radius: 14px; overflow: hidden; margin-bottom: 1rem; }
-  .activity-header { background: var(--navy); padding: 1rem 1.25rem; }
-  .activity-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: white; }
-  .activity-subtitle { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem; }
-  .activity-body { padding: 1rem 1.25rem; }
-  .activity-desc { font-size: 0.88rem; color: var(--navy); opacity: 0.82; line-height: 1.75; font-weight: 300; margin-bottom: 0.75rem; }
-  .activity-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.65rem; }
-  .activity-meta-item { background: white; border-radius: 20px; padding: 0.25rem 0.75rem; font-size: 0.75rem; color: var(--navy); display: flex; gap: 0.35rem; align-items: center; }
-  .activity-meta-item span:first-child { opacity: 0.55; }
-  .activity-includes { font-size: 0.75rem; color: var(--ocean); font-weight: 500; }
+  .activity-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 0.875rem;
+  }
+  .activity-header {
+    background: var(--ocean);
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .activity-emoji { font-size: 1.6rem; }
+  .activity-title-wrap {}
+  .activity-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+  .activity-subtitle {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.15rem;
+  }
+  .activity-body {
+    padding: 1rem 1.25rem;
+  }
+  .activity-desc {
+    font-size: 0.92rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.82;
+    margin-bottom: 0.75rem;
+    font-weight: 300;
+  }
+  .activity-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+  .activity-meta-item {
+    font-size: 0.78rem;
+    color: var(--text);
+  }
+  .activity-meta-item span {
+    color: var(--muted);
+    display: block;
+    font-size: 0.67rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .activity-includes {
+    font-size: 0.8rem;
+    color: var(--navy);
+    opacity: 0.65;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+  .activity-pack {
+    font-size: 0.78rem;
+    color: var(--navy);
+    opacity: 0.6;
+    margin-top: 0.25rem;
+    font-weight: 300;
+    font-style: italic;
+  }
 
   /* ── RESTAURANTS ── */
-  .badge { display: inline-block; background: var(--navy); color: var(--gold); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 0.75rem; }
-  .restaurant-card { background: var(--cream-dark); border-radius: 12px; padding: 1rem 1.1rem; margin-bottom: 0.65rem; }
-  .rest-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); }
-  .rest-vibe { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
-  .rest-desc { font-size: 0.88rem; color: var(--navy); opacity: 0.78; line-height: 1.72; font-weight: 300; }
-  .rest-phone { font-size: 0.82rem; color: var(--ocean); margin-top: 0.35rem; font-weight: 500; }
+  .restaurant-card {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .restaurant-card:last-child { border-bottom: none; }
+  .rest-emoji {
+    width: 42px;
+    height: 42px;
+    background: var(--cream-dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .rest-content {}
+  .rest-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--navy);
+  }
+  .rest-vibe {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    margin: 0.2rem 0;
+  }
+  .rest-desc {
+    font-size: 0.88rem;
+    color: var(--navy);
+    opacity: 0.75;
+    line-height: 1.78;
+    font-weight: 300;
+  }
+  .rest-phone {
+    font-size: 0.78rem;
+    color: var(--navy);
+    opacity: 0.55;
+    font-weight: 300;
+    margin-top: 0.35rem;
+    font-style: italic;
+  }
 
   /* ── THINGS TO DO ── */
-  .things-grid { display: grid; gap: 0.65rem; margin-top: 0.75rem; }
-  .thing-item { background: var(--cream-dark); border-radius: 10px; padding: 0.9rem 1rem; }
-  .thing-name { font-weight: 700; font-size: 0.88rem; color: var(--navy); margin-bottom: 0.2rem; }
-  .thing-desc { font-size: 0.84rem; color: var(--navy); opacity: 0.72; line-height: 1.65; font-weight: 300; }
+  .things-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .thing-item {
+    background: var(--cream-dark);
+    border-radius: 4px;
+    padding: 0.9rem 1rem;
+  }
+  .thing-emoji { display: none; }
+  .thing-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.2rem;
+  }
+  .thing-desc {
+    font-size: 0.82rem;
+    color: var(--navy);
+    opacity: 0.72;
+    line-height: 1.65;
+    margin-top: 0.3rem;
+    font-weight: 300;
+  }
 
-  /* ── NIGHTLIFE ── */
-  .nightlife-card { background: var(--cream-dark); border-radius: 12px; padding: 1rem 1.1rem; margin-bottom: 0.65rem; }
-  .nl-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
-  .nl-desc { font-size: 0.88rem; color: var(--navy); opacity: 0.78; line-height: 1.72; font-weight: 300; }
-
-  /* ── EMERGENCY ── */
-  .emergency-highlight { background: var(--navy); border-radius: 14px; padding: 1.25rem; margin-bottom: 0.75rem; display: flex; gap: 1rem; align-items: flex-start; }
-  .emergency-card { background: var(--cream-dark); border-radius: 12px; padding: 1rem 1.1rem; margin-bottom: 0.65rem; display: flex; gap: 0.85rem; align-items: flex-start; }
-  .emergency-icon { font-size: 1.5rem; flex-shrink: 0; }
-  .emergency-content h4 { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
-  .emergency-highlight .emergency-content h4 { color: var(--gold); }
-  .emergency-card .emergency-content h4 { color: var(--navy); }
-  .emergency-highlight .emergency-content p { font-size: 0.9rem; color: rgba(255,255,255,0.88); line-height: 1.7; font-weight: 300; }
-  .emergency-highlight .emergency-content a { color: var(--gold); }
-  .emergency-card .emergency-content p { font-size: 0.88rem; color: var(--navy); opacity: 0.8; line-height: 1.7; font-weight: 300; }
-  .emergency-card .emergency-content a { color: var(--ocean); }
+  /* ── GETTING AROUND ── */
+  .transport-item {
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 0.85rem 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+  .transport-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .transport-icon { font-size: 1.3rem; }
+  .transport-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+  }
+  .transport-body {
+    font-size: 0.92rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.82;
+    font-weight: 300;
+  }
+  .transport-body strong { color: var(--navy); opacity: 1; font-weight: 600; }
+  .driver-list {
+    margin-top: 0.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+  .driver-item {
+    background: white;
+    border-radius: 8px;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.78rem;
+  }
+  .driver-item .driver-name { font-weight: 700; color: var(--navy); }
+  .driver-item .driver-phone { color: var(--muted); }
 
   /* ── CHECKOUT ── */
-  .checkout-item { display: flex; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
+  .checkout-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
   .checkout-item:last-child { border-bottom: none; }
-  .checkout-num { width: 30px; height: 30px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 3px; }
-  .checkout-text h5 { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--navy); margin-bottom: 0.2rem; }
-  .checkout-text p { font-size: 0.88rem; color: var(--navy); opacity: 0.72; line-height: 1.65; font-weight: 300; }
+  .checkout-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--ocean);
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .checkout-text h5 {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .checkout-text p {
+    font-size: 0.88rem;
+    color: var(--navy);
+    opacity: 0.75;
+    line-height: 1.75;
+    margin-top: 0.2rem;
+    font-weight: 300;
+  }
+
+  /* ── EMERGENCY ── */
+  .emergency-card {
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .emergency-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--ocean);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .emergency-content h4 {
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+  .emergency-content p {
+    font-size: 0.88rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.78;
+    font-weight: 300;
+  }
+  .emergency-content a {
+    color: var(--sky);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .emergency-highlight {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .emergency-highlight .emergency-icon { background: rgba(255,255,255,0.15); }
+  .emergency-highlight h4 { color: var(--gold); }
+  .emergency-highlight p { color: rgba(255,255,255,0.75); }
+  .emergency-highlight a { color: var(--gold); }
+
+  /* ── BEACH ROUTE ── */
+  .beach-route {
+    background: linear-gradient(135deg, var(--navy), var(--ocean));
+    border-radius: 14px;
+    padding: 1.5rem;
+    color: white;
+    margin-top: 1rem;
+  }
+  .beach-route h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .route-step {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    align-items: flex-start;
+  }
+  .route-step:last-child { margin-bottom: 0; }
+  .step-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+  .route-step p {
+    font-size: 0.92rem;
+    line-height: 1.78;
+    color: rgba(255,255,255,0.82);
+    font-weight: 300;
+  }
+
+  /* ── NIGHTLIFE ── */
+  .nightlife-card {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nightlife-card:last-child { border-bottom: none; }
+  .nl-icon {
+    width: 40px;
+    height: 40px;
+    display: none;
+  }
+  .nl-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.2rem; }
+  .nl-desc { font-size: 0.88rem; color: var(--navy); opacity: 0.75; line-height: 1.78; margin-top: 0.2rem; font-weight: 300; }
 
   /* ── FOOTER ── */
-  footer { background: var(--navy); color: rgba(255,255,255,0.75); text-align: center; padding: 2.5rem 1.5rem; font-size: 0.85rem; line-height: 1.8; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--gold); margin-bottom: 0.25rem; }
-  .footer-tagline { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  footer .footer-tagline {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+  }
+  footer p { font-size: 0.82rem; line-height: 1.6; }
   footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── SECTION ACCENTS ── */
+  .sand-section { background: var(--cream-dark); }
+  .teal-section { background: var(--navy); color: white; }
+  .teal-section .section-label { color: var(--gold); opacity: 0.7; }
+  .teal-section .section-title { color: var(--gold); }
+
+  /* ── CATEGORY BADGES ── */
+  .badge {
+    display: inline-block;
+    background: none;
+    color: var(--navy);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+  }
+  .badge.teal { background: var(--ocean); color: white; }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    width: 44px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 0;
+    margin: 1rem 0 1.75rem;
+  }
+
+
+  /* ═══════════════════════════════════════════════════
+     TOP-HALF REFINEMENT — match bottom-half aesthetic
+  ═══════════════════════════════════════════════════ */
+
+  /* 1 · Hide all emoji containers in the top half */
+  .guide-icon,
+  .rule-icon,
+  .tip-emoji,
+  .wifi-icon,
+  .info-card .ic-icon,
+  .transport-icon { display: none; }
+
+  /* 2 · Guide items — editorial serif titles */
+  .guide-item { gap: 0; }
+  .guide-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    line-height: 1.2;
+  }
+
+  /* 3 · Rules — serif titles, no icon gap */
+  .rule-item { gap: 0; flex-direction: column; padding: 1rem; }
+  .rule-text h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: none;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.25rem;
+  }
+
+  /* 4 · Tips — serif titles, tighter header */
+  .tip-header { gap: 0; margin-bottom: 0.5rem; }
+  .tip-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+
+  /* 5 · Transport — serif titles */
+  .transport-header { gap: 0; margin-bottom: 0.5rem; }
+  .transport-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+
+  /* 6 · WiFi card — keep dark panel, remove icon gap */
+  .wifi-card { gap: 0; padding: 1.5rem 1.75rem; }
+  .wifi-network { margin-bottom: 0.15rem; }
+  .wifi-info .wifi-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .wifi-info .wifi-pass {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* 7 · Info cards — rely on label + value, no icon */
+  .info-card { padding: 1.1rem; }
+  .info-card .ic-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-top: 0.15rem;
+  }
+
+  /* 8 · Beach route header — serif */
+  .beach-route h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  /* 9 · Welcome signature — slightly larger */
+  .welcome-sig {
+    font-size: 1.25rem;
+    letter-spacing: 0.01em;
+  }
+
+  /* 10 · Hero unit label — tighten */
+  .hero-meta-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+
+  /* ── LANG TOGGLE (added for bilingual support) ── */
+  .lang-toggle {
+    position: fixed;
+    top: .5rem;
+    right: .65rem;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.14);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.72);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.38rem 0.72rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .lang-btn.active {
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 20px;
+  }
+  /* Reserve space at the end of the nav so the toggle never overlaps menu items */
+  nav ul { padding-right: 5.5rem; }
 </style>
 </head>
 <body>
@@ -682,9 +1401,12 @@
 
 <!-- EXPERIENCES -->
 <section id="activities">
-  <div class="section-label" data-i18n-en="Beyond the Beach" data-i18n-es="Más Allá de la Playa">Beyond the Beach</div>
-  <div class="section-title" data-i18n-en="Experiences We Recommend" data-i18n-es="Experiencias Que Recomendamos">Experiences We Recommend</div>
+  <div class="section-label" data-i18n-en="Rated by Travelers" data-i18n-es="Calificadas por Viajeros">Rated by Travelers</div>
+  <div class="section-title" data-i18n-en="Experiences Guests Love" data-i18n-es="Experiencias Que Encantan a los Huéspedes">Experiences Guests Love</div>
   <div class="section-divider"></div>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.6;"
+     data-i18n-en="These are Huatulco&apos;s top-rated tours and excursions, drawn from TripAdvisor&apos;s most reviewed and highest-rated experiences. Search any of these by name on TripAdvisor for full details, pricing, availability, and to book directly."
+     data-i18n-es="Estos son los tours y excursiones mejor calificados de Huatulco, seleccionados de las experiencias con más reseñas y mayor calificación en TripAdvisor. Busque cualquiera por su nombre en TripAdvisor para obtener todos los detalles, precios, disponibilidad y reservar directamente.">These are Huatulco's top-rated tours and excursions, drawn from TripAdvisor's most reviewed and highest-rated experiences. Search any of these by name on TripAdvisor for full details, pricing, availability, and to book directly.</p>
 
   <div class="activity-card">
     <div class="activity-header">
