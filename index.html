@@ -8,9 +8,6 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiNDOUE4NEMiLz48dGV4dCB4PSIzMiIgeT0iNDgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjQ4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzBDMUYzRiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QjwvdGV4dD48L3N2Zz4=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<!-- Icon fonts for OwnerRez widget (Glyphicons + Font Awesome) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glyphicons-only-bootstrap@1.0.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root{--navy:#0C1F3F;--ocean:#1A5276;--sky:#2E86C1;--teal:#48C9B0;--gold:#C9A84C;--cream:#FAF8F3;--muted:#6B8CAE;--border:rgba(12,31,63,0.12);--rust:#8B4513;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -167,7 +164,6 @@ section{padding:4rem 2rem;}
   .story-photos-single{max-width:100%;}
 }
 /* CALENDAR MODAL */
-.cal-overlay iframe[src*="ownerrez"],.cal-overlay iframe[src*="orez.io"]{border:none;width:100%;height:auto;}
 .cal-overlay{display:none;position:fixed;inset:0;background:rgba(12,31,63,.78);z-index:2000;align-items:center;justify-content:center;padding:1rem;}
 .cal-overlay.open{display:flex;}
 .cal-modal{background:#fff;border-radius:8px;max-width:880px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.35);}
@@ -567,7 +563,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
-          <button class="card-btn" onclick="openORModal()" data-i18n="lucky_btn">Check Availability & Book</button>
+          <button class="card-btn" onclick="openCal('lucky')" data-i18n="lucky_btn">Check Availability & Book</button>
         </div>
       </div>
 
@@ -660,7 +656,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
-          <button class="card-btn" onclick="openRacelORModal()" data-i18n="racel_btn">Check Availability & Book</button>
+          <button class="card-btn" onclick="openCal('racel')" data-i18n="racel_btn">Check Availability & Book</button>
         </div>
       </div>
       <div class="disc-box" style="grid-column:1 / -1;margin-top:1rem">
@@ -713,52 +709,6 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
           <button class="card-btn" style="margin-top:.5rem" onclick="waitlistFromCal()" data-i18n="cal_wl_btn">Join Waitlist — Contact Us</button>
         </div>
         <p class="cal-footer-note" id="calFootNote"></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- OWNERREZ BOOKING MODAL — Casa Lucky -->
-<div class="cal-overlay" id="orOverlay" onclick="if(event.target===this)closeORModal()">
-  <div style="background:#fff;border-radius:8px;max-width:720px;width:100%;max-height:92vh;overflow-y:auto;overflow-x:visible;box-shadow:0 32px 80px rgba(0,0,0,.35);">
-    <div class="cal-header">
-      <div>
-        <h3>Casa Lucky</h3>
-        <p>Nirú Las Casitas &middot; Santa Cruz, Huatulco</p>
-      </div>
-      <button class="cal-close" onclick="closeORModal()">&#x2715;</button>
-    </div>
-    <div class="cal-body" style="padding:1.5rem;">
-      <div id="orWidgetContainer" style="min-height:600px;"></div>
-      <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #e8e8e8;text-align:center;">
-        <p style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#7a7a7a;margin-bottom:.8rem;">Also available on</p>
-        <div style="display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;">
-          <a class="book-btn book-airbnb" href="https://www.airbnb.com/h/bravohuatulco" target="_blank" style="font-size:.69rem;padding:.65rem 1.2rem;">&#x2708; Airbnb</a>
-          <a class="book-btn book-vrbo" href="https://www.vrbo.com/5258815" target="_blank" style="font-size:.69rem;padding:.65rem 1.2rem;">&#x1F3E0; VRBO</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- OWNERREZ BOOKING MODAL — Casa Racél -->
-<div class="cal-overlay" id="orOverlayRacel" onclick="if(event.target===this)closeRacelORModal()">
-  <div style="background:#fff;border-radius:8px;max-width:720px;width:100%;max-height:92vh;overflow-y:auto;overflow-x:visible;box-shadow:0 32px 80px rgba(0,0,0,.35);">
-    <div class="cal-header">
-      <div>
-        <h3>Casa Racél</h3>
-        <p>Nirú Las Casitas &middot; Santa Cruz, Huatulco</p>
-      </div>
-      <button class="cal-close" onclick="closeRacelORModal()">&#x2715;</button>
-    </div>
-    <div class="cal-body" style="padding:1.5rem;">
-      <div id="orWidgetContainerRacel" style="min-height:600px;"></div>
-      <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #e8e8e8;text-align:center;">
-        <p style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#7a7a7a;margin-bottom:.8rem;">Also available on</p>
-        <div style="display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;">
-          <a class="book-btn book-airbnb" href="https://www.airbnb.com/h/bravohuatulco" target="_blank" style="font-size:.69rem;padding:.65rem 1.2rem;">&#x2708; Airbnb</a>
-          <a class="book-btn" href="https://www.baysidevacations.com/listing/105188" target="_blank" style="font-size:.69rem;padding:.65rem 1.2rem;background:#2c7a4b;color:#fff;">&#x1F3E0; Bayside Vacations</a>
-        </div>
       </div>
     </div>
   </div>
@@ -1950,32 +1900,6 @@ function openCal(prop){
   document.body.style.overflow='hidden';
 }
 function closeCal(){document.getElementById('calOverlay').classList.remove('open');document.body.style.overflow='';}
-function openORModal(){
-  document.getElementById('orOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-  var c=document.getElementById('orWidgetContainer');
-  if(!c.dataset.loaded){
-    c.innerHTML='<div class="ownerrez-widget" data-propertyId="5f51a5c886a648408e9b6d90881cb60c" data-widget-type="Casa Lucky Inquiry/Book - Booking/Inquiry" data-widgetId="59c4746fa2894e48bcce4f4fb2652210"></div>';
-    var s=document.createElement('script');
-    s.src='https://app.ownerrez.com/widget.js';
-    c.appendChild(s);
-    c.dataset.loaded='true';
-  }
-}
-function closeORModal(){document.getElementById('orOverlay').classList.remove('open');document.body.style.overflow='';}
-function openRacelORModal(){
-  document.getElementById('orOverlayRacel').classList.add('open');
-  document.body.style.overflow='hidden';
-  var c=document.getElementById('orWidgetContainerRacel');
-  if(!c.dataset.loaded){
-    c.innerHTML='<div class="ownerrez-widget" data-propertyId="e07cf2606a714b2c9b24925eaebe400f" data-widget-type="Casa Racel - Booking/Inquiry - Booking/Inquiry" data-widgetId="0070c3575bc54a698e821ced82da2166"></div>';
-    var s=document.createElement('script');
-    s.src='https://app.ownerrez.com/widget.js';
-    c.appendChild(s);
-    c.dataset.loaded='true';
-  }
-}
-function closeRacelORModal(){document.getElementById('orOverlayRacel').classList.remove('open');document.body.style.overflow='';}
 function renderCalendar(){
   const grid=document.getElementById('calGrid'),lbl=document.getElementById('calMonthLbl'),t=T[lang];
   const men=['January','February','March','April','May','June','July','August','September','October','November','December'];
