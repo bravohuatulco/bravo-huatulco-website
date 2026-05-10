@@ -728,6 +728,11 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
     </div>
     <div class="cal-body" style="padding:1.5rem;">
       <div id="orWidgetContainer" style="min-height:600px;"></div>
+      <div class="long-stay-note" style="margin-top:1.25rem;padding:1rem 1.1rem;background:#FAF8F3;border:1px solid rgba(201,168,76,.35);border-radius:4px;">
+        <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.4rem;" data-i18n="ls_eyebrow">Staying 28+ Nights?</div>
+        <p style="font-size:.85rem;color:var(--navy);line-height:1.5;margin:0 0 .55rem;" data-i18n="ls_body">Long stays are arranged via a custom quote with bespoke pricing and a tailored payment schedule.</p>
+        <a href="#contact" onclick="event.preventDefault();goToInquiry('lucky');" style="display:inline-block;font-size:.78rem;font-weight:600;color:var(--ocean);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:'Jost',sans-serif;" data-i18n="ls_link">Send us a long-stay inquiry →</a>
+      </div>
       <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #e8e8e8;text-align:center;">
         <p style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;margin:0;">Also listed on Airbnb &middot; VRBO &middot; Booking.com</p>
       </div>
@@ -747,6 +752,11 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
     </div>
     <div class="cal-body" style="padding:1.5rem;">
       <div id="orWidgetContainerRacel" style="min-height:600px;"></div>
+      <div class="long-stay-note" style="margin-top:1.25rem;padding:1rem 1.1rem;background:#FAF8F3;border:1px solid rgba(201,168,76,.35);border-radius:4px;">
+        <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.4rem;" data-i18n="ls_eyebrow">Staying 28+ Nights?</div>
+        <p style="font-size:.85rem;color:var(--navy);line-height:1.5;margin:0 0 .55rem;" data-i18n="ls_body">Long stays are arranged via a custom quote with bespoke pricing and a tailored payment schedule.</p>
+        <a href="#contact" onclick="event.preventDefault();goToInquiry('racel');" style="display:inline-block;font-size:.78rem;font-weight:600;color:var(--ocean);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:'Jost',sans-serif;" data-i18n="ls_link">Send us a long-stay inquiry →</a>
+      </div>
       <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #e8e8e8;text-align:center;">
         <p style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;margin:0;">Also listed on Airbnb &middot; VRBO &middot; Booking.com</p>
       </div>
@@ -1612,6 +1622,9 @@ en:{
   p_low_d:"May 1 – Nov 14",p_high_d:"Nov 15 – Dec 16 · Jan 8 – Apr 30",p_peak_d:"Dec 17 – Jan 7",
   per_n:"/ night",usd_note:"Rates in USD and MXN · Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking, as required by Mexican law.",
   lucky_btn:"Check Availability & Book",
+  ls_eyebrow:"Staying 28+ Nights?",
+  ls_body:"Long stays are arranged via a custom quote with bespoke pricing and a tailored payment schedule.",
+  ls_link:"Send us a long-stay inquiry →",
   rico_unit:"2 Bed · 2 Bath · 2nd Floor · Nirú Las Casitas",
   rico_sz:"121.7 m² / 1,310 ft²",rico_sl:"Sleeps 6",rico_view:"Elevated Ocean Views",
   rico_desc:"Situated one floor above Casa Racél, Casa Rico will offer even more expansive views over the Nirú pool and Santa Cruz hillside. A 2BR/2BA built to the same high standard as Racél — expect bold design, cool colors, and a personality all its own. King bedroom with ensuite, queen bedroom, and sleeper sofa. Smart TV in every room. High-speed Starlink Wi-Fi. Opening January 2027.",
@@ -1774,6 +1787,9 @@ es:{
   p_low_d:"1 May – 14 Nov",p_high_d:"15 Nov – 16 Dic · 8 Ene – 30 Abr",p_peak_d:"17 Dic – 7 Ene",
   per_n:"/ noche",usd_note:"Tarifas en USD y MXN · Los impuestos (16% IVA + 5% ISH) y el cargo de limpieza se agregan al reservar, conforme a la ley mexicana.",
   lucky_btn:"Ver Disponibilidad y Reservar",
+  ls_eyebrow:"¿Estancia de 28+ noches?",
+  ls_body:"Las estancias largas se gestionan mediante una cotización personalizada, con precios a medida y un calendario de pagos adaptado a su reserva.",
+  ls_link:"Envíenos una solicitud de estancia larga →",
   rico_unit:"2 Recámaras · 2 Baños · 2do Piso · Nirú Las Casitas",
   rico_sz:"121.7 m²",rico_sl:"Hasta 6 personas",rico_view:"Vistas Elevadas al Océano",
   rico_desc:"Ubicado un piso encima de Casa Racél, Casa Rico ofrecerá vistas aún más amplias sobre la alberca de Nirú y la colina de Santa Cruz. Un 2BR/2BA construido con el mismo alto estándar que Racél — diseño atrevido, colores frescos y una personalidad única. Recámara principal con baño privado, segunda recámara y sofá cama. Smart TV en cada habitación. Wi-Fi Starlink de alta velocidad. Apertura enero 2027.",
@@ -2031,6 +2047,54 @@ function openCal(prop){
   document.body.style.overflow='hidden';
 }
 function closeCal(){document.getElementById('calOverlay').classList.remove('open');document.body.style.overflow='';}
+// ────────────────────────────────────────────────────────────────────────
+// OwnerRez widget helpers
+//   ensureLinkObserver: makes Book Now (and any OR-domain link rendered by
+//     the widget) open in a new window. The widget renders content async,
+//     so we use a MutationObserver to catch links as they appear.
+//   goToInquiry: closes the booking modals and routes the guest to the
+//     inquiry form for long stays (28+ nights) or other custom requests.
+// ────────────────────────────────────────────────────────────────────────
+function ensureLinkObserver(containerId){
+  var c=document.getElementById(containerId);
+  if(!c||c.dataset.linkObserverSet) return;
+  c.dataset.linkObserverSet='true';
+  var processLinks=function(){
+    c.querySelectorAll('a[href]').forEach(function(a){
+      if(!a.dataset.tgtSet && /ownerrez\.com|orez\.io/i.test(a.href)){
+        a.target='_blank';
+        a.rel='noopener noreferrer';
+        a.dataset.tgtSet='true';
+      }
+    });
+  };
+  new MutationObserver(processLinks).observe(c,{childList:true,subtree:true});
+  processLinks();
+}
+
+function goToInquiry(prop){
+  // Close any open booking modals
+  closeORModal();
+  closeRacelORModal();
+  // Pre-select property and seed message
+  setTimeout(function(){
+    var propSel=document.getElementById('formProp');
+    if(propSel && prop){propSel.value=prop;}
+    var msg=document.getElementById('formMsg');
+    if(msg){
+      var seed=(lang==='es')
+        ? 'Hola — Estoy interesado/a en una estancia larga (28+ noches). Por favor envíenme una cotización personalizada con fechas y precios. Gracias.'
+        : 'Hi — I\'m interested in a long stay (28+ nights). Please send me a custom quote with dates and pricing. Thank you.';
+      if(!msg.value.trim()) msg.value=seed;
+    }
+    // Scroll to contact form
+    var target=document.getElementById('contact');
+    if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+    // Focus first name field for convenience
+    setTimeout(function(){var n=document.getElementById('formName'); if(n) n.focus({preventScroll:true});}, 600);
+  }, 120);
+}
+
 function openORModal(){
   document.getElementById('orOverlay').classList.add('open');
   document.body.style.overflow='hidden';
@@ -2042,8 +2106,15 @@ function openORModal(){
     c.appendChild(s);
     c.dataset.loaded='true';
   }
+  ensureLinkObserver('orWidgetContainer');
 }
-function closeORModal(){document.getElementById('orOverlay').classList.remove('open');document.body.style.overflow='';}
+function closeORModal(){
+  document.getElementById('orOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  // Reset widget so reopening starts fresh from booking step (not stuck on "Inquiry Sent")
+  var c=document.getElementById('orWidgetContainer');
+  if(c){c.innerHTML='';c.dataset.loaded='';}
+}
 function openRacelORModal(){
   document.getElementById('orOverlayRacel').classList.add('open');
   document.body.style.overflow='hidden';
@@ -2055,8 +2126,14 @@ function openRacelORModal(){
     c.appendChild(s);
     c.dataset.loaded='true';
   }
+  ensureLinkObserver('orWidgetContainerRacel');
 }
-function closeRacelORModal(){document.getElementById('orOverlayRacel').classList.remove('open');document.body.style.overflow='';}
+function closeRacelORModal(){
+  document.getElementById('orOverlayRacel').classList.remove('open');
+  document.body.style.overflow='';
+  var c=document.getElementById('orWidgetContainerRacel');
+  if(c){c.innerHTML='';c.dataset.loaded='';}
+}
 function renderCalendar(){
   const grid=document.getElementById('calGrid'),lbl=document.getElementById('calMonthLbl'),t=T[lang];
   const men=['January','February','March','April','May','June','July','August','September','October','November','December'];
