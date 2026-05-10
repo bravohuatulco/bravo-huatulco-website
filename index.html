@@ -644,19 +644,19 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
               <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 14</div>
-              <div class="ps-price">$135 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,360 MXN</div>
+              <div class="ps-price">$145 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,540 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-high">
               <div class="ps-season" data-i18n="p_high">High Season</div>
               <div class="ps-dates" data-i18n="p_high_d">Nov 15 – Dec 16 · Jan 8 – Apr 30</div>
-              <div class="ps-price">$185 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,240 MXN</div>
+              <div class="ps-price">$205 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,590 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-peak">
               <div class="ps-season" data-i18n="p_peak">Holiday / Peak</div>
               <div class="ps-dates" data-i18n="p_peak_d">Dec 17 – Jan 7</div>
-              <div class="ps-price">$255 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,460 MXN</div>
+              <div class="ps-price">$280 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,900 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
@@ -808,9 +808,9 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         <div class="niru-photos">
           <div class="niru-ph niru-ph-wide"><img src="images/image-23.jpg" alt="Nirú Las Casitas pool at sunset with Sierra Madre backdrop"></div>
           <div class="niru-ph"><img src="images/image-29.jpg" alt="Nirú Las Casitas pool and building exterior"></div>
-          <div class="niru-ph"><img src="images/image-83.jpg" alt="Nirú fitness centre with pickleball court visible through the window"></div>
-          <div class="niru-ph"><img src="images/image-85.jpg" alt="Cunard's Queen Elizabeth docked at Santa Cruz beach — a common sight from the bay"></div>
-          <div class="niru-ph"><img src="images/image-82.jpg" alt="Santa Cruz beach at sunset, with the Nirú hillside on the right"></div>
+          <div class="niru-ph"><img src="images/image-34.jpg" alt="Pickleball court"></div>
+          <div class="niru-ph"><img src="images/image-39.jpg" alt="Fitness center"></div>
+          <div class="niru-ph"><img src="images/image-26.jpg" alt="Santa Cruz beach"></div>
         </div>
         <div class="distances-panel">
           <div class="dist-header" data-i18n="dist_head">Distances from Nirú Las Casitas</div>
@@ -1986,38 +1986,8 @@ function openLB(key,cap){
   lbKeys=Object.keys(LB_DATA).filter(k=>k.startsWith(pfx));
   lbIdx=lbKeys.indexOf(key);
   showLB();
-  const navEl=document.querySelector('#lbOverlay .lb-nav');
-  if(navEl) navEl.style.display = lbKeys.length > 1 ? '' : 'none';
   document.getElementById('lbOverlay').classList.add('open');
   document.body.style.overflow='hidden';
-}
-/* Lightbox for any standalone <img> (not part of a gallery group) */
-function openSimpleLB(src, alt){
-  document.getElementById('lbImg').src=src;
-  document.getElementById('lbCap').textContent=alt||'';
-  const navEl=document.querySelector('#lbOverlay .lb-nav');
-  if(navEl) navEl.style.display='none';
-  document.getElementById('lbOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-/* Wire every eligible <img> to the lightbox on page load */
-function wireUpClickableImages(){
-  document.querySelectorAll('img').forEach(function(img){
-    if(img.closest('.gthumb')) return;          // gallery thumbs already handled
-    if(img.id==='lbImg') return;                 // the lightbox image itself
-    if(img.hasAttribute('data-no-lightbox')) return; // explicit opt-out
-    var w = img.naturalWidth || img.width || 0;
-    if(w > 0 && w < 40) return;                  // skip tiny decorative images
-    img.style.cursor='zoom-in';
-    img.addEventListener('click', function(){
-      openSimpleLB(this.src, this.alt);
-    });
-  });
-}
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded', wireUpClickableImages);
-} else {
-  wireUpClickableImages();
 }
 function showLB(){
   const k=lbKeys[lbIdx];
