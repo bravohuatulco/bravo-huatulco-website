@@ -2059,17 +2059,45 @@ function ensureLinkObserver(containerId){
   var c=document.getElementById(containerId);
   if(!c||c.dataset.linkObserverSet) return;
   c.dataset.linkObserverSet='true';
-  var processLinks=function(){
+  var matchOR=function(url){return /ownerrez\.com|orez\.io/i.test(url||'');};
+  var processNodes=function(){
+    // Anchor tags pointing to OwnerRez domains
     c.querySelectorAll('a[href]').forEach(function(a){
-      if(!a.dataset.tgtSet && /ownerrez\.com|orez\.io/i.test(a.href)){
+      if(!a.dataset.tgtSet && matchOR(a.href)){
         a.target='_blank';
         a.rel='noopener noreferrer';
         a.dataset.tgtSet='true';
       }
     });
+    // Forms — Book Now typically submits a form to OwnerRez. Setting target
+    // on the form makes the submission open in a new tab/window.
+    c.querySelectorAll('form').forEach(function(f){
+      if(!f.dataset.tgtSet){
+        f.target='_blank';
+        f.dataset.tgtSet='true';
+      }
+    });
   };
-  new MutationObserver(processLinks).observe(c,{childList:true,subtree:true});
-  processLinks();
+  new MutationObserver(processNodes).observe(c,{childList:true,subtree:true});
+  processNodes();
+  // Click-delegation fallback: catch Book Now buttons that navigate via JS
+  // (no form, no anchor). We open OR's booking page in a new tab if we can
+  // identify the destination from a nearby anchor or form action.
+  c.addEventListener('click', function(e){
+    var btn=e.target.closest('button,[role="button"]');
+    if(!btn) return;
+    var label=(btn.textContent||'').trim();
+    if(!/book now|reservar ahora|book\s*$/i.test(label)) return;
+    // If button is in a form, the form's target='_blank' already handles it
+    if(btn.closest('form')) return;
+    // Otherwise, look for a nearby OR anchor we can open instead
+    var nearbyAnchor=btn.parentElement && btn.parentElement.querySelector('a[href]');
+    if(nearbyAnchor && matchOR(nearbyAnchor.href)){
+      e.preventDefault();
+      e.stopPropagation();
+      window.open(nearbyAnchor.href,'_blank','noopener,noreferrer');
+    }
+  }, true);
 }
 
 function goToInquiry(prop){
