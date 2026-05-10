@@ -8,6 +8,9 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiNDOUE4NEMiLz48dGV4dCB4PSIzMiIgeT0iNDgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjQ4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzBDMUYzRiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QjwvdGV4dD48L3N2Zz4=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Icon fonts for OwnerRez widget (Glyphicons + Font Awesome) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glyphicons-only-bootstrap@1.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root{--navy:#0C1F3F;--ocean:#1A5276;--sky:#2E86C1;--teal:#48C9B0;--gold:#C9A84C;--cream:#FAF8F3;--muted:#6B8CAE;--border:rgba(12,31,63,0.12);--rust:#8B4513;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -164,6 +167,7 @@ section{padding:4rem 2rem;}
   .story-photos-single{max-width:100%;}
 }
 /* CALENDAR MODAL */
+.cal-overlay iframe[src*="ownerrez"],.cal-overlay iframe[src*="orez.io"]{border:none;width:100%;height:auto;}
 .cal-overlay{display:none;position:fixed;inset:0;background:rgba(12,31,63,.78);z-index:2000;align-items:center;justify-content:center;padding:1rem;}
 .cal-overlay.open{display:flex;}
 .cal-modal{background:#fff;border-radius:8px;max-width:880px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.35);}
@@ -563,51 +567,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
-          <button class="card-btn" onclick="openCal('lucky')" data-i18n="lucky_btn">Check Availability & Book</button>
-        </div>
-      </div>
-
-      <!-- CASA RICO -->
-      <div class="card">
-        <div class="card-img-wrap">
-          <img class="card-img" src="images/image-59.jpg" alt="Casa Rico — view from balcony over Nirú pool and Santa Cruz hillside">
-          <span class="badge badge-blue" data-i18n="badge_wl">Waitlist · 2027</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Casa Rico</div>
-          <div class="card-unit" data-i18n="rico_unit">2 Bed · 2 Bath · 2nd Floor · Nirú Las Casitas</div>
-          <div class="card-specs">
-            <span class="spec">📐 <span data-i18n="rico_sz">121.7 m² / 1,310 ft²</span></span>
-            <span class="spec">👥 <span data-i18n="rico_sl">Sleeps 6</span></span>
-            <span class="spec">🌊 <span data-i18n="rico_view">Elevated Ocean Views</span></span>
-          </div>
-          <p class="card-desc" data-i18n="rico_desc">One floor above Casa Racél with even better views — Casa Rico will be a 2BR/2BA built to the same standard as Racél: bold design, cool colors, and a personality all its own. Opening January 2027.</p>
-          <button class="amenities-toggle" id="btn-rico" onclick="toggleAmen('rico')">
-            <span data-i18n="lucky_amen_btn">View All Amenities</span> <span class="tog-arrow">▾</span>
-          </button>
-          <div class="amenities-panel" id="panel-rico"><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Entertainment" data-i18n-es="Entretenimiento">Entertainment</div><div class="amen-items"><div class="amen-item"><span class="ai">📺</span><span class="" data-i18n-en="Smart TV — Living Room" data-i18n-es="Smart TV — Sala">Smart TV — Living Room</span></div><div class="amen-item"><span class="ai">📺</span><span class="" data-i18n-en="Smart TV — Primary Bedroom" data-i18n-es="Smart TV — Recámara Principal">Smart TV — Primary Bedroom</span></div><div class="amen-item"><span class="ai">📺</span><span class="" data-i18n-en="Smart TV — 2nd Bedroom" data-i18n-es="Smart TV — 2a Recámara">Smart TV — 2nd Bedroom</span></div><div class="amen-item"><span class="ai">🛜</span><span class="" data-i18n-en="Starlink High-Speed Wi-Fi" data-i18n-es="Wi-Fi Starlink de Alta Velocidad">Starlink High-Speed Wi-Fi</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Kitchen" data-i18n-es="Cocina">Kitchen</div><div class="amen-items"><div class="amen-item"><span class="ai">☕</span><span class="" data-i18n-en="Coffee Maker — Drip" data-i18n-es="Cafetera de Goteo">Coffee Maker — Drip</span></div><div class="amen-item"><span class="ai">🍳</span><span class="" data-i18n-en="Cooking Basics — Pots, Pans, Oil, Salt & Pepper" data-i18n-es="Utensilios Básicos — Ollas, Sartenes, Aceite, Sal y Pimienta">Cooking Basics — Pots, Pans, Oil, Salt & Pepper</span></div><div class="amen-item"><span class="ai">🍽️</span><span class="" data-i18n-en="Dishes & Silverware" data-i18n-es="Vajilla y Cubiertos">Dishes & Silverware</span></div><div class="amen-item"><span class="ai">🫧</span><span class="" data-i18n-en="Dishwasher" data-i18n-es="Lavavajillas">Dishwasher</span></div><div class="amen-item"><span class="ai">🧊</span><span class="" data-i18n-en="Refrigerator" data-i18n-es="Refrigerador">Refrigerator</span></div><div class="amen-item"><span class="ai">📡</span><span class="" data-i18n-en="Microwave" data-i18n-es="Microondas">Microwave</span></div><div class="amen-item"><span class="ai">🥘</span><span class="" data-i18n-en="Oven — Stainless Steel" data-i18n-es="Horno — Acero Inoxidable">Oven — Stainless Steel</span></div><div class="amen-item"><span class="ai">🔥</span><span class="" data-i18n-en="Stove — Electric, 4 Burners" data-i18n-es="Estufa — Eléctrica, 4 Quemadores">Stove — Electric, 4 Burners</span></div><div class="amen-item"><span class="ai">🍞</span><span class="" data-i18n-en="Toaster" data-i18n-es="Tostador">Toaster</span></div><div class="amen-item"><span class="ai">🫖</span><span class="" data-i18n-en="Hot Water Kettle" data-i18n-es="Hervidor de Agua">Hot Water Kettle</span></div><div class="amen-item"><span class="ai">🧁</span><span class="" data-i18n-en="Baking Sheet" data-i18n-es="Charola para Hornear">Baking Sheet</span></div><div class="amen-item"><span class="ai">🍷</span><span class="" data-i18n-en="Wine Glasses" data-i18n-es="Copas de Vino">Wine Glasses</span></div><div class="amen-item"><span class="ai">🥤</span><span class="" data-i18n-en="Blender" data-i18n-es="Licuadora">Blender</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Bathroom & Laundry" data-i18n-es="Baño y Lavandería">Bathroom & Laundry</div><div class="amen-items"><div class="amen-item"><span class="ai">🧴</span><span class="" data-i18n-en="Shampoo & Conditioner" data-i18n-es="Champú y Acondicionador">Shampoo & Conditioner</span></div><div class="amen-item"><span class="ai">🧼</span><span class="" data-i18n-en="Body Soap & Shower Gel" data-i18n-es="Jabón Corporal y Gel de Ducha">Body Soap & Shower Gel</span></div><div class="amen-item"><span class="ai">💨</span><span class="" data-i18n-en="Hair Dryer" data-i18n-es="Secadora de Cabello">Hair Dryer</span></div><div class="amen-item"><span class="ai">🌡️</span><span class="" data-i18n-en="Hot Water" data-i18n-es="Agua Caliente">Hot Water</span></div><div class="amen-item"><span class="ai">🫧</span><span class="" data-i18n-en="Washer — In Unit" data-i18n-es="Lavadora — En la Unidad">Washer — In Unit</span></div><div class="amen-item"><span class="ai">🌀</span><span class="" data-i18n-en="Dryer — In Unit" data-i18n-es="Secadora — En la Unidad">Dryer — In Unit</span></div><div class="amen-item"><span class="ai">🧺</span><span class="" data-i18n-en="Drying Rack" data-i18n-es="Tendedero">Drying Rack</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Bedroom & Comfort" data-i18n-es="Recámara y Comodidad">Bedroom & Comfort</div><div class="amen-items"><div class="amen-item"><span class="ai">❄️</span><span class="" data-i18n-en="Air Conditioning — All Rooms" data-i18n-es="Aire Acondicionado — Todas las Habitaciones">Air Conditioning — All Rooms</span></div><div class="amen-item"><span class="ai">🛏️</span><span class="" data-i18n-en="Bed Linens" data-i18n-es="Ropa de Cama">Bed Linens</span></div><div class="amen-item"><span class="ai">🌀</span><span class="" data-i18n-en="Ceiling Fan" data-i18n-es="Ventilador de Techo">Ceiling Fan</span></div><div class="amen-item"><span class="ai">🗄️</span><span class="" data-i18n-en="Clothing Storage" data-i18n-es="Almacenamiento de Ropa">Clothing Storage</span></div><div class="amen-item"><span class="ai">🛏️</span><span class="" data-i18n-en="Extra Pillows & Blankets" data-i18n-es="Almohadas y Cobijas Extra">Extra Pillows & Blankets</span></div><div class="amen-item"><span class="ai">🪝</span><span class="" data-i18n-en="Hangers" data-i18n-es="Ganchos">Hangers</span></div><div class="amen-item"><span class="ai">👔</span><span class="" data-i18n-en="Iron" data-i18n-es="Plancha">Iron</span></div><div class="amen-item"><span class="ai">🪟</span><span class="" data-i18n-en="Room-Darkening Shades" data-i18n-es="Persianas Oscurecedoras">Room-Darkening Shades</span></div><div class="amen-item"><span class="ai">🔐</span><span class="" data-i18n-en="Safe" data-i18n-es="Caja de Seguridad">Safe</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Outdoor" data-i18n-es="Exterior">Outdoor</div><div class="amen-items"><div class="amen-item"><span class="ai">🌿</span><span class="" data-i18n-en="Private Balcony — Alfresco Dining for 6" data-i18n-es="Balcón Privado — Comedor al Aire Libre para 6">Private Balcony — Alfresco Dining for 6</span></div><div class="amen-item"><span class="ai">🪑</span><span class="" data-i18n-en="Outdoor Furniture" data-i18n-es="Mobiliario Exterior">Outdoor Furniture</span></div><div class="amen-item"><span class="ai">🏊</span><span class="" data-i18n-en="Communal Pool (×1 operational)" data-i18n-es="Alberca Comunitaria (×1 operacional)">Communal Pool (×1 operational)</span></div><div class="amen-item"><span class="ai">🌊</span><span class="" data-i18n-en="Beach Access — 2-min Walk" data-i18n-es="Acceso a la Playa — 2 Min a Pie">Beach Access — 2-min Walk</span></div><div class="amen-item"><span class="ai">🏖️</span><span class="" data-i18n-en="Beach Essentials — Towels, Chairs & Umbrella" data-i18n-es="Artículos de Playa — Toallas, Sillas y Sombrilla">Beach Essentials — Towels, Chairs & Umbrella</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Property & Features" data-i18n-es="Propiedad y Características">Property & Features</div><div class="amen-items"><div class="amen-item"><span class="ai">🚪</span><span class="" data-i18n-en="Private Entrance" data-i18n-es="Entrada Privada">Private Entrance</span></div><div class="amen-item"><span class="ai">🛋️</span><span class="" data-i18n-en="Private Living Room" data-i18n-es="Sala de Estar Privada">Private Living Room</span></div><div class="amen-item"><span class="ai">🅿️</span><span class="" data-i18n-en="Free Parking On Premises" data-i18n-es="Estacionamiento Gratuito en las Instalaciones">Free Parking On Premises</span></div><div class="amen-item"><span class="ai">🔒</span><span class="" data-i18n-en="Gated Development — 24/7 Security" data-i18n-es="Desarrollo Cerrado — Seguridad 24/7">Gated Development — 24/7 Security</span></div><div class="amen-item"><span class="ai">🧹</span><span class="" data-i18n-en="Cleaning Products Provided" data-i18n-es="Productos de Limpieza Proporcionados">Cleaning Products Provided</span></div><div class="amen-item"><span class="ai">🗓️</span><span class="" data-i18n-en="Long-Term Stays Welcome — 28+ Nights" data-i18n-es="Estancias Largas Bienvenidas — 28+ Noches">Long-Term Stays Welcome — 28+ Nights</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="On-Site Amenities" data-i18n-es="Amenidades en el Lugar">On-Site Amenities</div><div class="amen-items"><div class="amen-item"><span class="ai">🏋️</span><span class="" data-i18n-en="Exercise Equipment — Elliptical, Free Weights, Stationary Bike, Treadmill, Workout Bench, Yoga Mat" data-i18n-es="Equipo de Ejercicio — Elíptica, Pesas Libres, Bicicleta Estacionaria, Caminadora, Banco de Ejercicio, Tapete de Yoga">Exercise Equipment — Elliptical, Free Weights, Stationary Bike, Treadmill, Workout Bench, Yoga Mat</span></div><div class="amen-item"><span class="ai">🏋️</span><span class="" data-i18n-en="Gym — Shared, In Building" data-i18n-es="Gimnasio — Compartido, En el Edificio">Gym — Shared, In Building</span></div><div class="amen-item"><span class="ai">⛱️</span><span class="" data-i18n-en="Resort Access — Available at Extra Cost" data-i18n-es="Acceso al Resort — Disponible con Costo Adicional">Resort Access — Available at Extra Cost</span></div></div></div></div>
-          <p class="price-label" data-i18n="usd_note">Nightly rates in USD · Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking, as required by Mexican law.</p>
-          <div class="price-seasons">
-            <div class="ps-cell ps-low">
-              <div class="ps-season" data-i18n="p_low">Low Season</div>
-              <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 14</div>
-              <div class="ps-price">$135 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,360 MXN</div>
-              <span class="ps-night" data-i18n="per_n">/ night</span>
-            </div>
-            <div class="ps-cell ps-high">
-              <div class="ps-season" data-i18n="p_high">High Season</div>
-              <div class="ps-dates" data-i18n="p_high_d">Nov 15 – Dec 16 · Jan 8 – Apr 30</div>
-              <div class="ps-price">$185 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,240 MXN</div>
-              <span class="ps-night" data-i18n="per_n">/ night</span>
-            </div>
-            <div class="ps-cell ps-peak">
-              <div class="ps-season" data-i18n="p_peak">Holiday / Peak</div>
-              <div class="ps-dates" data-i18n="p_peak_d">Dec 17 – Jan 7</div>
-              <div class="ps-price">$255 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,460 MXN</div>
-              <span class="ps-night" data-i18n="per_n">/ night</span>
-            </div>
-          </div>
-          <button class="card-btn-waitlist" onclick="openCal('rico')" data-i18n="rico_btn">Join the Waitlist</button>
+          <button class="card-btn" onclick="openORModal()" data-i18n="lucky_btn">Check Availability & Book</button>
         </div>
       </div>
 
@@ -656,7 +616,51 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
-          <button class="card-btn" onclick="openCal('racel')" data-i18n="racel_btn">Check Availability & Book</button>
+          <button class="card-btn" onclick="openRacelORModal()" data-i18n="racel_btn">Check Availability & Book</button>
+        </div>
+      </div>
+
+      <!-- CASA RICO -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img class="card-img" src="images/image-59.jpg" alt="Casa Rico — view from balcony over Nirú pool and Santa Cruz hillside">
+          <span class="badge badge-blue" data-i18n="badge_wl">Waitlist · 2027</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Casa Rico</div>
+          <div class="card-unit" data-i18n="rico_unit">2 Bed · 2 Bath · 2nd Floor · Nirú Las Casitas</div>
+          <div class="card-specs">
+            <span class="spec">📐 <span data-i18n="rico_sz">121.7 m² / 1,310 ft²</span></span>
+            <span class="spec">👥 <span data-i18n="rico_sl">Sleeps 6</span></span>
+            <span class="spec">🌊 <span data-i18n="rico_view">Elevated Ocean Views</span></span>
+          </div>
+          <p class="card-desc" data-i18n="rico_desc">One floor above Casa Racél with even better views — Casa Rico will be a 2BR/2BA built to the same standard as Racél: bold design, cool colors, and a personality all its own. Opening January 2027.</p>
+          <button class="amenities-toggle" id="btn-rico" onclick="toggleAmen('rico')">
+            <span data-i18n="lucky_amen_btn">View All Amenities</span> <span class="tog-arrow">▾</span>
+          </button>
+          <div class="amenities-panel" id="panel-rico"><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Entertainment" data-i18n-es="Entretenimiento">Entertainment</div><div class="amen-items"><div class="amen-item"><span class="ai">📺</span><span class="" data-i18n-en="Smart TV — Living Room" data-i18n-es="Smart TV — Sala">Smart TV — Living Room</span></div><div class="amen-item"><span class="ai">📺</span><span class="" data-i18n-en="Smart TV — Primary Bedroom" data-i18n-es="Smart TV — Recámara Principal">Smart TV — Primary Bedroom</span></div><div class="amen-item"><span class="ai">📺</span><span class="" data-i18n-en="Smart TV — 2nd Bedroom" data-i18n-es="Smart TV — 2a Recámara">Smart TV — 2nd Bedroom</span></div><div class="amen-item"><span class="ai">🛜</span><span class="" data-i18n-en="Starlink High-Speed Wi-Fi" data-i18n-es="Wi-Fi Starlink de Alta Velocidad">Starlink High-Speed Wi-Fi</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Kitchen" data-i18n-es="Cocina">Kitchen</div><div class="amen-items"><div class="amen-item"><span class="ai">☕</span><span class="" data-i18n-en="Coffee Maker — Drip" data-i18n-es="Cafetera de Goteo">Coffee Maker — Drip</span></div><div class="amen-item"><span class="ai">🍳</span><span class="" data-i18n-en="Cooking Basics — Pots, Pans, Oil, Salt & Pepper" data-i18n-es="Utensilios Básicos — Ollas, Sartenes, Aceite, Sal y Pimienta">Cooking Basics — Pots, Pans, Oil, Salt & Pepper</span></div><div class="amen-item"><span class="ai">🍽️</span><span class="" data-i18n-en="Dishes & Silverware" data-i18n-es="Vajilla y Cubiertos">Dishes & Silverware</span></div><div class="amen-item"><span class="ai">🫧</span><span class="" data-i18n-en="Dishwasher" data-i18n-es="Lavavajillas">Dishwasher</span></div><div class="amen-item"><span class="ai">🧊</span><span class="" data-i18n-en="Refrigerator" data-i18n-es="Refrigerador">Refrigerator</span></div><div class="amen-item"><span class="ai">📡</span><span class="" data-i18n-en="Microwave" data-i18n-es="Microondas">Microwave</span></div><div class="amen-item"><span class="ai">🥘</span><span class="" data-i18n-en="Oven — Stainless Steel" data-i18n-es="Horno — Acero Inoxidable">Oven — Stainless Steel</span></div><div class="amen-item"><span class="ai">🔥</span><span class="" data-i18n-en="Stove — Electric, 4 Burners" data-i18n-es="Estufa — Eléctrica, 4 Quemadores">Stove — Electric, 4 Burners</span></div><div class="amen-item"><span class="ai">🍞</span><span class="" data-i18n-en="Toaster" data-i18n-es="Tostador">Toaster</span></div><div class="amen-item"><span class="ai">🫖</span><span class="" data-i18n-en="Hot Water Kettle" data-i18n-es="Hervidor de Agua">Hot Water Kettle</span></div><div class="amen-item"><span class="ai">🧁</span><span class="" data-i18n-en="Baking Sheet" data-i18n-es="Charola para Hornear">Baking Sheet</span></div><div class="amen-item"><span class="ai">🍷</span><span class="" data-i18n-en="Wine Glasses" data-i18n-es="Copas de Vino">Wine Glasses</span></div><div class="amen-item"><span class="ai">🥤</span><span class="" data-i18n-en="Blender" data-i18n-es="Licuadora">Blender</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Bathroom & Laundry" data-i18n-es="Baño y Lavandería">Bathroom & Laundry</div><div class="amen-items"><div class="amen-item"><span class="ai">🧴</span><span class="" data-i18n-en="Shampoo & Conditioner" data-i18n-es="Champú y Acondicionador">Shampoo & Conditioner</span></div><div class="amen-item"><span class="ai">🧼</span><span class="" data-i18n-en="Body Soap & Shower Gel" data-i18n-es="Jabón Corporal y Gel de Ducha">Body Soap & Shower Gel</span></div><div class="amen-item"><span class="ai">💨</span><span class="" data-i18n-en="Hair Dryer" data-i18n-es="Secadora de Cabello">Hair Dryer</span></div><div class="amen-item"><span class="ai">🌡️</span><span class="" data-i18n-en="Hot Water" data-i18n-es="Agua Caliente">Hot Water</span></div><div class="amen-item"><span class="ai">🫧</span><span class="" data-i18n-en="Washer — In Unit" data-i18n-es="Lavadora — En la Unidad">Washer — In Unit</span></div><div class="amen-item"><span class="ai">🌀</span><span class="" data-i18n-en="Dryer — In Unit" data-i18n-es="Secadora — En la Unidad">Dryer — In Unit</span></div><div class="amen-item"><span class="ai">🧺</span><span class="" data-i18n-en="Drying Rack" data-i18n-es="Tendedero">Drying Rack</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Bedroom & Comfort" data-i18n-es="Recámara y Comodidad">Bedroom & Comfort</div><div class="amen-items"><div class="amen-item"><span class="ai">❄️</span><span class="" data-i18n-en="Air Conditioning — All Rooms" data-i18n-es="Aire Acondicionado — Todas las Habitaciones">Air Conditioning — All Rooms</span></div><div class="amen-item"><span class="ai">🛏️</span><span class="" data-i18n-en="Bed Linens" data-i18n-es="Ropa de Cama">Bed Linens</span></div><div class="amen-item"><span class="ai">🌀</span><span class="" data-i18n-en="Ceiling Fan" data-i18n-es="Ventilador de Techo">Ceiling Fan</span></div><div class="amen-item"><span class="ai">🗄️</span><span class="" data-i18n-en="Clothing Storage" data-i18n-es="Almacenamiento de Ropa">Clothing Storage</span></div><div class="amen-item"><span class="ai">🛏️</span><span class="" data-i18n-en="Extra Pillows & Blankets" data-i18n-es="Almohadas y Cobijas Extra">Extra Pillows & Blankets</span></div><div class="amen-item"><span class="ai">🪝</span><span class="" data-i18n-en="Hangers" data-i18n-es="Ganchos">Hangers</span></div><div class="amen-item"><span class="ai">👔</span><span class="" data-i18n-en="Iron" data-i18n-es="Plancha">Iron</span></div><div class="amen-item"><span class="ai">🪟</span><span class="" data-i18n-en="Room-Darkening Shades" data-i18n-es="Persianas Oscurecedoras">Room-Darkening Shades</span></div><div class="amen-item"><span class="ai">🔐</span><span class="" data-i18n-en="Safe" data-i18n-es="Caja de Seguridad">Safe</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Outdoor" data-i18n-es="Exterior">Outdoor</div><div class="amen-items"><div class="amen-item"><span class="ai">🌿</span><span class="" data-i18n-en="Private Balcony — Alfresco Dining for 6" data-i18n-es="Balcón Privado — Comedor al Aire Libre para 6">Private Balcony — Alfresco Dining for 6</span></div><div class="amen-item"><span class="ai">🪑</span><span class="" data-i18n-en="Outdoor Furniture" data-i18n-es="Mobiliario Exterior">Outdoor Furniture</span></div><div class="amen-item"><span class="ai">🏊</span><span class="" data-i18n-en="Communal Pool (×1 operational)" data-i18n-es="Alberca Comunitaria (×1 operacional)">Communal Pool (×1 operational)</span></div><div class="amen-item"><span class="ai">🌊</span><span class="" data-i18n-en="Beach Access — 2-min Walk" data-i18n-es="Acceso a la Playa — 2 Min a Pie">Beach Access — 2-min Walk</span></div><div class="amen-item"><span class="ai">🏖️</span><span class="" data-i18n-en="Beach Essentials — Towels, Chairs & Umbrella" data-i18n-es="Artículos de Playa — Toallas, Sillas y Sombrilla">Beach Essentials — Towels, Chairs & Umbrella</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Property & Features" data-i18n-es="Propiedad y Características">Property & Features</div><div class="amen-items"><div class="amen-item"><span class="ai">🚪</span><span class="" data-i18n-en="Private Entrance" data-i18n-es="Entrada Privada">Private Entrance</span></div><div class="amen-item"><span class="ai">🛋️</span><span class="" data-i18n-en="Private Living Room" data-i18n-es="Sala de Estar Privada">Private Living Room</span></div><div class="amen-item"><span class="ai">🅿️</span><span class="" data-i18n-en="Free Parking On Premises" data-i18n-es="Estacionamiento Gratuito en las Instalaciones">Free Parking On Premises</span></div><div class="amen-item"><span class="ai">🔒</span><span class="" data-i18n-en="Gated Development — 24/7 Security" data-i18n-es="Desarrollo Cerrado — Seguridad 24/7">Gated Development — 24/7 Security</span></div><div class="amen-item"><span class="ai">🧹</span><span class="" data-i18n-en="Cleaning Products Provided" data-i18n-es="Productos de Limpieza Proporcionados">Cleaning Products Provided</span></div><div class="amen-item"><span class="ai">🗓️</span><span class="" data-i18n-en="Long-Term Stays Welcome — 28+ Nights" data-i18n-es="Estancias Largas Bienvenidas — 28+ Noches">Long-Term Stays Welcome — 28+ Nights</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="On-Site Amenities" data-i18n-es="Amenidades en el Lugar">On-Site Amenities</div><div class="amen-items"><div class="amen-item"><span class="ai">🏋️</span><span class="" data-i18n-en="Exercise Equipment — Elliptical, Free Weights, Stationary Bike, Treadmill, Workout Bench, Yoga Mat" data-i18n-es="Equipo de Ejercicio — Elíptica, Pesas Libres, Bicicleta Estacionaria, Caminadora, Banco de Ejercicio, Tapete de Yoga">Exercise Equipment — Elliptical, Free Weights, Stationary Bike, Treadmill, Workout Bench, Yoga Mat</span></div><div class="amen-item"><span class="ai">🏋️</span><span class="" data-i18n-en="Gym — Shared, In Building" data-i18n-es="Gimnasio — Compartido, En el Edificio">Gym — Shared, In Building</span></div><div class="amen-item"><span class="ai">⛱️</span><span class="" data-i18n-en="Resort Access — Available at Extra Cost" data-i18n-es="Acceso al Resort — Disponible con Costo Adicional">Resort Access — Available at Extra Cost</span></div></div></div></div>
+          <p class="price-label" data-i18n="usd_note">Nightly rates in USD · Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking, as required by Mexican law.</p>
+          <div class="price-seasons">
+            <div class="ps-cell ps-low">
+              <div class="ps-season" data-i18n="p_low">Low Season</div>
+              <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 14</div>
+              <div class="ps-price">$135 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,360 MXN</div>
+              <span class="ps-night" data-i18n="per_n">/ night</span>
+            </div>
+            <div class="ps-cell ps-high">
+              <div class="ps-season" data-i18n="p_high">High Season</div>
+              <div class="ps-dates" data-i18n="p_high_d">Nov 15 – Dec 16 · Jan 8 – Apr 30</div>
+              <div class="ps-price">$185 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,240 MXN</div>
+              <span class="ps-night" data-i18n="per_n">/ night</span>
+            </div>
+            <div class="ps-cell ps-peak">
+              <div class="ps-season" data-i18n="p_peak">Holiday / Peak</div>
+              <div class="ps-dates" data-i18n="p_peak_d">Dec 17 – Jan 7</div>
+              <div class="ps-price">$255 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,460 MXN</div>
+              <span class="ps-night" data-i18n="per_n">/ night</span>
+            </div>
+          </div>
+          <button class="card-btn-waitlist" onclick="openCal('rico')" data-i18n="rico_btn">Join the Waitlist</button>
         </div>
       </div>
       <div class="disc-box" style="grid-column:1 / -1;margin-top:1rem">
@@ -698,10 +702,8 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         <div class="cal-sum-dates" id="sumDates"></div>
         <div class="cal-sum-rows" id="sumRows"></div>
         <div id="calBookBlock">
-          <div class="cal-book-label" id="calBookLbl">Choose how to book:</div>
+          <div class="cal-book-label" id="calBookLbl">Ready to book?</div>
           <div class="cal-book-btns">
-            <a id="btnAirbnb" class="book-btn book-airbnb" href="https://www.airbnb.com/h/bravohuatulco" target="_blank">✈ Book via Airbnb</a>
-            <a id="btnVrbo" class="book-btn book-vrbo" href="https://www.vrbo.com/5258815" target="_blank" style="display:none;">🏠 Book via VRBO</a>
             <a id="btnDirect" class="book-btn book-direct book-btn-full" onclick="bookDirectFromCal()">⭐ Book Direct & Save</a>
           </div>
         </div>
@@ -709,6 +711,44 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
           <button class="card-btn" style="margin-top:.5rem" onclick="waitlistFromCal()" data-i18n="cal_wl_btn">Join Waitlist — Contact Us</button>
         </div>
         <p class="cal-footer-note" id="calFootNote"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OWNERREZ BOOKING MODAL — Casa Lucky -->
+<div class="cal-overlay" id="orOverlay" onclick="if(event.target===this)closeORModal()">
+  <div style="background:#fff;border-radius:8px;max-width:720px;width:100%;max-height:92vh;overflow-y:auto;overflow-x:visible;box-shadow:0 32px 80px rgba(0,0,0,.35);">
+    <div class="cal-header">
+      <div>
+        <h3>Casa Lucky</h3>
+        <p>Nirú Las Casitas &middot; Santa Cruz, Huatulco</p>
+      </div>
+      <button class="cal-close" onclick="closeORModal()">&#x2715;</button>
+    </div>
+    <div class="cal-body" style="padding:1.5rem;">
+      <div id="orWidgetContainer" style="min-height:600px;"></div>
+      <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #e8e8e8;text-align:center;">
+        <p style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;margin:0;">Also listed on Airbnb &middot; VRBO &middot; Booking.com</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OWNERREZ BOOKING MODAL — Casa Racél -->
+<div class="cal-overlay" id="orOverlayRacel" onclick="if(event.target===this)closeRacelORModal()">
+  <div style="background:#fff;border-radius:8px;max-width:720px;width:100%;max-height:92vh;overflow-y:auto;overflow-x:visible;box-shadow:0 32px 80px rgba(0,0,0,.35);">
+    <div class="cal-header">
+      <div>
+        <h3>Casa Racél</h3>
+        <p>Nirú Las Casitas &middot; Santa Cruz, Huatulco</p>
+      </div>
+      <button class="cal-close" onclick="closeRacelORModal()">&#x2715;</button>
+    </div>
+    <div class="cal-body" style="padding:1.5rem;">
+      <div id="orWidgetContainerRacel" style="min-height:600px;"></div>
+      <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #e8e8e8;text-align:center;">
+        <p style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;margin:0;">Also listed on Airbnb &middot; VRBO &middot; Booking.com</p>
       </div>
     </div>
   </div>
@@ -832,6 +872,22 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
     <p class="sec-sub" data-i18n="stories_sub">Every name carries a story worth telling — of family, of love, and of lives well lived. When you stay with us, you stay in their honor.</p>
     <div class="stories-grid">
 
+      <!-- ── Casa Lucky ── -->
+      <div class="story-card">
+        <div class="story-photos story-photos-single">
+          <div class="story-photo-wrap">
+            <img src="images/image-80.jpg" alt="Lucky the Pomeranian" class="story-img story-img-landscape" loading="lazy">
+            <div class="story-photo-cap" data-i18n="story_lucky_cap">Lucky · 13 glorious years</div>
+          </div>
+        </div>
+        <div class="story-text">
+          <div class="story-name" data-i18n="story_lucky_name">Casa Lucky</div>
+          <div class="story-tagline" data-i18n="story_lucky_tagline">A Pomeranian. A legend.</div>
+          <p class="story-desc" data-i18n="story_lucky_p1">Thirteen years isn't just a long time — it's a whole life built together. Lucky was small in stature and enormous in personality, the kind of dog who made every room a little brighter and every moment a little warmer. We were lucky to have him, and we knew it every single day.</p>
+          <p class="story-desc" data-i18n="story_lucky_p2">Casa Lucky fits him perfectly — cozy, full of character, and absolutely the life of the party. When you're here, you're staying in the spirit of a very good boy who never wasted a single beautiful day.</p>
+        </div>
+      </div>
+
       <!-- ── Casa Racél ── -->
       <div class="story-card">
         <div class="story-photos">
@@ -849,22 +905,6 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
           <div class="story-tagline" data-i18n="story_racel_tagline">"Rac" from Nana Rachel · "Cel" from Mamá Celina</div>
           <p class="story-desc" data-i18n="story_racel_p1">She stitched Christmas stockings by hand — he leaned into her shoulder without a word needing to be said. <strong>Racél</strong> is a name born of two families: <em>Rac</em> from Mateo's Nana Rachel, and <em>Cel</em> from Francisco's mother Celina. Two women. Two families. One name that carries them both.</p>
           <p class="story-desc" data-i18n="story_racel_p2">The bold colors, the Frida portrait, the warmth you feel the moment you walk in — that's intentional. It's their presence, woven into every corner. Strong, vibrant, unapologetically themselves. Just like the women who inspired them.</p>
-        </div>
-      </div>
-
-      <!-- ── Casa Lucky ── -->
-      <div class="story-card">
-        <div class="story-photos story-photos-single">
-          <div class="story-photo-wrap">
-            <img src="images/image-80.jpg" alt="Lucky the Pomeranian" class="story-img story-img-landscape" loading="lazy">
-            <div class="story-photo-cap" data-i18n="story_lucky_cap">Lucky · 13 glorious years</div>
-          </div>
-        </div>
-        <div class="story-text">
-          <div class="story-name" data-i18n="story_lucky_name">Casa Lucky</div>
-          <div class="story-tagline" data-i18n="story_lucky_tagline">A Pomeranian. A legend.</div>
-          <p class="story-desc" data-i18n="story_lucky_p1">Thirteen years isn't just a long time — it's a whole life built together. Lucky was small in stature and enormous in personality, the kind of dog who made every room a little brighter and every moment a little warmer. We were lucky to have him, and we knew it every single day.</p>
-          <p class="story-desc" data-i18n="story_lucky_p2">Casa Lucky fits him perfectly — cozy, full of character, and absolutely the life of the party. When you're here, you're staying in the spirit of a very good boy who never wasted a single beautiful day.</p>
         </div>
       </div>
 
@@ -946,16 +986,16 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
       <div class="pol-card">
         <div class="pol-head" data-i18n="pol_fees">Fees & Discounts</div>
         <div class="pol-row"><span class="pol-lbl" data-i18n="pol_clean">Cleaning Fee</span><span class="pol-val" data-i18n="pol_clean_v">$50 per booking (Casa Lucky) · $75 per booking (Casa Rico / Racél)</span></div>
+        <div class="pol-row"><span class="pol-lbl" data-i18n="pol_damage">Damage Protection</span><span class="pol-val" data-i18n="pol_damage_v">$37 USD per booking · No security deposit required</span></div>
         <div class="pol-row"><span class="pol-lbl" data-i18n="pol_elec">Electricity</span><span class="pol-val" data-i18n="pol_elec_v">Included in the nightly rate for normal daily use. Specific allowances and overage rates are detailed in your rental agreement.</span></div>
-        <div class="pol-row"><span class="pol-lbl" data-i18n="pol_d21">21+ nights</span><span class="pol-val" data-i18n="pol_d21_v">15% off</span></div>
-        <div class="pol-row"><span class="pol-lbl" data-i18n="pol_d28">28+ nights</span><span class="pol-val" data-i18n="pol_d28_v">20% off</span></div>
+        <div class="pol-row"><span class="pol-lbl" data-i18n="pol_d28">28+ nights</span><span class="pol-val" data-i18n="pol_d28_v">20% off (excludes Dec 17–Jan 7)</span></div>
         <div class="pol-row"><span class="pol-lbl" data-i18n="pol_tax">Taxes</span><span class="pol-val" data-i18n="pol_tax_v">16% VAT + 5% ISH (Oaxacan lodging tax) added at booking</span></div>
       </div>
       <div class="pol-card">
         <div class="pol-head" data-i18n="pol_pay_h">Payment</div>
         <div class="pay-tiers" style="margin:0">
           <div class="pay-tier">
-            <div class="pay-tier-head" data-i18n="pay_std_h">Standard Weekly</div>
+            <div class="pay-tier-head" data-i18n="pay_std_h">Standard Bookings</div>
             <ul>
               <li data-i18n="pay_std_1"><strong>30% deposit</strong> due at booking</li>
               <li data-i18n="pay_std_2">Balance due <strong>30 days</strong> before arrival</li>
@@ -963,28 +1003,28 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             </ul>
           </div>
           <div class="pay-tier">
-            <div class="pay-tier-head" data-i18n="pay_sp_h">Monthly & Holiday</div>
+            <div class="pay-tier-head" data-i18n="pay_sp_h">Long Stays (28+ nights)</div>
             <ul>
               <li data-i18n="pay_sp_1"><strong>30% deposit</strong> due at booking</li>
-              <li data-i18n="pay_sp_2">Balance due <strong>90 days</strong> before arrival</li>
-              <li data-i18n="pay_sp_3">Within 90 days: <strong>100% at booking</strong></li>
+              <li data-i18n="pay_sp_2">Arranged via <strong>custom quote</strong></li>
+              <li data-i18n="pay_sp_3">Payment schedule confirmed at quote acceptance</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    <div class="peak-notice"><span>🎄</span><div data-i18n="peak_notice"><strong>Holiday Minimum Stay:</strong> December 17 – January 7 requires a minimum 5-night stay.</div></div>
+    <div class="peak-notice"><span>🎄</span><div data-i18n="peak_notice"><strong>Holiday Minimum Stay:</strong> December 17 – January 7 requires a minimum 5-night stay. Holiday pricing applies.</div></div>
     <div class="cancel-wrap">
       <div class="cancel-tier ct-standard">
-        <div class="cancel-tier-head" data-i18n="ct_std_h">Standard Weekly Cancellations</div>
+        <div class="cancel-tier-head" data-i18n="ct_std_h">Standard Cancellations <span style="font-weight:400;opacity:.7;font-size:.9em;">(incl. Holiday)</span></div>
         <div class="cancel-tier-body">
           <div class="cancel-rule"><div class="cancel-rule-time" data-i18n="ct_std_1_t">60+ days before</div><div class="cancel-rule-pol" data-i18n="ct_std_1_d">Full refund of all payments made.</div></div>
-          <div class="cancel-rule"><div class="cancel-rule-time" data-i18n="ct_std_2_t">30–60 days before</div><div class="cancel-rule-pol" data-i18n="ct_std_2_d">50% of the total reservation is refunded.</div></div>
+          <div class="cancel-rule"><div class="cancel-rule-time" data-i18n="ct_std_2_t">30–59 days before</div><div class="cancel-rule-pol" data-i18n="ct_std_2_d">50% of the total reservation is refunded.</div></div>
           <div class="cancel-rule"><div class="cancel-rule-time" data-i18n="ct_std_3_t">Under 30 days</div><div class="cancel-rule-pol" data-i18n="ct_std_3_d">No refund issued.</div></div>
         </div>
       </div>
       <div class="cancel-tier ct-special">
-        <div class="cancel-tier-head" data-i18n="ct_sp_h">Monthly & Holiday Cancellations</div>
+        <div class="cancel-tier-head" data-i18n="ct_sp_h">Long Stays Cancellations <span style="font-weight:400;opacity:.7;font-size:.9em;">(28+ nights)</span></div>
         <div class="cancel-tier-body">
           <div class="cancel-rule"><div class="cancel-rule-time" data-i18n="ct_sp_1_t">90+ days before</div><div class="cancel-rule-pol" data-i18n="ct_sp_1_d">Full refund of all payments made.</div></div>
           <div class="cancel-rule"><div class="cancel-rule-time" data-i18n="ct_sp_2_t">60–89 days before</div><div class="cancel-rule-pol" data-i18n="ct_sp_2_d">50% of the total reservation is refunded.</div></div>
@@ -992,7 +1032,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         </div>
       </div>
     </div>
-    <p style="font-size:.79rem;color:var(--muted);margin-bottom:2rem;font-style:italic" data-i18n="cancel_note">All guests are strongly encouraged to purchase independent travel insurance.</p>
+    <p style="font-size:.79rem;color:var(--muted);margin-bottom:2rem;font-style:italic" data-i18n="cancel_note">Travel insurance, the damage protection waiver, and any administrative fees are non-refundable. All guests are strongly encouraged to purchase independent travel insurance.</p>
     <div class="direct-strip">
       <div class="direct-text">
         <div class="direct-head" data-i18n="direct_h">Why Book Direct?</div>
@@ -1047,15 +1087,15 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
 
         <div class="agr-section">
           <div class="agr-sec-title">§ 2 · Rental Rate, Payment & Taxes</div>
-          <p class="agr-body">The total rental fee is as specified in the Booking Details. A 30% booking payment is due within 48 hours of booking.</p>
-          <p class="agr-body">For standard and weekly stays, the remaining balance is due 30 days before arrival. If booking within 30 days of arrival, 100% of the total is due at the time of booking.</p>
-          <p class="agr-body">For monthly stays and holiday bookings (December 17 – January 7), the remaining balance is due 90 days before arrival. If booking within 90 days of arrival, 100% of the total is due at the time of booking.</p>
-          <p class="agr-body">All amounts are in US Dollars (USD). Mexican federal VAT (16%) and the Oaxacan lodging tax (ISH, 5%) are applied to all reservations in compliance with Mexican law.</p>
+          <p class="agr-body">The total rental fee is as displayed in the guest's booking confirmation. A 30% booking payment is due within 48 hours of booking.</p>
+          <p class="agr-body">For standard bookings, the remaining balance is due 30 days before arrival. If booking within 30 days of arrival, 100% of the total is due at the time of booking.</p>
+          <p class="agr-body">Long stays of 28 or more consecutive nights are arranged via a custom quote. The payment schedule for long stays — including the balance due date — will be confirmed in the booking confirmation at the time the quote is accepted.</p>
+          <p class="agr-body">Remaining balances are charged automatically to the payment method on file on the scheduled date. If the automatic charge fails, it is the guest's responsibility to ensure prompt payment. Failure to pay the remaining balance by the due date may result in cancellation of the reservation under the terms of Section 5. All amounts are in US Dollars (USD). Mexican federal VAT (16%) and the Oaxacan lodging tax (ISH, 5%) are applied to all reservations in compliance with Mexican law.</p>
         </div>
 
         <div class="agr-section">
           <div class="agr-sec-title">§ 3 · Long-Stay Discounts</div>
-          <p class="agr-body">Guests staying 21 or more consecutive nights receive a 15% discount on the nightly rate. Guests staying 28 or more consecutive nights receive a 20% discount. Discounts apply to the base nightly rate only and are not combinable with other promotional rates.</p>
+          <p class="agr-body">Guests staying 28 or more consecutive nights receive a 20% discount on the nightly rate. This discount applies to the base nightly rate only, is <strong>not applicable during the Peak Holiday period</strong> (December 17 – January 7), and is not combinable with other promotional rates. Long stays are arranged via a custom quote; the discount will be reflected in the quoted rate.</p>
         </div>
 
         <div class="agr-section">
@@ -1073,7 +1113,8 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
 
         <div class="agr-section">
           <div class="agr-sec-title">§ 5 · Cancellation Policy</div>
-          <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.5rem;">Standard &amp; Weekly Bookings</div>
+          <p class="agr-body">Travel insurance, the damage protection waiver, and any administrative fees are non-refundable.</p>
+          <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.5rem;">Standard Bookings <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);">(applies to all bookings, including Peak Holiday dates)</span></div>
           <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:1rem;">
             <div style="display:grid;grid-template-columns:1fr 1fr;font-size:.78rem;font-family:'Jost',sans-serif;">
               <div style="padding:.6rem .85rem;background:var(--cream);border-bottom:1px solid var(--border);font-weight:600;color:var(--navy);">60+ days before arrival</div><div style="padding:.6rem .85rem;background:var(--cream);border-bottom:1px solid var(--border);color:var(--navy);">Full refund</div>
@@ -1081,7 +1122,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
               <div style="padding:.6rem .85rem;font-weight:600;color:var(--navy);">Under 30 days</div><div style="padding:.6rem .85rem;color:var(--navy);">No refund</div>
             </div>
           </div>
-          <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.5rem;">Monthly &amp; Holiday Bookings (Dec 17 – Jan 7)</div>
+          <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.5rem;">Long Stays <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);">(28 or more consecutive nights)</span></div>
           <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:.75rem;">
             <div style="display:grid;grid-template-columns:1fr 1fr;font-size:.78rem;font-family:'Jost',sans-serif;">
               <div style="padding:.6rem .85rem;background:var(--cream);border-bottom:1px solid var(--border);font-weight:600;color:var(--navy);">90+ days before arrival</div><div style="padding:.6rem .85rem;background:var(--cream);border-bottom:1px solid var(--border);color:var(--navy);">Full refund</div>
@@ -1089,24 +1130,26 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
               <div style="padding:.6rem .85rem;font-weight:600;color:var(--navy);">Under 60 days</div><div style="padding:.6rem .85rem;color:var(--navy);">No refund</div>
             </div>
           </div>
-          <p class="agr-body">All guests are strongly encouraged to purchase independent travel insurance to protect against unforeseen circumstances.</p>
+          <p class="agr-body">Refunds issued by credit card will be processed back to the original payment method; all other refunds will be issued by check or bank transfer. All guests are strongly encouraged to purchase independent travel insurance to protect against unforeseen circumstances.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 6 · Maximum Occupancy</div>
-          <p class="agr-body">The property may not be occupied by more guests than the number stated in the Booking Details. Exceeding the approved guest count is grounds for immediate termination of this agreement without refund. Guests are responsible for ensuring that all visitors comply with this limit throughout the stay.</p>
+          <div class="agr-sec-title">§ 6 · Maximum Occupancy &amp; Use</div>
+          <p class="agr-body">The property may not be occupied by more guests than the number stated in the Booking Details. Exceeding the approved guest count is grounds for immediate termination of this agreement without refund. The guest is responsible for ensuring that all visitors comply with this limit throughout the stay.</p>
+          <p class="agr-body">The property may not be sublet, assigned, or otherwise transferred in whole or in part. The property may not be used for commercial purposes — including but not limited to retreats, photo or video shoots, organized events, or paid gatherings — without our prior written approval.</p>
         </div>
 
         <div class="agr-section">
           <div class="agr-sec-title">§ 7 · House Rules</div>
           <ul class="agr-list">
-            <li>No pets are permitted.</li>
+            <li>No pets are permitted. Any pet found on the property is grounds for immediate termination of this agreement and forfeiture of all amounts paid.</li>
             <li>Smoking is not permitted inside the property or in immediately adjacent outdoor spaces, including patios and hallways.</li>
             <li>No parties, events, or gatherings beyond the registered guest count.</li>
             <li>Quiet hours are observed between 10:00 PM and 8:00 AM, in respect of fellow residents within Nirú Las Casitas.</li>
             <li>No fireworks or open flames outside of those expressly permitted on the property.</li>
             <li>No illegal activity on or around the premises.</li>
           </ul>
+          <p class="agr-body">The guest must inform us in advance if children under 18 will be part of the group, and must specify the number. A child is defined as any person under the age of 18.</p>
           <p class="agr-body">Violation of any house rule may result in immediate removal from the property and forfeiture of all amounts paid.</p>
         </div>
 
@@ -1118,38 +1161,82 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             <li>Properly disposing of garbage and recycling as directed</li>
             <li>Returning all furniture, appliances, and items to their original locations</li>
             <li>Reporting any damage, malfunction, or maintenance issue promptly to the host</li>
-            <li>Ensuring all doors and windows are locked when leaving the unit unattended</li>
+            <li>Ensuring all exterior and patio doors are locked when leaving the unit unattended</li>
           </ul>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 9 · Property Access</div>
+          <div class="agr-sec-title">§ 9 · Accidental Damage Protection</div>
+          <p class="agr-body">This reservation includes a <strong>$37 USD Accidental Damage Protection</strong> waiver, applied as a mandatory surcharge to every booking. This waiver covers unintentional accidental damage to the property occurring during the rental period, up to the program's coverage limit. <strong>No security deposit is required as a condition of booking.</strong></p>
+          <p class="agr-body">The damage protection waiver does <strong>not</strong> cover, and the guest remains personally and financially liable for, any damages or losses arising from:</p>
+          <ul class="agr-list">
+            <li>Intentional or wanton destruction of property</li>
+            <li>Gross negligence or reckless conduct</li>
+            <li>Failure to mitigate foreseeable damage</li>
+            <li>Failure to notify us promptly of damage occurring during the stay</li>
+            <li>Theft of property or furnishings</li>
+            <li>Damage caused by unauthorized pets, smoking, or other house rule violations</li>
+          </ul>
+          <p class="agr-body">By accepting this agreement, the guest acknowledges these terms and agrees that any uncovered damages may be charged to the payment method on file. The owner is not obligated to use the least expensive means of restoration.</p>
+        </div>
+
+        <div class="agr-section">
+          <div class="agr-sec-title">§ 10 · Property Access</div>
           <p class="agr-body">The property owner and/or on-site host reserves the right to access the unit at any time in the event of an emergency. For non-urgent maintenance or inspections, reasonable advance notice will be given and every effort will be made to minimize disruption to the guest's stay.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 10 · Liability</div>
-          <p class="agr-body">Bravo Huatulco, Francisco Bravo, and Matthew French-Bravo are not liable for any personal injury, illness, loss, theft, or damage to personal belongings occurring during the rental period, within the Nirú Las Casitas development, or at any beach or public area adjacent to the property. Guests assume full responsibility for their own safety and the safety of all members of their group. The purchase of appropriate travel insurance is strongly recommended.</p>
+          <div class="agr-sec-title">§ 11 · Service Interruptions &amp; Acts of Nature</div>
+          <p class="agr-body">We make every reasonable effort to ensure that all appliances, utilities, and amenities remain in good working order throughout the rental period. However, <strong>no refunds will be provided</strong> for interruptions or losses arising from circumstances outside our reasonable control, including but not limited to:</p>
+          <ul class="agr-list">
+            <li>Power outages or interruptions of service by the local utility (CFE)</li>
+            <li>Water shortages or pressure issues from the municipal supply</li>
+            <li>Internet (Starlink) or telecommunications outages</li>
+            <li>Inoperable appliances, air conditioning units, pool equipment, or amenities, where we are making reasonable efforts to repair</li>
+            <li>Construction, noise, or disruption from neighboring properties or within the development</li>
+            <li>Weather events, including rain, wind, heat, and humidity</li>
+            <li>Mandatory evacuations ordered by federal, state, or municipal authorities, including those arising from hurricanes, tropical storms, earthquakes, or other natural events</li>
+            <li>Any other act of God or nature</li>
+          </ul>
+          <p class="agr-body">We strongly recommend that all guests purchase independent travel insurance covering trip cancellation, interruption, and weather-related disruptions.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 11 · Internet & Utilities</div>
-          <p class="agr-body">High-speed Wi-Fi (Starlink), water, electricity (within the daily allowance specified in Section 4), and standard building services are all included in your nightly rate. Bravo Huatulco cannot guarantee uninterrupted utility service and is not responsible for outages caused by local providers or events beyond its control.</p>
+          <div class="agr-sec-title">§ 12 · Force Majeure</div>
+          <p class="agr-body">Neither party shall be considered in breach of this agreement where performance is genuinely prevented by circumstances beyond their reasonable control, including natural disasters, government action, civil unrest, public health emergencies, or other extraordinary events. In such cases, both parties agree to work together in good faith toward a fair resolution.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 12 · Nirú Las Casitas Development</div>
-          <p class="agr-body">The property is located within the gated Nirú Las Casitas residential development. Guests agree to comply with all community rules and regulations. Access to amenities including the swimming pool(s), fitness centre, and pickleball court is subject to development guidelines. Note that construction activity may occur during daytime hours as the development reaches final completion.</p>
+          <div class="agr-sec-title">§ 13 · Outdoor Activities, Beach Access &amp; Liability</div>
+          <p class="agr-body">The property is located near the Pacific Ocean and within a residential development that may offer access to recreational amenities including pools, a fitness centre, and a pickleball court. The surrounding area also offers beaches, water sports, hiking, and other outdoor activities.</p>
+          <p class="agr-body"><strong>The guest acknowledges that outdoor and water activities carry inherent risks, dangers, and hazards.</strong> Participation in such activities — and the use of any associated equipment, facilities, or natural features — may result in injury, illness, or death, including but not limited to bodily injury, drowning, sun and heat exposure, dehydration, slips and falls, exposure to wildlife or insects, or other harm. Beaches in the Huatulco region are not consistently lifeguarded, and ocean conditions can change rapidly.</p>
+          <p class="agr-body">The guest agrees, on behalf of the guest and the entire group:</p>
+          <ul class="agr-list">
+            <li>To assume <strong>all risks</strong> associated with the use of the property, the Nirú Las Casitas development, surrounding beaches, and any related facilities, equipment, or activities;</li>
+            <li>To <strong>release, indemnify, and hold harmless</strong> the owner, Bravo Huatulco, Francisco Bravo, Matthew French-Bravo, and any agents, employees, contractors, or representatives, from any and all claims, actions, or losses for personal injury, illness, property damage, wrongful death, loss of services, or any other harm arising from the guest's or group's use of the property or surrounding areas — whether caused in whole or in part by the negligence of the owner, the negligence of any group member, the negligence of others, accidents, breaches of contract, the forces of nature, or any other cause foreseeable or unforeseeable, <strong>except</strong> for harm caused by the gross negligence or intentional acts of the owner;</li>
+            <li>To assume <strong>full responsibility for the actions of every member of the group</strong>, including any minor children, and for any other person the guest permits onto or near the property during the rental period.</li>
+          </ul>
+          <p class="agr-body">The guest further acknowledges that alcohol and recreational substances do not mix safely with swimming, water activities, or other outdoor recreation, and assumes full responsibility for the consequences of any such use by members of the group.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 13 · Force Majeure</div>
-          <p class="agr-body">Neither party shall be held in breach of this agreement where performance is prevented by circumstances genuinely beyond their reasonable control, including but not limited to natural disasters, acts of government, utility failures, or other extraordinary events. In such cases, both parties agree to work together in good faith toward a fair resolution.</p>
+          <div class="agr-sec-title">§ 14 · Internet & Utilities</div>
+          <p class="agr-body">High-speed Wi-Fi (Starlink), water, electricity (within the daily allowance specified in Section 4), and standard building services are all included in your nightly rate. Bravo Huatulco cannot guarantee uninterrupted utility service and is not responsible for outages caused by local providers or events beyond its control. See Section 11 regarding service interruptions.</p>
+        </div>
+
+        <div class="agr-section">
+          <div class="agr-sec-title">§ 15 · Nirú Las Casitas Development</div>
+          <p class="agr-body">The property is located within the gated Nirú Las Casitas residential development. Guests agree to comply with all community rules and regulations. Access to amenities including the swimming pool(s), fitness centre, and pickleball court is subject to development guidelines. The guest acknowledges that <strong>construction activity may occur during daytime hours</strong> as the development reaches final completion, and that this is not grounds for refund.</p>
+        </div>
+
+        <div class="agr-section">
+          <div class="agr-sec-title">§ 16 · Lost Items &amp; Linens</div>
+          <p class="agr-body">The guest is responsible for all shipping costs to return any items left at the property. Items found and not claimed within 30 days of departure will be disposed of at the owner's discretion. Lost or damaged linens or towels will be charged at <strong>two times the standard replacement cost</strong> of the item.</p>
         </div>
 
         <div class="agr-section" style="border-bottom:none;margin-bottom:0;padding-bottom:0;">
-          <div class="agr-sec-title">§ 14 · Governing Law</div>
-          <p class="agr-body">This agreement is governed by and interpreted in accordance with the laws of the United Mexican States and the State of Oaxaca. Any disputes arising from this agreement shall be subject to the jurisdiction of the competent courts of the municipality of Santa María Huatulco, Oaxaca.</p>
+          <div class="agr-sec-title">§ 17 · Governing Law &amp; Entire Agreement</div>
+          <p class="agr-body">This agreement is governed by and interpreted in accordance with the laws of the United Mexican States and the State of Oaxaca. Any disputes arising from this agreement shall be subject to the jurisdiction of the competent courts of the municipality of Santa María Huatulco, Oaxaca. This agreement represents the entire agreement between the parties; any amendments must be in writing and signed by both parties. If any provision of this agreement is deemed unenforceable, the remaining provisions shall remain in full force and effect.</p>
         </div>
 
         <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center;">
@@ -1175,15 +1262,15 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
 
         <div class="agr-section">
           <div class="agr-sec-title">§ 2 · Tarifa, Pago e Impuestos</div>
-          <p class="agr-body">El monto total de la renta es el indicado en los Detalles de la Reservación. Se requiere un pago inicial del 30% dentro de las 48 horas siguientes a la confirmación de la reservación.</p>
-          <p class="agr-body">Para estancias estándar y semanales, el saldo restante vence 30 días antes de la llegada. Si la reservación se realiza con menos de 30 días de anticipación, el 100% del total deberá cubrirse al momento de reservar.</p>
-          <p class="agr-body">Para estancias mensuales y reservaciones en temporada alta (17 de diciembre – 7 de enero), el saldo restante vence 90 días antes de la llegada. Si la reservación se realiza con menos de 90 días de anticipación, el 100% del total deberá cubrirse al momento de reservar.</p>
-          <p class="agr-body">Todos los montos están expresados en dólares estadounidenses (USD). El IVA federal mexicano (16%) y el Impuesto Sobre Hospedaje de Oaxaca (ISH, 5%) se aplican a todas las reservaciones conforme a la legislación mexicana vigente.</p>
+          <p class="agr-body">El monto total de la renta es el indicado en la confirmación de la reservación del huésped. Se requiere un pago inicial del 30% dentro de las 48 horas siguientes a la confirmación de la reservación.</p>
+          <p class="agr-body">Para reservaciones estándar, el saldo restante vence 30 días antes de la llegada. Si la reservación se realiza con menos de 30 días de anticipación, el 100% del total deberá cubrirse al momento de reservar.</p>
+          <p class="agr-body">Las estancias prolongadas de 28 noches consecutivas o más se gestionan mediante una cotización personalizada. El calendario de pagos para estas estancias — incluida la fecha de vencimiento del saldo — se confirmará en la confirmación de reservación al momento de aceptar la cotización.</p>
+          <p class="agr-body">Los saldos pendientes se cobran automáticamente al método de pago registrado en la fecha programada. Si el cobro automático falla, es responsabilidad del huésped asegurar el pago oportuno. La falta de pago del saldo restante en la fecha de vencimiento podrá resultar en la cancelación de la reservación conforme a la Sección 5. Todos los montos están expresados en dólares estadounidenses (USD). El IVA federal mexicano (16%) y el Impuesto Sobre Hospedaje de Oaxaca (ISH, 5%) se aplican a todas las reservaciones conforme a la legislación mexicana vigente.</p>
         </div>
 
         <div class="agr-section">
           <div class="agr-sec-title">§ 3 · Descuentos por Estancia Prolongada</div>
-          <p class="agr-body">Los huéspedes con estancias de 21 noches consecutivas o más recibirán un descuento del 15% sobre la tarifa por noche. Quienes se hospeden 28 noches o más recibirán un descuento del 20%. Los descuentos aplican únicamente sobre la tarifa base por noche y no son combinables con otras tarifas promocionales.</p>
+          <p class="agr-body">Los huéspedes con estancias de 28 noches consecutivas o más recibirán un descuento del 20% sobre la tarifa por noche. Este descuento aplica únicamente sobre la tarifa base por noche, <strong>no aplica durante la temporada alta</strong> (17 de diciembre – 7 de enero), y no es combinable con otras tarifas promocionales. Las estancias prolongadas se gestionan mediante una cotización personalizada; el descuento se reflejará en la tarifa cotizada.</p>
         </div>
 
         <div class="agr-section">
@@ -1201,7 +1288,8 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
 
         <div class="agr-section">
           <div class="agr-sec-title">§ 5 · Política de Cancelación</div>
-          <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.5rem;">Reservaciones Estándar y Semanales</div>
+          <p class="agr-body">El seguro de viaje, la cobertura de protección contra daños y cualquier cargo administrativo no son reembolsables.</p>
+          <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.5rem;">Reservaciones Estándar <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);">(aplica a todas las reservaciones, incluyendo temporada alta)</span></div>
           <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:1rem;">
             <div style="display:grid;grid-template-columns:1fr 1fr;font-size:.78rem;font-family:'Jost',sans-serif;">
               <div style="padding:.6rem .85rem;background:var(--cream);border-bottom:1px solid var(--border);font-weight:600;color:var(--navy);">60+ días antes de la llegada</div><div style="padding:.6rem .85rem;background:var(--cream);border-bottom:1px solid var(--border);color:var(--navy);">Reembolso total</div>
@@ -1209,7 +1297,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
               <div style="padding:.6rem .85rem;font-weight:600;color:var(--navy);">Menos de 30 días</div><div style="padding:.6rem .85rem;color:var(--navy);">Sin reembolso</div>
             </div>
           </div>
-          <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.5rem;">Estancias Mensuales y Temporada Alta (17 dic – 7 ene)</div>
+          <div style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean);font-weight:700;font-family:'Jost',sans-serif;margin-bottom:.5rem;">Estancias Prolongadas <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);">(28 noches consecutivas o más)</span></div>
           <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:.75rem;">
             <div style="display:grid;grid-template-columns:1fr 1fr;font-size:.78rem;font-family:'Jost',sans-serif;">
               <div style="padding:.6rem .85rem;background:var(--cream);border-bottom:1px solid var(--border);font-weight:600;color:var(--navy);">90+ días antes de la llegada</div><div style="padding:.6rem .85rem;background:var(--cream);border-bottom:1px solid var(--border);color:var(--navy);">Reembolso total</div>
@@ -1217,24 +1305,26 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
               <div style="padding:.6rem .85rem;font-weight:600;color:var(--navy);">Menos de 60 días</div><div style="padding:.6rem .85rem;color:var(--navy);">Sin reembolso</div>
             </div>
           </div>
-          <p class="agr-body">Recomendamos ampliamente a todos los huéspedes contratar un seguro de viaje independiente para protegerse ante situaciones imprevistas.</p>
+          <p class="agr-body">Los reembolsos pagados con tarjeta de crédito se procesarán al método de pago original; los demás reembolsos se emitirán por cheque o transferencia bancaria. Recomendamos ampliamente a todos los huéspedes contratar un seguro de viaje independiente para protegerse ante situaciones imprevistas.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 6 · Capacidad Máxima</div>
-          <p class="agr-body">La propiedad no podrá ser ocupada por más personas de las indicadas en los Detalles de la Reservación. Exceder el número de huéspedes autorizado es motivo de rescisión inmediata de este contrato sin derecho a reembolso. Los huéspedes son responsables de que todas las personas que visiten la propiedad cumplan con este límite durante toda la estancia.</p>
+          <div class="agr-sec-title">§ 6 · Capacidad Máxima y Uso</div>
+          <p class="agr-body">La propiedad no podrá ser ocupada por más personas de las indicadas en los Detalles de la Reservación. Exceder el número de huéspedes autorizado es motivo de rescisión inmediata de este contrato sin derecho a reembolso. El huésped es responsable de que todas las personas que visiten la propiedad cumplan con este límite durante toda la estancia.</p>
+          <p class="agr-body">La propiedad no podrá subarrendarse, cederse ni transferirse total o parcialmente. La propiedad no podrá utilizarse con fines comerciales — incluyendo, sin limitación, retiros, sesiones fotográficas o de video, eventos organizados o reuniones pagadas — sin nuestra aprobación previa por escrito.</p>
         </div>
 
         <div class="agr-section">
           <div class="agr-sec-title">§ 7 · Reglamento Interno</div>
           <ul class="agr-list">
-            <li>No se permiten mascotas.</li>
+            <li>No se permiten mascotas. Cualquier mascota encontrada en la propiedad es motivo de rescisión inmediata de este contrato y la pérdida de todos los montos pagados.</li>
             <li>Está prohibido fumar dentro de la propiedad o en espacios exteriores inmediatos, incluyendo patios y pasillos.</li>
             <li>No se permiten fiestas, eventos ni reuniones con personas ajenas a los huéspedes registrados.</li>
             <li>Se deben respetar los horarios de silencio entre las 10:00 PM y las 8:00 AM, en consideración a los demás residentes de Nirú Las Casitas.</li>
             <li>Queda prohibido el uso de fuegos artificiales o llamas abiertas que no estén expresamente permitidas en la propiedad.</li>
             <li>No se permite ninguna actividad ilegal dentro o en las inmediaciones de la propiedad.</li>
           </ul>
+          <p class="agr-body">El huésped debe informarnos con anticipación si menores de 18 años formarán parte del grupo, y debe especificar la cantidad. Se considera menor a toda persona menor de 18 años.</p>
           <p class="agr-body">El incumplimiento de cualquiera de estas reglas podrá resultar en la salida inmediata de la propiedad y la pérdida de todos los montos pagados.</p>
         </div>
 
@@ -1246,38 +1336,82 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             <li>Depositar la basura y el reciclaje de acuerdo con las indicaciones proporcionadas</li>
             <li>Devolver los muebles, electrodomésticos y artículos a su lugar original</li>
             <li>Reportar de inmediato al anfitrión cualquier daño, falla o necesidad de mantenimiento</li>
-            <li>Asegurarse de que puertas y ventanas queden cerradas con llave al salir de la unidad</li>
+            <li>Asegurarse de que todas las puertas exteriores y de patio queden cerradas con llave al salir de la unidad</li>
           </ul>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 9 · Acceso a la Propiedad</div>
+          <div class="agr-sec-title">§ 9 · Protección contra Daños Accidentales</div>
+          <p class="agr-body">Esta reservación incluye una cobertura de <strong>Protección contra Daños Accidentales por $37 USD</strong>, aplicada como cargo obligatorio en cada reservación. Esta cobertura ampara los daños accidentales no intencionales a la propiedad ocurridos durante el período de renta, hasta el límite del programa. <strong>No se requiere depósito de garantía como condición de la reservación.</strong></p>
+          <p class="agr-body">La cobertura de protección contra daños <strong>no</strong> ampara, y el huésped sigue siendo personal y económicamente responsable, de los daños o pérdidas derivados de:</p>
+          <ul class="agr-list">
+            <li>Destrucción intencional o malintencionada de la propiedad</li>
+            <li>Negligencia grave o conducta imprudente</li>
+            <li>No mitigar daños previsibles</li>
+            <li>No notificarnos oportunamente sobre daños ocurridos durante la estancia</li>
+            <li>Robo de bienes o mobiliario</li>
+            <li>Daños causados por mascotas no autorizadas, tabaco u otras violaciones del reglamento interno</li>
+          </ul>
+          <p class="agr-body">Al aceptar este contrato, el huésped reconoce estos términos y acepta que cualquier daño no cubierto podrá cargarse al método de pago registrado. El propietario no está obligado a utilizar el medio menos costoso de restauración.</p>
+        </div>
+
+        <div class="agr-section">
+          <div class="agr-sec-title">§ 10 · Acceso a la Propiedad</div>
           <p class="agr-body">El propietario y/o el anfitrión local se reservan el derecho de acceder a la unidad en cualquier momento en caso de emergencia. Para mantenimiento o inspecciones no urgentes, se dará aviso previo con anticipación razonable y se hará todo lo posible por minimizar cualquier inconveniente durante la estancia.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 10 · Responsabilidad Civil</div>
-          <p class="agr-body">Bravo Huatulco, Francisco Bravo y Matthew French-Bravo no son responsables por lesiones personales, enfermedades, pérdidas, robos ni daños a pertenencias personales ocurridos durante el período de renta, dentro del desarrollo Nirú Las Casitas, o en cualquier playa o área pública adyacente a la propiedad. Los huéspedes asumen plena responsabilidad por su propia seguridad y la de todos los integrantes de su grupo. Se recomienda ampliamente contratar un seguro de viaje adecuado.</p>
+          <div class="agr-sec-title">§ 11 · Interrupciones de Servicio y Hechos de la Naturaleza</div>
+          <p class="agr-body">Hacemos todo lo razonablemente posible por mantener todos los electrodomésticos, servicios y amenidades en buen funcionamiento durante el período de renta. Sin embargo, <strong>no se otorgarán reembolsos</strong> por interrupciones o pérdidas derivadas de circunstancias fuera de nuestro control razonable, incluyendo, sin limitación:</p>
+          <ul class="agr-list">
+            <li>Cortes o interrupciones del suministro eléctrico por la compañía local (CFE)</li>
+            <li>Escasez de agua o problemas de presión del suministro municipal</li>
+            <li>Interrupciones del internet (Starlink) o telecomunicaciones</li>
+            <li>Electrodomésticos, aires acondicionados, equipos de alberca o amenidades fuera de servicio, mientras se realizan esfuerzos razonables de reparación</li>
+            <li>Construcción, ruido o disturbios provenientes de propiedades vecinas o dentro del desarrollo</li>
+            <li>Eventos meteorológicos, incluyendo lluvia, viento, calor y humedad</li>
+            <li>Evacuaciones obligatorias ordenadas por autoridades federales, estatales o municipales, incluidas las derivadas de huracanes, tormentas tropicales, terremotos u otros eventos naturales</li>
+            <li>Cualquier otro acto de Dios o de la naturaleza</li>
+          </ul>
+          <p class="agr-body">Recomendamos encarecidamente a todos los huéspedes contratar un seguro de viaje independiente que cubra cancelación, interrupción del viaje y disrupciones por clima.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 11 · Internet y Servicios</div>
-          <p class="agr-body">El Wi-Fi de alta velocidad (Starlink), el agua, la electricidad (dentro de la asignación diaria indicada en la Sección 4) y los servicios estándar del edificio están incluidos en su tarifa por noche. Bravo Huatulco no puede garantizar el suministro ininterrumpido de estos servicios y no se hace responsable por interrupciones causadas por proveedores locales o situaciones fuera de su control.</p>
+          <div class="agr-sec-title">§ 12 · Caso Fortuito y Fuerza Mayor</div>
+          <p class="agr-body">Ninguna de las partes incurrirá en incumplimiento de este contrato cuando el cumplimiento se vea genuinamente impedido por circunstancias ajenas a su control razonable, incluyendo desastres naturales, actos de autoridad, disturbios civiles, emergencias de salud pública u otros eventos extraordinarios. En tales casos, ambas partes acuerdan colaborar de buena fe para alcanzar una solución justa.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 12 · Desarrollo Nirú Las Casitas</div>
-          <p class="agr-body">La propiedad se encuentra dentro del desarrollo residencial privado Nirú Las Casitas. Los huéspedes se comprometen a respetar el reglamento y las normas de la comunidad. El acceso a amenidades como la(s) alberca(s), el gimnasio y la cancha de pickleball está sujeto a las disposiciones del desarrollo. Cabe señalar que pueden realizarse actividades de construcción durante horas diurnas mientras el desarrollo concluye su edificación.</p>
+          <div class="agr-sec-title">§ 13 · Actividades al Aire Libre, Acceso a la Playa y Responsabilidad</div>
+          <p class="agr-body">La propiedad se ubica cerca del Océano Pacífico y dentro de un desarrollo residencial que puede ofrecer acceso a amenidades recreativas como albercas, gimnasio y cancha de pickleball. Los alrededores también ofrecen playas, deportes acuáticos, senderismo y otras actividades al aire libre.</p>
+          <p class="agr-body"><strong>El huésped reconoce que las actividades al aire libre y acuáticas conllevan riesgos, peligros y desafíos inherentes.</strong> La participación en dichas actividades — y el uso de equipos, instalaciones o accidentes naturales asociados — pueden resultar en lesiones, enfermedad o muerte, incluyendo, sin limitación, lesiones corporales, ahogamiento, exposición al sol y al calor, deshidratación, resbalones y caídas, exposición a fauna o insectos, u otros daños. Las playas de la región de Huatulco no cuentan con salvavidas de manera consistente, y las condiciones del océano pueden cambiar rápidamente.</p>
+          <p class="agr-body">El huésped acuerda, en nombre propio y de todo el grupo:</p>
+          <ul class="agr-list">
+            <li>Asumir <strong>todos los riesgos</strong> asociados con el uso de la propiedad, el desarrollo Nirú Las Casitas, las playas circundantes y cualquier instalación, equipo o actividad relacionada;</li>
+            <li><strong>Liberar, indemnizar y mantener indemnes</strong> al propietario, Bravo Huatulco, Francisco Bravo, Matthew French-Bravo, y a cualquier agente, empleado, contratista o representante, de cualquier reclamación, acción o pérdida por lesiones personales, enfermedad, daños a la propiedad, muerte por negligencia, pérdida de servicios o cualquier otro daño derivado del uso por el huésped o el grupo de la propiedad o áreas circundantes — ya sea causado total o parcialmente por la negligencia del propietario, la negligencia de cualquier integrante del grupo, la negligencia de terceros, accidentes, incumplimientos contractuales, las fuerzas de la naturaleza o cualquier otra causa previsible o imprevisible, <strong>excepto</strong> por daños causados por la negligencia grave o actos intencionales del propietario;</li>
+            <li>Asumir <strong>la plena responsabilidad por los actos de cada integrante del grupo</strong>, incluyendo a cualquier menor de edad, y de cualquier otra persona que el huésped permita acceder a la propiedad o sus inmediaciones durante el período de renta.</li>
+          </ul>
+          <p class="agr-body">El huésped reconoce además que el alcohol y las sustancias recreativas no son seguros en combinación con la natación, las actividades acuáticas u otras actividades recreativas al aire libre, y asume plena responsabilidad por las consecuencias de dicho uso por parte de los integrantes del grupo.</p>
         </div>
 
         <div class="agr-section">
-          <div class="agr-sec-title">§ 13 · Caso Fortuito y Fuerza Mayor</div>
-          <p class="agr-body">Ninguna de las partes incurrirá en incumplimiento de este contrato cuando el cumplimiento se vea impedido por circunstancias genuinamente ajenas a su control razonable, incluyendo, de manera enunciativa más no limitativa, desastres naturales, actos de autoridad, fallas en los servicios públicos u otros eventos extraordinarios. En tales casos, ambas partes acuerdan colaborar de buena fe para alcanzar una solución justa.</p>
+          <div class="agr-sec-title">§ 14 · Internet y Servicios</div>
+          <p class="agr-body">El Wi-Fi de alta velocidad (Starlink), el agua, la electricidad (dentro de la asignación diaria indicada en la Sección 4) y los servicios estándar del edificio están incluidos en su tarifa por noche. Bravo Huatulco no puede garantizar el suministro ininterrumpido de estos servicios y no se hace responsable por interrupciones causadas por proveedores locales o situaciones fuera de su control. Véase la Sección 11 sobre interrupciones de servicio.</p>
+        </div>
+
+        <div class="agr-section">
+          <div class="agr-sec-title">§ 15 · Desarrollo Nirú Las Casitas</div>
+          <p class="agr-body">La propiedad se encuentra dentro del desarrollo residencial privado Nirú Las Casitas. Los huéspedes se comprometen a respetar el reglamento y las normas de la comunidad. El acceso a amenidades como la(s) alberca(s), el gimnasio y la cancha de pickleball está sujeto a las disposiciones del desarrollo. El huésped reconoce que <strong>pueden realizarse actividades de construcción durante horas diurnas</strong> mientras el desarrollo concluye su edificación, y que esto no constituye motivo de reembolso.</p>
+        </div>
+
+        <div class="agr-section">
+          <div class="agr-sec-title">§ 16 · Objetos Perdidos y Blancos</div>
+          <p class="agr-body">El huésped es responsable de todos los costos de envío para devolver cualquier artículo dejado en la propiedad. Los artículos encontrados que no sean reclamados dentro de los 30 días posteriores a la salida serán desechados a discreción del propietario. Los blancos o toallas perdidos o dañados se cobrarán a <strong>dos veces el costo estándar de reposición</strong> del artículo.</p>
         </div>
 
         <div class="agr-section" style="border-bottom:none;margin-bottom:0;padding-bottom:0;">
-          <div class="agr-sec-title">§ 14 · Legislación Aplicable</div>
-          <p class="agr-body">Este contrato se rige e interpreta conforme a las leyes de los Estados Unidos Mexicanos y del Estado de Oaxaca. Cualquier controversia derivada del presente contrato estará sujeta a la jurisdicción de los tribunales competentes del municipio de Santa María Huatulco, Oaxaca.</p>
+          <div class="agr-sec-title">§ 17 · Legislación Aplicable y Acuerdo Íntegro</div>
+          <p class="agr-body">Este contrato se rige e interpreta conforme a las leyes de los Estados Unidos Mexicanos y del Estado de Oaxaca. Cualquier controversia derivada del presente contrato estará sujeta a la jurisdicción de los tribunales competentes del municipio de Santa María Huatulco, Oaxaca. Este contrato representa el acuerdo íntegro entre las partes; cualquier modificación deberá constar por escrito y estar firmada por ambas partes. Si alguna disposición del presente contrato resultara inejecutable, las disposiciones restantes permanecerán en pleno vigor y efecto.</p>
         </div>
 
         <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center;">
@@ -1369,8 +1503,8 @@ function agrLang(lang){
               <div class="fg"><label class="fl" data-i18n="fl_prop">Property *</label>
                 <select id="formProp" name="property" class="fs">
                   <option value="lucky">Casa Lucky (1 Bed — Available Now)</option>
-                  <option value="rico">Casa Rico (2 Bed — Waitlist 2027)</option>
                   <option value="racel">Casa Rac&#233;l (2 Bed — Available May 26)</option>
+                  <option value="rico">Casa Rico (2 Bed — Waitlist 2027)</option>
                 </select>
               </div>
             </div>
@@ -1533,28 +1667,28 @@ en:{
   pol_pets:"Pets",pol_smoke:"Smoking",pol_quiet:"Quiet Hours",
   pol_ci_v:"4:00 PM",pol_co_v:"11:00 AM",pol_min_v:"3 nights (5 nights Dec 17–Jan 7)",
   pol_pets_v:"Guest pets not permitted — though our dachshund Diego may make an occasional appearance.",pol_smoke_v:"Not permitted",pol_quiet_v:"10:00 PM – 8:00 AM",
-  pol_clean:"Cleaning Fee",pol_elec:"Electricity",
-  pol_d21:"21+ nights",pol_d28:"28+ nights",pol_tax:"Taxes",
-  pol_clean_v:"$50 USD per booking (Casa Lucky) · $75 USD per booking (Casa Rico / Racél) — approx. $875 / $1,310 MXN",pol_elec_v:"Included in the nightly rate for normal daily use. Specific allowances and overage rates are detailed in your rental agreement.",
-  pol_d21_v:"15% off",pol_d28_v:"20% off",pol_tax_v:"16% VAT + 5% ISH (Oaxacan lodging tax) added at booking",
+  pol_clean:"Cleaning Fee",pol_damage:"Damage Protection",pol_elec:"Electricity",
+  pol_d28:"28+ nights",pol_tax:"Taxes",
+  pol_clean_v:"$50 USD per booking (Casa Lucky) · $75 USD per booking (Casa Rico / Racél) — approx. $875 / $1,310 MXN",pol_damage_v:"$37 USD per booking · No security deposit required",pol_elec_v:"Included in the nightly rate for normal daily use. Specific allowances and overage rates are detailed in your rental agreement.",
+  pol_d28_v:"20% off (excludes Dec 17–Jan 7)",pol_tax_v:"16% VAT + 5% ISH (Oaxacan lodging tax) added at booking",
   pol_curr:"Currency",pol_curr_v:"USD (charged) · MXN shown for reference",
-  pay_std_h:"Standard Weekly Bookings",
+  pay_std_h:"Standard Bookings",
   pay_std_1:"<strong>30% deposit</strong> due at time of booking",
   pay_std_2:"Balance due <strong>30 days</strong> before arrival",
   pay_std_3:"Within 30 days of arrival: <strong>100% due at booking</strong>",
-  pay_sp_h:"Monthly & Holiday Bookings",
+  pay_sp_h:"Long Stays (28+ nights)",
   pay_sp_1:"<strong>30% deposit</strong> due at time of booking",
-  pay_sp_2:"Balance due <strong>90 days</strong> before arrival",
-  pay_sp_3:"Within 90 days of arrival: <strong>100% due at booking</strong>",
-  peak_notice:"<strong>Holiday Minimum Stay:</strong> December 17 – January 7 requires a minimum 5-night stay. Holiday pricing and stricter cancellation terms apply.",
-  ct_std_h:"Standard Weekly Cancellations",ct_sp_h:"Monthly & Holiday Cancellations",
+  pay_sp_2:"Arranged via <strong>custom quote</strong>",
+  pay_sp_3:"Payment schedule confirmed at quote acceptance",
+  peak_notice:"<strong>Holiday Minimum Stay:</strong> December 17 – January 7 requires a minimum 5-night stay. Holiday pricing applies.",
+  ct_std_h:"Standard Cancellations <span style=\"font-weight:400;opacity:.7;font-size:.9em;\">(incl. Holiday)</span>",ct_sp_h:"Long Stays Cancellations <span style=\"font-weight:400;opacity:.7;font-size:.9em;\">(28+ nights)</span>",
   ct_std_1_t:"60+ days before",ct_std_1_d:"Full refund of all payments made.",
-  ct_std_2_t:"30–60 days before",ct_std_2_d:"50% of the total reservation is refunded.",
+  ct_std_2_t:"30–59 days before",ct_std_2_d:"50% of the total reservation is refunded.",
   ct_std_3_t:"Under 30 days",ct_std_3_d:"No refund issued.",
   ct_sp_1_t:"90+ days before",ct_sp_1_d:"Full refund of all payments made.",
   ct_sp_2_t:"60–89 days before",ct_sp_2_d:"50% of the total reservation is refunded.",
   ct_sp_3_t:"Under 60 days",ct_sp_3_d:"No refund.",
-  cancel_note:"All guests are strongly encouraged to purchase independent travel insurance.",
+  cancel_note:"Travel insurance, the damage protection waiver, and any administrative fees are non-refundable. All guests are strongly encouraged to purchase independent travel insurance.",
   direct_h:"Why Book Direct?",
   direct_d:"Booking through BravoHuatulco.com saves you Airbnb & VRBO platform fees. Guests typically save around 40% on average compared with platform pricing. We price with full respect for Mexico, so our nightly rates show the base rental cost — and the mandatory 16% VAT and 5% lodging tax are added transparently at booking. Same homes, clearer pricing, and more personal service from first message to checkout.",
   direct_btn:"Inquire & Book Direct",
@@ -1590,9 +1724,9 @@ en:{
   cal_low_k:"Low Season",cal_high_k:"High Season",cal_peak_k:"Holiday / Peak",
   cal_select_in:"Select your check-in date",cal_select_out:"Now select your check-out date",
   cal_nights:"nights",cal_nightly:"Nightly rate (avg)",
-  cal_clean:"Cleaning fee",cal_vat:"Federal VAT (16%)",cal_ish:"Lodging Tax · ISH (5%)",cal_total:"Estimated total",
-  cal_book_lbl:"Choose how to book:",
-  cal_airbnb:"Book via Airbnb",cal_direct:"Book Direct & Save",cal_vrbo:"Book via VRBO",
+  cal_clean:"Cleaning fee",cal_damage:"Damage protection",cal_vat:"Federal VAT (16%)",cal_ish:"Lodging Tax · ISH (5%)",cal_total:"Estimated total",
+  cal_book_lbl:"Ready to book?",
+  cal_direct:"Book Direct & Save",
   cal_sync:"Calendar syncs with Airbnb & VRBO via iCal · Links activate once listings go live",
   cal_min7:"Holiday period (Dec 17 – Jan 7) requires a 5-night minimum stay",
   cal_min3:"A 3-night minimum stay is required",
@@ -1695,28 +1829,28 @@ es:{
   pol_pets:"Mascotas",pol_smoke:"Fumar",pol_quiet:"Horario de Silencio",
   pol_ci_v:"4:00 PM",pol_co_v:"11:00 AM",pol_min_v:"3 noches (5 noches 17 Dic–7 Ene)",
   pol_pets_v:"No se permiten mascotas de huéspedes — aunque nuestro perro salchicha Diego podría hacer una aparición ocasional.",pol_smoke_v:"No permitido",pol_quiet_v:"10:00 PM – 8:00 AM",
-  pol_clean:"Cargo de Limpieza",pol_elec:"Electricidad",
-  pol_d21:"21+ noches",pol_d28:"28+ noches",pol_tax:"Impuestos",
-  pol_clean_v:"$50 USD por reserva (Casa Lucky) · $75 USD por reserva (Casa Rico / Racél) — aprox. $875 / $1,310 MXN",pol_elec_v:"Incluida en la tarifa por noche para el uso diario normal. Las asignaciones específicas y las tarifas por consumo excedente se detallan en su contrato de arrendamiento.",
-  pol_d21_v:"15% descuento",pol_d28_v:"20% descuento",pol_tax_v:"16% de IVA + 5% de ISH (impuesto de hospedaje) agregados al reservar",
+  pol_clean:"Cargo de Limpieza",pol_damage:"Protección contra Daños",pol_elec:"Electricidad",
+  pol_d28:"28+ noches",pol_tax:"Impuestos",
+  pol_clean_v:"$50 USD por reserva (Casa Lucky) · $75 USD por reserva (Casa Rico / Racél) — aprox. $875 / $1,310 MXN",pol_damage_v:"$37 USD por reserva · No se requiere depósito de garantía",pol_elec_v:"Incluida en la tarifa por noche para el uso diario normal. Las asignaciones específicas y las tarifas por consumo excedente se detallan en su contrato de arrendamiento.",
+  pol_d28_v:"20% descuento (excluye 17 dic – 7 ene)",pol_tax_v:"16% de IVA + 5% de ISH (impuesto de hospedaje) agregados al reservar",
   pol_curr:"Moneda",pol_curr_v:"USD (cobrado) · MXN como referencia",
-  pay_std_h:"Reservas Semanales Estándar",
+  pay_std_h:"Reservaciones Estándar",
   pay_std_1:"<strong>30% de depósito</strong> al momento de la reserva",
   pay_std_2:"Saldo restante <strong>30 días</strong> antes de la llegada",
   pay_std_3:"Menos de 30 días: <strong>100% al reservar</strong>",
-  pay_sp_h:"Estancias Mensuales y Navideñas",
+  pay_sp_h:"Estancias Prolongadas (28+ noches)",
   pay_sp_1:"<strong>30% de depósito</strong> al momento de la reserva",
-  pay_sp_2:"Saldo restante <strong>90 días</strong> antes de la llegada",
-  pay_sp_3:"Menos de 90 días: <strong>100% al reservar</strong>",
-  peak_notice:"<strong>Estancia Mínima Navideña:</strong> Del 17 de diciembre al 7 de enero se requieren mínimo 5 noches. Aplican tarifas especiales y políticas de cancelación más estrictas.",
-  ct_std_h:"Cancelaciones Estándar",ct_sp_h:"Cancelaciones Mensuales y Navideñas",
+  pay_sp_2:"Mediante <strong>cotización personalizada</strong>",
+  pay_sp_3:"Calendario de pagos confirmado al aceptar la cotización",
+  peak_notice:"<strong>Estancia Mínima Navideña:</strong> Del 17 de diciembre al 7 de enero se requieren mínimo 5 noches. Aplican tarifas de temporada alta.",
+  ct_std_h:"Cancelaciones Estándar <span style=\"font-weight:400;opacity:.7;font-size:.9em;\">(incl. Temporada Alta)</span>",ct_sp_h:"Cancelaciones de Estancias Prolongadas <span style=\"font-weight:400;opacity:.7;font-size:.9em;\">(28+ noches)</span>",
   ct_std_1_t:"Más de 60 días",ct_std_1_d:"Reembolso completo de todos los pagos.",
-  ct_std_2_t:"30–60 días antes",ct_std_2_d:"Se reembolsa el 50% del total.",
+  ct_std_2_t:"30–59 días antes",ct_std_2_d:"Se reembolsa el 50% del total.",
   ct_std_3_t:"Menos de 30 días",ct_std_3_d:"No se emite reembolso.",
   ct_sp_1_t:"Más de 90 días",ct_sp_1_d:"Reembolso completo de todos los pagos.",
   ct_sp_2_t:"60–89 días antes",ct_sp_2_d:"Se reembolsa el 50% del total.",
   ct_sp_3_t:"Menos de 60 días",ct_sp_3_d:"Sin reembolso.",
-  cancel_note:"Se recomienda encarecidamente adquirir un seguro de viaje independiente.",
+  cancel_note:"El seguro de viaje, la cobertura de protección contra daños y cualquier cargo administrativo no son reembolsables. Se recomienda encarecidamente adquirir un seguro de viaje independiente.",
   direct_h:"¿Por Qué Reservar Directo?",
   direct_d:"Reservar en BravoHuatulco.com le evita las comisiones de Airbnb y VRBO. Los huéspedes suelen ahorrar alrededor de 40% en promedio frente a las plataformas. Fijamos nuestros precios con respeto total por México: nuestras tarifas por noche reflejan el costo base del hospedaje, y el 16% de IVA y el 5% de impuesto de hospedaje — obligatorios por ley — se agregan de forma transparente al reservar. Las mismas casas, precios más claros y atención más personal desde el primer mensaje hasta su salida.",
   direct_btn:"Consultar y Reservar Directo",
@@ -1752,9 +1886,9 @@ es:{
   cal_low_k:"Temp. Baja",cal_high_k:"Temp. Alta",cal_peak_k:"Navideña",
   cal_select_in:"Seleccione su fecha de llegada",cal_select_out:"Ahora seleccione su fecha de salida",
   cal_nights:"noches",cal_nightly:"Tarifa por noche (prom.)",
-  cal_clean:"Cargo de limpieza",cal_vat:"IVA Federal (16%)",cal_ish:"Impuesto de Hospedaje · ISH (5%)",cal_total:"Total estimado",
-  cal_book_lbl:"Elija cómo reservar:",
-  cal_airbnb:"Reservar en Airbnb",cal_direct:"Reservar Directo y Ahorrar",cal_vrbo:"Reservar en VRBO",
+  cal_clean:"Cargo de limpieza",cal_damage:"Cobertura de daños",cal_vat:"IVA Federal (16%)",cal_ish:"Impuesto de Hospedaje · ISH (5%)",cal_total:"Total estimado",
+  cal_book_lbl:"¿Listo para reservar?",
+  cal_direct:"Reservar Directo y Ahorrar",
   cal_sync:"El calendario se sincroniza con Airbnb y VRBO vía iCal",
   cal_min7:"El período festivo (17 dic – 7 ene) requiere una estadía mínima de 5 noches",
   cal_min3:"Se requiere una estadía mínima de 3 noches",
@@ -1885,10 +2019,7 @@ function openCal(prop){
   if(prop==='rico'){calYear=2027;calMonth=0;}else{const n=new Date();calYear=n.getFullYear();calMonth=n.getMonth();}
   const titles={lucky:'Casa Lucky',rico:'Casa Rico',racel:'Casa Rac\u00e9l'};
   document.getElementById('calTitle').textContent=titles[prop]||'Casa Lucky';
-  const abLink=document.getElementById('btnAirbnb');
-  if(abLink) abLink.href=AIRBNB_URLS[prop]||AIRBNB_URLS.lucky;
-  const vrboBtn=document.getElementById('btnVrbo');
-  if(vrboBtn){const vrboUrl=VRBO_URLS[prop];vrboBtn.style.display=vrboUrl?'flex':'none';if(vrboUrl)vrboBtn.href=vrboUrl;}
+
   const isWL=prop==='rico';
   document.getElementById('calWlBlock').style.display=isWL?'block':'none';
   document.getElementById('calBookBlock').style.display=isWL?'none':'block';
@@ -1900,6 +2031,32 @@ function openCal(prop){
   document.body.style.overflow='hidden';
 }
 function closeCal(){document.getElementById('calOverlay').classList.remove('open');document.body.style.overflow='';}
+function openORModal(){
+  document.getElementById('orOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  var c=document.getElementById('orWidgetContainer');
+  if(!c.dataset.loaded){
+    c.innerHTML='<div class="ownerrez-widget" data-propertyId="5f51a5c886a648408e9b6d90881cb60c" data-widget-type="Casa Lucky Inquiry/Book - Booking/Inquiry" data-widgetId="59c4746fa2894e48bcce4f4fb2652210"></div>';
+    var s=document.createElement('script');
+    s.src='https://app.ownerrez.com/widget.js';
+    c.appendChild(s);
+    c.dataset.loaded='true';
+  }
+}
+function closeORModal(){document.getElementById('orOverlay').classList.remove('open');document.body.style.overflow='';}
+function openRacelORModal(){
+  document.getElementById('orOverlayRacel').classList.add('open');
+  document.body.style.overflow='hidden';
+  var c=document.getElementById('orWidgetContainerRacel');
+  if(!c.dataset.loaded){
+    c.innerHTML='<div class="ownerrez-widget" data-propertyId="e07cf2606a714b2c9b24925eaebe400f" data-widget-type="Casa Racel - Booking/Inquiry - Booking/Inquiry" data-widgetId="0070c3575bc54a698e821ced82da2166"></div>';
+    var s=document.createElement('script');
+    s.src='https://app.ownerrez.com/widget.js';
+    c.appendChild(s);
+    c.dataset.loaded='true';
+  }
+}
+function closeRacelORModal(){document.getElementById('orOverlayRacel').classList.remove('open');document.body.style.overflow='';}
 function renderCalendar(){
   const grid=document.getElementById('calGrid'),lbl=document.getElementById('calMonthLbl'),t=T[lang];
   const men=['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -1968,21 +2125,21 @@ function showSummary(){
   const avg=Math.round(total/nights);
   let discPct=0;if(nights>=28)discPct=20;else if(nights>=21)discPct=15;
   const discAmt=Math.round(total*discPct/100),sub=total-discAmt,clean=calProp==='lucky'?50:75;
-  const vat=Math.round(sub*0.16),ish=Math.round(sub*0.05),grand=sub+vat+ish+clean;
+  const damage=37,taxBase=sub+clean+damage;
+  const vat=Math.round(taxBase*0.16),ish=Math.round(taxBase*0.05),grand=taxBase+vat+ish;
   const opts={month:'short',day:'numeric'},loc=lang==='es'?'es-MX':'en-US';
   document.getElementById('sumDates').textContent=calIn.toLocaleDateString(loc,opts)+' → '+calOut.toLocaleDateString(loc,opts);
   let rows=`<div class="cal-sum-row"><span>${nights} ${t.cal_nights} × $${avg} avg</span><span>$${total}</span></div>`;
   if(discPct>0)rows+=`<div class="cal-sum-row discount"><span>${discPct}% ${lang==='es'?'descuento':'discount'}</span><span>-$${discAmt}</span></div>`;
+  rows+=`<div class="cal-sum-row"><span>${t.cal_clean}</span><span>$${clean}</span></div>`;
+  rows+=`<div class="cal-sum-row"><span>${t.cal_damage}</span><span>$${damage}</span></div>`;
   rows+=`<div class="cal-sum-row tax"><span>${t.cal_vat}</span><span>$${vat}</span></div>`;
   rows+=`<div class="cal-sum-row tax"><span>${t.cal_ish}</span><span>$${ish}</span></div>`;
-  rows+=`<div class="cal-sum-row"><span>${t.cal_clean}</span><span>$${clean}</span></div>`;
   rows+=`<div class="cal-sum-row total"><span>${t.cal_total}</span><span>$${grand} <small style="font-size:.75em;font-weight:400;color:var(--muted)">USD</small></span></div>`;
   rows+=`<div style="text-align:right;font-style:italic;font-size:.72rem;color:var(--muted);margin-top:.15rem">≈ $${fxMXN(grand).toLocaleString('en-US')} MXN</div>`;
   document.getElementById('sumRows').innerHTML=rows;
   document.getElementById('calBookLbl').textContent=t.cal_book_lbl;
-  document.getElementById('btnAirbnb').textContent='✈ '+t.cal_airbnb;
   document.getElementById('btnDirect').textContent='⭐ '+t.cal_direct;
-  const vb=document.getElementById('btnVrbo');if(vb&&vb.style.display!=='none')vb.textContent='🏠 '+t.cal_vrbo;
   document.getElementById('calFootNote').textContent=t.cal_sync;
   document.getElementById('calSummary').classList.add('show');
 }
@@ -2013,6 +2170,11 @@ let currentQuote = null;
 const PROP_NAMES = {lucky:'Casa Lucky', rico:'Casa Rico', racel:'Casa Rac\u00e9l'};
 
 function bookDirectFromCal(){
+  // Hybrid routing: live properties go straight to OwnerRez widget for direct booking + payment.
+  // Casa Rico (waitlist until Jan 2027) keeps the inquiry/form path below.
+  if(calProp === 'lucky'){ closeCal(); setTimeout(openORModal, 80); return; }
+  if(calProp === 'racel'){ closeCal(); setTimeout(openRacelORModal, 80); return; }
+
   if(!calIn || !calOut){ closeCal(); goTo('contact'); return; }
   const nights = Math.round((calOut - calIn) / 86400000);
   let total = 0; const d = new Date(calIn);
@@ -2024,9 +2186,11 @@ function bookDirectFromCal(){
   const discAmt = Math.round(total * discPct / 100);
   const sub = total - discAmt;
   const clean = calProp === 'lucky' ? 50 : 75;
-  const vat = Math.round(sub * 0.16);
-  const ish = Math.round(sub * 0.05);
-  const grand = sub + vat + ish + clean;
+  const damage = 37;
+  const taxBase = sub + clean + damage;
+  const vat = Math.round(taxBase * 0.16);
+  const ish = Math.round(taxBase * 0.05);
+  const grand = taxBase + vat + ish;
   const pad = n => String(n).padStart(2,'0');
   const ymd = dt => dt.getFullYear()+'-'+pad(dt.getMonth()+1)+'-'+pad(dt.getDate());
 
@@ -2034,7 +2198,7 @@ function bookDirectFromCal(){
     prop: calProp,
     inISO: ymd(calIn),
     outISO: ymd(calOut),
-    nights, avg, total, discPct, discAmt, sub, clean, vat, ish, grand
+    nights, avg, total, discPct, discAmt, sub, clean, damage, vat, ish, grand
   };
 
   // Populate form fields
@@ -2088,9 +2252,10 @@ function renderQuotePanel(){
   if(q.discPct > 0){
     rows += '<div class="quote-panel-row discount"><span>'+q.discPct+'% '+(lang==='es'?'descuento':'discount')+'</span><span>-$'+q.discAmt+'</span></div>';
   }
+  rows += '<div class="quote-panel-row"><span>'+t.cal_clean+'</span><span>$'+q.clean+'</span></div>';
+  rows += '<div class="quote-panel-row"><span>'+t.cal_damage+'</span><span>$'+q.damage+'</span></div>';
   rows += '<div class="quote-panel-row tax"><span>'+t.cal_vat+'</span><span>$'+q.vat+'</span></div>';
   rows += '<div class="quote-panel-row tax"><span>'+t.cal_ish+'</span><span>$'+q.ish+'</span></div>';
-  rows += '<div class="quote-panel-row"><span>'+t.cal_clean+'</span><span>$'+q.clean+'</span></div>';
   rows += '<div class="quote-panel-row total"><span>'+t.cal_total+'</span><span>$'+q.grand+' <small style="font-size:.75em;font-weight:400;color:var(--muted)">USD</small></span></div>';
   rows += '<div style="text-align:right;font-style:italic;font-size:.72rem;color:var(--muted);margin-top:.15rem">≈ $'+fxMXN(q.grand).toLocaleString('en-US')+' MXN</div>';
   document.getElementById('quotePanelRows').innerHTML = rows;
@@ -2170,9 +2335,10 @@ function showSuccessWithDeposit(){
     if(bkDates) bkDates.textContent = inD.toLocaleDateString(loc, opts) + ' → ' + outD.toLocaleDateString(loc, opts) + ' · ' + q.nights + ' ' + t.cal_nights;
     let rows = '<div class="suc-breakdown-row"><span>' + q.nights + ' ' + t.cal_nights + ' × $' + q.avg + ' avg</span><span>$' + q.total + '</span></div>';
     if(q.discPct > 0) rows += '<div class="suc-breakdown-row discount"><span>' + q.discPct + '% ' + (isES ? 'descuento' : 'discount') + '</span><span>-$' + q.discAmt + '</span></div>';
-    rows += '<div class="suc-breakdown-row tax"><span>' + t.cal_vat  + '</span><span>$' + q.vat   + '</span></div>';
-    rows += '<div class="suc-breakdown-row tax"><span>' + t.cal_ish  + '</span><span>$' + q.ish   + '</span></div>';
-    rows += '<div class="suc-breakdown-row"><span>'     + t.cal_clean + '</span><span>$' + q.clean + '</span></div>';
+    rows += '<div class="suc-breakdown-row"><span>'     + t.cal_clean  + '</span><span>$' + q.clean  + '</span></div>';
+    rows += '<div class="suc-breakdown-row"><span>'     + t.cal_damage + '</span><span>$' + q.damage + '</span></div>';
+    rows += '<div class="suc-breakdown-row tax"><span>' + t.cal_vat   + '</span><span>$' + q.vat    + '</span></div>';
+    rows += '<div class="suc-breakdown-row tax"><span>' + t.cal_ish   + '</span><span>$' + q.ish    + '</span></div>';
     rows += '<div class="suc-breakdown-row total"><span>' + (isES ? 'Total estimado' : 'Estimated Total') + '</span><span>$' + q.grand + ' <small style="font-weight:400;font-size:.78em;color:var(--muted)">USD</small></span></div>';
     rows += '<div style="text-align:right;font-style:italic;font-size:.72rem;color:var(--muted);margin-top:.1rem">≈ $' + fxMXN(q.grand).toLocaleString('en-US') + ' MXN</div>';
     bkRows.innerHTML = rows;
@@ -2196,10 +2362,11 @@ function recalcFormQuote(){
   let discPct = 0; if(nights >= 28) discPct = 20; else if(nights >= 21) discPct = 15;
   const discAmt = Math.round(total * discPct / 100), sub = total - discAmt;
   const clean = prop === 'lucky' ? 50 : 75;
-  const vat = Math.round(sub * 0.16), ish = Math.round(sub * 0.05), grand = sub + vat + ish + clean;
+  const damage = 37, taxBase = sub + clean + damage;
+  const vat = Math.round(taxBase * 0.16), ish = Math.round(taxBase * 0.05), grand = taxBase + vat + ish;
   const pad = n => String(n).padStart(2, '0');
   const ymd = dt => dt.getFullYear() + '-' + pad(dt.getMonth() + 1) + '-' + pad(dt.getDate());
-  currentQuote = { prop, inISO: ymd(inDate), outISO: ymd(outDate), nights, avg, total, discPct, discAmt, sub, clean, vat, ish, grand };
+  currentQuote = { prop, inISO: ymd(inDate), outISO: ymd(outDate), nights, avg, total, discPct, discAmt, sub, clean, damage, vat, ish, grand };
   renderQuotePanel();
   const btn = document.querySelector('#bookingForm .f-submit');
   if(btn) btn.textContent = T[lang].f_btn_book || 'Request to Book →';
@@ -2321,6 +2488,7 @@ async function submitForm(e){
     payload['Quoted VAT (16%)'] = '$' + currentQuote.vat;
     payload['Quoted ISH (5%)'] = '$' + currentQuote.ish;
     payload['Quoted Cleaning'] = '$' + currentQuote.clean;
+    payload['Quoted Damage Waiver'] = '$' + currentQuote.damage;
     payload['Quoted TOTAL'] = '$' + currentQuote.grand;
     payload._subject = 'Booking Inquiry — ' + PROP_NAMES[currentQuote.prop] +
                        ' · ' + currentQuote.inISO + ' → ' + currentQuote.outISO +
