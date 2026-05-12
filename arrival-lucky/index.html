@@ -1,1 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting There — Casa Lucky · Bravo Huatulco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:      #0C1F3F;
+    --ocean:     #1A5276;
+    --sky:       #2E86C1;
+    --teal:      #48C9B0;
+    --gold:      #C9A84C;
+    --cream:     #FAF8F3;
+    --cream-dark:#EDE8DC;
+    --white:     #FFFFFF;
+    --text:      #0C1F3F;
+    --muted:     #6B8CAE;
+    --border:    rgba(12,31,63,0.12);
+  }
 
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--navy);
+    padding: 2rem 1.5rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--teal), var(--gold));
+  }
+  .header-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+  }
+  .header-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+  }
+  .header-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.55rem, 5vw, 2rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── MAP BUTTON ── */
+  .map-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--ocean);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    transition: background 0.2s;
+  }
+  .map-btn:hover { background: var(--navy); }
+  .map-btn-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .map-btn-text .map-btn-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+  .map-btn-text .map-btn-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+  }
+  .map-btn-text .map-btn-coords {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.55);
+    font-family: monospace;
+    margin-top: 0.1rem;
+  }
+  .map-btn-arrow {
+    margin-left: auto;
+    font-size: 1.1rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── STEP LIST ── */
+  .step-list { list-style: none; }
+  .step-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-num {
+    width: 32px;
+    height: 32px;
+    background: var(--navy);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content { flex: 1; }
+  .step-content strong {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .step-content p {
+    font-size: 0.92rem;
+    color: var(--navy);
+    opacity: 0.78;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+  .step-content p b { color: var(--navy); opacity: 1; font-weight: 600; }
+
+  /* ── HIGHLIGHT CARD ── */
+  .highlight-card {
+    background: var(--cream-dark);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 1.1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+  .highlight-card strong { font-weight: 600; }
+
+  /* ── GATE CARD ── */
+  .gate-script {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    color: white;
+    margin: 1rem 0;
+  }
+  .gate-script .gs-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .gate-script .gs-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.65;
+  }
+
+  /* ── DOOR CODE CARD ── */
+  .door-code-card {
+    background: var(--ocean);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    color: white;
+    margin: 1.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .door-code-icon { font-size: 2rem; flex-shrink: 0; }
+  .door-code-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.2rem;
+  }
+  .door-code-value {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    font-family: monospace;
+  }
+  .door-code-note {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.2rem;
+    font-weight: 300;
+  }
+
+  /* ── CONTACT CARDS ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+    margin-top: 1rem;
+  }
+  .contact-card {
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 1.1rem;
+  }
+  .contact-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 0.15rem;
+  }
+  .contact-badge {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.65rem;
+  }
+  .contact-action {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .contact-action:hover { background: var(--cream); }
+  .contact-action .ca-icon { font-size: 1rem; }
+
+  /* ── WIFI CARD ── */
+  .wifi-card {
+    background: var(--ocean);
+    border-radius: 14px;
+    padding: 1.1rem 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+  .wifi-icon { font-size: 2rem; flex-shrink: 0; }
+  .wifi-network-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  .wifi-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--gold);
+  }
+  .wifi-pass-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.4rem;
+  }
+  .wifi-pass { font-weight: 600; font-size: 0.95rem; }
+
+  /* ── CONFIRM BADGE ── */
+  .confirm {
+    display: inline-block;
+    background: #FFF3CD;
+    color: #856404;
+    border: 1px solid #FFEEBA;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.05rem 0.4rem;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+    font-family: monospace;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.78rem;
+    line-height: 1.9;
+  }
+  footer .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  footer .footer-tagline {
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  footer a { color: rgba(255,255,255,0.65); text-decoration: none; }
+
+  @media (max-width: 400px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="header-eyebrow">Bravo Huatulco · Arrival Guide</div>
+  <div class="header-title">Getting There &amp; <em>Important Info</em></div>
+  <div class="header-sub">Casa Lucky · Unit E001 · Santa Cruz Huatulco</div>
+  <div style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.18);border:1px solid rgba(201,168,76,0.4);border-radius:8px;padding:0.45rem 0.9rem;">
+    <span style="font-size:1rem;">🕓</span>
+    <span style="font-size:0.78rem;color:white;font-weight:500;">Check-in: <strong style="color:var(--gold);">4:00 PM or after</strong></span>
+  </div>
+</div>
+
+<!-- REACH OUT FIRST -->
+<div class="section">
+  <div class="section-label">Before You Arrive</div>
+  <div class="section-title">Let Us Know You're Coming</div>
+  <p style="font-size:0.92rem;color:var(--navy);opacity:0.78;line-height:1.8;font-weight:300;margin-bottom:1rem;">
+    Please reach out to <strong>Javier</strong> or <strong>Osmar</strong> via WhatsApp or phone to let them know your expected arrival time. One of them will be at Casa Lucky to greet you and walk you through all the amenities. Both speak English and Spanish.
+  </p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-name">Javier</div>
+      <div class="contact-badge">Property Support · EN / ES</div>
+      <a class="contact-action" href="https://wa.me/529581283047">
+        <span class="ca-icon">💬</span> WhatsApp
+      </a>
+      <a class="contact-action" href="tel:+529581283047">
+        <span class="ca-icon">📞</span> +52 958 128 3047
+      </a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-name">Osmar</div>
+      <div class="contact-badge">Property Support · EN / ES</div>
+      <a class="contact-action" href="https://wa.me/529711323057">
+        <span class="ca-icon">💬</span> WhatsApp
+      </a>
+      <a class="contact-action" href="tel:+529711323057">
+        <span class="ca-icon">📞</span> +52 971 132 3057
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- GETTING THERE -->
+<div class="section">
+  <div class="section-label">Directions</div>
+  <div class="section-title">Getting to Nirú Las Casitas</div>
+
+  <a class="map-btn" href="https://maps.google.com/?q=15.7520878,-96.1330443" target="_blank" rel="noopener">
+    <div class="map-btn-icon">📍</div>
+    <div class="map-btn-text">
+      <div class="map-btn-label">Open in Google Maps</div>
+      <div class="map-btn-name">Nirú Las Casitas</div>
+      <div class="map-btn-coords">15.7520878, -96.1330443</div>
+    </div>
+    <div class="map-btn-arrow">↗</div>
+  </a>
+
+  <div class="highlight-card">
+    The complex is located in <strong>Santa Cruz Huatulco</strong>, steps from the marina. The Google Maps pin above will take you to the property — but if GPS directions seem off, use this landmark: look for <strong>Hotel Yuu Lee Casa Bendita Huatulco</strong>, then continue down <strong>Calle Pochutla</strong> toward the back of the hotel. The <strong>Nirú Las Casitas main gate</strong> is just down that street. Taxis from the Huatulco airport (HUX) typically run about <strong>300–400 pesos</strong> — always confirm the fare before getting in.
+  </div>
+
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;margin-top:0.5rem;letter-spacing:0.03em;font-weight:500;text-transform:uppercase;font-size:0.65rem;letter-spacing:0.15em;">Once you arrive at the complex</p>
+  <ol class="step-list">
+    <li class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Main Gate — Speak to the Security Guard</strong>
+        <p>At the entrance gate, let the guard know you are staying in <b>Unit E001</b>, owned by <b>Matt and Francisco</b>. See the gate script below.</p>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Park or Be Dropped Off</strong>
+        <p>Parking is open — park anywhere in the lot. <b>Tip:</b> The closer you park to the <b>pickleball court</b>, the shorter the walk to the condo. Arriving by taxi? Ask to be dropped at the parking lot entrance and continue on foot.</p>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Walk Along the Path</strong>
+        <p>From the parking lot, follow the path that runs alongside the <b>pickleball court and fitness center</b>. Continue around to the right past the fitness center.</p>
+        <p style="margin-top:0.4rem;">⚠️ At the junction, <b>turning left</b> leads to the private beach walkway — <b>keep right</b> to reach the condo.</p>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Find Casa Lucky — Unit E001</strong>
+        <p>Head to the <b>second building</b>. Casa Lucky is on the <b>ground floor</b>, the <b>second unit</b> of that building — front-facing.</p>
+      </div>
+    </li>
+  </ol>
+</div>
+
+<!-- GATE ACCESS -->
+<div class="section">
+  <div class="section-label">Gate Access</div>
+  <div class="section-title">What to Say at the Gate</div>
+  <p style="font-size:0.92rem;color:var(--navy);opacity:0.78;line-height:1.8;font-weight:300;margin-bottom:0.75rem;">
+    When you arrive at the security gate, simply let the guard know:
+  </p>
+  <div class="gate-script">
+    <div class="gs-label">In English</div>
+    <div class="gs-text">"I'm staying in Unit E001 — it belongs to Matt and Francisco."</div>
+  </div>
+  <div class="gate-script" style="margin-top:0.75rem;">
+    <div class="gs-label">En Español</div>
+    <div class="gs-text">"Voy a quedarme en la unidad E001 — es de Matt y Francisco."</div>
+  </div>
+</div>
+
+<!-- DOOR ACCESS -->
+<div class="section">
+  <div class="section-label">Unit Access</div>
+  <div class="section-title">Your Door Code</div>
+  <p style="font-size:0.92rem;color:var(--navy);opacity:0.78;line-height:1.8;font-weight:300;">
+    You enter Casa Lucky through the <strong>private patio</strong>. The metal patio door has an electronic lock — enter your code and press <strong>#</strong> to unlock. The door locks automatically whenever it closes.
+  </p>
+  <div class="door-code-card">
+    <div class="door-code-icon">🔑</div>
+    <div>
+      <div class="door-code-label">Patio Door Code</div>
+      <div class="door-code-value">9368 1213 #</div>
+      <div class="door-code-note">Enter code, then press # to unlock</div>
+    </div>
+  </div>
+  <div class="highlight-card" style="font-size:0.85rem;">
+    Keep this code private. The door <strong>locks automatically</strong> every time it closes — you're always secured.
+  </div>
+</div>
+
+<!-- WIFI -->
+<div class="section">
+  <div class="section-label">Once You're In</div>
+  <div class="section-title">Wi-Fi</div>
+  <div class="wifi-card">
+    <div class="wifi-icon">📶</div>
+    <div>
+      <div class="wifi-network-label">Network</div>
+      <div class="wifi-name">NiruE001</div>
+      <div class="wifi-pass-label">Password</div>
+      <div class="wifi-pass">NiruE001:-)</div>
+    </div>
+  </div>
+</div>
+
+<!-- FULL GUIDE REFERENCE -->
+<div class="section" style="text-align:center;">
+  <div style="font-size:1.75rem;margin-bottom:0.75rem;">📖</div>
+  <div class="section-label" style="text-align:center;">Your Stay, Covered</div>
+  <div class="section-title" style="text-align:center;">Casa Lucky Guest Guide</div>
+  <p style="font-size:0.92rem;color:var(--navy);opacity:0.78;line-height:1.85;font-weight:300;max-width:420px;margin:0 auto 1.25rem;">
+    We've put together a full guide to help you get the most out of your time here — from how everything in the condo works, to where to eat, which bays to visit, and the best local spots most visitors never find. Consider it your insider companion.
+  </p>
+  <a href="#" style="display:inline-flex;align-items:center;gap:0.6rem;background:var(--navy);color:white;text-decoration:none;border-radius:10px;padding:0.85rem 1.5rem;font-size:0.88rem;font-weight:600;letter-spacing:0.04em;transition:background 0.2s;">
+    <span>Open the Guest Guide</span>
+    <span style="color:var(--gold);">↗</span>
+  </a>
+  <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;font-style:italic;">Javier or Osmar will also walk you through everything at check-in.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Bravo Huatulco</div>
+  <div class="footer-tagline">Where the Sierra Madre Meets the Sea</div>
+  <div>Casa Lucky · Unit E001 · Nirú Las Casitas, Santa Cruz, Huatulco, Oaxaca</div>
+  <div><a href="mailto:reservations@bravohuatulco.com">reservations@bravohuatulco.com</a></div>
+</footer>
+
+</body>
+</html>
