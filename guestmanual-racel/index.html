@@ -961,6 +961,141 @@
   }
   /* Reserve space at the end of the nav so the toggle never overlaps menu items */
   nav ul { padding-right: 5.5rem; }
+
+  /* ============================================================
+     PRINT / PDF STYLES — clean pagination for PDF exports
+     ============================================================ */
+  @media print {
+    /* Page setup */
+    @page {
+      size: letter;
+      margin: 0.5in 0.45in;
+    }
+
+    /* Global tightening */
+    html, body {
+      background: var(--cream) !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-size: 11.5pt;
+    }
+    body {
+      line-height: 1.55;
+      orphans: 3;
+      widows: 3;
+    }
+
+    /* Hide screen-only chrome */
+    nav,
+    .lang-toggle { display: none !important; }
+
+    /* Section spacing — tighter for print */
+    section {
+      padding: 1.4rem 1rem !important;
+      border-bottom: none !important;
+    }
+
+    /* Hero — slim it so the welcome note can share page 1 */
+    .hero {
+      padding: 1.75rem 1.25rem 1.5rem !important;
+    }
+    .hero-logo {
+      width: 110px !important;
+      margin-bottom: 0.85rem !important;
+    }
+    .hero h1 {
+      font-size: 2.4rem !important;
+      margin-bottom: 0.35rem !important;
+    }
+    .hero-tagline {
+      margin-top: 0.5rem !important;
+      font-size: 0.78rem !important;
+    }
+    .hero-meta {
+      margin-top: 1.25rem !important;
+      gap: 1.25rem !important;
+    }
+
+    /* Never orphan a heading from its content */
+    .section-label,
+    .section-title,
+    .section-divider,
+    h3 {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+    .section-title { margin-bottom: 0.85rem !important; }
+
+    p { orphans: 3; widows: 3; }
+
+    /* KEEP-INSIDE: cards, items, and grouped blocks never split */
+    .welcome-note,
+    .wifi-card,
+    .info-card,
+    .guide-item,
+    .rule-item,
+    .tip-item,
+    .route-step,
+    .beach-route,
+    .transport-item,
+    .driver-item,
+    .activity-card,
+    .restaurant-card,
+    .rest-content,
+    .thing-item,
+    .nightlife-card,
+    .emergency-card,
+    .checkout-item,
+    .guide-img-wrap {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Card headers stick to their body */
+    .tip-header,
+    .transport-header,
+    .activity-header,
+    .rest-name,
+    .thing-name,
+    .activity-title-wrap {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* Images stay within bounds and don't split */
+    img {
+      max-width: 100% !important;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Tighten welcome-note for page-1 fit */
+    .welcome-note {
+      padding: 1rem 1.15rem !important;
+      margin-bottom: 1rem !important;
+    }
+    .welcome-note p {
+      margin-bottom: 0.65rem !important;
+      line-height: 1.65 !important;
+      font-size: 0.92rem !important;
+    }
+
+    /* Tighter card spacing */
+    .wifi-card,
+    .info-card,
+    .guide-item,
+    .rule-item,
+    .activity-card,
+    .restaurant-card,
+    .tip-item,
+    .thing-item,
+    .emergency-card {
+      margin-bottom: 0.6rem !important;
+    }
+
+    /* Links — plain in print */
+    a { text-decoration: none; color: inherit; }
+  }
 </style>
 </head>
 <body>
