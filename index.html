@@ -2229,7 +2229,7 @@ function showSummary(){
   document.getElementById('sumRows').innerHTML=rows;
   document.getElementById('calBookLbl').textContent=t.cal_book_lbl;
   document.getElementById('btnDirect').textContent='⭐ '+t.cal_direct;
-  document.getElementById('calFootNote').textContent=t.cal_sync;
+  document.getElementById('calFootNote').textContent=calProp==='rico'?'':t.cal_sync;
   document.getElementById('calSummary').classList.add('show');
 }
 window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
