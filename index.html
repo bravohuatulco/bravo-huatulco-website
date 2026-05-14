@@ -279,7 +279,7 @@ img[onclick]{cursor:pointer;}
 .review-author{font-size:.72rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.1em;}
 .review-source{font-size:.65rem;color:var(--muted);}
 .reviews-cta{text-align:center;margin-top:1.75rem;}
-.reviews-cta p{font-size:.875rem;color:var(--muted);margin-bottom:1rem;}.review-google-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-g-dot{width:9px;height:9px;border-radius:50%;background:conic-gradient(#4285F4 0deg 90deg,#EA4335 90deg 180deg,#FBBC05 180deg 270deg,#34A853 270deg 360deg);flex-shrink:0;display:inline-block;}.review-visited{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ocean);background:rgba(26,82,118,.07);border:1px solid rgba(26,82,118,.15);border-radius:2px;padding:.15rem .45rem;margin-left:.4rem;}.review-es-block{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);}.review-text-es{font-size:.875rem;color:#1A5276;line-height:1.78;font-weight:300;font-style:italic;margin:0 0 .5rem;}.review-translator-note{font-size:.62rem;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:.55rem;line-height:1.5;font-style:normal;margin:0;}
+.reviews-cta p{font-size:.875rem;color:var(--muted);margin-bottom:1rem;}.review-google-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-g-dot{width:9px;height:9px;border-radius:50%;background:conic-gradient(#4285F4 0deg 90deg,#EA4335 90deg 180deg,#FBBC05 180deg 270deg,#34A853 270deg 360deg);flex-shrink:0;display:inline-block;}.review-visited{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ocean);background:rgba(26,82,118,.07);border:1px solid rgba(26,82,118,.15);border-radius:2px;padding:.15rem .45rem;margin-left:.4rem;}.review-es-block{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);}.review-text-es{font-size:.875rem;color:#1A5276;line-height:1.78;font-weight:300;font-style:italic;margin:0 0 .5rem;}.review-translator-note{font-size:.62rem;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:.55rem;line-height:1.5;font-style:normal;margin:0;}.review-fb-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-fb-icon{width:14px;height:14px;border-radius:3px;background:#1877F2;color:#fff;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:11px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;}
 
 /* ABOUT */
 #about{background:#fff;padding-bottom:2rem;}
@@ -428,6 +428,10 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
 .foot-links{display:flex;gap:1.75rem;justify-content:center;margin-bottom:2rem;flex-wrap:wrap;}
 .foot-links a{font-size:.69rem;color:rgba(255,255,255,.38);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;cursor:pointer;}
 .foot-links a:hover{color:var(--gold);}
+.foot-social{display:flex;gap:.85rem;justify-content:center;margin:0 0 1.5rem;}
+.foot-social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.55);transition:color .2s,border-color .2s,background .2s;}
+.foot-social a:hover{color:#fff;border-color:var(--gold);background:rgba(201,168,76,.12);}
+.foot-social svg{width:16px;height:16px;display:block;}
 .foot-copy{font-size:.67rem;color:rgba(255,255,255,.22);}
 
 @media(max-width:960px){
@@ -1595,6 +1599,10 @@ function agrLang(lang){
       <a onclick="goTo('policies')" data-i18n="nav_pol">Policies</a>
       <a onclick="goTo('contact')" data-i18n="nav_cta">Inquire Now</a>
     </div>
+    <div class="foot-social">
+      <a href="https://www.facebook.com/share/18WuBmd7Aq/" target="_blank" rel="noopener" aria-label="Bravo Huatulco on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg></a>
+      <a href="https://www.instagram.com/bravohuatulco" target="_blank" rel="noopener" aria-label="Bravo Huatulco on Instagram"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.25" fill="currentColor"/></svg></a>
+    </div>
     <div class="foot-copy" data-i18n="foot_copy">© 2026 Bravo Huatulco · BravoHuatulco.com · All rights reserved</div>
   </div>
 </footer>
@@ -2667,6 +2675,16 @@ const guestReviews = [
     author: "Everardo",
     date: "May 7, 2026",
     isGoogle: true
+  },
+  {
+    stars: 5,
+    property: "Casa Racél",
+    origin: "es",
+    text: "The place is simply beautiful — the beach is very close, the views are incredible, and the pool water is warm, which I loved. The beach has a marina where we got to watch the cruise ships come in 😍, and it's excellent for kids. The facilities are new and modern. We would absolutely come back. 10/10",
+    textES: "El lugar es simplemente hermoso, la playa está muy cerca, tienen una vista increíble, el agua de la piscina es templada lo cual me encantó, la playa tiene un puerto donde pudimos ver cruceros 😍 y la playa es excelente para los niños, las instalaciones son nuevas y modernas sin duda regresaríamos a este lugar 10/10",
+    author: "Jazmin",
+    date: "May 13, 2026",
+    isFacebook: true
   }
 ];
 
@@ -2685,22 +2703,36 @@ function renderReviews() {
   if (!grid) return;
   const isES = lang === 'es';
   grid.innerHTML = guestReviews.map(r => {
-    const bodyText = (isES && r.textES) ? r.textES : r.text;
-    const transNote = (isES && r.textES)
-      ? `<div class="review-es-block"><p class="review-text-es">"${r.textES}"</p><p class="review-translator-note">Traducido al español desde la reseña original en inglés · Translated to Spanish from the original English review.</p></div>`
-      : '';
-    const esBlock = isES ? transNote : '';
-    const enBlock = !isES ? `<p class="review-text">"${r.text}"</p>` : '';
+    // origin = language the guest actually wrote the review in ('en' default, 'es')
+    const origin = r.origin || 'en';
+    const noteEN2ES = 'Traducido al español desde la reseña original en inglés · Translated to Spanish from the original English review.';
+    const noteES2EN = 'Translated to English from the original Spanish review · Traducido al inglés desde la reseña original en español.';
+    let textBlock;
+    if (origin === 'es') {
+      // Guest wrote in Spanish; English is the translation.
+      textBlock = isES
+        ? `<p class="review-text-es">"${r.textES}"</p>`
+        : `<div class="review-es-block"><p class="review-text">"${r.text}"</p><p class="review-translator-note">${noteES2EN}</p></div>`;
+    } else {
+      // Guest wrote in English; Spanish is the translation.
+      textBlock = (isES && r.textES)
+        ? `<div class="review-es-block"><p class="review-text-es">"${r.textES}"</p><p class="review-translator-note">${noteEN2ES}</p></div>`
+        : `<p class="review-text">"${r.text}"</p>`;
+    }
     const visitedTag = r.visited ? `<span class="review-visited">${isES && r.visitedES ? r.visitedES : r.visited}</span>` : '';
-    const sourceLine = r.isGoogle
-      ? `<div class="review-google-tag"><span class="review-g-dot"></span> Google Review · ${r.date}</div>`
-      : `<div class="review-source">${r.date || r.source || ''}</div>`;
+    let sourceLine;
+    if (r.isGoogle) {
+      sourceLine = `<div class="review-google-tag"><span class="review-g-dot"></span> Google Review · ${r.date}</div>`;
+    } else if (r.isFacebook) {
+      sourceLine = `<div class="review-fb-tag"><span class="review-fb-icon">f</span> ${isES ? 'Reseña de Facebook' : 'Facebook Review'} · ${r.date}</div>`;
+    } else {
+      sourceLine = `<div class="review-source">${r.date || r.source || ''}</div>`;
+    }
     return `
     <div class="review-card">
       <div class="review-stars">${renderStars(r.stars)}</div>
       ${r.property ? `<span class="review-property-tag">${r.property}</span>${visitedTag}` : ''}
-      ${enBlock}
-      ${esBlock}
+      ${textBlock}
       <div class="review-author" style="margin-top:.85rem">${r.author}</div>
       ${sourceLine}
     </div>`;
