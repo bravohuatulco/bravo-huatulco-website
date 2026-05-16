@@ -1,1 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nana's Recipe Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6efdf; --paper-2:#fbf6ea; --card:#fffdf6;
+    --ink:#2c241c; --ink-soft:#6f6051; --ink-faint:#9a8b78;
+    --wood:#3a2a1d; --wood-2:#4a3526;
+    --red:#9f3a2c; --red-soft:#c06a54;
+    --line:#e4d8bf; --gold:#b0823c;
+    --shadow:0 18px 40px -22px rgba(58,42,29,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Newsreader',Georgia,serif;
+    font-size:18px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:radial-gradient(rgba(120,95,60,.05) 1px,transparent 1px);
+    background-size:4px 4px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
 
+  header.cover{text-align:center;padding:78px 28px 30px}
+  .kicker{font-family:'Newsreader',serif;font-style:italic;color:var(--red);font-size:1.05rem;letter-spacing:.04em;margin-bottom:14px}
+  h1.title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(3rem,9vw,5.8rem);line-height:.98;letter-spacing:-.01em;color:var(--ink)}
+  h1.title em{font-style:italic;font-weight:500;color:var(--red)}
+  .rule{width:230px;max-width:60%;height:0;margin:26px auto 24px;border-top:2px solid var(--red);position:relative}
+  .rule::before,.rule::after{content:"";position:absolute;top:-4px;width:7px;height:7px;border-radius:50%;background:var(--red)}
+  .rule::before{left:-3px}.rule::after{right:-3px}
+  .dedication{max-width:620px;margin:0 auto;font-size:1.18rem;color:var(--ink-soft);font-style:italic}
+  .count{margin-top:22px;font-family:'Fraunces',serif;font-size:.92rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+
+  .controls{
+    position:sticky;top:0;z-index:20;
+    background:linear-gradient(var(--paper) 72%,rgba(246,239,223,0));
+    padding:22px 28px 26px;margin-top:18px;
+  }
+  .controls-inner{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:16px;align-items:center}
+  .search{width:100%;max-width:440px;position:relative}
+  .search input{
+    width:100%;padding:13px 18px 13px 44px;
+    font-family:'Newsreader',serif;font-size:1rem;color:var(--ink);
+    background:var(--card);border:1.5px solid var(--line);border-radius:40px;
+    outline:none;transition:border-color .2s,box-shadow .2s;
+  }
+  .search input:focus{border-color:var(--red-soft);box-shadow:0 0 0 4px rgba(192,106,84,.13)}
+  .search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);opacity:.45}
+  .filters{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
+  .chip{
+    font-family:'Fraunces',serif;font-size:.86rem;letter-spacing:.03em;
+    padding:8px 17px;border-radius:30px;cursor:pointer;
+    background:transparent;border:1.5px solid var(--line);color:var(--ink-soft);
+    transition:all .18s;
+  }
+  .chip:hover{border-color:var(--red-soft);color:var(--red)}
+  .chip.active{background:var(--red);border-color:var(--red);color:#fdf6ea}
+
+  main{padding:6px 0 40px}
+  .section-label{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem;color:var(--red);
+    margin:34px 0 4px;padding-bottom:8px;border-bottom:1px solid var(--line);
+  }
+  .grid{display:grid;gap:26px;margin-top:22px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+  .recipe{
+    background:var(--card);border:1px solid var(--line);border-radius:7px;
+    overflow:hidden;cursor:pointer;box-shadow:var(--shadow);
+    transition:transform .22s ease,box-shadow .22s ease;
+    opacity:0;transform:translateY(14px);animation:rise .55s ease forwards;
+  }
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  .recipe:hover{transform:translateY(-5px);box-shadow:0 26px 46px -22px rgba(58,42,29,.6)}
+  .thumb{
+    aspect-ratio:1.62/1;background:#ece0c6;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;image-orientation:from-image}
+  .recipe-body{padding:17px 19px 20px}
+  .recipe-cat{font-family:'Fraunces',serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .recipe h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.45rem;line-height:1.12;margin:5px 0 7px}
+  .recipe-meta{font-size:.92rem;color:var(--ink-soft);font-style:italic}
+  .recipe-by{font-size:.86rem;color:var(--ink-faint);margin-top:6px}
+  .empty{text-align:center;padding:60px 20px;color:var(--ink-faint);font-style:italic;font-size:1.15rem}
+
+  .overlay{
+    position:fixed;inset:0;z-index:50;background:rgba(34,25,17,.62);
+    backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;
+    padding:38px 18px;overflow-y:auto;
+  }
+  .overlay.open{display:flex;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal{
+    background:var(--paper-2);max-width:920px;width:100%;border-radius:9px;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.7);overflow:hidden;
+    animation:pop .3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes pop{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+  .modal-head{padding:30px 38px 22px;border-bottom:1px solid var(--line);position:relative;background:var(--card)}
+  .modal-cat{font-family:'Fraunces',serif;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .modal-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:2.3rem;line-height:1.05;margin:6px 0 8px}
+  .modal-meta{font-style:italic;color:var(--ink-soft)}
+  .closeb{
+    position:absolute;top:22px;right:24px;width:38px;height:38px;border-radius:50%;
+    border:1.5px solid var(--line);background:var(--paper-2);cursor:pointer;
+    font-size:1.2rem;color:var(--ink-soft);line-height:1;transition:all .18s;
+  }
+  .closeb:hover{background:var(--red);color:#fff;border-color:var(--red)}
+  .modal-body{padding:30px 38px 38px}
+  .cards-strip{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:30px}
+  .photo{flex:1;min-width:240px}
+  .photo-frame{background:#fff;padding:11px;border-radius:4px;box-shadow:0 14px 30px -16px rgba(58,42,29,.6);border:1px solid #e7dcc4}
+  .photo-frame img{width:100%;display:block;border-radius:2px;image-orientation:from-image}
+  .photo-label{text-align:center;font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;color:var(--ink-faint);margin-top:9px}
+  .transcription{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:26px 30px}
+  .t-head{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+  .t-head h4{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:1.25rem;color:var(--red)}
+  .t-head span{flex:1;height:1px;background:var(--line)}
+  .ing-list{list-style:none;margin:14px 0 26px;columns:2;column-gap:34px}
+  .ing-list li{padding:5px 0 5px 18px;position:relative;break-inside:avoid;font-size:1rem}
+  .ing-list li::before{content:"";position:absolute;left:0;top:.85em;width:6px;height:6px;background:var(--red-soft);border-radius:50%}
+  .ing-list li.sub{list-style:none;padding-left:0;font-style:italic;color:var(--ink-faint);font-family:'Fraunces',serif;font-size:.9rem;letter-spacing:.04em;margin-top:6px}
+  .ing-list li.sub::before{display:none}
+  .step-list{margin:14px 0 8px;padding-left:0;list-style:none;counter-reset:s}
+  .step-list li{position:relative;padding:0 0 16px 46px;counter-increment:s}
+  .step-list li::before{content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fdf6ea;font-family:'Fraunces',serif;font-size:.95rem;display:flex;align-items:center;justify-content:center}
+  .note{margin-top:18px;padding:15px 20px;border-left:3px solid var(--gold);background:rgba(176,130,60,.08);font-style:italic;color:var(--ink-soft);font-size:.97rem;border-radius:0 5px 5px 0}
+  .modal-foot{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+  .by-line{font-style:italic;color:var(--ink-faint)}
+  .printb{font-family:'Fraunces',serif;font-size:.9rem;letter-spacing:.04em;padding:10px 22px;border-radius:30px;cursor:pointer;background:var(--wood);color:#f6efdf;border:none;transition:background .18s}
+  .printb:hover{background:var(--red)}
+
+  footer{background:var(--wood);color:#e8dcc6;text-align:center;padding:46px 28px;margin-top:30px}
+  footer .fdate{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:#f4ead2}
+  footer p{font-size:.92rem;color:#b9a888;margin-top:8px;max-width:540px;margin-left:auto;margin-right:auto}
+
+  @media(max-width:620px){
+    body{font-size:17px}
+    .modal-head,.modal-body{padding-left:22px;padding-right:22px}
+    .ing-list{columns:1}
+    .transcription{padding:20px}
+  }
+  .img-placeholder{
+    width:100%;height:100%;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(135deg,#ede2cc 0%,#e5d5b0 100%);
+    color:var(--ink-faint);font-family:'Fraunces',serif;font-style:italic;
+    font-size:.95rem;text-align:center;padding:20px;
+  }
+  .img-placeholder svg{opacity:.35}
+  .photo-frame .img-placeholder{
+    min-height:180px;background:linear-gradient(135deg,#ede2cc 0%,#e5d5b0 100%);
+  }
+
+  @media print{
+    body{background:#fff}
+    body::before,.controls,footer,header.cover,.closeb,.printb,.overlay{position:static}
+    .controls,footer,header.cover,.closeb,.printb,#grid-root{display:none!important}
+    .overlay{display:block!important;background:#fff;backdrop-filter:none;padding:0;overflow:visible;position:static}
+    .modal{box-shadow:none;max-width:100%;animation:none}
+    .modal-head{border-bottom:1px solid #ccc}
+    .photo-frame{box-shadow:none}
+    .cards-strip{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<header class="cover">
+  <div class="kicker">A family collection, kept in her hand</div>
+  <h1 class="title">Nana's <em>Recipe Box</em></h1>
+  <div class="rule"></div>
+  <p class="dedication">The recipes Nana cooked from for more than fifty years &mdash; gathered, scanned, and kept just as she wrote them, so her kitchen stays in the family.</p>
+  <div class="count" id="count"></div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6f6051" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/>
+      </svg>
+      <input id="search" type="text" placeholder="Search recipes &amp; ingredients&hellip;" autocomplete="off">
+    </div>
+    <div class="filters" id="filters"></div>
+  </div>
+</div>
+
+<main class="wrap"><div id="grid-root"></div></main>
+
+<footer>
+  <div class="fdate">For Nana &mdash; with love from all of us</div>
+  <p id="footer-count">This collection holds recipes so far. There are hundreds more in the box, and room here for every one.</p>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<script>
+const RECIPES = [
+  {
+    "id": "pecan-pie",
+    "title": "Pecan Pie",
+    "category": "Pies",
+    "meta": "9-inch pie \u00b7 350\u00b0F \u00b7 45\u201350 min",
+    "images": [{"src": "images/pecan-pie-front.jpg", "label": "Front of card"}, {"src": "images/pecan-pie-back.jpg", "label": "Back of card"}],
+    "ingredients": ["1 c. light corn syrup", "1 c. brown sugar", "3 eggs, slightly beaten", "1/3 c. melted butter", "1/2 t. salt", "1 t. vanilla", "1 heaping cup pecans"],
+    "steps": ["Combine corn syrup, sugar, eggs, butter, salt and vanilla. Mix well.", "Pour into an unbaked 9-inch pie crust. Sprinkle the top with pecan halves.", "Bake at 350\u00b0F for 45 to 50 minutes, until set. A toothpick inserted into the center will come out clean when the pie is done.", "Cool. If the crust appears to be getting too brown, cover it with foil for the remaining baking time."],
+    "note": "",
+    "contributor": ""
+  },
+  {
+    "id": "strawberry-glace-pie",
+    "title": "Strawberry Glac\u00e9 Pie",
+    "category": "Pies",
+    "meta": "9-inch pie \u00b7 chill about 3 hours",
+    "images": [{"src": "images/strawberry-glace-pie-front.jpg", "label": "Front of card"}, {"src": "images/strawberry-glace-pie-back.jpg", "label": "Back of card"}],
+    "ingredients": ["1 baked 9-inch pie shell", "6 c. strawberries (1 1/2 qt)", "1 c. sugar", "3 T. cornstarch", "1/2 c. water", "1 (3-oz) pkg. cream cheese"],
+    "steps": ["Bake the pie shell and let it cool.", "Mash 1 cup of the strawberries.", "In a 2-quart pan, mix the sugar and cornstarch. Gradually stir in the water and mashed strawberries.", "Cook until the mixture comes to a boil; boil and stir for 1 minute. Cool.", "Beat the cream cheese until smooth and spread it over the bottom of the shell.", "Fill the shell with the remaining whole strawberries.", "Pour the cooled strawberry mixture over the top.", "Refrigerate until set, about 3 hours."],
+    "note": "",
+    "contributor": ""
+  },
+  {
+    "id": "buttermilk-pie",
+    "title": "Buttermilk Pie",
+    "category": "Pies",
+    "meta": "9-inch pie \u00b7 350\u00b0F \u00b7 60 min",
+    "images": [{"src": "images/IMG_0756.jpeg", "label": "Front of card"}, {"src": "images/IMG_0757.jpeg", "label": "Back of card"}],
+    "ingredients": ["1/2 c butter", "1\u00bd c sugar", "3 T flour", "3 eggs", "1 c buttermilk", "1 t vanilla", "1/4 t nutmeg", "1 (9-inch) unbaked pie crust"],
+    "steps": ["Cream butter and sugar until smooth.", "Mix in flour, eggs, vanilla, buttermilk and nutmeg.", "Pour into the unbaked pie shell.", "Bake at 350\u00b0F for 60 minutes, or until golden brown.", "Serve topped with whipped cream, if desired."],
+    "note": "",
+    "contributor": ""
+  },
+  {
+    "id": "surprise-pie",
+    "title": "Surprise Pie",
+    "category": "Pies",
+    "meta": "10-inch pie plate \u00b7 350\u00b0F \u00b7 35 min",
+    "images": [{"src": "images/IMG_0761.jpeg", "label": "Recipe card"}],
+    "ingredients": ["4 eggs", "1 stick oleo (butter)", "1 c sugar", "1/2 c flour", "2 c milk", "1/2 c chocolate chips or coconut"],
+    "steps": ["Put everything except the chips or coconut into a blender and blend for 1 minute.", "Add chips or coconut and blend briefly.", "Pour into a greased 10-inch pie plate.", "Bake at 350\u00b0F for 35 minutes, or until a knife inserted in the center comes out clean."],
+    "note": "The surprise: this self-crusting pie separates into layers as it bakes \u2014 a crust forms on the bottom, custard settles in the middle, and a golden top appears without any extra work.",
+    "contributor": ""
+  },
+  {
+    "id": "magic-meat-loaf",
+    "title": "Magic Meat Loaf",
+    "category": "Main Dishes",
+    "meta": "Slow cooker \u00b7 low 8\u201310 hrs or high 4\u20136 hrs",
+    "images": [{"src": "images/magic-meat-loaf.jpg", "label": "Recipe card"}],
+    "ingredients": ["2 lbs. hamburger", "2 eggs", "3/4 c. quick oats", "1 pkg. dry onion soup mix", "1/2 c. catsup"],
+    "steps": ["Reserve 2 tablespoons of the catsup.", "Combine the beef, eggs, oats, soup mix and remaining catsup.", "Shape into a loaf and place in a crock pot. Top with the reserved catsup.", "Cover and cook on low 8 to 10 hours, or high 4 to 6 hours."],
+    "note": "",
+    "contributor": ""
+  },
+  {
+    "id": "stuffed-meatloaf",
+    "title": "Stuffed Meatloaf",
+    "category": "Main Dishes",
+    "meta": "Bundt pan \u00b7 350\u00b0F \u00b7 1 hr",
+    "images": [{"src": "images/IMG_0748.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 pkg stuffing mix", "1 c warm water", "1 pkg dry onion soup mix", "1\u00bd lbs ground beef", "2 eggs"],
+    "steps": ["Spray a bundt pan.", "Combine stuffing mix, onion soup mix and warm water in a bowl. Let stand 5 minutes until water is absorbed.", "Add ground beef and eggs. Mix well with hands.", "Place in bundt pan and bake at 350\u00b0F for 1 hour."],
+    "note": "",
+    "contributor": ""
+  },
+  {
+    "id": "pork-enchiladas",
+    "title": "Pork Enchiladas",
+    "category": "Main Dishes",
+    "meta": "Slow cooker pork \u00b7 350\u00b0F to finish",
+    "images": [{"src": "images/IMG_0760.jpeg", "label": "Recipe card"}],
+    "ingredients": ["pork roast", "1 can enchilada sauce", "flour tortillas", "onions", "beans", "shredded cheese"],
+    "steps": ["Cook pork in a slow cooker with 1 can of enchilada sauce. Shred.", "Warm tortillas and fill with meat and a little of the cooking juice.", "Add onions and beans. Roll and place seam-side down in a baking dish.", "Spoon more juice and shredded cheese over the top.", "Bake at 350\u00b0F until the cheese is melted."],
+    "note": "This card shows only the method \u2014 the ingredients side is missing. The ingredients listed here are pieced together from the instructions. A simple, slow-cooked supper that speaks for itself.",
+    "contributor": ""
+  },
+  {
+    "id": "sweet-sour-chicken",
+    "title": "Sweet & Sour Chicken",
+    "category": "Main Dishes",
+    "meta": "Over rice \u00b7 stovetop",
+    "images": [{"src": "images/IMG_0764.jpeg", "label": "Recipe card"}],
+    "ingredients": ["\u2014 Sauce \u2014", "1 c pineapple juice", "3/4 c brown sugar", "1/3 c vinegar", "3 T katsup", "2 T soy sauce", "1\u00bd T cornstarch", "3 T water", "\u2014 To finish \u2014", "chicken pieces", "bell pepper", "onion", "snow pea pods", "pineapple chunks"],
+    "steps": ["Combine pineapple juice, brown sugar, vinegar, katsup and soy sauce in a saucepan. Bring to a boil.", "Mix cornstarch and water; stir into the sauce until thickened. Cool.", "Cook chicken with peppers, onion, snow pea pods and pineapple.", "Add the sauce and serve over rice."],
+    "note": "Written on a date-keeper notepad \u2014 a recipe jotted right beside the calendar. Nana\u2019s method is spare, but the sauce is all there.",
+    "contributor": ""
+  },
+  {
+    "id": "enchilada-cheese-casserole",
+    "title": "Enchilada Cheese Casserole",
+    "category": "Main Dishes",
+    "meta": "350\u00b0F \u00b7 45 min \u00b7 layered",
+    "images": [{"src": "images/IMG_0765.jpeg", "label": "Recipe card"}],
+    "ingredients": ["hamburger", "1 bag shredded cheese", "enchilada sauce", "6 flour tortillas"],
+    "steps": ["Brown the hamburger.", "Spray a cake pan and spread a little enchilada sauce in the bottom.", "Dip 6 flour tortillas in the sauce and lay in the bottom of the pan.", "Layer with half the meat and half the cheese.", "Add another layer of tortillas, then the remaining meat and cheese.", "Pour any leftover sauce over the top.", "Bake at 350\u00b0F for 45 minutes."],
+    "note": "Written on a Tippin Dental Group notepad from Newton, Kansas \u2014 a recipe on whatever paper was handy. Nana wrote \u201cEnchilado Chees Casserole,\u201d kept just as she wrote it.",
+    "contributor": ""
+  },
+  {
+    "id": "dorito-casserole",
+    "title": "Dorito Casserole",
+    "category": "Main Dishes",
+    "meta": "8\u00d78 dish \u00b7 350\u00b0F \u00b7 10\u201315 min",
+    "images": [{"src": "images/IMG_0766.jpeg", "label": "Front of card"}, {"src": "images/IMG_0767.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 lb. hamburger", "1/2 onion, chopped", "1/2 block Velveeta cheese", "1 can cream of mushroom soup", "1 can enchilada sauce", "1 bag Doritos"],
+    "steps": ["Brown hamburger with onion. Drain.", "In a large bowl, mix Velveeta, mushroom soup, and enchilada sauce.", "Put Doritos in the bottom of an 8\u00d78 dish \u2014 crush a little.", "Put hamburger on top of the chips, then cover with the cheese mixture.", "Bake at 350\u00b0F until the cheese melts. Serve with salsa or sour cream."],
+    "note": "Nana wrote it \u201cDortio Casserole\u201d \u2014 kept just as she wrote it. The time written in the corner (10\u201315 min) may be for reheating rather than baking from scratch.",
+    "contributor": ""
+  },
+  {
+    "id": "baked-pork-chops",
+    "title": "Baked Pork Chops",
+    "category": "Main Dishes",
+    "meta": "Greased pan \u00b7 350\u00b0F \u00b7 45 min",
+    "images": [{"src": "images/IMG_0776.jpeg", "label": "Recipe card"}],
+    "ingredients": ["pork chops", "1 c parmesan cheese", "1 c bread crumbs", "1 t pepper", "garlic (cloves or powder), to taste", "olive oil, to coat"],
+    "steps": ["Mix parmesan cheese, bread crumbs, pepper, and garlic together.", "Coat the pork chops in olive oil, then press into the parmesan crumb mixture to coat.", "Place in a greased pan.", "Bake at 350\u00b0F for 45 minutes."],
+    "note": "Written on a small square card in faded ink, turned sideways. Some details are worn but the idea is clear: a parmesan and bread crumb crust pressed onto each chop.",
+    "contributor": ""
+  },
+  {
+    "id": "beckys-potatoes",
+    "title": "Becky's Potatoes",
+    "category": "Sides & Salads",
+    "meta": "350\u00b0F \u00b7 45 min \u00b7 9x12 pan",
+    "images": [{"src": "images/beckys-potatoes.jpg", "label": "Recipe card"}],
+    "ingredients": ["2 lbs. hash browns", "1/2 cup melted butter", "2 c. sour cream", "1 can cream of chicken soup", "2 c. grated cheese", "1/2 c. chopped onion", "1 t. salt", "1 t. pepper"],
+    "steps": [],
+    "note": "Nana's card lists the ingredients, oven temperature and pan size \u2014 but no method. A sign she knew this one by heart. The usual way: stir everything together, spread it in a 9x12 pan, and bake at 350\u00b0F for about 45 minutes.",
+    "contributor": ""
+  },
+  {
+    "id": "strawberry-salad",
+    "title": "Strawberry Salad",
+    "category": "Sides & Salads",
+    "meta": "Tossed salad with strawberry dressing",
+    "images": [{"src": "images/strawberry-salad.jpg", "label": "Recipe card"}],
+    "ingredients": ["1/2 c. vegetable oil", "1/3 c. sugar", "1/4 c. cider or red vinegar", "1 clove garlic", "1/4 t. salt", "1/4 t. paprika", "pinch of pepper", "8 c. romaine lettuce", "4 c. Bibb lettuce", "2 1/2 c. sliced fresh strawberries", "1 c. shredded Monterey Jack cheese", "1/2 c. toasted chopped walnuts"],
+    "steps": ["Combine the first 7 ingredients (oil through pepper) in a jar and shake well.", "Just before serving, combine the remaining ingredients\u2026"],
+    "note": "This card runs right off the bottom edge \u2014 the method ends mid-sentence at \u201cJust before serving, combine remaining\u2026\u201d There may be a back to this card, or the bottom was trimmed from the photo. Worth a second look in the recipe box.",
+    "contributor": ""
+  },
+  {
+    "id": "corn-salad",
+    "title": "Corn Salad",
+    "category": "Sides & Salads",
+    "meta": "Written on a Donald's Serva-Teria notepad \u2014 Pratt, Kansas",
+    "images": [{"src": "images/corn-salad.jpg", "label": "Recipe card"}],
+    "ingredients": ["1 #303 can whole kernel corn, drained", "2 carrots, grated", "1/3 c. red onion", "green pepper", "\u2014 Dressing \u2014", "1/4 c. sour cream", "1/4 c. salad dressing", "1 t. mustard", "1 t. oregano leaves", "salt & pepper"],
+    "steps": [],
+    "note": "Nana didn't title this one. It's written on a notepad from Donald's Serva-Teria on East First Street in Pratt, Kansas \u2014 a small piece of home tucked into the recipe box.",
+    "contributor": ""
+  },
+  {
+    "id": "black-bean-rice",
+    "title": "Black Bean Rice",
+    "category": "Sides & Salads",
+    "meta": "Stovetop \u00b7 about 10 min",
+    "images": [{"src": "images/IMG_0762.jpeg", "label": "Front of card"}, {"src": "images/IMG_0763.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 c rice, uncooked", "2 T olive oil", "3 cloves garlic", "1/2 onion, chopped", "1/2 bell pepper, chopped", "1 c black beans", "1 c enchilada sauce", "1\u00bd t chili powder", "1 c shredded cheese"],
+    "steps": ["Cook rice.", "In a skillet, cook onion and bell pepper in olive oil for about 3 minutes. Add garlic and cook 1 minute more.", "Stir in cooked rice, black beans, enchilada sauce and chili powder. Cook about 3 minutes.", "Remove from heat. Top with cheese, cover, and let sit until cheese melts, about 2 minutes."],
+    "note": "Nana didn\u2019t write a title on this card. The back has a child\u2019s scribble drawing \u2014 little company in the kitchen that day. Titled here as best describes the dish.",
+    "contributor": ""
+  },
+  {
+    "id": "mandarin-orange-salad",
+    "title": "Mandarin Orange Salad",
+    "category": "Sides & Salads",
+    "meta": "Chilled \u00b7 no-cook",
+    "images": [{"src": "images/IMG_0778.jpeg", "label": "Recipe card"}],
+    "ingredients": ["3 cans Mandarin oranges, drained", "1 can crushed pineapple, drained", "marshmallows", "additional ingredients obscured by water damage"],
+    "steps": [],
+    "note": "One of the most damaged cards in the box \u2014 heavily stained and water-marked, written in a hand different from most of the collection. What survives: Mandarin oranges, crushed pineapple, marshmallows, and a note to mix and chill. The rest has been lost to time. Worth a careful look at the original in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "peanut-butter-cups",
+    "title": "Peanut Butter Cups",
+    "category": "Sweets",
+    "meta": "9x13 pan \u00b7 no-bake",
+    "images": [{"src": "images/peanut-butter-cups.jpg", "label": "Recipe card"}],
+    "ingredients": ["1/3 lb. (1 1/4 c.) graham cracker crumbs", "1/2 lb. butter", "1 c. peanut butter", "1 lb. powdered sugar", "1 (11.5-oz) pkg. chocolate chips"],
+    "steps": ["Combine the graham cracker crumbs, butter, peanut butter and powdered sugar. Work together until smooth.", "Press into a buttered 9x13 pan.", "Melt the chocolate chips over hot water and spread over the cracker mixture.", "Refrigerate until firm, then cut into squares."],
+    "note": "",
+    "contributor": "Fern Farney"
+  },
+  {
+    "id": "candy-cane-fudge",
+    "title": "Candy Cane Fudge",
+    "category": "Sweets",
+    "meta": "8-inch pan \u00b7 chill 2 hrs \u00b7 no-bake",
+    "images": [{"src": "images/IMG_0751.jpeg", "label": "Front of card"}, {"src": "images/IMG_0752.jpeg", "label": "Back of card"}],
+    "ingredients": ["2 (11-oz) pkgs white chocolate chips", "1 (14-oz) can sweetened condensed milk", "1/2 t peppermint extract", "1\u00bd c crushed peppermint candy, divided"],
+    "steps": ["Line an 8-inch pan with foil.", "Heat chips and condensed milk over medium heat, stirring until chips are almost melted.", "Remove from heat and stir until completely melted.", "Stir in peppermint extract and 1\u00bc c of the crushed peppermint candy.", "Spread into pan and press remaining candy into the top.", "Chill 2 hours, then cut into squares."],
+    "note": "Written on a St. Jude Children\u2019s Research Hospital notepad. The final line of the front card is partly hidden behind a printed Santa illustration \u2014 but the back picks right up.",
+    "contributor": ""
+  },
+  {
+    "id": "sugar-cookies",
+    "title": "Sugar Cookies",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 7\u20138 min \u00b7 rolled & cut",
+    "images": [{"src": "images/IMG_0758.jpeg", "label": "Front of card"}, {"src": "images/IMG_0759.jpeg", "label": "Back of card"}],
+    "ingredients": ["1\u00bd c powdered sugar", "1 c oleo or butter", "1 egg", "1 t vanilla", "2\u00bd c flour", "1/4 t baking soda", "1 t cream of tartar"],
+    "steps": ["Mix all ingredients together.", "Roll out on a floured board and cut into shapes.", "Bake at 350\u00b0F for 7 to 8 minutes."],
+    "note": "",
+    "contributor": ""
+  },
+  {
+    "id": "sugar-cookies-ii",
+    "title": "Sugar Cookies (Old Card)",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 rolled & cut \u00b7 older recipe",
+    "images": [{"src": "images/IMG_0794.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 c. oleo (butter)", "1 egg", "cream (amount unclear)", "additional ingredients partially illegible"],
+    "steps": [],
+    "note": "A second sugar cookie recipe \u2014 a much older, heavily water-damaged card written in a different hand. The title and \u201c350\u00b0\u201d are clear, as are oleo and egg, but much of the card has faded or been lost to water damage. It may be an earlier version of the recipe, or one borrowed from a different kitchen altogether. Worth a look at the original card when you can.",
+    "contributor": ""
+  },
+  {
+    "id": "peach-cobbler",
+    "title": "Peach Cobbler",
+    "category": "Sweets",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 45 min",
+    "images": [{"src": "images/IMG_0770.jpeg", "label": "Recipe card"}],
+    "ingredients": ["\u2014 Batter \u2014", "1 c flour", "1 c sugar", "2 t baking powder", "1/2 t salt", "3/4 c milk", "cinnamon, to taste", "\u2014 Fruit & Topping \u2014", "2 c peaches", "sugar, to taste", "cinnamon, to taste", "1/4 t salt", "6 T butter"],
+    "steps": ["Melt butter in a 9\u00d713 pan.", "Mix flour, sugar, baking powder, salt, milk, and a pinch of cinnamon until you have a smooth batter.", "Pour the batter over the melted butter \u2014 do not stir.", "Toss peaches with a little sugar, cinnamon, and salt. Spoon peaches on top of the batter.", "Bake at 350\u00b0F for 45 minutes, until golden and set."],
+    "note": "The batter goes over the butter \u2014 not the other way around. A classic pour-over cobbler: the butter rises around the edges as it bakes, making its own golden crust.",
+    "contributor": ""
+  },
+  {
+    "id": "apple-cake",
+    "title": "Apple Cake",
+    "category": "Sweets",
+    "meta": "9\u00d712 pan \u00b7 350\u00b0F \u00b7 30 min",
+    "images": [{"src": "images/IMG_0777.jpeg", "label": "Recipe card"}],
+    "ingredients": ["peeled apples (enough to cover the pan)", "yellow cake batter (a little)", "2 t cinnamon (topping)", "butter, melted (topping)"],
+    "steps": [],
+    "note": "A small card written sideways, partially hard to read. The topping is set apart with a bracket: cinnamon and melted butter drizzled over the top. Only a little batter is used \u2014 the apples carry the cake. Full details are worth checking in the original box.",
+    "contributor": ""
+  },
+  {
+    "id": "apple-cake-batter",
+    "title": "Apple Cake (Batter Card)",
+    "category": "Sweets",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 40 min",
+    "images": [{"src": "images/IMG_0782.jpeg", "label": "Recipe card"}],
+    "ingredients": ["3 c flour", "1 t salt", "1 t baking powder", "sugar (amount unclear)", "milk", "2 eggs", "2 t vanilla", "peeled apples, sliced"],
+    "steps": [],
+    "note": "A companion card \u2014 or a second apple cake entirely \u2014 with a scratch batter recipe written sideways on the page. The pan size (9\u00d713), temperature (350\u00b0F), and time (40 min) are clear; the exact ingredient amounts and full method are partially illegible. The apples appear to be pressed into or arranged over the batter. Worth a second look at the original card.",
+    "contributor": ""
+  },
+  {
+    "id": "applesauce-cookies",
+    "title": "Applesauce Cookies",
+    "category": "Sweets",
+    "meta": "375\u00b0F \u00b7 drop cookies \u00b7 2\u2033 apart",
+    "images": [{"src": "images/IMG_0780.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1/2 c shortening", "1 c gran. sugar", "1 egg, unbeaten", "1 c applesauce", "2 c sifted flour", "1 t baking powder", "1 t salt", "1/2 t baking soda", "1 t cinnamon", "1/3 t cloves", "1/2 t nutmeg", "1 c raisins", "1 c chopped nuts"],
+    "steps": ["Combine shortening and sugar in a mixing bowl. Beat until fluffy.", "Beat in egg. Stir in applesauce.", "Sift together flour, baking powder, salt, soda, cinnamon, cloves, and nutmeg. Add to creamed mixture and stir until combined.", "Fold in raisins and nuts.", "Drop by tablespoon onto a greased cookie sheet, 2 inches apart. Bake at 375\u00b0F."],
+    "note": "The card was photographed upside down \u2014 Nana may have written this on the back of something else. Mostly legible despite the orientation: a classic drop cookie packed with applesauce and warm spices.",
+    "contributor": ""
+  },
+  {
+    "id": "reeses-krispies",
+    "title": "Reese\u2019s Krispies",
+    "category": "Sweets",
+    "meta": "No-bake \u00b7 stovetop \u00b7 drop cookies",
+    "images": [{"src": "images/IMG_0773.jpeg", "label": "Front of card"}, {"src": "images/IMG_0774.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 c sugar", "1 c corn syrup", "1\u00bd c peanut butter", "4\u00bd c Rice Krispies cereal", "pinch of salt", "4 peanut butter cup candies, roughly chopped", "1 handful chocolate chips"],
+    "steps": ["Over medium heat, melt sugar, corn syrup, and peanut butter together, stirring until smooth.", "Remove from heat. Add salt and cereal and mix well.", "Add chocolate chips and stir again.", "Wait 1 minute, then add the peanut butter cup pieces. Fold in gently \u2014 do not mash the candy.", "Drop by tablespoon onto a greased cookie sheet."],
+    "note": "The word \u201cover\u201d at the bottom of the front card is all the signal you need \u2014 the back picks right up with the rest of the method. And Nana\u2019s note to herself: fold the candy in, don\u2019t mash it.",
+    "contributor": ""
+  },
+  {
+    "id": "easy-cookies",
+    "title": "Easy Cookies",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 about 10 min",
+    "images": [{"src": "images/IMG_0783.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 yellow cake mix", "1/2 c Crisco (shortening)", "2 eggs", "1/2 t vanilla"],
+    "steps": [],
+    "note": "Written sideways on a notebook page \u2014 four ingredients, an oven temperature, and a time. Mix everything together, roll into rounds, and bake at 350\u00b0F for about 10 minutes. A cake mix cookie that comes together in minutes.",
+    "contributor": ""
+  },
+  {
+    "id": "brownies",
+    "title": "Brownies",
+    "category": "Sweets",
+    "meta": "Partial card \u2014 ingredients only",
+    "images": [{"src": "images/IMG_0784.jpeg", "label": "Recipe card fragment"}],
+    "ingredients": ["ingredients partially visible \u2014 remainder of card missing"],
+    "steps": [],
+    "note": "Just a corner of a card \u2014 the title \u201cBrownies\u201d written vertically along one edge, and only three lines of ingredients visible before the card ends. The rest is missing. Worth a careful look through the original box.",
+    "contributor": ""
+  },
+  {
+    "id": "guacamole",
+    "title": "Guacamole",
+    "category": "Appetizers",
+    "meta": "No-cook \u00b7 ingredients only",
+    "images": [{"src": "images/IMG_0746.jpeg", "label": "Recipe card"}],
+    "ingredients": ["3 avocados", "chopped onion", "tomato", "garlic", "lime \u2014 juice of 1 lime"],
+    "steps": [],
+    "note": "No title appears on this card \u2014 just the ingredients in Nana\u2019s hand, from a spiral notebook page. The amounts for onion, tomato, and garlic aren\u2019t written down. She clearly knew how to eyeball those.",
+    "contributor": ""
+  },
+  {
+    "id": "cheese-ball",
+    "title": "Cheese Ball",
+    "category": "Appetizers",
+    "meta": "No-bake \u00b7 chill before serving",
+    "images": [{"src": "images/IMG_0771.jpeg", "label": "Recipe card"}],
+    "ingredients": ["10 slices bacon, cooked and crumbled (reserve half for rolling)", "2 (8-oz) pkgs cream cheese, softened", "2 T sour cream", "3/4 t garlic powder", "1/2 t onion powder", "1/4 t pepper", "2 c shredded cheese (reserve 1/2 c for rolling)", "2 jalape\u00f1os, minced (reserve half for rolling)", "1/2 c green onions, sliced (reserve half for rolling)"],
+    "steps": [],
+    "note": "Written on a date-keeper calendar notepad \u2014 a recipe beside the calendar. The card shows two columns of amounts, the full recipe and what appears to be a halved version written alongside. The method isn\u2019t there; Nana knew how to roll a cheese ball. Mix everything (non-reserved) into the softened cream cheese, form into a ball, then roll in the reserved bacon, shredded cheese, jalape\u00f1o, and green onion.",
+    "contributor": ""
+  },
+  {
+    "id": "jelly-smokies",
+    "title": "Jelly Smokies",
+    "category": "Appetizers",
+    "meta": "Slow cooker \u00b7 set and heat",
+    "images": [{"src": "images/IMG_0772.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 c. grape jelly", "3 T. honey", "1 c brown sugar", "1/4 c Tabasco sauce", "2 to 4 packages beef smokies"],
+    "steps": ["Put everything into a crock pot and heat."],
+    "note": "Six words of method: put it in the crock pot and heat. The sweet-heat sauce \u2014 grape jelly, honey, brown sugar, and a full quarter cup of Tabasco \u2014 does all the talking.",
+    "contributor": ""
+  },
+  {
+    "id": "salsa",
+    "title": "Salsa",
+    "category": "Appetizers",
+    "meta": "Blended \u00b7 no-cook",
+    "images": [{"src": "images/IMG_0785.jpeg", "label": "Recipe card"}],
+    "ingredients": ["5 tomatoes", "3 cloves garlic", "4 hot peppers", "1 onion", "salt, to taste"],
+    "steps": ["Peel the tomatoes.", "Combine tomatoes, garlic, hot peppers, onion, and salt.", "Blend."],
+    "note": "The final word on the card: blend. Five ingredients, no salt amount, no note about how much heat four peppers might bring. She knew.",
+    "contributor": ""
+  },
+  {
+    "id": "cinnamon-roll-bread",
+    "title": "Cinnamon Roll Bread",
+    "category": "Breads",
+    "meta": "Loaf pan \u00b7 350\u00b0F \u00b7 45\u201350 min",
+    "images": [{"src": "images/IMG_0749.jpeg", "label": "Recipe card"}],
+    "ingredients": ["\u2014 Bread \u2014", "2 c flour", "1 T baking powder", "1/2 t salt", "1/2 c sugar", "1 egg", "1 c milk", "1/2 c sour cream", "\u2014 Swirl \u2014", "1/2 c sugar", "2 t cinnamon", "2 t butter, melted", "\u2014 Glaze \u2014", "1/2 c powdered sugar", "2\u20133 t cream"],
+    "steps": ["Mix flour, baking powder, salt and sugar together.", "Stir in egg, milk and sour cream. Pour into a sprayed loaf pan.", "Mix together the swirl ingredients. Spoon over the batter and swirl in a couple of times with a knife.", "Bake at 350\u00b0F for 45\u201350 minutes. Cool, then drizzle with glaze."],
+    "note": "",
+    "contributor": ""
+  },
+  {
+    "id": "banana-bread",
+    "title": "Banana Bread",
+    "category": "Breads",
+    "meta": "Loaf pans \u00b7 350\u00b0F \u00b7 40 min",
+    "images": [{"src": "images/IMG_0750.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 yellow cake mix", "2 eggs", "4\u20135 overripe bananas"],
+    "steps": ["Mix all ingredients together.", "Pour into greased loaf pans.", "Bake at 350\u00b0F for 40 minutes."],
+    "note": "Written on a pretty floral card \u2014 three ingredients and a perfect loaf. The bananas do all the work.",
+    "contributor": ""
+  },
+  {
+    "id": "banana-bread-scratch",
+    "title": "Banana Bread (Old Recipe)",
+    "category": "Breads",
+    "meta": "1 loaf \u00b7 greased pan \u00b7 350\u00b0F \u00b7 45\u201350 min",
+    "images": [{"src": "images/IMG_0769.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1/3 c shortening", "1/2 c sugar", "2 eggs", "1 3/4 c flour", "1 t baking powder", "1/2 t baking soda", "1/2 t salt", "1 c mashed bananas", "1/2 c chopped nuts"],
+    "steps": [],
+    "note": "A second banana bread in the box \u2014 a proper scratch version, quite different from the three-ingredient cake-mix card. No method written; the ingredient list was enough to remember. Cream the shortening and sugar, beat in eggs, add the dry ingredients alternately with the bananas, fold in nuts, and bake at 350\u00b0F for 45\u201350 minutes.",
+    "contributor": ""
+  },
+  {
+    "id": "honey-buttermilk-bread",
+    "title": "Honey Buttermilk Bread",
+    "category": "Breads",
+    "meta": "Yeast bread \u00b7 two loaves",
+    "images": [{"src": "images/IMG_0753.jpeg", "label": "Front of card"}, {"src": "images/IMG_0754.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 envelope yeast", "1 t sugar", "1/4 c warm water", "pinch of ginger", "2 c warm buttermilk", "1/3 c honey", "1/4 c butter, melted and cooled to just warm", "1 t salt", "3/4 t baking soda", "6 c white flour"],
+    "steps": ["Mix ginger, sugar, yeast and warm water. Set aside for 5 minutes.", "Stir buttermilk, honey, salt and baking soda into the yeast mixture.", "Add 3 c flour and mix until smooth. Beat with a mixer for 5 minutes.", "Mix in the butter. Add the remaining flour 1 cup at a time, mixing on low.", "When dough pulls away from the bowl, turn out onto a floured surface and knead until elastic and smooth."],
+    "note": "The front card is decorated with crayon drawings of a dog, a cat, and butterflies \u2014 little hands busy in the kitchen that day. The method ends before shaping and baking; there may be another card in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "quick-cinnamon-rolls",
+    "title": "Quick Cinnamon Rolls",
+    "category": "Breads",
+    "meta": "Canned biscuits \u00b7 375\u00b0F",
+    "images": [{"src": "images/IMG_0781.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 can refrigerated biscuits", "3 T butter, melted", "1/2 c pancake syrup", "brown sugar, to taste", "cinnamon, to taste"],
+    "steps": [],
+    "note": "A worn card, written small and partially hard to read. The recipe uses canned biscuits rather than yeast dough for a quicker roll. The method appears to involve opening and flattening the biscuits, buttering each, sprinkling with cinnamon and brown sugar, rolling them up, and baking in a pan with syrup in the bottom at 375\u00b0F. The original card deserves a second look for the full method.",
+    "contributor": ""
+  },
+  {
+    "id": "tom-tom-ditty-stew",
+    "title": "Dirty Stew",
+    "category": "Soups",
+    "meta": "Stovetop \u00b7 one pot",
+    "images": [{"src": "images/IMG_0755.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 box Velveeta cheese", "1 lb hamburger", "2 tomatoes", "2 cans kidney beans", "2 cans corn"],
+    "steps": [],
+    "note": "One ingredient line has been completely scribbled out in spiraling loops \u2014 whatever it was, Nana changed her mind. The rest reads like a hearty stovetop supper: brown the hamburger, add the vegetables and beans, and melt the Velveeta through. The card itself is cut in an unusual shape.",
+    "contributor": ""
+  },
+  {
+    "id": "chili",
+    "title": "Chili",
+    "category": "Soups",
+    "meta": "Stovetop \u00b7 one pot",
+    "images": [{"src": "images/IMG_0768.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 lbs. hamburger", "2 cans beans", "1 c. tomato sauce", "1 c. tomato paste", "1 chili brick", "chili powder, to taste", "a little sugar"],
+    "steps": [],
+    "note": "No title on the card, no method \u2014 just the ingredients in Nana\u2019s hand. A chili brick is a block of pre-mixed chili seasoning once common in Kansas kitchens. The rest she knew by heart: brown the meat, add everything, simmer until it comes together.",
+    "contributor": ""
+  },
+  {
+    "id": "potato-soup",
+    "title": "Potato Soup",
+    "category": "Soups",
+    "meta": "Slow cooker \u00b7 high 4 hrs \u00b7 8 servings",
+    "images": [{"src": "images/IMG_0775.jpeg", "label": "Recipe card"}],
+    "ingredients": ["8 potatoes, cubed", "1 onion, chopped", "2 carrots, chopped", "1/2 c celery, chopped", "16 oz ham, cubed", "1 t salt", "1/4 t pepper", "4 c chicken broth", "1/4 c flour", "1\u00bd c cream or milk", "1/2 c sour cream"],
+    "steps": ["Add potatoes, onion, carrots, celery, ham, salt, pepper, and chicken broth to the slow cooker.", "Cook on high for 4 hours.", "Mash 1/3 of the potatoes to thicken the soup.", "Add flour, cream or milk, and sour cream. Stir all together.", "Cook 15 more minutes. Makes 8 servings."],
+    "note": "The chicken broth is circled on the card \u2014 set apart and underscored, an ingredient that mattered. A proper ham and potato soup, built for a crowd.",
+    "contributor": ""
+  },
+  {
+    "id": "cherry-choc-pie",
+    "title": "Cherry Chocolate Pie",
+    "category": "Pies",
+    "meta": "No-bake \u00b7 graham cracker crust \u00b7 chill to set",
+    "images": [{"src": "images/IMG_0790.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 can Eagle Brand sweetened condensed milk", "1 pkg (16 oz) semi-sweet chocolate chips, melted", "pinch of salt", "1/2 t almond flavoring", "1 can cherry pie filling"],
+    "steps": ["Melt chocolate chips.", "Mix together condensed milk, melted chocolate chips, salt, and almond flavoring.", "Fold in cherry pie filling.", "Pour into a graham cracker crust and chill until set."],
+    "note": "A no-bake showstopper \u2014 condensed milk, melted chocolate, a touch of almond flavoring, and a whole can of cherry pie filling poured into a graham cracker crust. Rich and simple.",
+    "contributor": ""
+  },
+  {
+    "id": "chicken-casserole",
+    "title": "Chicken Casserole",
+    "category": "Main Dishes",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 Ritz cracker topping",
+    "images": [{"src": "images/IMG_0792.jpeg", "label": "Recipe card"}],
+    "ingredients": ["3 chicken breasts, cooked and shredded", "1 can cream of mushroom soup", "8 oz sour cream", "3 sleeves Ritz crackers, crushed", "1 stick butter, melted"],
+    "steps": ["Mix together the shredded chicken, mushroom soup, and sour cream.", "Spread into a 9\u00d713 pan.", "Spread crushed Ritz crackers evenly over the top.", "Pour melted butter over all.", "Bake at 350\u00b0F until hot, bubbly, and golden."],
+    "note": "Nana wrote timing notes in the corners \u2014 \u201c15 min\u201d at the top and \u201c6:45\u201d at the bottom, likely a reminder of when to slide it into the oven. A classic Ritz-topped chicken casserole.",
+    "contributor": ""
+  },
+  {
+    "id": "shrimp",
+    "title": "Shrimp",
+    "category": "Main Dishes",
+    "meta": "350\u00b0F \u00b7 15 min \u00b7 baked in butter",
+    "images": [{"src": "images/IMG_0787.jpeg", "label": "Recipe card"}],
+    "ingredients": ["butter", "sliced lemon", "fresh shrimp", "Italian seasoning"],
+    "steps": ["Melt butter in a pan.", "Add sliced lemon, fresh shrimp, and Italian seasoning.", "Bake at 350\u00b0F for 15 minutes."],
+    "note": "Just the essentials: butter, lemon, fresh shrimp, Italian seasoning, and 15 minutes in a 350\u00b0 oven. No amounts, no fuss \u2014 Nana knew.",
+    "contributor": ""
+  },
+  {
+    "id": "hashbrown-casserole",
+    "title": "Hashbrown Casserole",
+    "category": "Sides & Salads",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 45 min",
+    "images": [{"src": "images/IMG_0789.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 stick oleo (butter)", "1 can cream of mushroom soup", "16 oz sour cream", "1 pkg shredded cheese", "1 pkg shredded hash browns", "salt & pepper, to taste"],
+    "steps": ["Melt oleo in a large bowl.", "Add mushroom soup, sour cream, and cheese. Mix well.", "Mix in hash browns. Season with salt and pepper.", "Spread into a 9\u00d713 pan.", "Bake at 350\u00b0F for 45 minutes."],
+    "note": "",
+    "contributor": ""
+  },
+  {
+    "id": "nacho-pot",
+    "title": "Nacho Pot",
+    "category": "Appetizers",
+    "meta": "425\u00b0F \u00b7 25 min \u00b7 on foil",
+    "images": [{"src": "images/IMG_0788.jpeg", "label": "Recipe card"}],
+    "ingredients": ["tortilla chips or nachos", "olive oil", "shredded cheese", "sour cream", "onion"],
+    "steps": [],
+    "note": "Written on a pretty floral card with butterflies and a pansy \u2014 one of the loveliest cards in the box. The writing is compact: lay chips on foil, drizzle with olive oil, bake at 425\u00b0 for 25 minutes until brown, melt cheese over the top, and finish with sour cream and onion.",
+    "contributor": ""
+  },
+  {
+    "id": "crockpot-potato-soup",
+    "title": "Crock Pot Potato Soup",
+    "category": "Soups",
+    "meta": "Slow cooker \u00b7 6\u20138 hrs \u00b7 cream cheese finish",
+    "images": [{"src": "images/IMG_0793.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 (30 oz) bag hash browns", "3 (14 oz) cans chicken broth", "1 can cream of chicken soup", "1/2 c onion, chopped", "1/4 t pepper", "1 pkg cream cheese", "bacon, cooked and crumbled, for topping"],
+    "steps": ["Put hash browns, chicken broth, cream of chicken soup, onion, and pepper into the crock pot.", "Cook on low 6 to 8 hours.", "Add cream cheese and heat, stirring, until melted and smooth.", "Serve topped with crumbled bacon."],
+    "note": "A second potato soup in the box \u2014 this one built on hash browns and finished with a block of cream cheese, quite different from the cubed-potato version. The bacon crumbled on top is the final touch.",
+    "contributor": ""
+  },
+  {
+    "id": "cookie-in-a-cup",
+    "title": "Cookie in a Cup",
+    "category": "Sweets",
+    "meta": "1 mug \u00b7 microwave \u00b7 60 seconds",
+    "images": [{"src": "images/IMG_0791.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 T melted butter", "1 T white sugar", "1 T brown sugar", "pinch of salt", "1 egg yolk", "1/4 c flour", "2 T chocolate chips"],
+    "steps": ["Combine all ingredients in a mug and mix well.", "Microwave for 60 seconds."],
+    "note": "Written on a bright yellow card \u2014 seven ingredients, a mug, and one minute in the microwave. A single-serving warm cookie for one.",
+    "contributor": ""
+  },
+  {
+    "id": "double-decker-crunchies",
+    "title": "Double Decker Crunchies",
+    "category": "Sweets",
+    "meta": "8\u00d78 pan \u00b7 no-bake \u00b7 chill & cut",
+    "images": [{"src": "images/IMG_0795.jpeg", "label": "Front of card"}, {"src": "images/IMG_0796.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 (6 oz) pkg chocolate chips", "1/2 c powdered sugar, sifted", "2 T butter", "2 T milk", "4 c Rice Krispies", "1 (6 oz) pkg butterscotch chips", "1/2 c peanut butter"],
+    "steps": ["Place chocolate chips, powdered sugar, butter, and milk in a 3-qt casserole. Heat on medium 2 to 3 minutes, until chocolate melts. Stir in Rice Krispies and coat well.", "Place butterscotch chips and peanut butter in a 1-qt casserole. Heat on medium 2\u00bd to 3 minutes, stirring until smooth.", "Spread half the chocolate mixture in a greased 8\u00d78\u00d72-inch dish. Spread butterscotch layer over the chocolate. Top with the remaining chocolate mixture.", "Chill until firm, then cut into bars."],
+    "note": "Front and back of an older, creased card \u2014 ingredients on one side, the three-step method on the other. Two layers of crispy Rice Krispie bars: chocolate on the outside, butterscotch peanut butter in the middle.",
+    "contributor": ""
+  },
+  {
+    "id": "beer-batter-french-toast",
+    "title": "Beer Batter French Toast",
+    "category": "Breakfast",
+    "meta": "Skillet \u00b7 quick",
+    "images": [{"src": "images/IMG_0747.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 eggs", "1/2 t salt", "1 T sugar", "1/4 c beer", "bread", "butter for the skillet"],
+    "steps": ["Beat eggs with salt, sugar and beer.", "Heat butter in a skillet.", "Dip bread in the egg mixture and brown in hot butter on both sides."],
+    "note": "",
+    "contributor": ""
+  }
+];
+
+const CATEGORY_ORDER = ["Pies","Main Dishes","Sides & Salads","Sweets","Appetizers","Breads","Soups","Breakfast","Drinks"];
+let activeCat = "All";
+let query = "";
+
+document.getElementById('count').textContent = RECIPES.length + " recipes \u00b7 more to come";
+document.getElementById('footer-count').textContent =
+  "This collection holds " + RECIPES.length + " of her recipes so far. There are hundreds more in the box, and room here for every one.";
+
+const cats = ["All", ...CATEGORY_ORDER.filter(c => RECIPES.some(r => r.category === c))];
+const filterBox = document.getElementById('filters');
+cats.forEach(c => {
+  const b = document.createElement('button');
+  b.className = 'chip' + (c === 'All' ? ' active' : '');
+  b.textContent = c;
+  b.onclick = () => {
+    activeCat = c;
+    document.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    render();
+  };
+  filterBox.appendChild(b);
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  query = e.target.value.toLowerCase().trim();
+  render();
+});
+
+function matches(r) {
+  if (activeCat !== 'All' && r.category !== activeCat) return false;
+  if (!query) return true;
+  const hay = (r.title + ' ' + r.category + ' ' + (r.contributor || '') + ' ' +
+    r.ingredients.join(' ') + ' ' + r.steps.join(' ') + ' ' + (r.note || '')).toLowerCase();
+  return hay.includes(query);
+}
+
+function render() {
+  const root = document.getElementById('grid-root');
+  const list = RECIPES.filter(matches);
+  root.innerHTML = '';
+  if (!list.length) {
+    root.innerHTML = '<div class="empty">No recipes match that yet \u2014 try another word.</div>';
+    return;
+  }
+  const groups = activeCat === 'All' ? CATEGORY_ORDER : [activeCat];
+  let idx = 0;
+  groups.forEach(cat => {
+    const inCat = list.filter(r => r.category === cat);
+    if (!inCat.length) return;
+    if (activeCat === 'All') {
+      const h = document.createElement('div');
+      h.className = 'section-label'; h.textContent = cat;
+      root.appendChild(h);
+    }
+    const g = document.createElement('div'); g.className = 'grid';
+    inCat.forEach(r => {
+      const el = document.createElement('article');
+      el.className = 'recipe';
+      el.style.animationDelay = (idx * 55) + 'ms'; idx++;
+      el.innerHTML = `
+        <div class="thumb">${imgOrPlaceholder(r.images[0].src, r.title + ' recipe card', '', true)}</div>
+        <div class="recipe-body">
+          <div class="recipe-cat">${r.category}</div>
+          <h3>${r.title}</h3>
+          <div class="recipe-meta">${r.meta}</div>
+          ${r.contributor ? `<div class="recipe-by">From the kitchen of ${r.contributor}</div>` : ''}
+        </div>`;
+      el.onclick = () => openModal(r);
+      g.appendChild(el);
+    });
+    root.appendChild(g);
+  });
+}
+
+// Hardcoded rotations for images whose EXIF data isn't reliable.
+// Positive = clockwise. 180 = upside-down.
+const IMAGE_ROTATIONS = {
+  "IMG_0776.jpeg": -90,  // baked-pork-chops
+  "IMG_0778.jpeg": -90,  // mandarin-orange-salad
+  "IMG_0794.jpeg": -90,  // sugar-cookies-ii
+  "IMG_0777.jpeg": -90,  // apple-cake
+  "IMG_0782.jpeg": -90,  // apple-cake-batter
+  "IMG_0780.jpeg": 180,  // applesauce-cookies (upside down)
+  "IMG_0783.jpeg": -90,  // easy-cookies
+  "IMG_0784.jpeg": -90,  // brownies
+  "IMG_0785.jpeg": -90,  // salsa
+  "IMG_0781.jpeg": -90,  // quick-cinnamon-rolls
+};
+
+function getRotation(src) {
+  return IMAGE_ROTATIONS[src.split('/').pop()] || 0;
+}
+
+const ERR_HTML = "this.parentNode.innerHTML='<div class=\\'img-placeholder\\'><svg width=\\'36\\' height=\\'36\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'1.3\\'><rect x=\\'3\\' y=\\'3\\' width=\\'18\\' height=\\'18\\' rx=\\'2\\'/><circle cx=\\'8.5\\' cy=\\'8.5\\' r=\\'1.5\\'/><polyline points=\\'21,15 16,10 5,21\\'/></svg>Photo coming soon</div>'";
+
+function imgOrPlaceholder(src, alt, extraClass, isThumb) {
+  const rotation = getRotation(src);
+  const cls = extraClass || '';
+
+  // No rotation needed — original behaviour
+  if (!rotation) {
+    return `<img src="${src}" alt="${alt}" loading="lazy" class="${cls}" onerror="${ERR_HTML}">`;
+  }
+
+  // 180° — flip in place, no size changes needed
+  if (rotation === 180) {
+    return `<img src="${src}" alt="${alt}" loading="lazy" class="${cls}"
+      style="transform:rotate(180deg)" onerror="${ERR_HTML}">`;
+  }
+
+  // 90° or -90° rotation
+  if (isThumb) {
+    // The .thumb container is 1.62:1 landscape.  To make a rotated-90° portrait
+    // image fill it correctly, set the img's natural CSS box to the inverse
+    // ratio (portrait), then rotate:  visual width → 162% of H = W ✓
+    return `<img src="${src}" alt="${alt}" loading="lazy" class="${cls}"
+      style="width:61.73%;height:162%;transform:rotate(${rotation}deg);object-fit:cover;object-position:center;image-orientation:none"
+      onerror="${ERR_HTML}">`;
+  } else {
+    // Modal: show the full image without any clipping.
+    //
+    // Source files are landscape 4:3 (e.g. 4032×3024).  After a ±90° rotation
+    // the visual result should be portrait 3:4, filling the photo-frame width.
+    //
+    // Maths (container width = C):
+    //   Container height  = 4C/3   → padding-top: 133.33%
+    //   Image CSS width   = 4C/3   → 133.33% of C
+    //   Image CSS height  = C      → 75% of container height (4C/3)
+    //   CSS box ratio     = 4:3 ✓  → no stretching, no cropping
+    //   After rotate      → visual width = CSS height = C ✓
+    //                        visual height = CSS width = 4C/3 ✓
+    //   Centred:  left = (C − 4C/3)/2 = −C/6 → −16.67%
+    //             top  = C/6 / (4C/3)         →  12.5% of container height
+    return `<div style="position:relative;width:100%;padding-top:133.33%;background:#ede2cc;border-radius:2px;">
+      <img src="${src}" alt="${alt}" loading="lazy" class="${cls}"
+        style="position:absolute;width:133.33%;height:75%;left:-16.67%;top:12.5%;transform:rotate(${rotation}deg);transform-origin:center;image-orientation:none;"
+        onerror="${ERR_HTML}">
+    </div>`;
+  }
+}
+
+function openModal(r) {
+  const m = document.getElementById('modal');
+  const photos = r.images.map(im => `
+    <div class="photo">
+      <div class="photo-frame">${imgOrPlaceholder(im.src, r.title + ' \u2014 ' + im.label)}</div>
+      ${r.images.length > 1 ? `<div class="photo-label">${im.label}</div>` : ''}
+    </div>`).join('');
+  const ings = r.ingredients.map(i => {
+    if (i.startsWith('\u2014')) return `<li class="sub">${i.replace(/\u2014/g, '').trim()}</li>`;
+    return `<li>${i}</li>`;
+  }).join('');
+  const steps = r.steps.length
+    ? `<div class="t-head"><h4>Method</h4><span></span></div>
+       <ol class="step-list">${r.steps.map(s => `<li>${s}</li>`).join('')}</ol>`
+    : '';
+  const note = r.note ? `<div class="note">${r.note}</div>` : '';
+  m.innerHTML = `
+    <div class="modal-head">
+      <button class="closeb" onclick="closeModal()" aria-label="Close">&times;</button>
+      <div class="modal-cat">${r.category}</div>
+      <h2>${r.title}</h2>
+      <div class="modal-meta">${r.meta}</div>
+    </div>
+    <div class="modal-body">
+      <div class="cards-strip">${photos}</div>
+      <div class="transcription">
+        <div class="t-head"><h4>Ingredients</h4><span></span></div>
+        <ul class="ing-list">${ings}</ul>
+        ${steps}${note}
+      </div>
+      <div class="modal-foot">
+        <div class="by-line">${r.contributor ? 'A recipe Nana kept from ' + r.contributor : "In Nana\u2019s own hand"}</div>
+        <button class="printb" onclick="window.print()">Print this recipe</button>
+      </div>
+    </div>`;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  m.scrollTop = 0;
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('overlay').addEventListener('click', e => {
+  if (e.target.id === 'overlay') closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+render();
+</script>
+</body>
+</html>
