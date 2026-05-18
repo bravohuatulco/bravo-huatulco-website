@@ -172,60 +172,6 @@
     .photo-frame{box-shadow:none}
     .cards-strip{break-inside:avoid}
   }
-
-  /* ── Lightbox ── */
-  #lightbox{
-    position:fixed;inset:0;z-index:200;
-    background:rgba(20,12,6,.92);
-    display:none;align-items:center;justify-content:center;
-    padding:24px;cursor:zoom-out;
-  }
-  #lightbox.open{display:flex;animation:lbfade .2s ease}
-  @keyframes lbfade{from{opacity:0}to{opacity:1}}
-  #lightbox-img-wrap{
-    position:relative;max-width:min(92vw,1100px);max-height:90vh;
-    display:flex;align-items:center;justify-content:center;
-    cursor:default;
-  }
-  #lightbox-img{
-    max-width:100%;max-height:90vh;
-    border-radius:4px;
-    box-shadow:0 40px 80px -20px rgba(0,0,0,.9);
-    display:block;
-  }
-  #lightbox-caption{
-    position:absolute;bottom:-30px;left:0;right:0;
-    text-align:center;font-family:'Fraunces',serif;font-style:italic;
-    font-size:.9rem;color:rgba(255,255,255,.55);
-  }
-  #lightbox-close{
-    position:fixed;top:20px;right:24px;
-    width:42px;height:42px;border-radius:50%;
-    border:1.5px solid rgba(255,255,255,.25);
-    background:rgba(255,255,255,.1);
-    color:#fff;font-size:1.3rem;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    transition:background .18s,border-color .18s;
-    z-index:201;
-  }
-  #lightbox-close:hover{background:var(--red);border-color:var(--red)}
-  #lightbox-prev,#lightbox-next{
-    position:fixed;top:50%;transform:translateY(-50%);
-    width:46px;height:46px;border-radius:50%;
-    border:1.5px solid rgba(255,255,255,.25);
-    background:rgba(255,255,255,.1);
-    color:#fff;font-size:1.4rem;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    transition:background .18s,border-color .18s;
-    z-index:201;user-select:none;
-  }
-  #lightbox-prev{left:18px}
-  #lightbox-next{right:18px}
-  #lightbox-prev:hover,#lightbox-next:hover{background:var(--red);border-color:var(--red)}
-  #lightbox-prev.hidden,#lightbox-next.hidden{opacity:0;pointer-events:none}
-  .photo-frame{cursor:zoom-in}
-  .photo-frame img,.photo-frame [style]{cursor:zoom-in}
-  .thumb{cursor:pointer}
 </style>
 </head>
 <body>
@@ -258,17 +204,6 @@
 
 <div class="overlay" id="overlay">
   <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
-</div>
-
-<!-- Lightbox -->
-<div id="lightbox" role="dialog" aria-modal="true" aria-label="Full-size image viewer">
-  <button id="lightbox-close" aria-label="Close image">&times;</button>
-  <button id="lightbox-prev" aria-label="Previous image">&#8592;</button>
-  <div id="lightbox-img-wrap">
-    <img id="lightbox-img" src="" alt="">
-    <div id="lightbox-caption"></div>
-  </div>
-  <button id="lightbox-next" aria-label="Next image">&#8594;</button>
 </div>
 
 <script>
@@ -410,10 +345,10 @@ const RECIPES = [
     "title": "Chicken Dorito Casserole",
     "category": "Main Dishes",
     "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 45 min",
-    "images": [{"src": "images/IMG_0836.jpeg", "label": "Recipe card"}],
+    "images": [{"src": "images/IMG_0836.jpeg", "label": "Recipe card"}, {"src": "images/IMG_0859.jpeg", "label": "\u201cNacho Chicken\u201d card, front"}, {"src": "images/IMG_0860.jpeg", "label": "\u201cNacho Chicken\u201d card, back"}, {"src": "images/IMG_0898.jpeg", "label": "Laminated card"}],
     "ingredients": ["3 c chopped chicken", "1 can cream of mushroom soup", "1 can Rotel", "1 onion, chopped", "3/4 bag nacho cheese Doritos, crushed", "shredded cheese"],
     "steps": ["Mix the chopped chicken, mushroom soup, Rotel, and chopped onion together.", "Crush Doritos and spread in the bottom of a 9\u00d713 pan.", "Pour the chicken mixture over the chips.", "Sprinkle shredded cheese over the top.", "Bake at 350\u00b0F for 45 minutes."],
-    "note": "A chicken version of the Dorito Casserole already in the box \u2014 that one uses hamburger, Velveeta, and enchilada sauce. This one uses shredded chicken, Rotel, mushroom soup, and nacho cheese Doritos. Two different takes on the same Midwest classic.",
+    "note": "A chicken version of the Dorito Casserole already in the box \u2014 that one uses hamburger, Velveeta, and enchilada sauce. This one uses shredded chicken, Rotel, mushroom soup, and nacho cheese Doritos. Two different takes on the same Midwest classic. Nana wrote this same recipe out more than once \u2014 on a Cooking Club of America card titled \u201cNacho Chicken\u201d and again on a laminated lined card \u2014 and all of those cards are kept here together.",
     "contributor": ""
   },
   {
@@ -487,10 +422,10 @@ const RECIPES = [
     "title": "Pineapple Chicken",
     "category": "Main Dishes",
     "meta": "Slow cooker \u00b7 low 6\u20138 hrs",
-    "images": [{"src": "images/IMG_0833.jpeg", "label": "Recipe card"}],
+    "images": [{"src": "images/IMG_0833.jpeg", "label": "Recipe card"}, {"src": "images/IMG_0858.jpeg", "label": "\u201cSweet Chicken\u201d card"}, {"src": "images/IMG_0864.jpeg", "label": "\u201cSweet Chicken\u201d note"}],
     "ingredients": ["chicken breast", "1 c pineapple juice", "1/2 c brown sugar", "1/3 c soy sauce"],
     "steps": ["Put all ingredients in a crock pot on low for 6 to 8 hours."],
-    "note": "Four ingredients and a crock pot \u2014 pineapple juice, brown sugar, and soy sauce make a sweet teriyaki-style sauce. Nana\u2019s method is four words: put it all in.",
+    "note": "Four ingredients and a crock pot \u2014 pineapple juice, brown sugar, and soy sauce make a sweet teriyaki-style sauce. Nana\u2019s method is four words: put it all in. She wrote this same recipe out twice more under the name \u201cSweet Chicken\u201d \u2014 once on a lined card and once on a yellow note \u2014 and all three cards are kept here together.",
     "contributor": ""
   },
   {
@@ -575,10 +510,10 @@ const RECIPES = [
     "title": "Ambrosia Salad",
     "category": "Sides & Salads",
     "meta": "Chilled \u00b7 no-cook",
-    "images": [{"src": "images/IMG_0831.jpeg", "label": "Recipe card"}],
-    "ingredients": ["cool whip", "sour cream", "10 oz can mandarin oranges, drained", "18 oz can pineapple chunks, drained", "16 oz can cherries, drained", "1 c mini marshmallows"],
+    "images": [{"src": "images/IMG_0831.jpeg", "label": "Recipe card"}, {"src": "images/IMG_0891.jpeg", "label": "Second card (notebook page)"}],
+    "ingredients": ["8 oz cool whip", "1/2 c sour cream", "10 oz can mandarin oranges, drained", "1 can pineapple chunks, drained", "16 oz can cherries, drained", "1 c mini marshmallows"],
     "steps": ["Combine the cool whip and sour cream.", "Fold in the drained mandarin oranges, pineapple chunks, cherries, and marshmallows.", "Chill before serving."],
-    "note": "Different from the Fruit Salad already in the box \u2014 that one uses crushed pineapple, maraschino cherries, and no sour cream base. This one uses pineapple chunks, canned cherries, and a cool whip\u2013sour cream dressing. Two distinct salads that lived side by side in the box.",
+    "note": "Different from the Fruit Salad already in the box \u2014 that one uses crushed pineapple, maraschino cherries, and no sour cream base. This one uses pineapple chunks, canned cherries, and a cool whip\u2013sour cream dressing. Nana wrote this same salad out a second time on a notebook page (second photo), which fills in the amounts the first card left off \u2014 8 oz cool whip and \u00bd c sour cream \u2014 and confirms the method, \u201cfold cool whip and sour cream.\u201d The two cards differ only slightly: one calls for a 15-oz can of pineapple, the other 18 oz. That second page also carries a few unrelated jottings in Nana\u2019s hand. Both cards are kept here together.",
     "contributor": ""
   },
   {
@@ -685,10 +620,10 @@ const RECIPES = [
     "title": "PB Fudge",
     "category": "Sweets",
     "meta": "No-bake \u00b7 stovetop \u00b7 buttered plate",
-    "images": [{"src": "images/IMG_0799.jpeg", "label": "Recipe card"}],
+    "images": [{"src": "images/IMG_0799.jpeg", "label": "Recipe card"}, {"src": "images/IMG_0874.jpeg", "label": "Second card"}],
     "ingredients": ["2 c sugar", "1/2 c milk", "1 t vanilla", "3/4 c peanut butter"],
     "steps": ["Bring the sugar and milk to a boil. Boil 2 1/2 minutes.", "Remove from heat and stir in the peanut butter and vanilla.", "Pour onto a buttered plate and let set."],
-    "note": "Written on a St. Jude Children\u2019s Research Hospital notepad with a Santa illustration \u2014 a quick peanut butter fudge.",
+    "note": "Written on a St. Jude Children\u2019s Research Hospital notepad with a Santa illustration \u2014 a quick peanut butter fudge. A second card of the very same recipe, written in blue ink on lined paper, is kept here alongside it.",
     "contributor": ""
   },
   {
@@ -696,10 +631,21 @@ const RECIPES = [
     "title": "Sugar Cookies",
     "category": "Sweets",
     "meta": "350\u00b0F \u00b7 7\u20138 min \u00b7 rolled & cut",
-    "images": [{"src": "images/IMG_0758.jpeg", "label": "Front of card"}, {"src": "images/IMG_0759.jpeg", "label": "Back of card"}, {"src": "images/IMG_0794.jpeg", "label": "Original card"}],
+    "images": [{"src": "images/IMG_0758.jpeg", "label": "Front of card"}, {"src": "images/IMG_0759.jpeg", "label": "Back of card"}, {"src": "images/IMG_0876.jpeg", "label": "Second card"}],
     "ingredients": ["1\u00bd c powdered sugar", "1 c oleo or butter", "1 egg", "1 t vanilla", "2\u00bd c flour", "1/4 t baking soda", "1 t cream of tartar"],
     "steps": ["Mix all ingredients together.", "Roll out on a floured board and cut into shapes.", "Bake at 350\u00b0F for 7 to 8 minutes."],
-    "note": "An older, water-damaged card with the same recipe \u2014 every ingredient and amount identical \u2014 was also in the box. That original card is shown here alongside the clean version Nana wrote out later. The recipe didn\u2019t change; she just gave it a fresh card.",
+    "note": "Nana wrote this same recipe out a second time on its own card \u2014 identical down to the ingredients, with the baking time noted as 7 to 9 minutes. Both cards are kept here together.",
+    "contributor": ""
+  },
+  {
+    "id": "sugar-cookies-ii",
+    "title": "Sugar Cookies (Old Card)",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 rolled & cut \u00b7 older recipe",
+    "images": [{"src": "images/IMG_0794.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 c. oleo (butter)", "1 egg", "cream (amount unclear)", "additional ingredients partially illegible"],
+    "steps": [],
+    "note": "A second sugar cookie recipe \u2014 a much older, heavily water-damaged card written in a different hand. The title and \u201c350\u00b0\u201d are clear, as are oleo and egg, but much of the card has faded or been lost to water damage. It may be an earlier version of the recipe, or one borrowed from a different kitchen altogether. Worth a look at the original card when you can.",
     "contributor": ""
   },
   {
@@ -751,10 +697,10 @@ const RECIPES = [
     "title": "Pineapple Cherry Dump Cake",
     "category": "Sweets",
     "meta": "9\u00d712 pan \u00b7 350\u00b0F \u00b7 30\u201340 min",
-    "images": [{"src": "images/IMG_0820.jpeg", "label": "Recipe card"}],
+    "images": [{"src": "images/IMG_0820.jpeg", "label": "Recipe card"}, {"src": "images/IMG_0875.jpeg", "label": "Second card (calendar notepad)"}],
     "ingredients": ["1/2 c butter, cut into pats", "cherry pie filling", "crushed pineapple", "1 box dry cake mix"],
     "steps": ["Grease a 9\u00d712 pan.", "Spread cherry filling in the bottom of the pan, then spread the pineapple over the cherries.", "Sprinkle the dry cake mix evenly over the fruit.", "Dot the top with pats of butter.", "Bake at 350\u00b0F for 30 to 40 minutes, until golden and bubbling."],
-    "note": "A classic dump cake \u2014 fruit on the bottom, dry cake mix over the top, dotted with butter and baked until golden. No stirring needed.",
+    "note": "A classic dump cake \u2014 fruit on the bottom, dry cake mix over the top, dotted with butter and baked until golden. No stirring needed. Nana jotted this same recipe a second time on a calendar notepad, simply titled \u201cDump cake\u201d \u2014 both cards are kept here together.",
     "contributor": ""
   },
   {
@@ -762,10 +708,10 @@ const RECIPES = [
     "title": "Apple Cake",
     "category": "Sweets",
     "meta": "9\u00d712 pan \u00b7 350\u00b0F \u00b7 30 min",
-    "images": [{"src": "images/IMG_0777.jpeg", "label": "Recipe card"}],
-    "ingredients": ["peeled apples (enough to cover the pan)", "yellow cake batter (a little)", "2 t cinnamon (topping)", "butter, melted (topping)"],
-    "steps": [],
-    "note": "A small card written sideways, partially hard to read. The topping is set apart with a bracket: cinnamon and melted butter drizzled over the top. Only a little batter is used \u2014 the apples carry the cake. Full details are worth checking in the original box.",
+    "images": [{"src": "images/IMG_0846.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 yellow cake mix", "apples, peeled and sliced (enough to half-fill the pan)", "sugar, to taste (topping)", "cinnamon, to taste (topping)", "1 stick butter, melted (topping)"],
+    "steps": ["Fill a 9\u00d712 pan halfway with peeled, sliced apples.", "Sprinkle the dry cake mix over the apples, then sprinkle sugar and cinnamon over the top of that.", "Beat 1 stick of butter and drizzle it over everything.", "Bake at 350\u00b0F for 30 minutes."],
+    "note": "A dump-style apple cake \u2014 apples on the bottom, dry cake mix, sugar and cinnamon sprinkled over, and melted butter drizzled over all. This entry now shows a clearer photo of the card, which was hard to read in the earlier picture.",
     "contributor": ""
   },
   {
@@ -1163,16 +1109,942 @@ const RECIPES = [
     "steps": ["Beat eggs with salt, sugar and beer.", "Heat butter in a skillet.", "Dip bread in the egg mixture and brown in hot butter on both sides."],
     "note": "",
     "contributor": ""
+  },
+  {
+    "id": "fried-rice",
+    "title": "Fried Rice",
+    "category": "Main Dishes",
+    "meta": "Stovetop \u00b7 large skillet",
+    "images": [{"src": "images/IMG_0837.jpeg", "label": "Front of card"}, {"src": "images/IMG_0838.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 1/2 c uncooked white rice", "3 T oil", "1 onion, chopped", "1 clove garlic, chopped", "1 c small shrimp", "1/2 c diced ham", "1 c cooked chicken", "2 stalks celery", "2 carrots, diced", "1 green pepper, chopped", "1/2 c peas", "1 egg, beaten", "1/4 c soy sauce"],
+    "steps": ["Cook the rice. Heat a large skillet, pour in the oil, and stir in the onion. Fry until golden, then add the garlic. When the garlic is brown, mix in the meats and fry until the shrimp is pink.", "Lower the heat and add the celery, carrot, green pepper and peas. Fry until the vegetables are crisp. Stir in the egg and cook until the egg is scrambled.", "When the rice is done, mix it with the vegetables and soy sauce."],
+    "note": "Two pages of one recipe \u2014 the ingredient list on the front (ending with \u201cover\u201d), and the numbered method on the back. Written on HP printer paper. On the cooked-chicken line, Nana crossed out a false start before settling on \u201ccooked chicken.\u201d",
+    "contributor": ""
+  },
+  {
+    "id": "fried-rice-ii",
+    "title": "Fried Rice (Old Card)",
+    "category": "Main Dishes",
+    "meta": "Stovetop \u00b7 loose notes \u00b7 no amounts",
+    "images": [{"src": "images/IMG_0839.jpeg", "label": "Recipe card"}],
+    "ingredients": ["ham & bacon", "chicken", "scrambled egg (cooked in a separate pan)", "green onions", "Chinese vegetables (any kind)", "mushrooms", "water chestnuts", "bamboo shoots", "brown rice", "butter", "soy sauce"],
+    "steps": ["Scramble the egg in a separate pan and set aside.", "Brown the brown rice in butter until golden, then add water and cook until done.", "Combine the rice with the ham, bacon, chicken, scrambled egg and the vegetables.", "Season with soy sauce."],
+    "note": "A second, looser fried rice card \u2014 older and yellowed, written more as notes than a full recipe. Nana circled the vegetables she liked best (green onions, mushrooms, water chestnuts, bamboo shoots) and noted the egg is scrambled in a separate pan. No amounts are given. Different from the other Fried Rice card in the box, which uses white rice and full measurements.",
+    "contributor": ""
+  },
+  {
+    "id": "three-envelope-roast",
+    "title": "3 Envelope Roast",
+    "category": "Main Dishes",
+    "meta": "Slow cooker \u00b7 3-lb roast \u00b7 High 4 hrs",
+    "images": [{"src": "images/IMG_0843.jpeg", "label": "Recipe card"}],
+    "ingredients": ["3 lb roast", "1 pkg dry Italian salad dressing mix", "1 pkg dry ranch salad dressing mix", "1 pkg dry brown gravy mix", "2 c water"],
+    "steps": ["Mix the Italian dressing, ranch dressing and brown gravy mixes with 2 c water.", "Brown the roast.", "Pour the dressing mixture over the roast.", "Slow cook on High for 4 hours."],
+    "note": "Three envelopes of dry mix \u2014 Italian dressing, ranch, and brown gravy \u2014 make the sauce for this slow-cooker roast. A second card of the same recipe (titled simply \u201cRoast\u201d) was also in the box; the clearer of the two cards is kept here.",
+    "contributor": ""
+  },
+  {
+    "id": "sweet-garlic-chicken",
+    "title": "Sweet Garlic Chicken",
+    "category": "Main Dishes",
+    "meta": "450\u00b0F \u00b7 15\u201320 min \u00b7 uncovered",
+    "images": [{"src": "images/IMG_0851.jpeg", "label": "Recipe card"}],
+    "ingredients": ["chicken", "minced garlic", "olive oil", "brown sugar"],
+    "steps": ["Saut\u00e9 the minced garlic in olive oil until soft.", "Remove from heat and stir in brown sugar.", "Pour the garlic mixture over the chicken.", "Bake uncovered at 450\u00b0F for 15 to 20 minutes."],
+    "note": "Four ingredients and a hot oven \u2014 garlic softened in olive oil, sweetened with brown sugar, and spooned over chicken. No amounts written; Nana made this one by feel.",
+    "contributor": ""
+  },
+  {
+    "id": "brown-sugar-carrots",
+    "title": "Brown Sugar Carrots",
+    "category": "Sides & Salads",
+    "meta": "Stovetop \u00b7 cook 5 min",
+    "images": [{"src": "images/IMG_0844.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 1/2 c carrots", "salt, for the cooking water", "butter", "2 T honey", "1/2 c brown sugar", "1/4 t nutmeg", "1/2 t vanilla"],
+    "steps": ["Boil the carrots in salted water until tender. Drain \u2014 you want about 1 1/2 cups.", "Melt butter in a pan and stir in the honey, brown sugar, nutmeg and vanilla.", "Add the carrots and stir to coat. Cook 5 minutes."],
+    "note": "A sweet, glazed carrot side \u2014 honey, brown sugar, nutmeg and a little vanilla. The card's shorthand by the drained carrots reads \u201c1 1/2 c\u201d; the butter amount wasn't written down.",
+    "contributor": ""
+  },
+  {
+    "id": "pecan-pie-old",
+    "title": "Pecan Pie (Old Card)",
+    "category": "Pies",
+    "meta": "Unbaked pie shell \u00b7 450\u00b0F then 350\u00b0F",
+    "images": [{"src": "images/IMG_0847.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 cup corn syrup", "1/2 cup sugar", "3 eggs, slightly beaten", "2 T melted butter", "1 cup pecans"],
+    "steps": ["Combine the corn syrup, sugar, eggs and melted butter. Mix well, then stir in the pecans.", "Pour into an unbaked pie shell.", "Bake at 450\u00b0F for 10 minutes, then lower the heat to 350\u00b0F.", "The pie is done when a knife inserted in the center comes out clean."],
+    "note": "A second pecan pie in the box \u2014 different from the other Pecan Pie card. This one is written in faded pencil on an older, folded sheet, uses less sugar and butter, and starts the bake at a high 450\u00b0F before lowering to 350\u00b0F.",
+    "contributor": ""
+  },
+  {
+    "id": "lemon-cookies",
+    "title": "Lemon Cookies",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 rolled in powdered sugar",
+    "images": [{"src": "images/IMG_0840.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 box lemon cake mix", "1 egg", "8 oz Cool Whip", "1 c powdered sugar"],
+    "steps": ["Mix the lemon cake mix, egg and Cool Whip together \u2014 the dough will be sticky.", "Roll into balls and roll each in powdered sugar.", "Bake at 350\u00b0F until light brown."],
+    "note": "A Cool Whip \u201ccrinkle\u201d cookie made from a box of lemon cake mix. The dough is sticky on purpose; rolling the balls in powdered sugar gives the crackled tops.",
+    "contributor": ""
+  },
+  {
+    "id": "cream-cheese-sugar-cookies",
+    "title": "Cream Cheese Sugar Cookies",
+    "category": "Sweets",
+    "meta": "375\u00b0F \u00b7 7\u201310 min \u00b7 chill 2 hrs",
+    "images": [{"src": "images/IMG_0841.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 c sugar", "1 c butter", "3 oz cream cheese", "1/4 t salt", "1/2 t almond extract", "1/2 t vanilla", "1 egg yolk (save the white)", "2 c flour", "colored sugar, for the tops"],
+    "steps": ["Beat together the sugar, butter, cream cheese, salt, almond, vanilla and egg yolk. Mix in the flour.", "Refrigerate the dough 2 hours.", "Shape and place on an ungreased cookie sheet.", "Brush the tops with the beaten, saved egg white and sprinkle with colored sugar \u2014 or leave plain and frost instead.", "Bake at 375\u00b0F for 7 to 10 minutes."],
+    "note": "A richer sugar cookie made with cream cheese and a little almond extract. Nana noted to save the egg white when separating the egg \u2014 it's brushed over the chilled cookies before the colored sugar goes on. Different from the two other sugar cookie cards in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "fruit-cobbler-7up",
+    "title": "Fruit Cobbler (7Up)",
+    "category": "Sweets",
+    "meta": "Baking dish \u00b7 350\u00b0F \u00b7 45\u201350 min",
+    "images": [{"src": "images/IMG_0845.jpeg", "label": "Recipe card"}],
+    "ingredients": ["frozen fruit", "1 box dry cake mix", "7Up, enough to pour over"],
+    "steps": ["Put the frozen fruit in a baking dish.", "Sprinkle the dry cake mix evenly over the top \u2014 do not stir.", "Pour 7Up over the cake mix.", "Bake at 350\u00b0F for 45 to 50 minutes."],
+    "note": "A dump-style cobbler \u2014 different from the other Fruit Cobbler card already in the box. Frozen fruit on the bottom, dry cake mix sprinkled over, and 7Up poured on top. No butter, no stirring.",
+    "contributor": ""
+  },
+  {
+    "id": "apple-cake-scratch",
+    "title": "Apple Cake (Scratch)",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 55 min",
+    "images": [{"src": "images/IMG_0853.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 eggs", "1 3/4 c sugar", "2 t cinnamon", "1/2 c oil", "6 medium apples", "2 c flour", "2 t baking powder"],
+    "steps": [],
+    "note": "A from-scratch apple cake \u2014 different from both the cake-mix Apple Cake and the Apple Cake (Batter Card) in the box. This one is made with oil and a good measure of cinnamon. No method is written; the usual way is to beat the eggs, sugar, oil and cinnamon, stir in the flour and baking powder, fold in the chopped apples, and bake at 350\u00b0F for 55 minutes.",
+    "contributor": ""
+  },
+  {
+    "id": "orange-balls",
+    "title": "Orange Balls",
+    "category": "Sweets",
+    "meta": "No-bake \u00b7 rolled in powdered sugar",
+    "images": [{"src": "images/IMG_0848.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 box vanilla wafers, crushed", "1 small can frozen orange juice concentrate", "1 stick oleo (butter)", "1 lb (2 cups) powdered sugar", "extra powdered sugar, for rolling"],
+    "steps": ["Crush the vanilla wafers and combine with the frozen orange juice, oleo and powdered sugar.", "Roll into small balls, then roll each in powdered sugar."],
+    "note": "A no-bake citrus treat \u2014 crushed vanilla wafers bound with frozen orange juice and butter, rolled into balls and dusted with powdered sugar.",
+    "contributor": "Thaine May"
+  },
+  {
+    "id": "pb-cream-cheese-cookies",
+    "title": "PB & Cream Cheese Cookies",
+    "category": "Sweets",
+    "meta": "Crescent roll dough \u00b7 method runs off the card",
+    "images": [{"src": "images/IMG_0849.jpeg", "label": "Recipe card"}, {"src": "images/IMG_0850.jpeg", "label": "PB Frosting card (may be separate)"}],
+    "ingredients": ["1 can seamless crescent rolls", "8 oz cream cheese, room temperature", "1/3 c sugar", "2 t vanilla", "3/4 c mixed peanut butter & chocolate chips", "\u2014 PB Frosting (may be a separate recipe) \u2014", "3 c powdered sugar", "1/3 c peanut butter", "1 1/2 t vanilla", "1/4 to 1/3 c milk"],
+    "steps": ["Unroll the crescent rolls and stretch into a rectangle shape.", "Beat the cream cheese, sugar and vanilla together.", "Spread the cream cheese mixture over the rolls, leaving a 1/2-inch gap around the edge.", "Sprinkle the chips over and press them into the dough.", "The cookie method runs off the bottom of the card here \u2014 the baking and finishing steps weren't captured.", "For the PB frosting (if it belongs with this recipe): mix the powdered sugar and peanut butter together, then add the vanilla and milk."],
+    "note": "The cookie method runs off the bottom edge of the card \u2014 the baking and finishing steps weren't captured, so there is likely more on a back or second page. The second photo is a \u201cPB Frosting\u201d card kept with it; it may be the intended topping for these cookies, or it may be a separate recipe altogether. Both are kept together here until the rest of the cookie method turns up.",
+    "contributor": ""
+  },
+  {
+    "id": "homemade-vanilla-ice-cream",
+    "title": "Homemade Vanilla Ice Cream",
+    "category": "Sweets",
+    "meta": "Ice cream freezer \u00b7 makes about a gallon",
+    "images": [{"src": "images/IMG_0855.jpeg", "label": "First card"}, {"src": "images/IMG_0909.jpeg", "label": "Second card (\u201cIce Cream\u201d)"}],
+    "ingredients": ["2 c Eagle Brand sweetened condensed milk", "1 pt whipping cream", "1 pt half & half", "2 T vanilla", "milk, to fill the freezer"],
+    "steps": ["Mix the condensed milk, whipping cream, half & half and vanilla together.", "Pour into an ice cream freezer.", "Add milk to fill the freezer, and freeze.", "Makes about a gallon."],
+    "note": "A second ice cream in the box \u2014 close to the Vanilla Ice Cream card but not identical. This one has no eggs and is written on a St. Jude Children's Research Hospital Christmas notepad. The card lists the four ingredients and the word \u201cGallon\u201d for the yield; as with Nana's other ice cream cards, milk is added to fill the freezer. Nana wrote this same eggless ice cream out a second time on a lined card simply titled \u201cIce Cream\u201d \u2014 nearly identical, with the vanilla noted as 1 tablespoon rather than 2 \u2014 and both cards are kept here together.",
+    "contributor": ""
+  },
+  {
+    "id": "microwave-mug-cake",
+    "title": "Microwave Mug Cake",
+    "category": "Sweets",
+    "meta": "1 mug \u00b7 microwave \u00b7 1 minute",
+    "images": [{"src": "images/IMG_0856.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 box cake mix (any flavor)", "1 box angel food cake mix", "\u2014 For each mug cake \u2014", "3 T of the cake mix blend", "2 T water"],
+    "steps": ["Combine the cake mix and the angel food cake mix. Store the blend in an air-tight bag.", "To make one cake, stir 3 T of the cake mix blend with 2 T water in a coffee mug.", "Microwave for 1 minute."],
+    "note": "A make-ahead mug cake \u2014 a box of regular cake mix and a box of angel food cake mix are stirred together and kept in an air-tight bag. When you want a single warm cake, mix 3 tablespoons of the blend with 2 tablespoons of water in a mug and microwave for a minute.",
+    "contributor": ""
+  },
+  {
+    "id": "pickle-wrap-dip",
+    "title": "Pickle Wrap Dip",
+    "category": "Appetizers",
+    "meta": "No-bake \u00b7 serve with Ritz crackers",
+    "images": [{"src": "images/IMG_0852.jpeg", "label": "Recipe card"}],
+    "ingredients": ["16 oz cream cheese", "2 to 4 jars dried beef, chopped", "16 oz baby dill pickles, drained and diced", "Ritz crackers, for serving"],
+    "steps": ["Soften the cream cheese and mix in the chopped dried beef and diced baby dill pickles.", "Serve with Ritz crackers."],
+    "note": "A dip version of the classic pickle wrap \u2014 cream cheese, dried beef, and baby dill pickles, all the flavors of the rolled-up appetizer in a scoopable form. The card lists just the ingredients; the amount of dried beef is left a little loose.",
+    "contributor": ""
+  },
+  {
+    "id": "hawaiian-chicken",
+    "title": "Hawaiian Chicken",
+    "category": "Main Dishes",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 1\u00bc hrs \u00b7 over rice",
+    "images": [{"src": "images/IMG_0861.jpeg", "label": "Front of card"}, {"src": "images/IMG_0862.jpeg", "label": "Back of card"}],
+    "ingredients": ["3 lbs cut-up chicken", "1 t salt", "1/8 t nutmeg", "1/3 c flour", "1/4 c shortening", "1/4 c soy sauce", "1 T sugar", "1 (20-oz) can pineapple", "1 T cornstarch", "1/2 t celery salt"],
+    "steps": ["Mix the salt, nutmeg and flour. Roll the chicken in the mixture.", "Brown the chicken in shortening, then arrange it in a 9\u00d713 pan.", "Drain the pineapple, reserving the juice. Arrange the pineapple over the chicken.", "In a pan, blend the reserved pineapple juice with the soy sauce, cornstarch, sugar and celery salt. Bring to a boil, stirring constantly.", "Pour the sauce over the chicken. Bake at 350\u00b0F for 1\u00bc hours.", "Serve over rice."],
+    "note": "Front and back of one card \u2014 the ingredients and first steps on the front (ending with \u201cover\u201d), the rest of the method on the back. Different from the slow-cooker Pineapple Chicken and the stovetop Sweet & Sour Chicken already in the box \u2014 this one is breaded, browned, and baked under a sweet pineapple-soy sauce.",
+    "contributor": ""
+  },
+  {
+    "id": "oven-fried-tacos",
+    "title": "Oven Fried Tacos",
+    "category": "Main Dishes",
+    "meta": "9\u00d713 pan \u00b7 375\u00b0F",
+    "images": [{"src": "images/IMG_0870.jpeg", "label": "Recipe card"}],
+    "ingredients": ["hamburger", "onions", "garlic", "taco seasoning", "beans", "tomato sauce", "\u2014 To serve \u2014", "sour cream", "tomato", "hot sauce"],
+    "steps": ["Brown the hamburger with the onions and garlic.", "Add the taco seasoning, beans and tomato sauce. Heat until blended.", "Spread in a 9\u00d713 pan and bake at 375\u00b0F.", "Serve with sour cream, tomato and hot sauce."],
+    "note": "No amounts on this card \u2014 just the order of things in Nana\u2019s hand. A skillet taco filling of hamburger, beans and tomato sauce, finished in the oven and served with sour cream, tomato and hot sauce.",
+    "contributor": ""
+  },
+  {
+    "id": "orange-sherbert-salad",
+    "title": "Orange Sherbert Salad",
+    "category": "Sides & Salads",
+    "meta": "Chilled \u00b7 jello salad \u00b7 no-cook",
+    "images": [{"src": "images/IMG_0863.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 boxes orange jello", "2 c hot water", "1 pt orange sherbet", "3 bananas", "1 can mandarin oranges, drained"],
+    "steps": ["Dissolve the orange jello in 2 c hot water.", "Let the jello partly set.", "Stir in the orange sherbet, bananas and drained mandarin oranges.", "Chill until set."],
+    "note": "Kept just as Nana spelled it \u2014 \u201cSherbert.\u201d An orange jello salad lightened with a pint of sherbet and folded through with bananas and mandarin oranges.",
+    "contributor": ""
+  },
+  {
+    "id": "choc-chip-bars",
+    "title": "Chocolate Chip Bars",
+    "category": "Sweets",
+    "meta": "Greased pan \u00b7 350\u00b0F \u00b7 20 min",
+    "images": [{"src": "images/IMG_0857.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1/2 c butter, melted", "1 c brown sugar", "1 egg", "2 t vanilla", "1 c flour", "1/2 t baking powder", "1/2 t salt", "1/4 t baking soda", "chocolate chips"],
+    "steps": ["Mix the melted butter, brown sugar, vanilla and egg together.", "Add the flour, baking powder, salt and baking soda.", "Stir in the chocolate chips.", "Spread into a greased pan and bake at 350\u00b0F for 20 minutes."],
+    "note": "A from-scratch chocolate chip bar \u2014 different from the Cake Mix Chocolate Chip Bars already in the box, which start with a box of yellow cake mix. The amount of chocolate chips wasn\u2019t written down. Written on a sheet with print showing faintly through from the other side.",
+    "contributor": ""
+  },
+  {
+    "id": "chunky-choc-pb-cookies",
+    "title": "Chunky Chocolate Peanut Butter Cookies",
+    "category": "Sweets",
+    "meta": "Ungreased sheet \u00b7 350\u00b0F \u00b7 10\u201312 min \u00b7 48 cookies",
+    "images": [{"src": "images/IMG_0865.jpeg", "label": "Recipe card"}, {"src": "images/IMG_0929.jpeg", "label": "Second card, on a notepad page"}],
+    "ingredients": ["1 (8-oz) chocolate bar, cut in pieces", "3/4 c oleo (butter)", "1 c white sugar", "1 c brown sugar", "1/2 c peanut butter", "2 eggs", "2 t vanilla", "2\u00bd c flour", "1 t baking soda", "1/2 t salt"],
+    "steps": ["Beat the oleo, both sugars and the peanut butter until light and fluffy.", "Blend in the eggs and vanilla.", "Add the dry ingredients and mix in.", "Stir in the chocolate pieces.", "Drop onto an ungreased cookie sheet.", "Bake at 350\u00b0F for 10 to 12 minutes, or until light brown. Makes 48 cookies."],
+    "note": "An 8-oz chocolate bar is chopped into chunks and stirred through a brown-and-white-sugar peanut butter dough. Nana noted the yield right on the card \u2014 48 cookies. She wrote this same recipe out more than once \u2014 again on a lined notepad page \u2014 and both cards are kept here together.",
+    "contributor": ""
+  },
+  {
+    "id": "eclair-cake",
+    "title": "Eclair Cake",
+    "category": "Sweets",
+    "meta": "9\u00d713 dish \u00b7 no-bake \u00b7 chill overnight",
+    "images": [{"src": "images/IMG_0866.jpeg", "label": "Front of card"}, {"src": "images/IMG_0867.jpeg", "label": "Back of card"}],
+    "ingredients": ["\u2014 Cake \u2014", "2 (3.4-oz) pkgs instant vanilla pudding", "3\u00bd c milk", "12 oz cool whip", "2 (14.4-oz) pkgs graham crackers", "\u2014 Frosting \u2014", "3 T butter", "3 T milk", "3 T cocoa", "1 c powdered sugar"],
+    "steps": ["Mix the milk and pudding together. Fold in the cool whip.", "Cover the bottom of a 9\u00d713 dish with graham crackers.", "Spread half the pudding mixture over the crackers.", "Add another layer of crackers, then the rest of the pudding mixture.", "Top with a final layer of crackers, bumpy side down.", "Make the frosting by mixing the butter, milk, cocoa and powdered sugar. Frost the top.", "Refrigerate overnight."],
+    "note": "Two sides of one card \u2014 the ingredients on the front, the layering method on the back. A no-bake eclair cake: layers of graham crackers and vanilla pudding under a cocoa frosting, chilled overnight so the crackers soften like pastry.",
+    "contributor": ""
+  },
+  {
+    "id": "cherry-angel-food-dessert",
+    "title": "Cherry Angel Food Dessert",
+    "category": "Sweets",
+    "meta": "9\u00d713 dish \u00b7 no-bake \u00b7 layered",
+    "images": [{"src": "images/IMG_0871.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 angel food cake", "1 (3.4-oz) pkg vanilla pudding", "1\u00bd c milk", "1 can cherry pie filling", "whipped cream"],
+    "steps": ["Mix the vanilla pudding with 1\u00bd c milk.", "Cube the angel food cake and spread half of it in a 9\u00d713 dish.", "Spread cherry pie filling over the cake.", "Spoon the pudding over next.", "Top with whipped cream."],
+    "note": "Written on a Tippin Dental Group notepad from Newton, Kansas \u2014 a recipe on whatever paper was handy, the same notepad as the Enchilada Cheese Casserole card. A no-bake layered dessert of cubed angel food cake, cherry pie filling, vanilla pudding and whipped cream.",
+    "contributor": ""
+  },
+  {
+    "id": "pb-cornflake-cookies",
+    "title": "Peanut Butter Cornflake Cookies",
+    "category": "Sweets",
+    "meta": "No-bake \u00b7 stovetop \u00b7 drop cookies",
+    "images": [{"src": "images/IMG_0872.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 c peanut butter", "6 c cornflakes", "1 c syrup", "1 c sugar"],
+    "steps": ["Heat the sugar and syrup until the sugar dissolves.", "Remove from heat and stir in the peanut butter.", "Pour over the cornflakes and stir to coat.", "Drop by teaspoon onto wax paper."],
+    "note": "No title on this card. A no-bake cornflake version of a peanut butter drop cookie \u2014 different from the Reese\u2019s Krispies in the box, which use Rice Krispies and chocolate. Here it\u2019s just sugar, syrup and peanut butter poured over cornflakes.",
+    "contributor": ""
+  },
+  {
+    "id": "banana-split-fluff",
+    "title": "Banana Split Fluff",
+    "category": "Sweets",
+    "meta": "No-bake \u00b7 chilled \u00b7 refrigerate 1 hr",
+    "images": [{"src": "images/IMG_0873.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 (8-oz) cool whip", "1 pkg instant banana pudding", "20 oz crushed pineapple, do not drain", "1 c mini marshmallows", "1/3 c chocolate chips", "2 bananas", "2 (10-oz) jars maraschino cherries, halved"],
+    "steps": ["Mix the banana pudding and undrained crushed pineapple together until thick.", "Fold in the cool whip.", "Stir in the marshmallows, chocolate chips, bananas and cherries.", "Refrigerate 1 hour before serving."],
+    "note": "A no-bake banana split fluff \u2014 different from the Banana Split Cake and Banana Split Dessert already in the box, which are built on cake and a graham crust. This one is a soft pudding-and-cool-whip salad with all the banana split flavors stirred through. The pineapple is left undrained so its juice helps the pudding thicken.",
+    "contributor": ""
+  },
+  {
+    "id": "hawaiian-banana-bread",
+    "title": "Hawaiian Banana Bread",
+    "category": "Breads",
+    "meta": "9\u00d75 greased pan \u00b7 350\u00b0F \u00b7 60 min",
+    "images": [{"src": "images/IMG_0868.jpeg", "label": "Front of card"}, {"src": "images/IMG_0869.jpeg", "label": "Back of card"}],
+    "ingredients": ["1/2 c soft butter", "1 c sugar", "2 eggs", "1 ripe banana", "8 oz crushed pineapple, with juice", "flour (amount not written)", "1 t baking powder", "1/2 t baking soda", "1/2 t salt"],
+    "steps": ["Cream the sugar and butter until fluffy.", "Add the eggs, banana and pineapple.", "In a large bowl, combine the flour, baking powder, baking soda and salt.", "Add the wet ingredients to the dry, a little at a time.", "Pour into a greased 9\u00d75 pan and bake at 350\u00b0F for 60 minutes."],
+    "note": "Front and back of one card \u2014 ingredients and the start of the method on the front (ending with \u201cover\u201d), the rest on the back. A third banana bread in the box, set apart by crushed pineapple stirred right into the batter. The flour amount isn\u2019t written on the card \u2014 worth a second look at the original.",
+    "contributor": ""
+  },
+  {
+    "id": "caramel-apple-cake",
+    "title": "Caramel Apple Cake",
+    "category": "Sweets",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 45 min",
+    "images": [{"src": "images/IMG_0877.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 yellow cake mix", "2 cans apple pie filling", "1 jar caramel", "1 stick butter, melted"],
+    "steps": ["Pour the apple pie filling into a 9\u00d713 pan.", "Sprinkle the dry cake mix over the filling.", "Drizzle caramel over everything.", "Pour melted butter over all.", "Bake at 350\u00b0F for 45 minutes."],
+    "note": "A dump-style caramel apple cake, written on star-spangled patriotic notepaper. Pie filling on the bottom, dry cake mix over the top, caramel drizzled on, and melted butter poured over all \u2014 no stirring. Different from the three other apple cakes in the box; this one leans on canned apple pie filling and a jar of caramel.",
+    "contributor": ""
+  },
+  {
+    "id": "chicken-noodles",
+    "title": "Chicken & Noodles",
+    "category": "Main Dishes",
+    "meta": "Slow cooker \u00b7 cook until noodles are tender",
+    "images": [{"src": "images/IMG_0878.jpeg", "label": "Recipe card"}],
+    "ingredients": ["chicken", "2 c cream of chicken soup", "1 stick butter", "2 (15-oz) cans chicken broth", "24 oz frozen noodles"],
+    "steps": ["Cook the chicken with the cream of chicken soup, butter, and chicken broth in a crockpot until the chicken is done.", "Shred the chicken and return it to the pot.", "Add 24 oz frozen noodles.", "Cook until the noodles are tender."],
+    "note": "A crock-pot chicken and noodles \u2014 the chicken cooks right in the soup and broth, then frozen egg noodles go in at the end and cook until tender. Warm, simple comfort food.",
+    "contributor": ""
+  },
+  {
+    "id": "fried-apple-rings",
+    "title": "Fried Apple Rings",
+    "category": "Sweets",
+    "meta": "Battered & fried \u00b7 dipped in cinnamon sugar",
+    "images": [{"src": "images/IMG_0879.jpeg", "label": "Front of card"}, {"src": "images/IMG_0880.jpeg", "label": "Back of card"}],
+    "ingredients": ["\u2014 Batter \u2014", "4 apples", "1 c flour", "1/4 t baking powder", "2 T sugar", "1/4 t salt", "1/8 t cinnamon", "1 egg", "1 c buttermilk", "vegetable oil, for frying", "\u2014 Topping \u2014", "1/3 c sugar", "2 t cinnamon"],
+    "steps": ["Combine the dry batter ingredients.", "Add the egg and buttermilk and mix into a batter.", "Slice the apples into rings and dip them in the batter.", "Heat oil and fry the rings until golden.", "Mix the topping sugar and cinnamon. Dip the fried rings in the topping."],
+    "note": "Two sides of one recipe \u2014 the batter ingredients on a pretty floral card with butterflies, the same card style as the Banana Bread and Nacho Pot already in the box, and the topping and method on the back. Apple rings dipped in a buttermilk batter, fried golden, and rolled in cinnamon sugar.",
+    "contributor": ""
+  },
+  {
+    "id": "corn-flake-cookies",
+    "title": "Corn Flake Cookies",
+    "category": "Sweets",
+    "meta": "No-bake \u00b7 stovetop \u00b7 drop cookies",
+    "images": [{"src": "images/IMG_0881.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 1/2 c white syrup", "1 1/2 c sugar", "1 (18-oz) jar peanut butter", "1 t vanilla", "10 c corn flakes"],
+    "steps": ["Bring the white syrup and sugar to a boil for 2 minutes.", "Set off the stove and add the 18-oz jar of peanut butter.", "Add 1 teaspoon vanilla.", "Add 10 cups corn flakes \u2014 Nana liked to crush them just a very little bit first.", "Drop by spoonful onto waxed paper."],
+    "note": "A bigger, sweeter cousin of the Peanut Butter Cornflake Cookies already in the box \u2014 that card uses 1 cup each of syrup, sugar, and peanut butter, while this one boils 1\u00bd cups each of syrup and sugar with a full 18-oz jar of peanut butter, adds vanilla, and stirs in 10 cups of corn flakes. Nana noted she likes to crush the flakes just a very little bit.",
+    "contributor": ""
+  },
+  {
+    "id": "ribbon-salad",
+    "title": "Ribbon Salad",
+    "category": "Sides & Salads",
+    "meta": "8\u00d78 pan \u00b7 three jello layers \u00b7 chilled",
+    "images": [{"src": "images/IMG_0882.jpeg", "label": "Front of card"}, {"src": "images/IMG_0883.jpeg", "label": "Back of card"}],
+    "ingredients": ["\u2014 Lime layer \u2014", "3 oz lime jello", "1 c boiling water", "1 c cold water", "1 sm. can crushed pineapple", "1/2 c chopped nuts", "\u2014 Lemon layer \u2014", "3 oz lemon jello", "1 c boiling water", "1 c cold water", "8 oz cream cheese", "3/4 c cool whip", "\u2014 Raspberry layer \u2014", "3 oz raspberry jello", "1 c boiling water", "1 c cold water"],
+    "steps": ["Dissolve the lime jello in 1 c boiling water. Add 1 c cold water, the pineapple, and the nuts.", "Pour into an 8\u00d78 pan to make the first layer. Chill until set.", "Dissolve the lemon jello in 1 c boiling water. Add 1 c cold water. When cool, add the cream cheese and cool whip.", "Pour this over the first layer. Let set again.", "Dissolve the raspberry jello in 1 c boiling water. Add 1 c cold water and mix well.", "Pour over the first two layers. Return to the refrigerator and chill until set."],
+    "note": "Front and back of one card \u2014 a three-layer ribbon jello salad. The card\u2019s ingredient list calls for 3 cups each of boiling and cold water; the method spends them a cup at a time across the lime, lemon, and raspberry layers. A green pineapple-and-nut layer on the bottom, a creamy lemon middle, and a clear raspberry top.",
+    "contributor": ""
+  },
+  {
+    "id": "butterscotch-delights",
+    "title": "Butterscotch Delights",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 15 min \u00b7 large batch",
+    "images": [{"src": "images/IMG_0884.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 1/2 c white sugar", "2 1/2 c brown sugar", "2 1/2 c shortening", "2 T vanilla", "5 eggs", "1/4 c milk", "5 c flour", "2 1/2 t baking powder", "2 1/2 t baking soda", "2 1/2 t salt", "5 c oats"],
+    "steps": ["Cream the sugars and shortening.", "Add the vanilla, eggs, and milk. Beat.", "Add the dry ingredients and mix well.", "Add the oats.", "Bake at 350\u00b0F for 15 minutes."],
+    "note": "Filed under \u201cCookies\u201d on a tabbed recipe card \u2014 a big-batch oatmeal cookie called Butterscotch Delights, built on 5 cups of oats and 5 cups of flour. Different from the older Oatmeal Cookies cards already in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "breakfast-casserole",
+    "title": "Breakfast Casserole",
+    "category": "Breakfast",
+    "meta": "350\u00b0F \u00b7 40 min \u00b7 refrigerate overnight",
+    "images": [{"src": "images/IMG_0885.jpeg", "label": "Recipe card"}],
+    "ingredients": ["3 c frozen hash browns", "3/4 c cheese", "1 c cubed ham", "1/4 c onion", "4 eggs, beaten", "1 can evaporated milk", "salt & pepper"],
+    "steps": ["Combine the hash browns, cheese, ham, and onion.", "Mix the beaten eggs, evaporated milk, salt, and pepper, and stir in.", "Refrigerate overnight.", "Bake at 350\u00b0F for 40 minutes."],
+    "note": "No title on this card \u2014 a make-ahead breakfast bake of hash browns, ham, cheese, and onion in an egg-and-evaporated-milk custard. Nana bracketed the eggs, milk, and seasoning together with a note to mix them, and to refrigerate the whole dish overnight before baking.",
+    "contributor": ""
+  },
+  {
+    "id": "meatballs",
+    "title": "Meatballs",
+    "category": "Main Dishes",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 1 hr",
+    "images": [{"src": "images/IMG_0886.jpeg", "label": "Front of card"}, {"src": "images/IMG_0887.jpeg", "label": "Back of card"}],
+    "ingredients": ["\u2014 Meatballs \u2014", "1 lrg. can Pet milk", "3 lbs hamburger", "2 c quick oats", "2 t chili powder", "2 t salt", "2 eggs, beaten", "1/2 chopped onion", "1/2 t garlic salt", "1/2 t pepper", "\u2014 Sauce \u2014", "2 c katsup", "2 c brown sugar", "1/2 c chopped onion", "2 T liquid smoke", "1/2 t garlic salt"],
+    "steps": ["Mix the meatball ingredients and form into balls. Place in a 9\u00d713 pan.", "For the sauce, combine the katsup, brown sugar, chopped onion, liquid smoke, and garlic salt. Bring to a boil.", "Pour the sauce over the meatballs.", "Bake at 350\u00b0F for 1 hour."],
+    "note": "Front and back of one well-worn card \u2014 the meatballs on the front (ending with \u201c(over)\u201d) and the sweet, smoky sauce on the back. Three pounds of hamburger bound with Pet milk and quick oats, baked for an hour under a katsup, brown sugar, and liquid smoke sauce.",
+    "contributor": ""
+  },
+  {
+    "id": "oatmeal-cookies-lined",
+    "title": "Oatmeal Cookies (Lined Card)",
+    "category": "Sweets",
+    "meta": "Drop cookies \u00b7 350\u00b0F \u00b7 ingredients checked off",
+    "images": [{"src": "images/IMG_0888.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 c butter", "1 1/4 c brown sugar", "3/4 c white sugar", "2 eggs", "2 t vanilla", "3 1/4 c flour", "1 t salt", "1/2 t baking soda", "1/2 t baking powder", "oats (the amount is hard to read on the card)"],
+    "steps": [],
+    "note": "A second Oatmeal Cookies recipe \u2014 different from the very old letterhead card already in the box. This one is made with butter rather than shortening, and Nana checked off each ingredient down the side as she gathered them. No method is written; the usual way is to cream the butter and sugars, beat in the eggs and vanilla, stir in the dry ingredients and oats, drop by spoonfuls, and bake at 350\u00b0F. The amount of oats is hard to read on the card \u2014 worth a look at the original.",
+    "contributor": ""
+  },
+  {
+    "id": "baked-potato-casserole",
+    "title": "Baked Potato Casserole",
+    "category": "Sides & Salads",
+    "meta": "9\u00d713 dish \u00b7 350\u00b0F \u00b7 40\u201345 min",
+    "images": [{"src": "images/IMG_0889.jpeg", "label": "Front of card"}, {"src": "images/IMG_0890.jpeg", "label": "Back of card"}],
+    "ingredients": ["5 potatoes", "8 oz sour cream", "1 c mayo", "1/2 c onions", "1/2 c bacon bits", "1/2 c butter, melted", "1 envelope ranch dressing mix"],
+    "steps": ["Bake the potatoes, then peel and chop them.", "Combine the sour cream, mayo, onions, bacon bits, melted butter, and ranch dressing mix in a large bowl.", "Add the potatoes.", "Spread into a 9\u00d713 dish and bake at 350\u00b0F for 40 to 45 minutes.", "Cheese can be added on top when done."],
+    "note": "Front and back of one card \u2014 a loaded baked potato casserole built on whole baked potatoes, sour cream, mayo, and an envelope of ranch dressing mix. Different from the hash brown casseroles already in the box. Nana scribbled out two oven temperatures before settling on 350\u00b0F.",
+    "contributor": ""
+  },
+  {
+    "id": "pizza-crust",
+    "title": "Pizza Crust",
+    "category": "Breads",
+    "meta": "Yeast dough \u00b7 makes 2 crusts",
+    "images": [{"src": "images/IMG_0893.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 pkg dry yeast", "1 t sugar", "1 c warm water", "2 T olive oil", "2 1/2 c flour"],
+    "steps": ["Mix the yeast, sugar, and warm water, and let rise.", "Add the olive oil and flour.", "Mix well and knead.", "Cover and let rise.", "Makes 2 pizza crusts."],
+    "note": "A simple yeast pizza crust \u2014 the yeast, sugar, and warm water are proofed together first, then olive oil and flour are worked in, kneaded, and left to rise. Makes enough for two crusts.",
+    "contributor": ""
+  },
+  {
+    "id": "tator-tot-casserole",
+    "title": "Tator Tot Casserole",
+    "category": "Main Dishes",
+    "meta": "9\u00d713 dish \u00b7 350\u00b0F \u00b7 20\u201325 min",
+    "images": [{"src": "images/IMG_0894.jpeg", "label": "Front of card"}, {"src": "images/IMG_0895.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 lb hamburger", "1/2 onion", "1 can green beans, drained", "1 can cream of mushroom soup", "1 bag tator tots", "salt & pepper"],
+    "steps": ["Brown the hamburger and onion, then drain.", "Put the hamburger and soup in the bottom of a 9\u00d713 dish.", "Layer the drained green beans on top of that.", "Put about 1/2 to 3/4 of the bag of tator tots over the top.", "Bake at 350\u00b0F for 20 to 25 minutes."],
+    "note": "Front and back of one card \u2014 kept just as Nana spelled it, \u201cTator Tot.\u201d A layered hamburger, green bean, and tot casserole. The back of the card notes you only need about half to three-quarters of the bag of tots.",
+    "contributor": ""
+  },
+  {
+    "id": "peanut-butter-pie",
+    "title": "Peanut Butter Pie",
+    "category": "Pies",
+    "meta": "Baked crust \u00b7 no-bake filling \u00b7 instant pudding",
+    "images": [{"src": "images/IMG_0896.jpeg", "label": "Recipe card"}],
+    "ingredients": ["3/4 c powdered sugar", "1/2 c peanut butter", "1 baked pie crust", "1 pkg instant vanilla pie filling", "cool whip"],
+    "steps": ["Mix the powdered sugar and peanut butter together until crumbly.", "Reserve a few crumbs, then crumble the rest over the bottom of a baked pie crust.", "Pour in 1 package of prepared instant vanilla pie filling.", "Cover with cool whip.", "Sprinkle the reserved crumbs over the top."],
+    "note": "A classic peanut butter pie written in faded pencil on an old translucent sheet. Sweet peanut butter crumbs line the bottom of a baked crust, then vanilla pudding, a layer of cool whip, and a last scatter of crumbs on top.",
+    "contributor": ""
+  },
+  {
+    "id": "corn-casserole",
+    "title": "Corn Casserole",
+    "category": "Main Dishes",
+    "meta": "350\u00b0F \u00b7 30 min \u00b7 layered",
+    "images": [{"src": "images/IMG_0899.jpeg", "label": "Recipe card"}],
+    "ingredients": ["4\u20135 potatoes, peeled and chopped", "1 can cream of mushroom soup", "1 can whole kernel corn, drained", "hamburger"],
+    "steps": ["Brown the hamburger and drain.", "Put the chopped potatoes in the bottom of a baking dish.", "Spread the mushroom soup over the potatoes.", "Top with the hamburger and corn.", "Cover and bake at 350\u00b0F for the first 20 minutes, then stir and check the potatoes.", "When the potatoes are soft, uncover and cook 10 minutes more."],
+    "note": "A layered hamburger, potato, and corn casserole \u2014 potatoes on the bottom, mushroom soup, then hamburger and corn. The hamburger amount isn't written down. It's covered for the first 20 minutes so the potatoes soften, then finished uncovered.",
+    "contributor": ""
+  },
+  {
+    "id": "orange-crockpot-chicken",
+    "title": "Orange Crockpot Chicken",
+    "category": "Main Dishes",
+    "meta": "Slow cooker \u00b7 low 4\u20136 hrs \u00b7 serves 4 \u00b7 over rice",
+    "images": [{"src": "images/IMG_0901.jpeg", "label": "Front of card"}, {"src": "images/IMG_0902.jpeg", "label": "Back of card"}],
+    "ingredients": ["2 carrots, sliced", "2 peppers, sliced", "2 cloves garlic", "4 chicken breasts", "2 t ginger", "salt & pepper", "1 can (8 oz) frozen orange juice concentrate", "2 c mandarin oranges, for topping", "2 green onions, for topping", "hot cooked rice, to serve"],
+    "steps": ["Put the carrots, peppers, and garlic in the crock pot, then add the chicken, ginger, salt, pepper, and frozen orange juice.", "Cook on low for 4 to 6 hours.", "Serve over hot cooked rice.", "Top with the mandarin oranges and green onions.", "Serve the cooking liquid alongside in a gravy bowl."],
+    "note": "Front and back of one card \u2014 the ingredients on the front (ending with \u201cover\u201d) and the method on the back. Nana reworked the orange line on the front, crossing out and rewriting as she settled on frozen orange juice for the sauce and mandarin oranges for the top. Different from the slow-cooker Pineapple Chicken and the other chicken dishes already in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "crockpot-bbq-chicken",
+    "title": "Crockpot BBQ Chicken",
+    "category": "Main Dishes",
+    "meta": "Slow cooker \u00b7 low 6 hrs",
+    "images": [{"src": "images/IMG_0908.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 bottle Sweet Baby Ray's BBQ sauce", "1/4 c vinegar", "1 t red pepper flakes", "1/4 c brown sugar", "1 t garlic powder", "chicken"],
+    "steps": ["Mix the BBQ sauce, vinegar, red pepper flakes, brown sugar, and garlic powder together.", "Put the chicken in the crock pot and pour the sauce over it.", "Cook on low for 6 hours."],
+    "note": "A simple slow-cooker barbecue chicken \u2014 a bottle of Sweet Baby Ray's stretched and spiced up with vinegar, brown sugar, red pepper flakes, and garlic powder, poured over chicken and left to cook low all day.",
+    "contributor": ""
+  },
+  {
+    "id": "spanish-rice",
+    "title": "Spanish Rice",
+    "category": "Main Dishes",
+    "meta": "Slow cooker \u00b7 low 7\u20139 hrs or high 3 hrs",
+    "images": [{"src": "images/IMG_0911.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 lbs hamburger", "2 onions, chopped", "1 green pepper, chopped", "1 c tomatoes", "2 (8-oz) cans tomato sauce", "1 c water", "2\u00bd t chili powder", "2 t salt", "2 t Worcestershire sauce", "1 c raw rice"],
+    "steps": ["Brown the beef in a skillet and drain.", "Put everything in the crock pot and stir thoroughly.", "Cover and cook on low for 7 to 9 hours, or on high for 3 hours."],
+    "note": "A hearty crock-pot Spanish rice \u2014 browned hamburger, onions, peppers, and tomatoes simmered low and slow with raw rice cooking right in the sauce. Written on an older, water-stained card.",
+    "contributor": ""
+  },
+  {
+    "id": "taco-casserole",
+    "title": "Taco Casserole",
+    "category": "Main Dishes",
+    "meta": "350\u00b0F \u00b7 25 min, then 5 min \u00b7 layered",
+    "images": [{"src": "images/IMG_0912.jpeg", "label": "Recipe card"}],
+    "ingredients": ["hamburger", "onion", "black beans, rinsed", "taco seasoning", "8 to 12 corn taco shells", "sour cream", "tomatoes with green chile", "shredded cheese"],
+    "steps": ["Cook the hamburger and onion together, then drain.", "Add the black beans, tomatoes with green chile, and taco seasoning. Cook about 5 minutes.", "Spray a baking pan. Layer half the corn shells in the bottom, then half the beef mixture, then sour cream.", "Add the remaining shells and the rest of the beef mixture.", "Bake at 350\u00b0F for 25 minutes.", "Remove, top with cheese, and bake 5 minutes more, or until the cheese is melted."],
+    "note": "No title on this card \u2014 a layered taco casserole written on the back of a package, with a barcode number running down the margin. Corn taco shells, a black bean and taco-seasoned beef mixture, sour cream, and cheese, built up in layers like a Mexican lasagna. Different from the Oven Fried Tacos and Enchilada Cheese Casserole already in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "easy-milky-way-pie",
+    "title": "Easy Milky Way Pie",
+    "category": "Pies",
+    "meta": "9-inch pie \u00b7 450\u00b0F then 375\u00b0F",
+    "images": [{"src": "images/IMG_0900.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 can (21 oz) cherry pie filling", "2 tsp lemon juice", "4 Milky Way bars (1\u00bd oz each)", "1/3 c chopped nuts", "1 unbaked 9-inch pie shell, chilled"],
+    "steps": ["Stir the lemon juice into the cherry pie filling and pour into the chilled pie shell.", "Thinly slice the Milky Way bars over the top.", "Sprinkle the chopped nuts over the candy.", "Bake at 450\u00b0F for 10 minutes.", "Reduce the heat to 375\u00b0F and bake 10 to 15 minutes more.", "Cool before serving."],
+    "note": "A cherry pie with thinly sliced Milky Way bars melted over the top and a scatter of chopped nuts. The bake starts hot at 450\u00b0F, then drops to 375\u00b0F to finish.",
+    "contributor": ""
+  },
+  {
+    "id": "dill-pickles",
+    "title": "Dill Pickles",
+    "category": "Sides & Salads",
+    "meta": "Sun pickles \u00b7 set in sun 3 days",
+    "images": [{"src": "images/IMG_0903.jpeg", "label": "Front of card"}, {"src": "images/IMG_0904.jpeg", "label": "Back of card"}],
+    "ingredients": ["2 c vinegar", "6 c water", "1/2 c pickling salt", "cucumbers", "fresh dill", "garlic (1 clove per jar)"],
+    "steps": ["Sterilize the jars and pack them with cucumbers.", "Combine the water, vinegar, and pickling salt.", "Pour the brine cold over the cucumbers.", "Lay dill on top. A clove of garlic can go in the bottom of each jar.", "Boil the lids, then put them on the jars.", "Set in the sun for 3 days. Can be used right away."],
+    "note": "Front and back of one card \u2014 a sun-cured dill pickle. The cold brine of vinegar, water, and pickling salt is poured over the cucumbers, dill is laid on top, and the jars sit in the sun for three days. The back of the card adds that a clove of garlic can go in the bottom of each jar.",
+    "contributor": ""
+  },
+  {
+    "id": "vegetable-salad",
+    "title": "Vegetable Salad",
+    "category": "Sides & Salads",
+    "meta": "Marinated \u00b7 chilled \u00b7 canned vegetables",
+    "images": [{"src": "images/IMG_0913.jpeg", "label": "Recipe card"}],
+    "ingredients": ["\u2014 Dressing \u2014", "1 c sugar", "1 c vinegar", "1/2 c oil", "\u2014 Vegetables \u2014", "1 can corn, drained", "1 can peas, drained", "1 can French-style green beans, drained", "1 c diced celery", "1 c diced carrots", "red bell pepper"],
+    "steps": ["For the dressing, boil the sugar, vinegar, and oil together for 5 minutes.", "Drain the canned corn, peas, and green beans.", "Combine the corn, peas, green beans, celery, carrots, and red bell pepper in a bowl.", "Cool the dressing, then pour it over the vegetables.", "Chill before serving."],
+    "note": "A marinated vegetable salad on a yellow card \u2014 canned corn, peas, and French-style green beans with diced celery, carrots, and red bell pepper, dressed with a sweet-and-sour cooked dressing of sugar, vinegar, and oil.",
+    "contributor": ""
+  },
+  {
+    "id": "sweet-sour-sauce",
+    "title": "Sweet & Sour Sauce",
+    "category": "Sides & Salads",
+    "meta": "Stovetop sauce \u00b7 ingredients only",
+    "images": [{"src": "images/IMG_0910.jpeg", "label": "Recipe card"}],
+    "ingredients": ["3/4 c vinegar", "1/2 t salt", "6 T catsup", "1 T Worcestershire sauce", "3/4 c sugar", "1 T cornstarch"],
+    "steps": [],
+    "note": "The title \u2014 \u201cSweet & Sour Sauce\u201d \u2014 is written at the bottom of this stained card, with the ingredients above it. No method is written; the usual way is to stir everything together in a saucepan and cook, stirring, until it thickens and turns clear. Nana started to write \u201ccorn pasta,\u201d crossed out \u201cpasta,\u201d and wrote \u201cstarch.\u201d Different from the sauce on the Sweet & Sour Chicken card already in the box, which uses pineapple juice and soy sauce.",
+    "contributor": ""
+  },
+  {
+    "id": "cheese-ball-dried-beef",
+    "title": "Cheese Ball (Dried Beef)",
+    "category": "Appetizers",
+    "meta": "No-bake \u00b7 shaped & chilled",
+    "images": [{"src": "images/IMG_0905.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 (8-oz) pkgs cream cheese", "1 (8-oz) pkg dried beef", "1\u00bd t Worcestershire sauce", "1/2 t garlic powder", "1/2 t onion powder", "3 green onions"],
+    "steps": ["Mix the cream cheese with the dried beef, Worcestershire sauce, garlic powder, onion powder, and green onions.", "Turn out onto plastic wrap and shape into a ball, sealing it in the wrap.", "Chill before serving."],
+    "note": "A second cheese ball in the box \u2014 different from the bacon-and-jalape\u00f1o Cheese Ball already here. This one is made with dried beef and folded through with Worcestershire and green onions, then shaped in plastic wrap and chilled.",
+    "contributor": ""
+  },
+  {
+    "id": "pineapple-upside-down-cake",
+    "title": "Pineapple Upside Down Cake",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 40\u201350 min \u00b7 upside-down cake",
+    "images": [{"src": "images/IMG_0897.jpeg", "label": "Recipe card"}],
+    "ingredients": ["melted butter, for the bottom of the pan", "1/4 c brown sugar", "canned pineapple slices (juice reserved)", "maraschino cherries", "1 box cake mix"],
+    "steps": ["Spread melted butter over the bottom of the pan and sprinkle the brown sugar over it.", "Arrange pineapple slices over the sugar, with a cherry in the middle of each.", "Prepare the cake mix as directed on the box, but use the reserved pineapple juice in place of the water.", "Pour the batter over the fruit \u2014 do not stir.", "Bake at 350\u00b0F for 40 to 50 minutes."],
+    "note": "A pineapple upside-down cake built on a box of cake mix \u2014 butter and brown sugar in the bottom of the pan, pineapple rings with a cherry in each center, and batter mixed with the reserved pineapple juice instead of water poured over. Written on the back of a printed page, with a few dollar figures jotted in the corner. Different from the dump-style Pineapple Cherry Dump Cake already in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "black-forest-cake",
+    "title": "Black Forest Cake",
+    "category": "Sweets",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 1 hr",
+    "images": [{"src": "images/IMG_0906.jpeg", "label": "Recipe card"}],
+    "ingredients": ["5 c marshmallows", "1 can cherry pie filling", "1 chocolate cake mix"],
+    "steps": ["Grease a 9\u00d713 pan and cover the bottom with marshmallows.", "Prepare the chocolate cake mix as directed on the box. Pour the batter over the marshmallows.", "Pour the cherry pie filling over the cake batter.", "Bake at 350\u00b0F for 1 hour, or until a toothpick comes out clean."],
+    "note": "Kept just as Nana spelled it \u2014 \u201cBlack Forrest Cake.\u201d A magic-style cake: marshmallows line the bottom of the pan, chocolate cake batter goes over them, and cherry pie filling is poured on top. The marshmallows rise up through the cake as it bakes.",
+    "contributor": ""
+  },
+  {
+    "id": "yummy-cake",
+    "title": "Yummy Cake",
+    "category": "Sweets",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 caramel layer",
+    "images": [{"src": "images/IMG_0916.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 pkg chocolate cake mix", "3/4 c oleo (butter)", "1/2 c evaporated milk", "1 (16-oz) pkg caramels", "1 c chocolate chips", "1 c nuts", "1 c coconut (optional \u2014 may be used in place of the chocolate chips and nuts)", "whipping cream, to serve"],
+    "steps": ["Prepare the cake mix as directed on the package.", "Bake 2/3 of the batter in a 9\u00d713 pan and let it cool.", "In a double boiler, melt the oleo, evaporated milk, and caramels. Cool slightly and spread over the cooled cake.", "Sprinkle the chocolate chips and nuts over the caramel.", "Dribble the remaining batter over the top and bake 15 minutes.", "Cool and serve with whipped cream."],
+    "note": "A chocolate caramel layer cake \u2014 two-thirds of the batter is baked first, spread with a melted caramel layer, scattered with chocolate chips and nuts, then topped with the rest of the batter and baked again. Nana circled a note that coconut can stand in for the chocolate chips and nuts.",
+    "contributor": ""
+  },
+  {
+    "id": "peanut-blossoms",
+    "title": "Peanut Blossoms",
+    "category": "Sweets",
+    "meta": "375\u00b0F \u00b7 8 min + 2\u20135 min \u00b7 46\u201348 cookies",
+    "images": [{"src": "images/IMG_0915.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 3/4 c flour", "1 t baking soda", "1/2 t salt", "1/2 c butter", "1/2 c white sugar", "1/2 c brown sugar", "1 egg, unbeaten", "1 t vanilla", "2 T milk", "1/2 c peanut butter", "chocolate candy kisses", "extra sugar, for rolling"],
+    "steps": ["Sift the flour, baking soda, and salt together and set aside.", "Cream the butter and peanut butter. Gradually add both sugars and cream well.", "Add the egg and vanilla and blend.", "Add the dry ingredients and milk. Mix.", "Shape into balls using a teaspoon and roll each in sugar.", "Bake at 375\u00b0F for 8 minutes.", "Remove from the oven, press a chocolate kiss into each, and return to the oven for 2 to 5 minutes.", "Cool. Makes 46 to 48 cookies."],
+    "note": "The classic peanut butter cookie with a chocolate kiss pressed into the center. Written on a hole-punched notebook page with a torn corner; Nana noted the yield right on the card \u2014 46 to 48 cookies.",
+    "contributor": ""
+  },
+  {
+    "id": "english-toffee",
+    "title": "English Toffee",
+    "category": "Sweets",
+    "meta": "15\u00d710 pan \u00b7 candy \u00b7 cooked to hard crack",
+    "images": [{"src": "images/IMG_0914.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 3/4 c butter (not oleo)", "2 c sugar", "1 T light syrup", "1 c nuts", "1/4 t salt", "1 lb milk chocolate chips", "1 T butter, for the pan"],
+    "steps": [],
+    "note": "Written on letterhead from the Jerry Cady Agency, National Farmers Union Insurance Co., in Marion, Kansas \u2014 another small piece of Kansas tucked into the box. Nana underlined that it takes real butter, not oleo. No method is written; English toffee is cooked to the hard-crack stage (the card notes \u201chard crack\u201d), poured into a buttered 15\u00d710 pan, with the chocolate chips scattered over the hot candy to melt and spread and the nuts pressed in. Like several cards in the box, it also carries a brief, unrelated note jotted in Nana's hand at the top of the page.",
+    "contributor": ""
+  },
+  {
+    "id": "root-beer",
+    "title": "Root Beer",
+    "category": "Drinks",
+    "meta": "Makes 1 gallon \u00b7 set in sun 4 hrs",
+    "images": [{"src": "images/IMG_0907.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 c white sugar", "1 gal lukewarm water", "3 t root beer extract", "1 t dry yeast"],
+    "steps": ["Mix all the ingredients together well.", "Pour into jars and cover.", "Set in the sun for 4 hours.", "Chill before serving the next day."],
+    "note": "Homemade root beer \u2014 the first drink in the box. Sugar, water, root beer extract, and a little yeast are mixed and poured into jars, set in the sun for an afternoon, and chilled overnight before serving.",
+    "contributor": ""
+  },
+  {
+    "id": "cowboy-cookies",
+    "title": "Cowboy Cookies",
+    "category": "Sweets",
+    "meta": "Greased sheet \u00b7 350\u00b0F \u00b7 15 min",
+    "images": [{"src": "images/IMG_0917.jpeg", "label": "Front of card"}, {"src": "images/IMG_0918.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 c oleo (butter)", "1/2 c white sugar", "1 1/2 c brown sugar", "2 eggs", "2 c flour", "1 t baking soda", "1/2 t salt", "1 1/2 t vanilla", "2 c oats (uncooked)", "1 c coconut", "12 oz chocolate chips"],
+    "steps": ["Cream the butter and sugars together.", "Add the eggs and beat well.", "Mix in the remaining ingredients.", "Drop by teaspoonfuls onto a greased cookie sheet.", "Bake at 350\u00b0F for 15 minutes."],
+    "note": "Front and back of one card \u2014 the ingredients on the front and the method on the back. A loaded oat cookie with coconut and chocolate chips. Nana started to write \u201cbaking powder,\u201d crossed it out, and corrected it to baking soda.",
+    "contributor": ""
+  },
+  {
+    "id": "banana-cookies",
+    "title": "Banana Cookies",
+    "category": "Sweets",
+    "meta": "Greased cookie sheet \u00b7 425\u00b0F \u00b7 10 min",
+    "images": [{"src": "images/IMG_0919.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 cup oleo (butter)", "2 cup sugar", "2 eggs", "1 t salt", "1 t soda", "1 t baking powder", "1 t vanilla", "3 cups flour", "4 or 5 bananas, mashed"],
+    "steps": ["Cream the oleo and sugar, then beat in the eggs.", "Add the salt, soda, baking powder, vanilla and flour.", "Stir in the mashed bananas.", "Drop onto a greased cookie sheet.", "Bake at 425\u00b0F for 10 minutes."],
+    "note": "Written on Regier Agency, Inc. letterhead \u2014 a title company in Newton, Kansas. Nana wrote down the ingredients and the oven note (425\u00b0, 10 minutes, greased cookie sheet) but not the mixing steps; the method here is pieced together the usual way for a soft, cake-like banana drop cookie.",
+    "contributor": ""
+  },
+  {
+    "id": "chicken-wings",
+    "title": "Chicken Wings",
+    "category": "Appetizers",
+    "meta": "350\u00b0F oven \u00b7 20\u201330 min",
+    "images": [{"src": "images/IMG_0920.jpeg", "label": "Recipe card"}],
+    "ingredients": ["butter", "olive oil", "garlic", "salt & pepper", "chicken wings"],
+    "steps": ["Coat the wings with butter, olive oil, garlic, salt and pepper.", "Bake in a 350\u00b0F oven for 20 to 30 minutes."],
+    "note": "A small square card in faded ink. Nana noted only the coating \u2014 butter, olive oil, garlic, salt and pepper \u2014 with no amounts, then \u201ccoat wings, 350\u00b0 oven, 20 to 30 min.\u201d Marked \u201cMr. Food\u201d at the bottom, the source she got it from.",
+    "contributor": ""
+  },
+  {
+    "id": "lemon-carrots",
+    "title": "Lemon Carrots",
+    "category": "Sides & Salads",
+    "meta": "Skillet \u00b7 10\u201312 min \u00b7 serves 6",
+    "images": [{"src": "images/IMG_0921.jpeg", "label": "Recipe card"}],
+    "ingredients": ["6 medium carrots", "4 T frozen lemonade concentrate, undiluted", "2 T butter"],
+    "steps": ["Peel the carrots and slice them thinly.", "Melt the butter in a skillet and add the frozen lemonade.", "Stir in the carrots, coating each slice.", "Cook covered until barely tender, 10 to 12 minutes.", "Remove the cover and stir briskly for a few minutes to cook away the extra juice."],
+    "note": "Serves 6. A bright skillet side \u2014 carrots glazed in butter and undiluted frozen lemonade concentrate.",
+    "contributor": ""
+  },
+  {
+    "id": "fried-cabbage",
+    "title": "Fried Cabbage",
+    "category": "Sides & Salads",
+    "meta": "Skillet \u00b7 cook 20 min",
+    "images": [{"src": "images/IMG_0922.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 large head cabbage, chopped", "2 t bacon fat", "1 egg", "1 T skim milk", "2 T vinegar"],
+    "steps": ["Cover the chopped cabbage with cold water, then drain.", "Heat the bacon fat in a skillet and add the cabbage.", "Cook for 20 minutes, until tender.", "Make a dressing of the egg, milk and vinegar.", "Pour the dressing over the cabbage and heat through."],
+    "note": "An old-fashioned fried cabbage \u2014 cooked down in bacon fat, then finished with a quick egg, milk and vinegar dressing stirred through at the end.",
+    "contributor": ""
+  },
+  {
+    "id": "cranberry-salad",
+    "title": "Cranberry Salad",
+    "category": "Sides & Salads",
+    "meta": "No-bake \u00b7 make-ahead \u00b7 chill to set",
+    "images": [{"src": "images/IMG_0923.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 can whole berry cranberry sauce", "1 can pineapple", "1 small bag mini marshmallows", "8 oz cream cheese", "1 carton Cool Whip", "nuts"],
+    "steps": ["Beat the cream cheese until smooth.", "Stir in the whole berry cranberry sauce, drained pineapple and marshmallows.", "Fold in the Cool Whip and nuts.", "Chill until set."],
+    "note": "Only the ingredients were written on this card \u2014 the method here is pieced together the usual way for a creamy cranberry salad. Different from the other Cranberry Salad in the box (Mrs. Martin\u2019s), which is a ground-cranberry lime Jell-O salad.",
+    "contributor": ""
+  },
+  {
+    "id": "crockpot-green-beans",
+    "title": "Green Bean Casserole",
+    "category": "Sides & Salads",
+    "meta": "Crock pot \u00b7 high \u00b7 45 min",
+    "images": [{"src": "images/IMG_0924.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 cans green beans", "1 can cream of mushroom soup", "1/2 can water", "1 can French fried onion rings"],
+    "steps": ["Drain the green beans and mix with the mushroom soup and half a soup can of water.", "Cook on High in a crock pot for 45 minutes.", "Add the onion rings for the last 5 minutes."],
+    "note": "No title on this card \u2014 written on a Home Care, Inc. notepad. A slow-cooker take on the classic green bean casserole. Different from the Skillet Green Beans already in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "cranberry-salad-martin",
+    "title": "Cranberry Salad (Mrs. Martin)",
+    "category": "Sides & Salads",
+    "meta": "Lime Jell-O salad \u00b7 make-ahead",
+    "images": [{"src": "images/IMG_0925.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 cups ground cranberries", "1/2 stalk celery", "English walnuts", "1 pkg lime Jell-O"],
+    "steps": ["Grind the cranberries.", "Combine with the chopped celery and walnuts.", "Prepare the lime Jell-O and stir the cranberry mixture in.", "Pour into a mold or dish and chill until set."],
+    "note": "An older card written in pencil and worn at the edges \u2014 the amount of walnuts is hard to make out. A ground-cranberry salad set in lime Jell-O, different from the creamy cream-cheese-and-Cool-Whip Cranberry Salad also in the box. Nana kept it under the name of the friend she got it from, Mrs. Martin.",
+    "contributor": "Mrs. Martin"
+  },
+  {
+    "id": "lunchbox-crunch-cookies",
+    "title": "Lunchbox Crunch Cookies",
+    "category": "Sweets",
+    "meta": "Ungreased sheet \u00b7 350\u00b0F \u00b7 10\u201315 min \u00b7 4\u20135 dozen",
+    "images": [{"src": "images/IMG_0926.jpeg", "label": "Front of card"}, {"src": "images/IMG_0927.jpeg", "label": "Back of card"}],
+    "ingredients": ["1/2 c sugar", "1/2 c brown sugar", "1/2 t baking soda", "1/4 t salt", "1/4 t baking powder", "1 c butter", "1/2 t vanilla", "1 egg", "1 c flour", "1 c oats", "1/2 c coconut", "1 c cornflakes", "1/2 c nuts"],
+    "steps": ["In a large bowl, combine the first 8 ingredients \u2014 sugar, brown sugar, baking soda, salt, baking powder, butter, vanilla and egg. Blend well.", "Stir in the flour, oats and coconut, then the cornflakes and nuts.", "Shape into 1-inch balls and place 2 inches apart on an ungreased cookie sheet.", "Bake at 350\u00b0F for 10 to 15 minutes, until golden brown."],
+    "note": "Front and back of one card \u2014 the ingredients on the front (ending with \u201cover\u201d) and the method on the back. A crisp little cookie packed with oats, coconut and cornflakes. Makes 4 to 5 dozen.",
+    "contributor": ""
+  },
+  {
+    "id": "wilted-lettuce-salad",
+    "title": "Wilted Lettuce Salad",
+    "category": "Sides & Salads",
+    "meta": "Warm bacon dressing \u00b7 toss and serve",
+    "images": [{"src": "images/IMG_0928.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 bunch leaf lettuce, torn", "6 green onions with tops, sliced", "\u2014 Dressing \u2014", "5 bacon slices", "2 T vinegar", "1 T lemon juice", "1 t sugar", "1/2 t pepper"],
+    "steps": ["Put the torn leaf lettuce and sliced green onions in a bowl.", "Fry the bacon, then remove and crumble it, reserving the hot drippings.", "To the hot bacon drippings, add the vinegar, lemon juice, sugar and pepper.", "Toss the dressing on the salad immediately.", "Crumble the bacon over the top."],
+    "note": "A classic wilted lettuce salad \u2014 leaf lettuce and green onions dressed with a hot bacon dressing so the greens just wilt.",
+    "contributor": ""
+  },
+  {
+    "id": "magic-cookie-bars",
+    "title": "Magic Cookie Bars",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 25\u201330 min \u00b7 layered in the pan",
+    "images": [{"src": "images/IMG_0930.jpeg", "label": "Front of card"}, {"src": "images/IMG_0931.jpeg", "label": "Back of card"}],
+    "ingredients": ["1/2 c oleo (butter)", "1 1/2 c graham cracker crumbs", "1 (14 oz) can sweetened condensed milk", "1 (6 oz) pkg chocolate chips", "1 1/3 c coconut", "1 c nuts"],
+    "steps": ["Melt the oleo in the pan.", "Sprinkle the graham cracker crumbs over the oleo, mix together, and press into the pan.", "Pour the condensed milk over the crumbs.", "Top with the chocolate chips, coconut and nuts. Press down.", "Bake at 350\u00b0F for 25 to 30 minutes, or until light brown.", "Cool before cutting."],
+    "note": "Front and back of one card \u2014 the ingredients on the front (ending with \u201cover\u201d) and the method on the back. The classic layered \u201cmagic\u201d bar, built right in the pan.",
+    "contributor": ""
+  },
+  {
+    "id": "teriyaki-chicken-orange",
+    "title": "Teriyaki Chicken with Orange Sauce",
+    "category": "Main Dishes",
+    "meta": "Slow cooker \u00b7 low 4\u20135 hrs \u00b7 over rice",
+    "images": [{"src": "images/IMG_0932.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 lb boneless chicken", "16 oz frozen broccoli, baby carrots & water chestnuts", "2 T tapioca", "3/4 c chicken broth", "3 T orange marmalade", "2 T teriyaki sauce", "1 t dry mustard", "1/2 t ground ginger", "2 c hot cooked rice"],
+    "steps": ["Cut the chicken into pieces.", "Place the vegetables in the crock pot. Sprinkle the tapioca over them and stir to combine. Place the chicken on top.", "Combine the chicken broth, orange marmalade, teriyaki sauce, dry mustard and ginger. Pour over the chicken.", "Cook on low for 4 to 5 hours. Serve over rice."],
+    "note": "Different from the Orange Crockpot Chicken already in the box \u2014 that one is sauced with frozen orange juice concentrate. This one leans on orange marmalade and teriyaki sauce, with a frozen vegetable mix.",
+    "contributor": ""
+  },
+  {
+    "id": "italian-buffet-stew",
+    "title": "Italian Buffet Stew",
+    "category": "Main Dishes",
+    "meta": "Crock pot \u00b7 low 10 hrs + high 1 hr \u00b7 over spaghetti",
+    "images": [{"src": "images/IMG_0933.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 lb beef chuck roast", "2 onions", "1 large pepper", "1 jar (14 oz) spaghetti sauce", "1 1/2 lb zucchini, cut in chunks", "salt & pepper", "spaghetti, to serve"],
+    "steps": ["Trim the fat from the meat and cut into chunks. Layer the beef, onions and peppers in the crock pot. Add the spaghetti sauce.", "Cook on low for 10 hours.", "Turn to high and add the zucchini. Cover and cook 1 more hour, until the meat is tender.", "Season with salt and pepper. Serve over spaghetti."],
+    "note": "A long, hands-off crock pot stew \u2014 beef, onions and peppers cooked all day in spaghetti sauce, with zucchini added near the end, served over spaghetti.",
+    "contributor": ""
+  },
+  {
+    "id": "italian-chicken-slow-cooker",
+    "title": "Italian Chicken",
+    "category": "Main Dishes",
+    "meta": "Slow cooker \u00b7 low 6\u20137 hrs",
+    "images": [{"src": "images/IMG_0934.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1/2 head cabbage", "1 onion, in rings (about 1/2 cup)", "1 can (4 1/2 oz) mushrooms, drained", "2 T tapioca", "2 to 2 1/2 lb chicken pieces, skinned", "2 cups meatless spaghetti sauce", "grated Parmesan cheese"],
+    "steps": ["In the slow cooker, place the cabbage, onions and mushrooms. Sprinkle the tapioca over the vegetables.", "Place the chicken on the vegetables and pour the spaghetti sauce over the chicken.", "Cover and cook on low heat for 6 to 7 hours.", "Transfer to a serving plate and sprinkle with grated Parmesan cheese."],
+    "note": "A slow-cooker chicken built on a bed of cabbage, onion and mushrooms, sauced with meatless spaghetti sauce and finished with Parmesan.",
+    "contributor": ""
+  },
+  {
+    "id": "saucy-pot-roast-noodles",
+    "title": "Saucy Pot Roast with Noodles",
+    "category": "Main Dishes",
+    "meta": "Slow cooker \u00b7 low 10\u201312 hrs \u00b7 over noodles",
+    "images": [{"src": "images/IMG_0937.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 to 2 1/2 lb beef chuck roast", "1 T cooking oil", "2 carrots, chopped (1 c)", "2 stalks celery, sliced (1 c)", "1 onion, sliced", "2 cloves garlic, minced", "1 T tapioca", "1 can (14 1/2 oz) Italian-style tomatoes", "6 oz Italian tomato paste", "1 T brown sugar", "1/2 t salt", "1/4 t pepper", "1 bay leaf", "4 1/2 to 6 c cooked noodles"],
+    "steps": ["Trim the fat from the roast and brown it in hot oil.", "Layer the carrots, celery, onion and garlic in the slow cooker. Sprinkle the tapioca over the vegetables. Place the meat on top.", "Mix the undrained tomatoes, tomato paste, brown sugar, salt, pepper and bay leaf. Pour over the meat.", "Cook on low for 10 to 12 hours. Discard the bay leaf and skim off the fat.", "Serve over cooked noodles."],
+    "note": "Nana started to write \u201cItalian tomato sauce,\u201d crossed out \u201csauce,\u201d and corrected it to \u201cpaste.\u201d A saucy slow-cooker pot roast served over noodles.",
+    "contributor": ""
+  },
+  {
+    "id": "choc-marshmallow-cookies",
+    "title": "Chocolate Marshmallow Cookies",
+    "category": "Sweets",
+    "meta": "350\u00b0F \u00b7 8 min + 2 min \u00b7 marshmallow-topped",
+    "images": [{"src": "images/IMG_0938.jpeg", "label": "Front of card"}, {"src": "images/IMG_0939.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 3/4 c flour", "1/2 t salt", "1/2 t baking soda", "1/2 c cocoa", "1/2 c shortening", "1 c sugar", "1 egg", "1 t vanilla", "1/4 c milk", "18 marshmallows, halved", "\u2014 Frosting (no amounts written) \u2014", "cocoa", "powdered sugar", "vanilla", "milk", "shortening"],
+    "steps": ["Sift together the flour, salt, baking soda and cocoa.", "Cream the sugar and shortening. Add the egg, vanilla and milk. Beat well.", "Add the dry ingredients and mix.", "Drop by teaspoonful onto a greased cookie sheet.", "Bake at 350\u00b0F for 8 minutes.", "Remove from the oven and press half a marshmallow, cut side down, on top of each cookie. Bake 2 minutes longer. Cool.", "Frost with a cocoa frosting \u2014 beat together cocoa, powdered sugar, vanilla, milk and shortening (no amounts were written down)."],
+    "note": "Front and back of one card \u2014 the ingredients and start of the method on the front (ending with \u201cover\u201d), the rest on the back. Nana wrote it \u201cChoc. Marshmellow Cookies.\u201d A soft chocolate drop cookie, each one topped with half a marshmallow partway through baking, then finished with a cocoa frosting whose ingredients were listed without amounts.",
+    "contributor": ""
+  },
+  {
+    "id": "peach-pie",
+    "title": "Peach Pie",
+    "category": "Pies",
+    "meta": "8-inch pie \u00b7 35\u201345 min",
+    "images": [{"src": "images/IMG_0940.jpeg", "label": "Recipe card"}],
+    "ingredients": ["4 c peaches", "1 t lemon juice", "2/3 c sugar", "3 T flour", "1/4 t cinnamon", "1 T butter", "1 (8-inch) pie shell"],
+    "steps": ["Mix the peaches and lemon juice together.", "In a separate bowl, mix the sugar, flour and cinnamon. Stir into the peaches.", "Put the filling into an 8-inch pie shell. Dot with butter.", "Bake 35 to 45 minutes."],
+    "note": "An 8-inch peach pie \u2014 the card notes the pie size and a bake time of 35 to 45 minutes, though no oven temperature was written down. Different from the two peach cobblers already in the box; this one is a true pie, the peaches tossed with sugar, flour and cinnamon and dotted with butter in the shell.",
+    "contributor": ""
+  },
+  {
+    "id": "neiman-marcus-cookie-bars",
+    "title": "Neiman-Marcus Cookie Bars",
+    "category": "Sweets",
+    "meta": "9\u00d713 pan \u00b7 350\u00b0F \u00b7 35 min",
+    "images": [{"src": "images/IMG_0941.jpeg", "label": "Front of card"}, {"src": "images/IMG_0942.jpeg", "label": "Back of card"}],
+    "ingredients": ["\u2014 Crust \u2014", "1 pkg yellow cake mix", "1 stick oleo (butter)", "2 eggs", "\u2014 Topping \u2014", "1 (8-oz) pkg cream cheese, softened", "2 eggs", "1 t vanilla", "1 lb box powdered sugar", "1/2 c nuts", "extra powdered sugar, for the top"],
+    "steps": ["For the crust, mix the yellow cake mix, oleo and 2 eggs together. Press into a 9\u00d713 pan.", "For the topping, beat the softened cream cheese with 2 eggs. Add the vanilla, powdered sugar and nuts and mix well.", "Pour the topping over the cake mixture.", "Bake at 350\u00b0F for 35 minutes, or until brown.", "Sprinkle with a little powdered sugar."],
+    "note": "Front and back of one card \u2014 the ingredients on the front (ending with \u201cover\u201d) and the rest of the method on the back. The classic gooey \u201cNeiman-Marcus\u201d bar: a yellow cake mix crust pressed into the pan, topped with a cream cheese and powdered sugar layer, and baked until golden. Nana crossed out a false start on the cream cheese line; the amount written there is a little hard to read on the card.",
+    "contributor": ""
+  },
+  {
+    "id": "cabbage-slaw",
+    "title": "Cabbage Slaw",
+    "category": "Sides & Salads",
+    "meta": "No-cook \u00b7 creamy slaw \u00b7 ingredients only",
+    "images": [{"src": "images/IMG_0944.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 1/2 lbs cabbage", "2/3 c sugar", "1/2 c vinegar", "1 t salt", "1 c whipping cream"],
+    "steps": [],
+    "note": "Only the ingredients were written on this card \u2014 no method. A creamy, old-fashioned slaw: shredded cabbage dressed with sugar, vinegar, salt and whipping cream. The usual way is to shred the cabbage, whisk or whip the dressing together, toss it through, and chill before serving. The sugar and vinegar amounts were written without units \u2014 most likely 2/3 cup and 1/2 cup.",
+    "contributor": ""
+  },
+  {
+    "id": "cream-cheese-stuffed-peppers",
+    "title": "Cream Cheese Stuffed Peppers",
+    "category": "Appetizers",
+    "meta": "450\u00b0F \u00b7 15 min \u00b7 wrapped in prosciutto",
+    "images": [{"src": "images/IMG_0945.jpeg", "label": "Recipe card"}],
+    "ingredients": ["fresh peppers", "cream cheese", "salsa", "prosciutto or ham, for wrapping"],
+    "steps": ["Cut the fresh peppers lengthwise and scoop out the seeds and membrane.", "Mix the cream cheese and salsa together until thick.", "Put the cream cheese mixture in a zip-lock bag and squeeze it into the peppers.", "Wrap each pepper tightly in prosciutto or ham.", "Bake at 450\u00b0F for 15 minutes."],
+    "note": "No title on this card \u2014 a jalape\u00f1o-popper-style appetizer. Halved peppers are filled with a thick cream cheese and salsa mixture (piped in from a zip-lock bag), then wrapped tight in prosciutto or ham and baked hot. Nana worked out the spelling of \u201cprosciutto\u201d a couple of ways on the card. No amounts are given.",
+    "contributor": ""
+  },
+  {
+    "id": "rice-krispie-eggs",
+    "title": "Rice Krispie Eggs",
+    "category": "Sweets",
+    "meta": "No-bake \u00b7 stovetop \u00b7 formed into eggs",
+    "images": [{"src": "images/IMG_0946.jpeg", "label": "Recipe card (written on an envelope)"}],
+    "ingredients": ["1 lb (16 oz) marshmallows", "1/4 c oleo (butter)", "5 c Rice Krispies cereal", "2 T peanut butter"],
+    "steps": ["Melt the marshmallows and oleo together.", "Add the Rice Krispies and stir to coat.", "Add the peanut butter and stir through.", "Let the mixture sit a moment, then form into egg shapes."],
+    "note": "Written on the back of a torn envelope postmarked Hutchinson, Kansas, 1987 \u2014 a recipe jotted on whatever paper was at hand, the 22-cent stamp and cancellation still showing. A peanut butter Rice Krispie treat shaped into eggs, likely an Easter project. Different from the other Rice Krispie treats in the box \u2014 this one is the simple melted-marshmallow kind with a little peanut butter stirred in.",
+    "contributor": ""
+  },
+  {
+    "id": "sopapilla-cheesecake",
+    "title": "Sopapilla Cheesecake",
+    "category": "Sweets",
+    "meta": "13\u00d79 pan \u00b7 350\u00b0F \u00b7 30\u201335 min",
+    "images": [{"src": "images/IMG_0947.jpeg", "label": "Front of card"}, {"src": "images/IMG_0948.jpeg", "label": "Back of card"}],
+    "ingredients": ["2 pkgs crescent rolls", "2 pkgs cream cheese", "1 1/2 c sugar", "cinnamon", "1/2 stick butter"],
+    "steps": ["Place 1 package of crescent rolls in a 13\u00d79 pan and press down.", "Soften the cream cheese and mix it with 1 c of the sugar.", "Spread the cream cheese mixture over the rolls.", "Place the 2nd package of crescent rolls on top \u2014 do not press down.", "Melt the 1/2 stick of butter in the microwave for 30 seconds with 1/2 c sugar, and stir. It should be a syrup consistency.", "Drizzle the butter-sugar syrup over the top and sprinkle with cinnamon.", "Bake at 350\u00b0F for 30 to 35 minutes."],
+    "note": "Front and back of one card \u2014 the ingredients and most of the method on the front (ending mid-step with \u201cstir\u201d), the rest on the back. A crowd-pleasing sopapilla cheesecake: a sweet cream cheese filling between two layers of crescent roll dough, drizzled with a buttery cinnamon-sugar syrup before baking.",
+    "contributor": ""
+  },
+  {
+    "id": "cake-mix-cookie-cake",
+    "title": "Chocolate Chip Cookie Cake",
+    "category": "Sweets",
+    "meta": "Cake pan \u00b7 350\u00b0F \u00b7 20 min \u00b7 one large cookie",
+    "images": [{"src": "images/IMG_0949.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 yellow cake mix", "5 T melted butter", "1 pkg chocolate chips"],
+    "steps": ["Mix the yellow cake mix, melted butter and chocolate chips together.", "Press into a cake pan.", "Bake at 350\u00b0F for 20 minutes.", "Makes one large cookie."],
+    "note": "A quick one-large-cookie made from a box of yellow cake mix, melted butter and a package of chocolate chips, pressed into a cake pan and baked. Written on a pretty floral card with butterflies. Close to the Cake Mix Chocolate Chip Bars already in the box, but not the same \u2014 that card adds 2 eggs and bakes as bars, while this one skips the eggs, uses melted butter, and bakes as a single \u201clarge cookie.\u201d",
+    "contributor": ""
+  },
+  {
+    "id": "clean-floors",
+    "title": "Clean Floors",
+    "category": "Household",
+    "meta": "Homemade floor cleaner \u00b7 makes about 2 gallons",
+    "images": [{"src": "images/IMG_0950.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 c white vinegar", "1 T dish soap", "1 c baking soda", "2 gal very warm tap water"],
+    "steps": ["Combine the white vinegar, dish soap, baking soda and very warm tap water.", "Use to mop the floors."],
+    "note": "Not a recipe for the table \u2014 a homemade floor-cleaning solution Nana kept right in the recipe box, written on a lined card. White vinegar, dish soap and baking soda stirred into two gallons of very warm tap water. Kept here with her recipes, just as it was filed in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "caramel-apple-pie",
+    "title": "Caramel Apple Pie",
+    "category": "Pies",
+    "meta": "Partial card \u2014 ingredients only",
+    "images": [{"src": "images/IMG_0951.jpeg", "label": "Recipe card"}],
+    "ingredients": ["4 lbs apples, peeled and sliced", "2/3 c white sugar", "2/3 c brown sugar", "1/2 c flour", "1/2 t cinnamon"],
+    "steps": [],
+    "note": "Only the title and ingredient list were captured on this card \u2014 no method, oven temperature or baking time, and no caramel among the ingredients despite the name. There is very likely a back or a second card with the rest. Nana wrote it \u201cCarmel Apple Pie.\u201d Worth a careful look through the original box; the front is kept here so it stays with the family until the rest turns up.",
+    "contributor": ""
+  },
+  {
+    "id": "microwave-caramel-corn",
+    "title": "Microwave Caramel Corn",
+    "category": "Sweets",
+    "meta": "Microwave \u00b7 paper bag method",
+    "images": [{"src": "images/IMG_0952.jpeg", "label": "Recipe card"}],
+    "ingredients": ["4 qt popped corn", "1 c brown sugar", "1/2 c margarine", "1/4 c corn syrup", "1/2 t baking soda"],
+    "steps": ["Microwave the brown sugar, margarine and corn syrup on high for 3 minutes. After it comes to a boil, cook 2 minutes more on high.", "Remove from the microwave and stir in the baking soda.", "Put the popped corn and the syrup mixture into a large paper bag and shake well.", "Cook 1 minute, then shake again.", "Cook 1 more minute.", "Take out of the bag and cool."],
+    "note": "Kept just as Nana spelled it \u2014 \u201cCarmel Corn.\u201d A fast caramel corn made right in the microwave: the syrup is boiled in the microwave, tossed with popped corn in a large paper bag, and shaken between short bursts of cooking. The card is a little ink-stained from kitchen use.",
+    "contributor": ""
+  },
+  {
+    "id": "nacho-potato-soup",
+    "title": "Nacho Potato Soup",
+    "category": "Soups",
+    "meta": "Stovetop \u00b7 simmer 15\u201318 min",
+    "images": [{"src": "images/IMG_0953.jpeg", "label": "Front of card"}, {"src": "images/IMG_0954.jpeg", "label": "Back of card"}],
+    "ingredients": ["1 pkg (5 1/4 oz) au gratin potatoes", "1 can (11 oz) whole kernel corn, drained", "1 can (10 oz) diced tomatoes & green chilies, undrained", "2 c water", "milk (amount not written)", "2 c cubed American cheese"],
+    "steps": ["Combine the potato package, corn, tomatoes and water. Mix well.", "Bring to a boil, then turn down the heat. Cover and simmer for 15 to 18 minutes.", "Add the milk and cheese.", "Cook and stir until the cheese is melted."],
+    "note": "Front and back of one card \u2014 the ingredients and first steps on the front (ending with \u201cover\u201d) and the finish on the back. Nana crossed out a pound of hamburger from the ingredient list, leaving a meatless soup built on a box of au gratin potatoes. The milk is called for in the method on the back; its amount wasn\u2019t written down. Different from the two other potato soups in the box.",
+    "contributor": ""
+  },
+  {
+    "id": "baked-corn",
+    "title": "Baked Corn",
+    "category": "Sides & Salads",
+    "meta": "350\u00b0F \u00b7 1 hr \u00b7 corn pudding",
+    "images": [{"src": "images/IMG_0955.jpeg", "label": "Recipe card"}],
+    "ingredients": ["2 (16-oz) cans whole corn, drained", "1 (8-oz) can cream corn", "3 eggs, beaten", "1 pkg Jiffy cornbread mix", "2 T Pace picante sauce", "1 c sour cream", "1/2 c melted butter", "1 c grated cheese"],
+    "steps": ["Mix everything except the cheese together.", "Bake at 350\u00b0F for 1 hour.", "Sprinkle the grated cheese on top for the last 5 minutes."],
+    "note": "A baked corn casserole \u2014 the classic Jiffy-mix corn pudding, with a little Pace picante sauce stirred in for warmth and grated cheese melted over the top at the end. Different from the Corn Casserole already in the box, which is a layered hamburger-and-potato dish.",
+    "contributor": ""
+  },
+  {
+    "id": "doughnuts",
+    "title": "Doughnuts",
+    "category": "Sweets",
+    "meta": "Fried \u00b7 drop doughnuts \u00b7 rolled in cinnamon sugar",
+    "images": [{"src": "images/IMG_0956.jpeg", "label": "Recipe card"}],
+    "ingredients": ["1 egg, beaten", "1/2 c sugar", "2 T oil", "1/2 c milk", "1 1/2 c flour", "1 T baking powder", "1 t nutmeg", "oil, for frying", "powdered sugar & cinnamon, for rolling"],
+    "steps": ["Mix the beaten egg, sugar, oil, milk, flour, baking powder and nutmeg into a stiff dough.", "Refrigerate the dough while the frying oil heats.", "Drop the dough by teaspoons into the hot oil.", "Fry 3 minutes.", "While still hot, roll in powdered sugar and cinnamon mixed together."],
+    "note": "A drop doughnut \u2014 the stiff dough is dropped by the teaspoon straight into hot oil, fried, and rolled in cinnamon sugar while still warm. The ingredients run down one side of the card and the method down the other. Nana crossed out a word before settling on \u201cpowdered sugar.\u201d",
+    "contributor": ""
+  },
+  {
+    "id": "taylors-store-receipt",
+    "title": "Taylor's Department Store Receipt",
+    "category": "Keepsakes",
+    "keepsake": true,
+    "meta": "Taylor's Dept. Store \u00b7 Iuka, Kansas \u00b7 November 3, 1950",
+    "images": [{"src": "images/IMG_0892.jpeg", "label": "Charge slip, 1950"}],
+    "ingredients": ["Taylor's Dept. Store \u2014 \u201cRetailers of General Merchandise\u201d", "Iuka, Kansas", "Dated November 3, 1950", "A charge slip made out to Mr. John Pleasant", "A pre-printed credit line: \u201cBy ___ Doz. Eggs @ ___ cts.\u201d", "Items penciled down the side: bread, milk, gloves", "At the foot: \u201cAll accounts due the first of each month \u2014 interest charged on past due bills\u201d"],
+    "steps": [],
+    "note": "Not a recipe \u2014 but a piece of the same world the recipe box came from, and worth keeping with it. This is a charge slip from Taylor\u2019s Dept. Store in Iuka, Kansas, dated November 3, 1950 \u2014 more than seventy years ago. Iuka is a tiny town in Pratt County, the same corner of south-central Kansas as Donald\u2019s Serva-Teria in Pratt and the Hutchinson stationery on the old Oatmeal Cookies card. The pre-printed line \u201cBy ___ Doz. Eggs @ ___ cts.\u201d is a small window into how a country general store worked: families brought in their own eggs and were credited for them against the account. Bread, milk, and gloves are written down the side in pencil, with figures in cents beside them. An ordinary errand from 1950, tucked into the recipe box and saved all these years.",
+    "contributor": ""
   }
 ];
 
-const CATEGORY_ORDER = ["Pies","Main Dishes","Sides & Salads","Sweets","Appetizers","Breads","Soups","Breakfast","Drinks"];
+const CATEGORY_ORDER = ["Pies","Main Dishes","Sides & Salads","Sweets","Appetizers","Breads","Soups","Breakfast","Drinks","Household","Keepsakes"];
 let activeCat = "All";
 let query = "";
 
-document.getElementById('count').textContent = RECIPES.length + " recipes \u00b7 more to come";
+const RECIPE_COUNT = RECIPES.filter(r => !r.keepsake).length;
+document.getElementById('count').textContent = RECIPE_COUNT + " recipes \u00b7 more to come";
 document.getElementById('footer-count').textContent =
-  "This collection holds " + RECIPES.length + " of her recipes so far. There are hundreds more in the box, and room here for every one.";
+  "This collection holds " + RECIPE_COUNT + " of her recipes so far. There are hundreds more in the box, and room here for every one.";
 
 const cats = ["All", ...CATEGORY_ORDER.filter(c => RECIPES.some(r => r.category === c))];
 const filterBox = document.getElementById('filters');
@@ -1245,8 +2117,7 @@ function render() {
 const IMAGE_ROTATIONS = {
   "IMG_0776.jpeg": -90,  // baked-pork-chops
   "IMG_0778.jpeg": -90,  // mandarin-orange-salad
-  "IMG_0794.jpeg": -90,  // sugar-cookies (original card)
-  "IMG_0777.jpeg": -90,  // apple-cake
+  "IMG_0794.jpeg": -90,  // sugar-cookies-ii
   "IMG_0782.jpeg": -90,  // apple-cake-batter
   "IMG_0780.jpeg": 180,  // applesauce-cookies (upside down)
   "IMG_0783.jpeg": -90,  // easy-cookies
@@ -1289,16 +2160,9 @@ function imgOrPlaceholder(src, alt, extraClass, isThumb) {
 
 function openModal(r) {
   const m = document.getElementById('modal');
-  const lbImgList = r.images.map(im => ({
-    src: im.src, alt: r.title + ' \u2014 ' + im.label,
-    label: im.label, rotation: getRotation(im.src)
-  }));
-
-  const photos = r.images.map((im, i) => `
+  const photos = r.images.map(im => `
     <div class="photo">
-      <div class="photo-frame" data-lb-index="${i}" title="Click to enlarge" style="cursor:zoom-in">
-        ${imgOrPlaceholder(im.src, r.title + ' \u2014 ' + im.label)}
-      </div>
+      <div class="photo-frame">${imgOrPlaceholder(im.src, r.title + ' \u2014 ' + im.label)}</div>
       ${r.images.length > 1 ? `<div class="photo-label">${im.label}</div>` : ''}
     </div>`).join('');
   const ings = r.ingredients.map(i => {
@@ -1320,24 +2184,15 @@ function openModal(r) {
     <div class="modal-body">
       <div class="cards-strip">${photos}</div>
       <div class="transcription">
-        <div class="t-head"><h4>Ingredients</h4><span></span></div>
+        <div class="t-head"><h4>${r.keepsake ? 'What the slip shows' : 'Ingredients'}</h4><span></span></div>
         <ul class="ing-list">${ings}</ul>
         ${steps}${note}
       </div>
       <div class="modal-foot">
-        <div class="by-line">${r.contributor ? 'A recipe Nana kept from ' + r.contributor : "In Nana\u2019s own hand"}</div>
-        <button class="printb" onclick="window.print()">Print this recipe</button>
+        <div class="by-line">${r.contributor ? 'A recipe Nana kept from ' + r.contributor : (r.keepsake ? 'Kept in the recipe box all these years' : "In Nana\u2019s own hand")}</div>
+        <button class="printb" onclick="window.print()">${r.keepsake ? 'Print this page' : 'Print this recipe'}</button>
       </div>
     </div>`;
-
-  // Wire up lightbox on photo frames
-  m.querySelectorAll('.photo-frame[data-lb-index]').forEach(frame => {
-    frame.addEventListener('click', e => {
-      e.stopPropagation();
-      openLightbox(lbImgList, parseInt(frame.dataset.lbIndex, 10));
-    });
-  });
-
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
   m.scrollTop = 0;
@@ -1351,67 +2206,6 @@ document.getElementById('overlay').addEventListener('click', e => {
   if (e.target.id === 'overlay') closeModal();
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-// ── Lightbox ──────────────────────────────────────────────
-let lbImages = [];   // [{src, alt, label, rotation}]
-let lbIndex  = 0;
-
-const lb      = document.getElementById('lightbox');
-const lbImg   = document.getElementById('lightbox-img');
-const lbCap   = document.getElementById('lightbox-caption');
-const lbPrev  = document.getElementById('lightbox-prev');
-const lbNext  = document.getElementById('lightbox-next');
-const lbClose = document.getElementById('lightbox-close');
-
-function openLightbox(images, startIndex) {
-  lbImages = images;
-  lbIndex  = startIndex;
-  showLbImage();
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function showLbImage() {
-  const im = lbImages[lbIndex];
-  const rot = im.rotation || 0;
-
-  lbImg.src = im.src;
-  lbImg.alt = im.alt || '';
-  lbImg.style.transform = rot ? `rotate(${rot}deg)` : '';
-
-  // For 90° rotations swap constraints so the image fits the viewport
-  if (rot === 90 || rot === -90) {
-    lbImg.style.maxWidth  = '90vh';
-    lbImg.style.maxHeight = '92vw';
-  } else {
-    lbImg.style.maxWidth  = '100%';
-    lbImg.style.maxHeight = '90vh';
-  }
-
-  lbCap.textContent = lbImages.length > 1 ? (im.label || '') : '';
-  lbPrev.classList.toggle('hidden', lbIndex === 0);
-  lbNext.classList.toggle('hidden', lbIndex === lbImages.length - 1);
-}
-
-function closeLightbox() {
-  lb.classList.remove('open');
-  // Only restore scroll if modal isn't also open
-  if (!document.getElementById('overlay').classList.contains('open')) {
-    document.body.style.overflow = '';
-  }
-}
-
-lbClose.onclick = closeLightbox;
-lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
-lbPrev.onclick = e => { e.stopPropagation(); lbIndex--; showLbImage(); };
-lbNext.onclick = e => { e.stopPropagation(); lbIndex++; showLbImage(); };
-
-document.addEventListener('keydown', e => {
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape')       closeLightbox();
-  if (e.key === 'ArrowLeft'  && lbIndex > 0)                  { lbIndex--; showLbImage(); }
-  if (e.key === 'ArrowRight' && lbIndex < lbImages.length - 1){ lbIndex++; showLbImage(); }
-});
 
 render();
 </script>
