@@ -120,7 +120,8 @@
   .cards-strip{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:30px}
   .photo{flex:1;min-width:240px}
   .photo-frame{background:#fff;padding:11px;border-radius:4px;box-shadow:0 14px 30px -16px rgba(58,42,29,.6);border:1px solid #e7dcc4}
-  .photo-frame img{width:100%;display:block;border-radius:2px;image-orientation:from-image}
+  .photo-frame img{width:100%;display:block;border-radius:2px;image-orientation:from-image;cursor:zoom-in;transition:filter .18s}
+  .photo-frame:hover img{filter:brightness(1.04)}
   .photo-label{text-align:center;font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;color:var(--ink-faint);margin-top:9px}
   .transcription{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:26px 30px}
   .t-head{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
@@ -165,12 +166,32 @@
   @media print{
     body{background:#fff}
     body::before,.controls,footer,header.cover,.closeb,.printb,.overlay{position:static}
-    .controls,footer,header.cover,.closeb,.printb,#grid-root{display:none!important}
+    .controls,footer,header.cover,.closeb,.printb,#grid-root,.lightbox{display:none!important}
     .overlay{display:block!important;background:#fff;backdrop-filter:none;padding:0;overflow:visible;position:static}
     .modal{box-shadow:none;max-width:100%;animation:none}
     .modal-head{border-bottom:1px solid #ccc}
     .photo-frame{box-shadow:none}
     .cards-strip{break-inside:avoid}
+  }
+
+  /* --- Lightbox: click any recipe photo to enlarge --- */
+  .lightbox{
+    position:fixed;inset:0;z-index:80;
+    background:rgba(20,14,8,.92);backdrop-filter:blur(2px);
+    display:none;align-items:center;justify-content:center;
+    padding:30px;cursor:zoom-out;
+  }
+  .lightbox.open{display:flex;animation:fade .22s ease}
+  .lightbox-stage{display:flex;align-items:center;justify-content:center}
+  .lightbox-stage img{
+    display:block;border-radius:3px;
+    box-shadow:0 34px 80px -22px rgba(0,0,0,.85);
+    background:#fff;
+  }
+  .lightbox-hint{
+    position:fixed;left:0;right:0;bottom:22px;text-align:center;
+    font-family:'Fraunces',serif;font-style:italic;font-size:.92rem;
+    color:rgba(246,239,223,.62);pointer-events:none;
   }
 </style>
 </head>
@@ -204,6 +225,11 @@
 
 <div class="overlay" id="overlay">
   <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged recipe photo">
+  <div class="lightbox-stage"></div>
+  <div class="lightbox-hint">Click the photo to close</div>
 </div>
 
 <script>
@@ -2370,7 +2396,49 @@ function closeModal() {
 document.getElementById('overlay').addEventListener('click', e => {
   if (e.target.id === 'overlay') closeModal();
 });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// --- Lightbox: click a recipe photo to enlarge, click again to close ---
+function openLightbox(src) {
+  if (!src) return;
+  const lb = document.getElementById('lightbox');
+  const rot = getRotation(src);
+  let style;
+  if (rot === 90 || rot === -90) {
+    // Width/height swap once rotated, so cap against the opposite viewport edge.
+    style = `max-width:90vh;max-height:90vw;transform:rotate(${rot}deg);image-orientation:none`;
+  } else if (rot === 180) {
+    style = `max-width:94vw;max-height:90vh;transform:rotate(180deg)`;
+  } else {
+    style = `max-width:94vw;max-height:90vh`;
+  }
+  lb.querySelector('.lightbox-stage').innerHTML =
+    `<img src="${src}" alt="Recipe card, enlarged" style="${style}">`;
+  lb.classList.add('open');
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('open');
+  lb.querySelector('.lightbox-stage').innerHTML = '';
+}
+
+// Any photo inside the recipe modal opens the lightbox.
+document.getElementById('modal').addEventListener('click', e => {
+  const img = e.target.closest('.photo-frame img');
+  if (img) openLightbox(img.getAttribute('src'));
+});
+
+// Click anywhere on the lightbox (including the photo) to close it.
+document.getElementById('lightbox').addEventListener('click', closeLightbox);
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (document.getElementById('lightbox').classList.contains('open')) {
+    closeLightbox();      // Escape closes the lightbox first if it's open,
+  } else {
+    closeModal();         // otherwise it closes the recipe modal.
+  }
+});
 
 render();
 </script>
