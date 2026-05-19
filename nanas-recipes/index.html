@@ -40,6 +40,20 @@
   .rule::before{left:-3px}.rule::after{right:-3px}
   .dedication{max-width:620px;margin:0 auto;font-size:1.18rem;color:var(--ink-soft);font-style:italic}
   .count{margin-top:22px;font-family:'Fraunces',serif;font-size:.92rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .cover-portrait{margin:36px auto 2px;width:330px;max-width:80%}
+  .cover-portrait .frame{
+    background:#fff;padding:13px;border-radius:4px;
+    border:1px solid #e7dcc4;box-shadow:0 24px 46px -22px rgba(58,42,29,.62);
+  }
+  .cover-portrait .frame img{
+    width:100%;display:block;border-radius:2px;
+    aspect-ratio:4/5;object-fit:cover;object-position:center 20%;
+    image-orientation:from-image;
+  }
+  .cover-portrait figcaption{
+    margin-top:12px;font-family:'Fraunces',serif;font-style:italic;
+    font-size:.96rem;color:var(--ink-faint);letter-spacing:.01em;
+  }
 
   .controls{
     position:sticky;top:0;z-index:20;
@@ -201,6 +215,12 @@
   <h1 class="title">Nana's <em>Recipe Box</em></h1>
   <div class="rule"></div>
   <p class="dedication">The recipes Nana cooked from for more than fifty years &mdash; gathered, scanned, and kept just as she wrote them, so her kitchen stays in the family.</p>
+  <figure class="cover-portrait">
+    <div class="frame">
+      <img src="images/nana-hero.jpg" alt="Nana in her kitchen, with a fresh pie crust ready in its pan">
+    </div>
+    <figcaption>Nana in her kitchen</figcaption>
+  </figure>
   <div class="count" id="count"></div>
 </header>
 
