@@ -167,6 +167,8 @@ img[onclick]{cursor:pointer;}
 .story-tagline{font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;font-weight:600;}
 .story-desc{font-size:.95rem;line-height:1.88;color:var(--navy);font-weight:300;opacity:.85;margin-bottom:.85rem;}
 .story-desc:last-child{margin-bottom:0;}.stories-footnote{text-align:center;padding:0 1rem;}.stories-fn-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;line-height:1.85;color:var(--navy);opacity:.75;max-width:620px;margin:0 auto;font-weight:300;}
+.diego-photo{width:140px;height:140px;border-radius:50%;object-fit:cover;object-position:center 20%;margin:0 auto .55rem;display:block;box-shadow:0 4px 18px rgba(0,0,0,.15);border:3px solid var(--gold);cursor:pointer;}
+.diego-cap{text-align:center;font-size:.7rem;color:var(--muted);margin-bottom:1.1rem;font-style:italic;letter-spacing:.04em;}
 @media(max-width:768px){
   .story-card{grid-template-columns:1fr;}
   .story-photos-single{max-width:100%;}
@@ -957,6 +959,8 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
       </div>
 
     <div class="stories-footnote">
+      <img id="story_diego" onclick="openLB('story_diego')" src="images/diego.jpg" alt="Diego the miniature dachshund" class="diego-photo" loading="lazy">
+      <div class="diego-cap" data-i18n="story_diego_cap">Diego · the next chapter</div>
       <div class="gold-bar" style="margin:0 auto 1.25rem;"></div>
       <p class="stories-fn-text" data-i18n="stories_diego">Lucky and Rico had the run of the place in their day — and Diego, our miniature dachshund, will carry on that tradition when he joins us in Mexico. Our casitas aren't pet-free by nature, just by guest policy. We ask that you leave your four-legged family members at home, and we thank you for understanding.</p>
     </div>
@@ -1793,6 +1797,7 @@ en:{
   story_rico_p2:"It only felt right that Casa Rico sits at the top of our Las Casitas collection — the highest floor, the widest views, the most commanding presence. Rico earned it. He always did.",
   story_rico_cap:"Rico · 17 years of quiet command",
   stories_diego:"Lucky and Rico had the run of the place in their day — and Diego, our miniature dachshund, will carry on that tradition when he joins us in Mexico. Our casitas aren't pet-free by nature, just by guest policy. We ask that you leave your four-legged family members at home, and we thank you for understanding.",
+  story_diego_cap:"Diego · the next chapter",
   lb_prev:"← Prev",lb_next:"Next →",lb_close:"Close",
 },
 es:{
@@ -1961,6 +1966,7 @@ es:{
   story_rico_p2:"Parecía justo que Casa Rico esté en la cima de nuestra colección Las Casitas — el piso más alto, las vistas más amplias, la presencia más imponente. Rico se lo ganó. Siempre lo hizo.",
   story_rico_cap:"Rico · 17 años de liderazgo sereno",
   stories_diego:"Lucky y Rico tuvieron el lugar para ellos en su momento — y Diego, nuestro perro salchicha miniatura, continuará esa tradición cuando se una a nosotros en México. Nuestras casitas no son libres de mascotas por naturaleza, solo por política de huéspedes. Les pedimos que dejen a sus amigos de cuatro patas en casa, y les agradecemos su comprensión.",
+  story_diego_cap:"Diego · el próximo capítulo",
   lb_prev:"← Ant.",lb_next:"Sig. →",lb_close:"Cerrar",
 }
 };
