@@ -1034,8 +1034,8 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             <div class="pay-tier-head" data-i18n="pay_std_h">Standard Bookings</div>
             <ul>
               <li data-i18n="pay_std_1"><strong>30% deposit</strong> due at booking</li>
-              <li data-i18n="pay_std_2">Balance due <strong>30 days</strong> before arrival</li>
-              <li data-i18n="pay_std_3">Within 30 days: <strong>100% at booking</strong></li>
+              <li data-i18n="pay_std_2">Balance due <strong>60 days</strong> before arrival</li>
+              <li data-i18n="pay_std_3">Within 60 days: <strong>100% at booking</strong></li>
             </ul>
           </div>
           <div class="pay-tier">
@@ -1124,7 +1124,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         <div class="agr-section">
           <div class="agr-sec-title">§ 2 · Rental Rate, Payment & Taxes</div>
           <p class="agr-body">The total rental fee is as displayed in the guest's booking confirmation. A 30% booking payment is due within 48 hours of booking.</p>
-          <p class="agr-body">For standard bookings, the remaining balance is due 30 days before arrival. If booking within 30 days of arrival, 100% of the total is due at the time of booking.</p>
+          <p class="agr-body">For standard bookings, the remaining balance is due 60 days before arrival. If booking within 60 days of arrival, 100% of the total is due at the time of booking.</p>
           <p class="agr-body">Long stays of 28 or more consecutive nights are arranged via a custom quote. The payment schedule for long stays — including the balance due date — will be confirmed in the booking confirmation at the time the quote is accepted.</p>
           <p class="agr-body">Remaining balances are charged automatically to the payment method on file on the scheduled date. If the automatic charge fails, it is the guest's responsibility to ensure prompt payment. Failure to pay the remaining balance by the due date may result in cancellation of the reservation under the terms of Section 5. All amounts are in US Dollars (USD). Mexican federal VAT (16%) and the Oaxacan lodging tax (ISH, 5%) are applied to all reservations in compliance with Mexican law.</p>
         </div>
@@ -1299,7 +1299,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         <div class="agr-section">
           <div class="agr-sec-title">§ 2 · Tarifa, Pago e Impuestos</div>
           <p class="agr-body">El monto total de la renta es el indicado en la confirmación de la reservación del huésped. Se requiere un pago inicial del 30% dentro de las 48 horas siguientes a la confirmación de la reservación.</p>
-          <p class="agr-body">Para reservaciones estándar, el saldo restante vence 30 días antes de la llegada. Si la reservación se realiza con menos de 30 días de anticipación, el 100% del total deberá cubrirse al momento de reservar.</p>
+          <p class="agr-body">Para reservaciones estándar, el saldo restante vence 60 días antes de la llegada. Si la reservación se realiza con menos de 60 días de anticipación, el 100% del total deberá cubrirse al momento de reservar.</p>
           <p class="agr-body">Las estancias prolongadas de 28 noches consecutivas o más se gestionan mediante una cotización personalizada. El calendario de pagos para estas estancias — incluida la fecha de vencimiento del saldo — se confirmará en la confirmación de reservación al momento de aceptar la cotización.</p>
           <p class="agr-body">Los saldos pendientes se cobran automáticamente al método de pago registrado en la fecha programada. Si el cobro automático falla, es responsabilidad del huésped asegurar el pago oportuno. La falta de pago del saldo restante en la fecha de vencimiento podrá resultar en la cancelación de la reservación conforme a la Sección 5. Todos los montos están expresados en dólares estadounidenses (USD). El IVA federal mexicano (16%) y el Impuesto Sobre Hospedaje de Oaxaca (ISH, 5%) se aplican a todas las reservaciones conforme a la legislación mexicana vigente.</p>
         </div>
@@ -1717,8 +1717,8 @@ en:{
   pol_curr:"Currency",pol_curr_v:"USD (charged) · MXN shown for reference",
   pay_std_h:"Standard Bookings",
   pay_std_1:"<strong>30% deposit</strong> due at time of booking",
-  pay_std_2:"Balance due <strong>30 days</strong> before arrival",
-  pay_std_3:"Within 30 days of arrival: <strong>100% due at booking</strong>",
+  pay_std_2:"Balance due <strong>60 days</strong> before arrival",
+  pay_std_3:"Within 60 days of arrival: <strong>100% due at booking</strong>",
   pay_sp_h:"Long Stays (28+ nights)",
   pay_sp_1:"<strong>30% deposit</strong> due at time of booking",
   pay_sp_2:"Arranged via <strong>custom quote</strong>",
@@ -1886,8 +1886,8 @@ es:{
   pol_curr:"Moneda",pol_curr_v:"USD (cobrado) · MXN como referencia",
   pay_std_h:"Reservaciones Estándar",
   pay_std_1:"<strong>30% de depósito</strong> al momento de la reserva",
-  pay_std_2:"Saldo restante <strong>30 días</strong> antes de la llegada",
-  pay_std_3:"Menos de 30 días: <strong>100% al reservar</strong>",
+  pay_std_2:"Saldo restante <strong>60 días</strong> antes de la llegada",
+  pay_std_3:"Menos de 60 días: <strong>100% al reservar</strong>",
   pay_sp_h:"Estancias Prolongadas (28+ noches)",
   pay_sp_1:"<strong>30% de depósito</strong> al momento de la reserva",
   pay_sp_2:"Mediante <strong>cotización personalizada</strong>",
@@ -2396,7 +2396,7 @@ function getDueNow(quote){
   const inDate = new Date(quote.inISO + 'T12:00:00');
   const daysUntil = Math.round((inDate - today) / 86400000);
   const special = isSpecialBooking(quote);
-  const threshold = special ? 90 : 30;
+  const threshold = 60;
   const isFull = daysUntil <= threshold;
   return { amount: isFull ? quote.grand : Math.round(quote.grand * 0.30), isFull, daysUntil, threshold, special };
 }
