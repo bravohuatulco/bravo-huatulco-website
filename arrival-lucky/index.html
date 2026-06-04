@@ -348,6 +348,43 @@
     font-family: monospace;
   }
 
+  /* ── SPANISH STACKED BLOCK ── */
+  .es-block {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+  }
+  .es-block .es-tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .es-block p {
+    font-size: 0.9rem;
+    color: var(--navy);
+    opacity: 0.72;
+    line-height: 1.8;
+    font-weight: 300;
+    font-style: italic;
+  }
+  .es-block p b { opacity: 1; font-weight: 600; font-style: normal; }
+  .es-block .section-title-es {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 4.5vw, 1.7rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 0.85rem;
+    font-style: italic;
+    opacity: 0.85;
+  }
+  .es-block .step-content strong { font-style: normal; }
+  .es-block .step-content p { font-style: italic; }
+
   /* ── FOOTER ── */
   footer {
     background: var(--navy);
@@ -382,12 +419,12 @@
 
 <!-- HEADER -->
 <div class="page-header">
-  <div class="header-eyebrow">Bravo Huatulco · Arrival Guide</div>
+  <div class="header-eyebrow">Bravo Huatulco · Guía de Llegada · Arrival Guide</div>
   <div class="header-title">Getting There &amp; <em>Important Info</em></div>
   <div class="header-sub">Casa Lucky · Unit E001 · Santa Cruz Huatulco</div>
   <div style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.18);border:1px solid rgba(201,168,76,0.4);border-radius:8px;padding:0.45rem 0.9rem;">
     <span style="font-size:1rem;">🕓</span>
-    <span style="font-size:0.78rem;color:white;font-weight:500;">Check-in: <strong style="color:var(--gold);">4:00 PM or after</strong></span>
+    <span style="font-size:0.78rem;color:white;font-weight:500;">Check-in: <strong style="color:var(--gold);">4:00 PM or after</strong> · Entrada: <strong style="color:var(--gold);">4:00 PM en adelante</strong></span>
   </div>
 </div>
 
@@ -419,6 +456,11 @@
         <span class="ca-icon">📞</span> +52 971 132 3057
       </a>
     </div>
+  </div>
+  <div class="es-block">
+    <span class="es-tag">En Español</span>
+    <div class="section-title-es">Avísenos de Su Llegada</div>
+    <p>Le pedimos que se comunique con <b>Javier</b> u <b>Osmar</b> por WhatsApp o teléfono lo antes posible para indicarnos su hora estimada de llegada. Si viaja en avión, por favor compártanos los <b>datos de su vuelo</b> para que puedan estar atentos a cualquier retraso y asegurarse de recibirle a su llegada. Uno de ellos estará en Casa Lucky para darle la bienvenida y mostrarle todas las comodidades de la unidad. Ambos hablan español e inglés. Sus datos de contacto aparecen arriba.</p>
   </div>
 </div>
 
@@ -473,6 +515,44 @@
       </div>
     </li>
   </ol>
+
+  <div class="es-block">
+    <span class="es-tag">En Español</span>
+    <div class="section-title-es">Cómo Llegar a Nirú Las Casitas</div>
+    <p>El complejo se encuentra en <b>Santa Cruz Huatulco</b>, a unos pasos de la marina. El marcador de Google Maps de arriba le llevará a la propiedad — pero si las indicaciones del GPS parecen incorrectas, use esta referencia: busque el <b>Hotel Yuu Lee Casa Bendita Huatulco</b> y luego continúe por la <b>Calle Pochutla</b> hacia la parte trasera del hotel. La <b>entrada principal de Nirú Las Casitas</b> está sobre esa misma calle. Los taxis desde el aeropuerto de Huatulco (HUX) suelen costar entre <b>300 y 400 pesos</b> — confirme siempre la tarifa antes de subir.</p>
+    <p style="font-style:normal;text-transform:uppercase;font-size:0.62rem;letter-spacing:0.15em;color:var(--muted);font-weight:500;margin-top:0.85rem;margin-bottom:0.25rem;opacity:1;">Una vez que llegue al complejo</p>
+    <ol class="step-list">
+      <li class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Entrada Principal — Hable con el Guardia</strong>
+          <p>En la caseta de entrada, indique al guardia que se hospeda en la <b>unidad E001</b>, propiedad de <b>Matt y Francisco</b>. Vea la frase para la entrada más abajo.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Estacione o Baje Aquí</strong>
+          <p>El estacionamiento es libre — puede estacionarse en cualquier lugar del lote. <b>Consejo:</b> entre más cerca se estacione de la <b>cancha de pickleball</b>, más corta será la caminata al condominio. ¿Llega en taxi? Pida que le dejen en la entrada del estacionamiento y continúe a pie.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Siga el Sendero</strong>
+          <p>Desde el estacionamiento, siga el sendero que corre junto a la <b>cancha de pickleball y el gimnasio</b>. Continúe rodeando hacia la derecha, pasando el gimnasio.</p>
+          <p style="margin-top:0.4rem;">⚠️ En el cruce, <b>girar a la izquierda</b> lleva al andador de la playa privada — <b>manténgase a la derecha</b> para llegar al condominio.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>Encuentre Casa Lucky — Unidad E001</strong>
+          <p>Diríjase al <b>segundo edificio</b>. Casa Lucky está en la <b>planta baja</b>, es la <b>segunda unidad</b> de ese edificio — da hacia el frente.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
 </div>
 
 <!-- GATE ACCESS -->
@@ -481,6 +561,9 @@
   <div class="section-title">What to Say at the Gate</div>
   <p style="font-size:0.92rem;color:var(--navy);opacity:0.78;line-height:1.8;font-weight:300;margin-bottom:0.75rem;">
     When you arrive at the security gate, simply let the guard know:
+  </p>
+  <p style="font-size:0.88rem;color:var(--navy);opacity:0.68;line-height:1.8;font-weight:300;font-style:italic;margin-bottom:0.75rem;">
+    Cuando llegue a la caseta de seguridad, simplemente dígale al guardia:
   </p>
   <div class="gate-script">
     <div class="gs-label">In English</div>
@@ -510,6 +593,11 @@
   <div class="highlight-card" style="font-size:0.85rem;">
     Keep this code private. The door <strong>locks automatically</strong> every time it closes — you're always secured.
   </div>
+  <div class="es-block">
+    <span class="es-tag">En Español</span>
+    <div class="section-title-es">Su Código de Puerta</div>
+    <p>Usted ingresa a Casa Lucky a través del <b>patio privado</b>. La puerta metálica del patio tiene una cerradura electrónica — ingrese su código y presione <b>#</b> para abrir. La puerta se cierra con llave automáticamente cada vez que se cierra. Su código del patio es <b>9368 1213 #</b>. Mantenga este código en privado.</p>
+  </div>
 </div>
 
 <!-- WIFI -->
@@ -524,6 +612,10 @@
       <div class="wifi-pass-label">Password</div>
       <div class="wifi-pass">NiruE001:-)</div>
     </div>
+  </div>
+  <div class="es-block">
+    <span class="es-tag">En Español</span>
+    <p style="font-style:normal;opacity:0.72;">Red de Wi-Fi: <b>NiruE001</b> · Contraseña: <b>NiruE001:-)</b></p>
   </div>
 </div>
 
@@ -540,6 +632,11 @@
     <span style="color:var(--gold);">↗</span>
   </a>
   <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;font-style:italic;">Javier or Osmar will also walk you through everything at check-in.</p>
+  <div class="es-block" style="text-align:center;">
+    <span class="es-tag">En Español</span>
+    <div class="section-title-es" style="text-align:center;">Guía del Huésped de Casa Lucky</div>
+    <p style="max-width:420px;margin:0 auto;">Hemos preparado una guía completa para ayudarle a aprovechar al máximo su estancia — desde cómo funciona todo en el condominio, hasta dónde comer, qué bahías visitar y los mejores rincones locales que la mayoría de los visitantes nunca descubre. Considérela su compañera de cabecera. El botón de arriba abre la guía. Javier u Osmar también le explicarán todo durante su llegada.</p>
+  </div>
 </div>
 
 <!-- FOOTER -->
