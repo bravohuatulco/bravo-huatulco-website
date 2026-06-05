@@ -2194,7 +2194,9 @@ function openORModal(){
   document.body.style.overflow='hidden';
   var c=document.getElementById('orWidgetContainer');
   if(!c.dataset.loaded){
-    c.innerHTML='<div class="ownerrez-widget" data-propertyId="5f51a5c886a648408e9b6d90881cb60c" data-widget-type="Casa Lucky Inquiry/Book - Booking/Inquiry" data-widgetId="59c4746fa2894e48bcce4f4fb2652210"></div>';
+    c.innerHTML = lang === 'es'
+      ? '<div class="ownerrez-widget" data-propertyId="5f51a5c886a648408e9b6d90881cb60c" data-widget-type="Casa Lucky - Booking Inquiry - Spanish - Booking/Inquiry" data-widgetId="550a86f4ca234e18980651feb09648b3"></div>'
+      : '<div class="ownerrez-widget" data-propertyId="5f51a5c886a648408e9b6d90881cb60c" data-widget-type="Casa Lucky Inquiry/Book - Booking/Inquiry" data-widgetId="59c4746fa2894e48bcce4f4fb2652210"></div>';
     var s=document.createElement('script');
     s.src='https://app.ownerrez.com/widget.js';
     c.appendChild(s);
@@ -2214,7 +2216,9 @@ function openRacelORModal(){
   document.body.style.overflow='hidden';
   var c=document.getElementById('orWidgetContainerRacel');
   if(!c.dataset.loaded){
-    c.innerHTML='<div class="ownerrez-widget" data-propertyId="e07cf2606a714b2c9b24925eaebe400f" data-widget-type="Casa Racel - Booking/Inquiry - Booking/Inquiry" data-widgetId="0070c3575bc54a698e821ced82da2166"></div>';
+    c.innerHTML = lang === 'es'
+      ? '<div class="ownerrez-widget" data-propertyId="e07cf2606a714b2c9b24925eaebe400f" data-widget-type="Casa Racél - Booking Inquiry - Spanish - Booking/Inquiry" data-widgetId="d807168175f144e78ab7dd1a54d5ca62"></div>'
+      : '<div class="ownerrez-widget" data-propertyId="e07cf2606a714b2c9b24925eaebe400f" data-widget-type="Casa Racel - Booking/Inquiry - Booking/Inquiry" data-widgetId="0070c3575bc54a698e821ced82da2166"></div>';
     var s=document.createElement('script');
     s.src='https://app.ownerrez.com/widget.js';
     c.appendChild(s);
@@ -2233,7 +2237,9 @@ function openRicoORModal(){
   document.body.style.overflow='hidden';
   var c=document.getElementById('orWidgetContainerRico');
   if(!c.dataset.loaded){
-    c.innerHTML='<div class="ownerrez-widget" data-propertyId="9fc2afb768f349de8c7472187a464c5c" data-widget-type="Booking/Inquiry" data-widgetId="5c6ef11868a54809adab23fc2f7b9e0d"></div>';
+    c.innerHTML = lang === 'es'
+      ? '<div class="ownerrez-widget" data-propertyId="9fc2afb768f349de8c7472187a464c5c" data-widget-type="Casa Rico - Booking Inquiry - Spanish - Booking/Inquiry" data-widgetId="404c40add1d147c8bcc2730aeccf3381"></div>'
+      : '<div class="ownerrez-widget" data-propertyId="9fc2afb768f349de8c7472187a464c5c" data-widget-type="Booking/Inquiry" data-widgetId="5c6ef11868a54809adab23fc2f7b9e0d"></div>';
     var s=document.createElement('script');
     s.src='https://app.ownerrez.com/widget.js';
     c.appendChild(s);
