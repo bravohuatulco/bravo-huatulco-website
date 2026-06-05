@@ -397,6 +397,9 @@ img[onclick]{cursor:pointer;}
 .form-card{background:#fff;padding:2.5rem;border-radius:4px;}
 .form-hed{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--navy);margin-bottom:.4rem;}
 .form-sub{font-size:.83rem;color:var(--muted);margin-bottom:2rem;font-weight:300;}
+.or-again-link{display:none;margin-top:1.1rem;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--ocean);text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+.or-again-link:hover{color:var(--navy);}
+.or-inquiry-widget.inquiry-sent .or-again-link{display:inline-block;}
 .form-row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 .fg{margin-bottom:1rem;}
 .fl{display:block;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:.4rem;font-family:'Jost',sans-serif;}
@@ -1559,10 +1562,12 @@ function agrLang(lang){
         <div class="form-hed" data-i18n="form_h">Request a Booking</div>
         <div class="form-sub" data-i18n="form_s">Choose your villa and dates below. We confirm availability and send a secure Stripe payment link for your deposit.</div>
         <div id="orInquiryEN" class="or-inquiry-widget">
-          <div class="ownerrez-widget" data-widget-type="Booking Inquiry - All Properties - English - Booking/Inquiry" data-widgetId="5f3e045314804ed6a14f6f8da397f979"></div>
+          <div class="or-widget-mount"><div class="ownerrez-widget" data-widget-type="Booking Inquiry - All Properties - English - Booking/Inquiry" data-widgetId="5f3e045314804ed6a14f6f8da397f979"></div></div>
+          <a href="#" class="or-again-link" onclick="rebuildInquiryWidget('en');return false;" data-i18n="inq_again">↺ Send another inquiry</a>
         </div>
         <div id="orInquiryES" class="or-inquiry-widget" style="display:none">
-          <div class="ownerrez-widget" data-widget-type="Booking Inquiry - All Properties - Spanish - Booking/Inquiry" data-widgetId="c70e0f0baaf547c7b47101a65d441260"></div>
+          <div class="or-widget-mount"><div class="ownerrez-widget" data-widget-type="Booking Inquiry - All Properties - Spanish - Booking/Inquiry" data-widgetId="c70e0f0baaf547c7b47101a65d441260"></div></div>
+          <a href="#" class="or-again-link" onclick="rebuildInquiryWidget('es');return false;" data-i18n="inq_again">↺ Enviar otra consulta</a>
         </div>
       </div>
     </div>
@@ -1715,6 +1720,7 @@ en:{
   promo_d:"Follow us at <a href=\"https://www.instagram.com/bravohuatulco\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">@bravohuatulco<\/a> on Instagram or <a href=\"https://www.facebook.com/share/18WuBmd7Aq\/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">BravoHuatulco<\/a> on Facebook, then DM us the word <strong>BRAVO25<\/strong> from your account and we\u2019ll send you a private 15% discount code \u2014 valid for direct bookings at Casa Lucky or Casa Rac\u00e9l during low season (May\u00a01\u2013November\u00a014). One code per booking, not combinable with other offers.",
   card_promo_badge:"\uD83D\uDCF1 Follow us \u0026 save 15% low season \u2192",
   form_h:"Request a Booking",form_s:"Choose your villa and dates below. We confirm availability and send a secure Stripe payment link for your deposit.",
+  inq_again:"↺ Send another inquiry",
   quote_prop:"Property",quote_dates:"Dates",quote_subtotal:"Subtotal",
   err_send:"We couldn't submit your inquiry online. Please email us directly at <a href=\"mailto:reservations@bravohuatulco.com\">reservations@bravohuatulco.com</a> or use WhatsApp.",
   sending:"Sending…",
@@ -1870,6 +1876,7 @@ es:{
   promo_d:"Síguenos como <a href=\"https://www.instagram.com/bravohuatulco\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">@bravohuatulco<\/a> en Instagram o <a href=\"https://www.facebook.com/share/18WuBmd7Aq\/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">BravoHuatulco<\/a> en Facebook, luego env\u00edanos un DM con la palabra <strong>BRAVO25<\/strong> desde tu cuenta y te enviaremos un c\u00f3digo de descuento privado del 15\u00a0% \u2014 v\u00e1lido para reservas directas en Casa Lucky o Casa Rac\u00e9l durante la temporada baja (1\u00a0de mayo\u00a0\u2013\u00a014\u00a0de noviembre). Un c\u00f3digo por reserva, no acumulable con otras ofertas.",
   card_promo_badge:"\uD83D\uDCF1 S\u00edguenos y ahorra 15% temp. baja \u2192",
   form_h:"Solicitar una Reservación",form_s:"Elija su villa y fechas a continuación. Confirmamos disponibilidad y enviamos un enlace de pago Stripe seguro para su depósito.",
+  inq_again:"↺ Enviar otra consulta",
   quote_prop:"Propiedad",quote_dates:"Fechas",quote_subtotal:"Subtotal",
   err_send:"No pudimos enviar su consulta en línea. Escríbanos directamente a <a href=\"mailto:reservations@bravohuatulco.com\">reservations@bravohuatulco.com</a> o use WhatsApp.",
   sending:"Enviando…",
@@ -2401,21 +2408,55 @@ function populateNiruBeyond() {
   });
 }
 
-// Load the OwnerRez widget script once on page load so the in-page all-property
-// inquiry widget initializes. The per-property modal openers append their own
-// script copy on first open — OwnerRez re-scans the DOM on each load, which is
-// how dynamically injected modal widgets get picked up.
-function loadOwnerRezWidget(){
-  if(window.__orWidgetLoaded) return;
+// Load the OwnerRez widget script. OwnerRez re-scans the DOM for .ownerrez-widget
+// divs each time widget.js runs, so re-appending the script is how we force a
+// freshly-injected widget (e.g. after a rebuild) to render.
+function loadOwnerRezWidget(force){
+  if(window.__orWidgetLoaded && !force) return;
   window.__orWidgetLoaded = true;
   var s=document.createElement('script');
-  s.src='https://app.ownerrez.com/widget.js';
+  s.src='https://app.ownerrez.com/widget.js?_=' + Date.now();
   document.body.appendChild(s);
 }
+
+// Capture the pristine widget markup so we can restore a blank form on rebuild.
+var __orWidgetTemplates = {};
+function captureInquiryTemplates(){
+  ['en','es'].forEach(function(l){
+    var wrap = document.getElementById(l==='es'?'orInquiryES':'orInquiryEN');
+    if(wrap){ var m = wrap.querySelector('.or-widget-mount'); if(m) __orWidgetTemplates[l] = m.innerHTML; }
+  });
+}
+
+// Tear down the iframe and re-inject a fresh widget, then hide the "send another" link.
+function rebuildInquiryWidget(l){
+  var wrap = document.getElementById(l==='es'?'orInquiryES':'orInquiryEN');
+  if(!wrap || !__orWidgetTemplates[l]) return;
+  var mount = wrap.querySelector('.or-widget-mount');
+  if(mount){ mount.innerHTML = __orWidgetTemplates[l]; }
+  wrap.classList.remove('inquiry-sent');
+  loadOwnerRezWidget(true); // force re-scan so the new widget div renders
+}
+
+// The OwnerRez widget runs inside a cross-origin iframe, so we can't observe its
+// internal state. Instead, OwnerRez's "Inquiry Sent" conversion-tracking hook posts
+// a message out to this page; we listen for it and reveal the "send another" link.
+window.addEventListener('message', function(e){
+  // Accept only our exact signal string. The OwnerRez snippet targets this page's
+  // origin when posting, so the message only arrives if it came from our widget.
+  if(typeof e.data === 'string' && e.data === 'bravo-inquiry-sent'){
+    // Reveal on whichever inquiry widget is currently visible.
+    ['orInquiryEN','orInquiryES'].forEach(function(id){
+      var w = document.getElementById(id);
+      if(w && w.style.display !== 'none') w.classList.add('inquiry-sent');
+    });
+  }
+});
 
 document.addEventListener('DOMContentLoaded', ()=>{
   populateNiruBeyond();
   renderReviews();
+  captureInquiryTemplates();
   loadOwnerRezWidget();
 });
 </script>
