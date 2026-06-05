@@ -1555,94 +1555,14 @@ function agrLang(lang){
         </div>
       </div>
       <div class="form-card">
-        <div id="formWrap">
-          <div class="form-hed" data-i18n="form_h">Request a Booking</div>
-          <div class="form-sub" data-i18n="form_s">Select dates for an instant quote &middot; We confirm availability, then send a Stripe payment link for your 30% deposit.</div>
-
-          <!-- QUOTE CARRYOVER PANEL — populated when guest clicks "Book Direct & Save" in calendar -->
-          <div class="quote-panel" id="quotePanel">
-            <div class="quote-panel-head">
-              <div>
-                <div class="quote-panel-eyebrow" data-i18n="quote_ey">From your selection</div>
-                <div class="quote-panel-title" data-i18n="quote_h">Your Quote</div>
-              </div>
-              <button type="button" class="quote-clear" onclick="clearQuote()" data-i18n="quote_clear">Clear ✕</button>
-            </div>
-            <div class="quote-panel-prop" id="quotePanelProp"></div>
-            <div class="quote-panel-dates" id="quotePanelDates"></div>
-            <div class="quote-panel-rows" id="quotePanelRows"></div>
-            <div class="quote-panel-note" data-i18n="quote_note">We'll honor this quote when we confirm your booking. Electricity beyond the daily allowance specified in your rental agreement is settled at checkout based on actual use.</div>
-            <div class="quote-panel-note qpn-fx" data-i18n="quote_fx_note"></div>
-          </div>
-
-          <div class="f-error" id="formError"></div>
-
-          <form id="bookingForm" onsubmit="submitForm(event)">
-            <div class="form-row2">
-              <div class="fg"><label class="fl" data-i18n="fl_name">Full Name *</label><input id="formName" name="name" class="fi" required data-i18n-ph="ph_name" placeholder="Your name"></div>
-              <div class="fg"><label class="fl" data-i18n="fl_email">Email *</label><input id="formEmail" name="email" class="fi" type="email" required data-i18n-ph="ph_email" placeholder="your@email.com"></div>
-            </div>
-            <div class="form-row2">
-              <div class="fg"><label class="fl" data-i18n="fl_phone">Phone / WhatsApp</label><input id="formPhone" name="phone" class="fi" data-i18n-ph="ph_phone" placeholder="+1 (555) 000-0000"></div>
-              <div class="fg"><label class="fl" data-i18n="fl_prop">Property *</label>
-                <select id="formProp" name="property" class="fs">
-                  <option value="lucky">Casa Lucky (1 Bed — Available Now)</option>
-                  <option value="racel">Casa Rac&#233;l (2 Bed — Available Now)</option>
-                  <option value="rico">Casa Rico (2 Bed — Now Booking, Feb 2027)</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row2">
-              <div class="fg"><label class="fl" data-i18n="fl_in">Check-In *</label><input id="formCheckIn" name="checkIn" class="fi" type="date" required></div>
-              <div class="fg"><label class="fl" data-i18n="fl_out">Check-Out *</label><input id="formCheckOut" name="checkOut" class="fi" type="date" required></div>
-            </div>
-            <div class="form-row2">
-              <div class="fg"><label class="fl" data-i18n="fl_guests">Guests *</label>
-                <select id="formGuests" name="guests" class="fs"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
-              </div>
-            </div>
-            <div class="fg"><label class="fl" data-i18n="fl_msg">Message or Special Requests</label><textarea id="formMsg" name="message" class="fta" data-i18n-ph="ph_msg" placeholder="Tell us about your trip..."></textarea></div>
-            <button type="submit" class="f-submit" data-i18n="f_btn">Send Inquiry →</button>
-          </form>
+        <!-- All-Property OwnerRez Booking/Inquiry widget. EN + ES variants; visibility driven by setLang(). -->
+        <div class="form-hed" data-i18n="form_h">Request a Booking</div>
+        <div class="form-sub" data-i18n="form_s">Choose your villa and dates below. We confirm availability and send a secure Stripe payment link for your deposit.</div>
+        <div id="orInquiryEN" class="or-inquiry-widget">
+          <div class="ownerrez-widget" data-widget-type="Booking Inquiry - All Properties - English - Booking/Inquiry" data-widgetId="5f3e045314804ed6a14f6f8da397f979"></div>
         </div>
-        <div class="f-success" id="formSuccess">
-          <div class="f-success-icon">🌊</div>
-          <div class="f-success-title" data-i18n="suc_t">You're One Step Closer!</div>
-          <p class="f-success-txt" data-i18n="suc_d">Your request is in. Here's what happens next:</p>
-          <div class="suc-breakdown" id="sucBreakdown" style="display:none">
-            <div class="suc-breakdown-prop" id="sucBkProp"></div>
-            <div class="suc-breakdown-dates" id="sucBkDates"></div>
-            <div class="suc-breakdown-rows" id="sucBkRows"></div>
-          </div>
-          <div class="f-deposit-box" id="sucDepositBox" style="display:none">
-            <div class="f-deposit-label" id="sucDepositLabel">Your 30% Deposit</div>
-            <div class="f-deposit-amt" id="sucDepositAmt"></div>
-            <div class="f-deposit-note" id="sucDepositNote">We'll send a Stripe payment link to your email once we confirm your dates.</div>
-          </div>
-          <div class="f-steps">
-            <div class="f-step">
-              <div class="f-step-num">1</div>
-              <div class="f-step-body">
-                <div class="f-step-title" data-i18n="suc_s1t">We verify your dates</div>
-                <div class="f-step-desc" data-i18n="suc_s1d">We check our calendar and confirm availability — usually within a few hours.</div>
-              </div>
-            </div>
-            <div class="f-step">
-              <div class="f-step-num">2</div>
-              <div class="f-step-body">
-                <div class="f-step-title" data-i18n="suc_s2t">You receive a Stripe payment link</div>
-                <div class="f-step-desc" data-i18n="suc_s2d">We email you a secure link for your 30% deposit — no Stripe account required.</div>
-              </div>
-            </div>
-            <div class="f-step">
-              <div class="f-step-num">3</div>
-              <div class="f-step-body">
-                <div class="f-step-title" data-i18n="suc_s3t">Your reservation is confirmed</div>
-                <div class="f-step-desc" data-i18n="suc_s3d">Once the deposit clears, your dates are locked and we send arrival details.</div>
-              </div>
-            </div>
-          </div>
-          <button class="f-success-again" onclick="resetForm()" data-i18n="suc_again">Have another question? →</button>
+        <div id="orInquiryES" class="or-inquiry-widget" style="display:none">
+          <div class="ownerrez-widget" data-widget-type="Booking Inquiry - All Properties - Spanish - Booking/Inquiry" data-widgetId="c70e0f0baaf547c7b47101a65d441260"></div>
         </div>
       </div>
     </div>
@@ -1794,24 +1714,7 @@ en:{
   promo_h:"📱 Follow Us & Save 15% — Low Season",
   promo_d:"Follow us at <a href=\"https://www.instagram.com/bravohuatulco\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">@bravohuatulco<\/a> on Instagram or <a href=\"https://www.facebook.com/share/18WuBmd7Aq\/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">BravoHuatulco<\/a> on Facebook, then DM us the word <strong>BRAVO25<\/strong> from your account and we\u2019ll send you a private 15% discount code \u2014 valid for direct bookings at Casa Lucky or Casa Rac\u00e9l during low season (May\u00a01\u2013November\u00a014). One code per booking, not combinable with other offers.",
   card_promo_badge:"\uD83D\uDCF1 Follow us \u0026 save 15% low season \u2192",
-  form_h:"Request a Booking",form_s:"Select dates for an instant quote · We confirm availability, then send a Stripe payment link for your 30% deposit.",
-  fl_name:"Full Name *",fl_email:"Email *",fl_phone:"Phone / WhatsApp",
-  fl_prop:"Property *",fl_in:"Check-In *",fl_out:"Check-Out *",
-  fl_guests:"Guests *",fl_msg:"Message or Special Requests",
-  ph_name:"Your name",ph_email:"your@email.com",ph_phone:"+1 (555) 000-0000",
-  ph_msg:"Tell us about your trip, any questions, or special requests...",
-  f_btn:"Send Inquiry →",f_btn_book:"Request to Book →",
-  suc_t:"You're One Step Closer!",suc_d:"Your request is in. Here's what happens next:",
-  suc_again:"Have another question? →",
-  suc_dep_lbl:"Your 30% Deposit",suc_dep_note:"We'll send a Stripe payment link to your email once we confirm your dates.",
-  suc_s1t:"We verify your dates",suc_s1d:"We check our calendar and confirm availability — usually within a few hours.",
-  suc_s2t:"You receive a Stripe payment link",suc_s2d:"We email you a secure link for your 30% deposit — no Stripe account required.",
-  suc_s3t:"Your reservation is confirmed",suc_s3d:"Once the deposit clears, your dates are locked and we send arrival details.",
-  quote_ey:"From your selection",
-  quote_h:"Your Quote",
-  quote_clear:"Clear ✕",
-  quote_note:"We'll honor this quote when we confirm your booking. Electricity beyond the daily allowance specified in your rental agreement is settled at checkout based on actual use.",
-  quote_fx_note:"Charged in USD. MXN amount approximate at $17.50 MXN per USD (updated May 2026).",
+  form_h:"Request a Booking",form_s:"Choose your villa and dates below. We confirm availability and send a secure Stripe payment link for your deposit.",
   quote_prop:"Property",quote_dates:"Dates",quote_subtotal:"Subtotal",
   err_send:"We couldn't submit your inquiry online. Please email us directly at <a href=\"mailto:reservations@bravohuatulco.com\">reservations@bravohuatulco.com</a> or use WhatsApp.",
   sending:"Sending…",
@@ -1966,24 +1869,7 @@ es:{
   promo_h:"📱 Síguenos y Ahorra 15% — Temporada Baja",
   promo_d:"Síguenos como <a href=\"https://www.instagram.com/bravohuatulco\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">@bravohuatulco<\/a> en Instagram o <a href=\"https://www.facebook.com/share/18WuBmd7Aq\/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">BravoHuatulco<\/a> en Facebook, luego env\u00edanos un DM con la palabra <strong>BRAVO25<\/strong> desde tu cuenta y te enviaremos un c\u00f3digo de descuento privado del 15\u00a0% \u2014 v\u00e1lido para reservas directas en Casa Lucky o Casa Rac\u00e9l durante la temporada baja (1\u00a0de mayo\u00a0\u2013\u00a014\u00a0de noviembre). Un c\u00f3digo por reserva, no acumulable con otras ofertas.",
   card_promo_badge:"\uD83D\uDCF1 S\u00edguenos y ahorra 15% temp. baja \u2192",
-  form_h:"Solicitar una Reservación",form_s:"Seleccione fechas para una cotización instantánea · Confirmamos disponibilidad y enviamos un enlace de pago Stripe para su depósito del 30%.",
-  fl_name:"Nombre Completo *",fl_email:"Correo Electrónico *",fl_phone:"Teléfono / WhatsApp",
-  fl_prop:"Propiedad *",fl_in:"Llegada *",fl_out:"Salida *",
-  fl_guests:"Huéspedes *",fl_msg:"Mensaje o Solicitudes Especiales",
-  ph_name:"Su nombre",ph_email:"su@correo.com",ph_phone:"+1 (555) 000-0000",
-  ph_msg:"Cuéntenos sobre su viaje...",
-  f_btn:"Enviar Consulta →",f_btn_book:"Solicitar Reservación →",
-  suc_t:"¡Está Un Paso Más Cerca!",suc_d:"Su solicitud fue enviada. Esto es lo que sigue:",
-  suc_again:"¿Tiene otra pregunta? →",
-  suc_dep_lbl:"Su Depósito del 30%",suc_dep_note:"Le enviaremos un enlace de pago Stripe a su correo cuando confirmemos sus fechas.",
-  suc_s1t:"Verificamos sus fechas",suc_s1d:"Consultamos nuestro calendario y confirmamos disponibilidad — generalmente en pocas horas.",
-  suc_s2t:"Recibe un enlace de pago Stripe",suc_s2d:"Le enviamos un enlace seguro para su depósito del 30% — sin necesidad de cuenta.",
-  suc_s3t:"Su reservación queda confirmada",suc_s3d:"Una vez procesado el depósito, sus fechas quedan aseguradas y enviamos detalles de llegada.",
-  quote_ey:"De su selección",
-  quote_h:"Su Cotización",
-  quote_clear:"Borrar ✕",
-  quote_note:"Honraremos esta cotización al confirmar su reservación. La electricidad que exceda la asignación diaria especificada en su contrato de arrendamiento se liquida al final de la estancia según el consumo real.",
-  quote_fx_note:"Cobrado en USD. El monto en MXN es aproximado a $17.50 MXN por USD (actualizado mayo 2026).",
+  form_h:"Solicitar una Reservación",form_s:"Elija su villa y fechas a continuación. Confirmamos disponibilidad y enviamos un enlace de pago Stripe seguro para su depósito.",
   quote_prop:"Propiedad",quote_dates:"Fechas",quote_subtotal:"Subtotal",
   err_send:"No pudimos enviar su consulta en línea. Escríbanos directamente a <a href=\"mailto:reservations@bravohuatulco.com\">reservations@bravohuatulco.com</a> o use WhatsApp.",
   sending:"Enviando…",
@@ -2051,11 +1937,10 @@ function setLang(l){
     el.innerHTML=l==='es'?el.getAttribute('data-i18n-es'):el.getAttribute('data-i18n-en');
   });
   if(document.getElementById('calOverlay').classList.contains('open')) renderCalendar();
-  if(currentQuote) renderQuotePanel();
   renderReviews();
-  // Refresh deposit box language if success screen is visible
-  const sucScreen = document.getElementById('formSuccess');
-  if(sucScreen && sucScreen.style.display === 'block' && currentQuote) showSuccessWithDeposit();
+  // Show the matching language variant of the all-property inquiry widget
+  var orEN=document.getElementById('orInquiryEN'), orES=document.getElementById('orInquiryES');
+  if(orEN&&orES){ orEN.style.display = l==='es'?'none':'block'; orES.style.display = l==='es'?'block':'none'; }
 }
 
 /* === GALLERY === */
@@ -2167,25 +2052,14 @@ function ensureLinkObserver(containerId){
 }
 
 function goToInquiry(prop){
-  // Close any open booking modals
+  // Close any open per-property booking modals, then scroll to the
+  // all-property inquiry widget. Guest selects property + dates there.
   closeORModal();
   closeRacelORModal();
-  // Pre-select property and seed message
+  if(typeof closeRicoORModal==='function') closeRicoORModal();
   setTimeout(function(){
-    var propSel=document.getElementById('formProp');
-    if(propSel && prop){propSel.value=prop;}
-    var msg=document.getElementById('formMsg');
-    if(msg){
-      var seed=(lang==='es')
-        ? 'Hola — Estoy interesado/a en una estancia larga (28+ noches). Por favor envíenme una cotización personalizada con fechas y precios. Gracias.'
-        : 'Hi — I\'m interested in a long stay (28+ nights). Please send me a custom quote with dates and pricing. Thank you.';
-      if(!msg.value.trim()) msg.value=seed;
-    }
-    // Scroll to contact form
     var target=document.getElementById('contact');
     if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
-    // Focus first name field for convenience
-    setTimeout(function(){var n=document.getElementById('formName'); if(n) n.focus({preventScroll:true});}, 600);
   }, 120);
 }
 
@@ -2343,415 +2217,13 @@ window.addEventListener('scroll',()=>{document.getElementById('mainNav').classLi
 window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCal();closeLB();}});
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.getElementById('mobileMenu').classList.remove('open');}
 
-// ═══════════════════════════════════════════════════════════════
-// BOOKING INQUIRY EMAIL DELIVERY — CONFIGURATION
-// ───────────────────────────────────────────────────────────────
-// To enable real email delivery to reservations@bravohuatulco.com:
-//   1. Sign up at https://formspree.io (free tier = 50 inquiries/month)
-//   2. In Formspree, set the delivery address to reservations@bravohuatulco.com
-//   3. Create a new form — Formspree gives you an endpoint like
-//      https://formspree.io/f/abcd1234. Copy just the ID part ("abcd1234").
-//   4. Paste it below, replacing 'YOUR_FORMSPREE_ID'.
-//
-// Until configured, "Send Inquiry" opens the guest's email client with a
-// pre-filled message (mailto:) — guaranteed delivery, just one extra click.
-// ═══════════════════════════════════════════════════════════════
-const BRAVO_FORMSPREE_ID = 'xykowagb';
-const BRAVO_INQUIRY_EMAIL = 'reservations@bravohuatulco.com';
-
-// ═══════════════════════════════════════════════════════════════
-// QUOTE CARRYOVER — calendar → contact form
-// ═══════════════════════════════════════════════════════════════
-let currentQuote = null;
-const PROP_NAMES = {lucky:'Casa Lucky', rico:'Casa Rico', racel:'Casa Rac\u00e9l'};
-
 function bookDirectFromCal(){
-  // Hybrid routing: live properties go straight to OwnerRez widget for direct booking + payment.
-  // Casa Rico (direct-only pre-launch, Feb 2027) uses the inquiry/form path below until set up in OwnerRez.
+  // Each property routes to its own OwnerRez modal for direct booking + payment.
   if(calProp === 'lucky'){ closeCal(); setTimeout(openORModal, 80); return; }
   if(calProp === 'racel'){ closeCal(); setTimeout(openRacelORModal, 80); return; }
   if(calProp === 'rico'){ closeCal(); setTimeout(openRicoORModal, 80); return; }
-
-  if(!calIn || !calOut){ closeCal(); goTo('contact'); return; }
-  const nights = Math.round((calOut - calIn) / 86400000);
-  let total = 0; const d = new Date(calIn);
-  while(d < calOut){ total += getRate(calProp, d); d.setDate(d.getDate()+1); }
-  const avg = Math.round(total / nights);
-  let discPct = 0;
-  if(nights >= 28) discPct = 20;
-  else if(nights >= 21) discPct = 15;
-  const discAmt = Math.round(total * discPct / 100);
-  const sub = total - discAmt;
-  const clean = calProp === 'lucky' ? 50 : 75;
-  const damage = 37;
-  const taxBase = sub + clean + damage;
-  const vat = Math.round(taxBase * 0.16);
-  const ish = Math.round(taxBase * 0.05);
-  const grand = taxBase + vat + ish;
-  const pad = n => String(n).padStart(2,'0');
-  const ymd = dt => dt.getFullYear()+'-'+pad(dt.getMonth()+1)+'-'+pad(dt.getDate());
-
-  currentQuote = {
-    prop: calProp,
-    inISO: ymd(calIn),
-    outISO: ymd(calOut),
-    nights, avg, total, discPct, discAmt, sub, clean, damage, vat, ish, grand
-  };
-
-  // Populate form fields
-  const propSelect = document.getElementById('formProp');
-  if(propSelect){
-    for(let i=0; i<propSelect.options.length; i++){
-      if(propSelect.options[i].value === calProp){ propSelect.selectedIndex = i; break; }
-    }
-  }
-  const ci = document.getElementById('formCheckIn');
-  const co = document.getElementById('formCheckOut');
-  if(ci) ci.value = currentQuote.inISO;
-  if(co) co.value = currentQuote.outISO;
-
-  renderQuotePanel();
-  // Update button to "Request to Book"
-  const submitBtnBDC = document.querySelector('#bookingForm .f-submit');
-  if(submitBtnBDC) submitBtnBDC.textContent = T[lang].f_btn_book || 'Request to Book →';
-
-  // If a prior inquiry was submitted, reset back to the form so guest can submit again
-  const successEl = document.getElementById('formSuccess');
-  const wrapEl = document.getElementById('formWrap');
-  if(successEl && successEl.style.display === 'block'){
-    successEl.style.display = 'none';
-    wrapEl.style.display = 'block';
-    document.getElementById('formError').classList.remove('show');
-    const btn = document.querySelector('#bookingForm .f-submit');
-    if(btn){ btn.disabled = false; btn.textContent = T[lang].f_btn || 'Send Inquiry →'; }
-  }
-
-  closeCal();
-  setTimeout(()=>{ goTo('contact'); }, 80);
-}
-
-function renderQuotePanel(){
-  const panel = document.getElementById('quotePanel');
-  if(!panel) return;
-  if(!currentQuote){ panel.classList.remove('show'); return; }
-  const t = T[lang], q = currentQuote;
-  const opts = {month:'long', day:'numeric', year:'numeric'};
-  const loc = lang === 'es' ? 'es-MX' : 'en-US';
-  const inDate = new Date(q.inISO + 'T12:00:00');
-  const outDate = new Date(q.outISO + 'T12:00:00');
-
-  document.getElementById('quotePanelProp').textContent = PROP_NAMES[q.prop];
-  document.getElementById('quotePanelDates').textContent =
-    inDate.toLocaleDateString(loc, opts) + ' → ' + outDate.toLocaleDateString(loc, opts) +
-    ' · ' + q.nights + ' ' + t.cal_nights;
-
-  let rows = '<div class="quote-panel-row"><span>'+q.nights+' '+t.cal_nights+' \u00d7 $'+q.avg+' avg</span><span>$'+q.total+'</span></div>';
-  if(q.discPct > 0){
-    rows += '<div class="quote-panel-row discount"><span>'+q.discPct+'% '+(lang==='es'?'descuento':'discount')+'</span><span>-$'+q.discAmt+'</span></div>';
-  }
-  rows += '<div class="quote-panel-row"><span>'+t.cal_clean+'</span><span>$'+q.clean+'</span></div>';
-  rows += '<div class="quote-panel-row"><span>'+t.cal_damage+'</span><span>$'+q.damage+'</span></div>';
-  rows += '<div class="quote-panel-row tax"><span>'+t.cal_vat+'</span><span>$'+q.vat+'</span></div>';
-  rows += '<div class="quote-panel-row tax"><span>'+t.cal_ish+'</span><span>$'+q.ish+'</span></div>';
-  rows += '<div class="quote-panel-row total"><span>'+t.cal_total+'</span><span>$'+q.grand+' <small style="font-size:.75em;font-weight:400;color:var(--muted)">USD</small></span></div>';
-  rows += '<div style="text-align:right;font-style:italic;font-size:.72rem;color:var(--muted);margin-top:.15rem">≈ $'+fxMXN(q.grand).toLocaleString('en-US')+' MXN</div>';
-  document.getElementById('quotePanelRows').innerHTML = rows;
-  panel.classList.add('show');
-}
-
-function isSpecialBooking(quote){
-  // Special = 28+ nights OR any night falls in peak season (Dec 17 – Jan 7)
-  if(quote.nights >= 28) return true;
-  const inDate = new Date(quote.inISO + 'T12:00:00');
-  const outDate = new Date(quote.outISO + 'T12:00:00');
-  const d = new Date(inDate);
-  while(d < outDate){
-    if(getSeason(d) === 'peak') return true;
-    d.setDate(d.getDate() + 1);
-  }
-  return false;
-}
-
-function getDueNow(quote){
-  const today = new Date(); today.setHours(0,0,0,0);
-  const inDate = new Date(quote.inISO + 'T12:00:00');
-  const daysUntil = Math.round((inDate - today) / 86400000);
-  const special = isSpecialBooking(quote);
-  const threshold = 60;
-  const isFull = daysUntil <= threshold;
-  return { amount: isFull ? quote.grand : Math.round(quote.grand * 0.30), isFull, daysUntil, threshold, special };
-}
-
-function showSuccessWithDeposit(){
-  const depositBox  = document.getElementById('sucDepositBox');
-  const depositAmt  = document.getElementById('sucDepositAmt');
-  const depositLbl  = document.getElementById('sucDepositLabel');
-  const depositNote = document.getElementById('sucDepositNote');
-  if(!depositBox || !depositAmt) return;
-  if(!currentQuote || !currentQuote.grand){ depositBox.style.display = 'none'; return; }
-
-  const due  = getDueNow(currentQuote);
-  const isES = lang === 'es';
-
-  depositAmt.textContent = '$' + due.amount + ' USD';
-
-  if(depositLbl){
-    depositLbl.textContent = due.isFull
-      ? (isES ? 'Pago Total Requerido' : 'Full Payment Due')
-      : (isES ? 'Su Depósito del 30%'  : 'Your 30% Deposit');
-  }
-
-  if(depositNote){
-    if(due.isFull){
-      const d = due.daysUntil, th = due.threshold;
-      depositNote.textContent = isES
-        ? 'Su llegada es en ' + d + ' día' + (d === 1 ? '' : 's') +
-          ' — se requiere pago total por nuestra política de ' + th + ' días. Le enviamos el enlace de pago Stripe al confirmar disponibilidad.'
-        : 'Your check-in is in ' + d + ' day' + (d === 1 ? '' : 's') +
-          ' — full payment is required per our ' + th + '-day policy. We’ll send your Stripe payment link once we confirm availability.';
-    } else {
-      depositNote.textContent = isES
-        ? 'Le enviaremos un enlace de pago Stripe a su correo cuando confirmemos sus fechas.'
-        : 'We’ll send a Stripe payment link to your email once we confirm your dates.';
-    }
-  }
-
-  depositBox.style.display = 'block';
-
-  // Itemized breakdown
-  const bkBox   = document.getElementById('sucBreakdown');
-  const bkProp  = document.getElementById('sucBkProp');
-  const bkDates = document.getElementById('sucBkDates');
-  const bkRows  = document.getElementById('sucBkRows');
-  if(bkBox && bkRows){
-    const t = T[lang], q = currentQuote;
-    const opts = {month:'short', day:'numeric'}, loc = isES ? 'es-MX' : 'en-US';
-    const inD  = new Date(q.inISO  + 'T12:00:00');
-    const outD = new Date(q.outISO + 'T12:00:00');
-    if(bkProp)  bkProp.textContent  = PROP_NAMES[q.prop] || q.prop;
-    if(bkDates) bkDates.textContent = inD.toLocaleDateString(loc, opts) + ' → ' + outD.toLocaleDateString(loc, opts) + ' · ' + q.nights + ' ' + t.cal_nights;
-    let rows = '<div class="suc-breakdown-row"><span>' + q.nights + ' ' + t.cal_nights + ' × $' + q.avg + ' avg</span><span>$' + q.total + '</span></div>';
-    if(q.discPct > 0) rows += '<div class="suc-breakdown-row discount"><span>' + q.discPct + '% ' + (isES ? 'descuento' : 'discount') + '</span><span>-$' + q.discAmt + '</span></div>';
-    rows += '<div class="suc-breakdown-row"><span>'     + t.cal_clean  + '</span><span>$' + q.clean  + '</span></div>';
-    rows += '<div class="suc-breakdown-row"><span>'     + t.cal_damage + '</span><span>$' + q.damage + '</span></div>';
-    rows += '<div class="suc-breakdown-row tax"><span>' + t.cal_vat   + '</span><span>$' + q.vat    + '</span></div>';
-    rows += '<div class="suc-breakdown-row tax"><span>' + t.cal_ish   + '</span><span>$' + q.ish    + '</span></div>';
-    rows += '<div class="suc-breakdown-row total"><span>' + (isES ? 'Total estimado' : 'Estimated Total') + '</span><span>$' + q.grand + ' <small style="font-weight:400;font-size:.78em;color:var(--muted)">USD</small></span></div>';
-    rows += '<div style="text-align:right;font-style:italic;font-size:.72rem;color:var(--muted);margin-top:.1rem">≈ $' + fxMXN(q.grand).toLocaleString('en-US') + ' MXN</div>';
-    bkRows.innerHTML = rows;
-    bkBox.style.display = 'block';
-  }
-}
-
-function recalcFormQuote(){
-  const prop = document.getElementById('formProp').value;
-  const inVal = document.getElementById('formCheckIn').value;
-  const outVal = document.getElementById('formCheckOut').value;
-  if(!inVal || !outVal){ clearQuote(); return; }
-  const inDate = new Date(inVal + 'T12:00:00');
-  const outDate = new Date(outVal + 'T12:00:00');
-  if(isNaN(inDate) || isNaN(outDate) || outDate <= inDate){ clearQuote(); return; }
-  const nights = Math.round((outDate - inDate) / 86400000);
-  if(nights < 1){ clearQuote(); return; }
-  let total = 0; const d = new Date(inDate);
-  while(d < outDate){ total += getRate(prop, d); d.setDate(d.getDate() + 1); }
-  const avg = Math.round(total / nights);
-  let discPct = 0; if(nights >= 28) discPct = 20; else if(nights >= 21) discPct = 15;
-  const discAmt = Math.round(total * discPct / 100), sub = total - discAmt;
-  const clean = prop === 'lucky' ? 50 : 75;
-  const damage = 37, taxBase = sub + clean + damage;
-  const vat = Math.round(taxBase * 0.16), ish = Math.round(taxBase * 0.05), grand = taxBase + vat + ish;
-  const pad = n => String(n).padStart(2, '0');
-  const ymd = dt => dt.getFullYear() + '-' + pad(dt.getMonth() + 1) + '-' + pad(dt.getDate());
-  currentQuote = { prop, inISO: ymd(inDate), outISO: ymd(outDate), nights, avg, total, discPct, discAmt, sub, clean, damage, vat, ish, grand };
-  renderQuotePanel();
-  const btn = document.querySelector('#bookingForm .f-submit');
-  if(btn) btn.textContent = T[lang].f_btn_book || 'Request to Book →';
-}
-
-function clearQuote(){
-  currentQuote = null;
-  const panel = document.getElementById('quotePanel');
-  if(panel) panel.classList.remove('show');
-  const btn = document.querySelector('#bookingForm .f-submit');
-  if(btn) btn.textContent = T[lang].f_btn || 'Send Inquiry →';
-}
-
-function waitlistFromCal(){
-  // If the guest selected dates, run the full quote-carryover flow (same as Book Direct)
-  if(calIn && calOut){ bookDirectFromCal(); return; }
-
-  // No dates selected — just set the property dropdown and reset the form if needed
-  const propSelect = document.getElementById('formProp');
-  if(propSelect){
-    for(let i=0; i<propSelect.options.length; i++){
-      if(propSelect.options[i].value === calProp){ propSelect.selectedIndex = i; break; }
-    }
-  }
-  clearQuote();
-  const successEl = document.getElementById('formSuccess');
-  const wrapEl = document.getElementById('formWrap');
-  if(successEl && successEl.style.display === 'block'){
-    successEl.style.display = 'none';
-    wrapEl.style.display = 'block';
-    document.getElementById('formError').classList.remove('show');
-    const btn = document.querySelector('#bookingForm .f-submit');
-    if(btn){ btn.disabled = false; btn.textContent = T[lang].f_btn || 'Send Inquiry →'; }
-  }
-  closeCal();
-  setTimeout(()=>{ goTo('contact'); }, 80);
-}
-
-// ═══════════════════════════════════════════════════════════════
-// FORM SUBMISSION — Formspree primary, mailto fallback
-// ═══════════════════════════════════════════════════════════════
-function buildInquiryBody(d){
-  const L = (en, es) => lang === 'es' ? es : en;
-  let body = L('Hello Bravo Huatulco team,\n\nI would like to inquire about a stay.\n\n',
-               'Hola equipo de Bravo Huatulco,\n\nMe gustar\u00eda consultar sobre una estancia.\n\n');
-  body += L('Name','Nombre')+': '+d.name+'\n';
-  body += L('Email','Correo')+': '+d.email+'\n';
-  if(d.phone) body += L('Phone','Tel\u00e9fono')+': '+d.phone+'\n';
-  body += L('Property','Propiedad')+': '+(PROP_NAMES[d.property]||d.property)+'\n';
-  body += L('Check-In','Llegada')+': '+d.checkIn+'\n';
-  body += L('Check-Out','Salida')+': '+d.checkOut+'\n';
-  body += L('Guests','Hu\u00e9spedes')+': '+d.guests+'\n';
-  if(d.message) body += '\n'+L('Message','Mensaje')+':\n'+d.message+'\n';
-  if(d.quote){
-    body += '\n'+L('--- Quote shown on website ---','--- Cotizaci\u00f3n mostrada en el sitio ---')+'\n';
-    body += L('Property','Propiedad')+': '+PROP_NAMES[d.quote.prop]+'\n';
-    body += L('Dates','Fechas')+': '+d.quote.inISO+' \u2192 '+d.quote.outISO+' ('+d.quote.nights+' '+L('nights','noches')+')\n';
-    body += L('Average nightly rate','Tarifa promedio')+': $'+d.quote.avg+'\n';
-    body += L('Subtotal','Subtotal')+': $'+d.quote.total+'\n';
-    if(d.quote.discPct > 0){
-      body += L('Length-of-stay discount','Descuento por estancia larga')+': '+d.quote.discPct+'% (-$'+d.quote.discAmt+')\n';
-    }
-    body += L('Federal VAT (16%)','IVA Federal (16%)')+': $'+d.quote.vat+'\n';
-    body += L('Lodging Tax / ISH (5%)','Impuesto de Hospedaje / ISH (5%)')+': $'+d.quote.ish+'\n';
-    body += L('Cleaning fee','Limpieza')+': $'+d.quote.clean+'\n';
-    body += L('Estimated total','Total estimado')+': $'+d.quote.grand+'\n';
-  }
-  body += '\n'+L('Thank you!','\u00a1Gracias!');
-  return body;
-}
-
-async function submitForm(e){
-  e.preventDefault();
-  const form = e.target;
-  const submitBtn = form.querySelector('.f-submit');
-  const errBox = document.getElementById('formError');
-  const originalBtnText = submitBtn.textContent;
-  errBox.classList.remove('show');
-  submitBtn.disabled = true;
-  submitBtn.textContent = T[lang].sending || 'Sending…';
-
-  const data = {
-    name: document.getElementById('formName').value.trim(),
-    email: document.getElementById('formEmail').value.trim(),
-    phone: document.getElementById('formPhone').value.trim(),
-    property: document.getElementById('formProp').value,
-    checkIn: document.getElementById('formCheckIn').value,
-    checkOut: document.getElementById('formCheckOut').value,
-    guests: document.getElementById('formGuests').value,
-    message: document.getElementById('formMsg').value.trim(),
-    language: lang,
-    submittedAt: new Date().toISOString(),
-    quote: currentQuote
-  };
-
-  // Build a structured payload that flattens nicely in Formspree's email view
-  const payload = {
-    name: data.name,
-    email: data.email,
-    phone: data.phone || '(not provided)',
-    property: PROP_NAMES[data.property] || data.property,
-    'check-in': data.checkIn,
-    'check-out': data.checkOut,
-    guests: data.guests,
-    message: data.message || '(none)',
-    language: data.language === 'es' ? 'Spanish' : 'English',
-    _replyto: data.email
-  };
-  if(currentQuote){
-    payload['— Quote Shown —'] = '———————————————';
-    payload['Quoted Property'] = PROP_NAMES[currentQuote.prop];
-    payload['Quoted Dates'] = currentQuote.inISO + ' → ' + currentQuote.outISO;
-    payload['Quoted Nights'] = currentQuote.nights;
-    payload['Quoted Avg Rate'] = '$' + currentQuote.avg;
-    payload['Quoted Subtotal'] = '$' + currentQuote.total;
-    if(currentQuote.discPct > 0){
-      payload['Quoted Discount'] = currentQuote.discPct + '% (-$' + currentQuote.discAmt + ')';
-    }
-    payload['Quoted VAT (16%)'] = '$' + currentQuote.vat;
-    payload['Quoted ISH (5%)'] = '$' + currentQuote.ish;
-    payload['Quoted Cleaning'] = '$' + currentQuote.clean;
-    payload['Quoted Damage Waiver'] = '$' + currentQuote.damage;
-    payload['Quoted TOTAL'] = '$' + currentQuote.grand;
-    payload._subject = 'Booking Inquiry — ' + PROP_NAMES[currentQuote.prop] +
-                       ' · ' + currentQuote.inISO + ' → ' + currentQuote.outISO +
-                       ' · $' + currentQuote.grand;
-  } else {
-    payload._subject = 'Booking Inquiry — ' + (PROP_NAMES[data.property] || 'Bravo Huatulco');
-  }
-
-  const formspreeConfigured = BRAVO_FORMSPREE_ID && BRAVO_FORMSPREE_ID !== 'YOUR_FORMSPREE_ID';
-
-  if(formspreeConfigured){
-    try{
-      const res = await fetch('https://formspree.io/f/' + BRAVO_FORMSPREE_ID, {
-        method: 'POST',
-        headers: {'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify(payload)
-      });
-      if(res.ok){
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalBtnText;
-        showSuccessWithDeposit();
-        document.getElementById('formWrap').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-        return;
-      }
-      throw new Error('Formspree ' + res.status);
-    } catch(err){
-      console.warn('Formspree failed, falling back to mailto:', err);
-      // fall through to mailto
-    }
-  }
-
-  // Mailto fallback (also used until Formspree is configured)
-  const subject = payload._subject;
-  const body = buildInquiryBody(data);
-  const mailto = 'mailto:' + BRAVO_INQUIRY_EMAIL +
-                 '?subject=' + encodeURIComponent(subject) +
-                 '&body=' + encodeURIComponent(body);
-  window.location.href = mailto;
-
-  // Show success after a short delay (we can't confirm the user actually sent)
-  setTimeout(()=>{
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalBtnText;
-    showSuccessWithDeposit();
-    document.getElementById('formWrap').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  }, 600);
-}
-
-function resetForm(){
-  document.getElementById('bookingForm').reset();
-  document.getElementById('formError').classList.remove('show');
-  clearQuote();
-  document.getElementById('formSuccess').style.display = 'none';
-  document.getElementById('formWrap').style.display = 'block';
-  // Defensive: ensure submit button is enabled and showing the right label
-  const btn = document.querySelector('#bookingForm .f-submit');
-  if(btn){
-    btn.disabled = false;
-    btn.textContent = T[lang].f_btn || 'Send Inquiry →';
-  }
-  const depositBox = document.getElementById('sucDepositBox');
-  if(depositBox) depositBox.style.display = 'none';
-  const bkBox = document.getElementById('sucBreakdown');
-  if(bkBox) bkBox.style.display = 'none';
+  // Fallback: no property context — send to the all-property inquiry widget.
+  closeCal(); goTo('contact');
 }
 
 
@@ -2929,13 +2401,22 @@ function populateNiruBeyond() {
   });
 }
 
+// Load the OwnerRez widget script once on page load so the in-page all-property
+// inquiry widget initializes. The per-property modal openers append their own
+// script copy on first open — OwnerRez re-scans the DOM on each load, which is
+// how dynamically injected modal widgets get picked up.
+function loadOwnerRezWidget(){
+  if(window.__orWidgetLoaded) return;
+  window.__orWidgetLoaded = true;
+  var s=document.createElement('script');
+  s.src='https://app.ownerrez.com/widget.js';
+  document.body.appendChild(s);
+}
+
 document.addEventListener('DOMContentLoaded', ()=>{
   populateNiruBeyond();
   renderReviews();
-  ['formProp','formCheckIn','formCheckOut'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) el.addEventListener('change', recalcFormQuote);
-  });
+  loadOwnerRezWidget();
 });
 </script>
 </body>
