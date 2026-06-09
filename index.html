@@ -8,6 +8,10 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-6ZQKE6D56M');
+  // Lightweight, safe GA4 event helper — never throws if gtag is blocked/absent.
+  function trackEvent(name, params){
+    try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch(e){}
+  }
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2079,6 +2083,7 @@ function goToInquiry(prop){
 }
 
 function openORModal(){
+  trackEvent('open_booking_widget', {property:'Casa Lucky', language:(typeof lang!=='undefined'?lang:'en')});
   document.getElementById('orOverlay').classList.add('open');
   document.body.style.overflow='hidden';
   var c=document.getElementById('orWidgetContainer');
@@ -2101,6 +2106,7 @@ function closeORModal(){
   if(c){c.innerHTML='';c.dataset.loaded='';}
 }
 function openRacelORModal(){
+  trackEvent('open_booking_widget', {property:'Casa Racel', language:(typeof lang!=='undefined'?lang:'en')});
   document.getElementById('orOverlayRacel').classList.add('open');
   document.body.style.overflow='hidden';
   var c=document.getElementById('orWidgetContainerRacel');
@@ -2122,6 +2128,7 @@ function closeRacelORModal(){
   if(c){c.innerHTML='';c.dataset.loaded='';}
 }
 function openRicoORModal(){
+  trackEvent('open_booking_widget', {property:'Casa Rico', language:(typeof lang!=='undefined'?lang:'en')});
   document.getElementById('orOverlayRico').classList.add('open');
   document.body.style.overflow='hidden';
   var c=document.getElementById('orWidgetContainerRico');
