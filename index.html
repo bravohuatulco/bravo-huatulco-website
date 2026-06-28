@@ -321,7 +321,7 @@ img[onclick]{cursor:pointer;}
 .review-author{font-size:.72rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.1em;}
 .review-source{font-size:.65rem;color:var(--muted);}
 .reviews-cta{text-align:center;margin-top:1.75rem;}
-.reviews-cta p{font-size:.875rem;color:var(--muted);margin-bottom:1rem;}.review-google-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-g-dot{width:9px;height:9px;border-radius:50%;background:conic-gradient(#4285F4 0deg 90deg,#EA4335 90deg 180deg,#FBBC05 180deg 270deg,#34A853 270deg 360deg);flex-shrink:0;display:inline-block;}.review-visited{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ocean);background:rgba(26,82,118,.07);border:1px solid rgba(26,82,118,.15);border-radius:2px;padding:.15rem .45rem;margin-left:.4rem;}.review-es-block{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);}.review-text-es{font-size:.875rem;color:#1A5276;line-height:1.78;font-weight:300;font-style:italic;margin:0 0 .5rem;}.review-translator-note{font-size:.62rem;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:.55rem;line-height:1.5;font-style:normal;margin:0;}.review-fb-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-fb-icon{width:14px;height:14px;border-radius:3px;background:#1877F2;color:#fff;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:11px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;}.review-bcom-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-bcom-icon{width:14px;height:14px;border-radius:3px;background:#003580;color:#FEBB02;font-family:Arial,sans-serif;font-weight:900;font-size:10px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;letter-spacing:-.05em;}
+.reviews-cta p{font-size:.875rem;color:var(--muted);margin-bottom:1rem;}.review-google-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-g-dot{width:9px;height:9px;border-radius:50%;background:conic-gradient(#4285F4 0deg 90deg,#EA4335 90deg 180deg,#FBBC05 180deg 270deg,#34A853 270deg 360deg);flex-shrink:0;display:inline-block;}.review-visited{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ocean);background:rgba(26,82,118,.07);border:1px solid rgba(26,82,118,.15);border-radius:2px;padding:.15rem .45rem;margin-left:.4rem;}.review-es-block{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);}.review-text-es{font-size:.875rem;color:#1A5276;line-height:1.78;font-weight:300;font-style:italic;margin:0 0 .5rem;}.review-translator-note{font-size:.62rem;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:.55rem;line-height:1.5;font-style:normal;margin:0;}.review-fb-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-fb-icon{width:14px;height:14px;border-radius:3px;background:#1877F2;color:#fff;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:11px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;}.review-bcom-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-bcom-icon{width:14px;height:14px;border-radius:3px;background:#003580;color:#FEBB02;font-family:Arial,sans-serif;font-weight:900;font-size:10px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;letter-spacing:-.05em;}.review-airbnb-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-airbnb-icon{width:14px;height:14px;border-radius:50%;background:#FF5A5F;color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:10px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;}
 
 /* ABOUT */
 #about{background:#fff;padding-bottom:2rem;}
@@ -2317,6 +2317,15 @@ const guestReviews = [
     author: "José Ricardo",
     date: "June 15, 2026",
     isBookingCom: true
+  },
+  {
+    stars: 5,
+    property: "Casa Racél",
+    text: "My family and I had a wonderful stay in Huatulco! Brand new building with a pristine pool, pickleball court and well-equipped gym. 2-minute walk to a lovely beach and a short taxi ride to Playa Entrega for awesome snorkeling at a reef. Everything in the condo is brand new and has lovely design elements throughout. Surrounded by lush jungle and lots of birds flying around.",
+    textES: "¡Mi familia y yo tuvimos una estancia maravillosa en Huatulco! Edificio totalmente nuevo con una alberca impecable, cancha de pickleball y un gimnasio bien equipado. A 2 minutos a pie de una playa encantadora y a un corto trayecto en taxi de Playa Entrega para hacer un esnórquel increíble en un arrecife. Todo en el condominio es nuevo y tiene hermosos detalles de diseño en cada rincón. Rodeado de exuberante selva y muchas aves volando alrededor.",
+    author: "Jordan",
+    date: "June 25, 2026",
+    isAirbnb: true
   }
 ];
 
@@ -2366,6 +2375,8 @@ function renderReviews() {
       sourceLine = `<div class="review-fb-tag"><span class="review-fb-icon">f</span> ${isES ? 'Reseña de Facebook' : 'Facebook Review'} · ${r.date}</div>`;
     } else if (r.isBookingCom) {
       sourceLine = `<div class="review-bcom-tag"><span class="review-bcom-icon">B.</span> Booking.com · ${r.date}</div>`;
+    } else if (r.isAirbnb) {
+      sourceLine = `<div class="review-airbnb-tag"><span class="review-airbnb-icon">A</span> Airbnb · ${r.date}</div>`;
     } else {
       sourceLine = `<div class="review-source">${r.date || r.source || ''}</div>`;
     }
