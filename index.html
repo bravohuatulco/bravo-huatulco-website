@@ -321,7 +321,7 @@ img[onclick]{cursor:pointer;}
 .review-author{font-size:.72rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.1em;}
 .review-source{font-size:.65rem;color:var(--muted);}
 .reviews-cta{text-align:center;margin-top:1.75rem;}
-.reviews-cta p{font-size:.875rem;color:var(--muted);margin-bottom:1rem;}.review-google-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-g-dot{width:9px;height:9px;border-radius:50%;background:conic-gradient(#4285F4 0deg 90deg,#EA4335 90deg 180deg,#FBBC05 180deg 270deg,#34A853 270deg 360deg);flex-shrink:0;display:inline-block;}.review-visited{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ocean);background:rgba(26,82,118,.07);border:1px solid rgba(26,82,118,.15);border-radius:2px;padding:.15rem .45rem;margin-left:.4rem;}.review-es-block{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);}.review-text-es{font-size:.875rem;color:#1A5276;line-height:1.78;font-weight:300;font-style:italic;margin:0 0 .5rem;}.review-translator-note{font-size:.62rem;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:.55rem;line-height:1.5;font-style:normal;margin:0;}.review-fb-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-fb-icon{width:14px;height:14px;border-radius:3px;background:#1877F2;color:#fff;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:11px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;}.review-bcom-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-bcom-icon{width:14px;height:14px;border-radius:3px;background:#003580;color:#FEBB02;font-family:Arial,sans-serif;font-weight:900;font-size:10px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;letter-spacing:-.05em;}
+.reviews-cta p{font-size:.875rem;color:var(--muted);margin-bottom:1rem;}.review-google-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-g-dot{width:9px;height:9px;border-radius:50%;background:conic-gradient(#4285F4 0deg 90deg,#EA4335 90deg 180deg,#FBBC05 180deg 270deg,#34A853 270deg 360deg);flex-shrink:0;display:inline-block;}.review-visited{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ocean);background:rgba(26,82,118,.07);border:1px solid rgba(26,82,118,.15);border-radius:2px;padding:.15rem .45rem;margin-left:.4rem;}.review-es-block{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);}.review-text-es{font-size:.875rem;color:#1A5276;line-height:1.78;font-weight:300;font-style:italic;margin:0 0 .5rem;}.review-translator-note{font-size:.62rem;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:.55rem;line-height:1.5;font-style:normal;margin:0;}.review-fb-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-fb-icon{width:14px;height:14px;border-radius:3px;background:#1877F2;color:#fff;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:11px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;}.review-bcom-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-bcom-icon{width:14px;height:14px;border-radius:3px;background:#003580;color:#FEBB02;font-family:Arial,sans-serif;font-weight:900;font-size:10px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;letter-spacing:-.05em;}.review-airbnb-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-top:.1rem;}.review-airbnb-icon{width:14px;height:14px;border-radius:4px;background:#FF5A5F;color:#fff;font-family:Arial,sans-serif;font-weight:900;font-size:11px;line-height:14px;text-align:center;flex-shrink:0;display:inline-block;text-transform:none;}
 
 /* ABOUT */
 #about{background:#fff;padding-bottom:2rem;}
@@ -2259,34 +2259,40 @@ const guestReviews = [
   {
     stars: 5,
     property: "Casa Racél",
-    visited: "Also visited Casa Lucky",
-    visitedES: "También visitó Casa Lucky",
-    text: "If I could give this place more than 5 stars, I absolutely would. This beach house was the perfect mix of peaceful relaxation and fun. From the moment we arrived, it felt like a little slice of paradise. The condo itself was beautiful, clean, and incredibly comfortable — everything you'd want for a stress-free getaway. But the real magic? Location. Being just steps away from some of the best spots to visit made the entire trip effortless. Whether we wanted to explore, grab food, hang at the beach, grab a boat ride, or just wander, everything was right there. Mornings were slow and peaceful with coffee and ocean views, while the afternoons and evenings were full of laughter, good food, and adventure. It truly gave us the best of both worlds — quiet when we wanted it and excitement when we didn't. We left feeling refreshed, happy, and already talking about when we can come back. Highly recommend this place to anyone looking for a perfect beach escape!",
-    textES: "Si pudiera dar más de 5 estrellas a este lugar, absolutamente lo haría. Esta casa de playa fue la combinación perfecta de relajación tranquila y diversión. Desde el momento en que llegamos, se sintió como un pequeño paraíso. El condominio en sí era hermoso, limpio e increíblemente cómodo — todo lo que uno querría para unas vacaciones sin estrés. ¿Pero la verdadera magia? La ubicación. Estar a solo pasos de algunos de los mejores lugares para visitar hizo que todo el viaje fuera sin esfuerzo. Ya fuera para explorar, comer algo, estar en la playa, dar un paseo en bote o simplemente caminar, todo estaba justo ahí. Las mañanas eran tranquilas y apacibles con café y vistas al mar, mientras que las tardes y las noches estaban llenas de risas, buena comida y aventuras. Verdaderamente nos dio lo mejor de dos mundos — tranquilidad cuando la queríamos y emoción cuando no. Nos fuimos sintiéndonos renovados, felices y ya hablando de cuándo podemos volver. ¡Muy recomendado para cualquiera que busque la escapada de playa perfecta!",
-    author: "Melissa",
-    date: "May 4, 2026",
-    isGoogle: true
+    origin: "es",
+    text: "The facilities are beautiful and work perfectly, the location is excellent, the view is wonderful, the atmosphere is super peaceful, and the pool is very clean — excellent for whole families.",
+    textES: "Las instalaciones son muy bonitas y funcionan a la perfección, la ubicación es excelente, la vista es maravillosa, el ambiente es súper tranquilo, la alberca está muy limpia, excelente para familias completas.",
+    author: "Guerrero",
+    date: "July 18, 2026",
+    isBookingCom: true
   },
   {
     stars: 5,
     property: "Casa Racél",
-    visited: "Also visited Casa Lucky",
-    visitedES: "También visitó Casa Lucky",
-    text: "We had an amazing time, from the moment we arrived, we felt right at home. Every inch of the accommodation is designed for your maximum enjoyment. Casa Racél has it all: comfort, style, and breathtaking views of the mountains. The host treated us exceptionally well, and the service was unparalleled. In short, it's the perfect place to relax and forget your worries. The complex boasts all sorts of amenities, including a large swimming pool, a gym, a court to play games, barbecue area, and beautiful gardens. The beach, just a 5-minute walk from the room, is a truly special place. The ocean is calm, making it the perfect place for families, and we were able to watch the cruise ships arrive during our stay. ¡An unforgettable experience!",
-    textES: "Tuvimos un tiempo increíble; desde el momento en que llegamos, nos sentimos como en casa. Cada rincón del alojamiento está diseñado para el máximo disfrute. Casa Racél lo tiene todo: comodidad, estilo y vistas impresionantes a las montañas. El anfitrión nos trató excepcionalmente bien y el servicio fue inigualable. En resumen, es el lugar perfecto para relajarse y olvidar las preocupaciones. El complejo cuenta con todo tipo de amenidades, incluyendo una gran alberca, un gimnasio, una cancha de juegos, área de asador y hermosos jardines. La playa, a solo 5 minutos a pie del cuarto, es un lugar verdaderamente especial. El océano es tranquilo, lo que lo convierte en el lugar ideal para familias, y pudimos ver los cruceros llegar durante nuestra estancia. ¡Una experiencia inolvidable!",
-    author: "Everardo",
-    date: "May 7, 2026",
-    isGoogle: true
+    text: "My family and I had a wonderful stay in Huatulco! Brand new building with a pristine pool, pickleball court and well-equipped gym. 2-minute walk to a lovely beach and a short taxi ride to Playa Entrega for awesome snorkeling at a reef. Everything in the condo is brand new and has lovely design elements throughout. Surrounded by lush jungle and lots of birds flying around.",
+    textES: "¡Mi familia y yo tuvimos una estancia maravillosa en Huatulco! Un edificio totalmente nuevo con una alberca impecable, cancha de pickleball y un gimnasio bien equipado. A 2 minutos a pie de una playa encantadora y a un corto viaje en taxi de Playa Entrega para hacer un esnórquel increíble en un arrecife. Todo en el condominio es totalmente nuevo y tiene hermosos elementos de diseño. Rodeado de selva exuberante y muchísimas aves volando alrededor.",
+    author: "Jordan",
+    date: "June 25, 2026",
+    isAirbnb: true
   },
   {
     stars: 5,
     property: "Casa Racél",
     origin: "es",
-    text: "The place is simply beautiful — the beach is very close, the views are incredible, and the pool water is warm, which I loved. The beach has a marina where we got to watch the cruise ships come in 😍, and it's excellent for kids. The facilities are new and modern. We would absolutely come back. 10/10",
-    textES: "El lugar es simplemente hermoso, la playa está muy cerca, tienen una vista increíble, el agua de la piscina es templada lo cual me encantó, la playa tiene un puerto donde pudimos ver cruceros 😍 y la playa es excelente para los niños, las instalaciones son nuevas y modernas sin duda regresaríamos a este lugar 10/10",
-    author: "Jazmin",
-    date: "May 13, 2026",
-    isFacebook: true
+    text: "The place itself — the A/C, spotlessly clean, two bathrooms, everything in excellent condition. All good.",
+    textES: "La instalación: el clima, muy limpio, dos baños, todo en excelentes condiciones. Todo bien.",
+    author: "José Ricardo",
+    date: "June 15, 2026",
+    isBookingCom: true
+  },
+  {
+    stars: 5,
+    property: "Casa Racél",
+    text: "We loved that the apartment is in a private gated community. It has a washer and dryer, which is a necessity when traveling with kids to the beach. Everything is close. The apartment is clean and the layout is nice. There's a private community pool — the water wasn't cold at all and our girls still enjoyed it. The balcony was the perfect work space for my husband and me. The decor was simple and pretty. The host and their property manager were nice and easy to reach if needed. We'd stay there again.",
+    textES: "Nos encantó que el apartamento esté en una comunidad privada y cerrada. Cuenta con lavadora y secadora, algo indispensable cuando se viaja con niños a la playa. Todo queda cerca. El apartamento está limpio y la distribución es agradable. Hay una alberca comunitaria privada — el agua no estaba nada fría y aun así nuestras niñas la disfrutaron. El balcón fue el espacio de trabajo perfecto para mi esposo y para mí. La decoración era sencilla y bonita. El anfitrión y su administrador de la propiedad fueron amables y fáciles de contactar cuando se necesitaba. Sin duda regresaríamos.",
+    author: "Kimberly",
+    date: "June 8, 2026",
+    isBookingCom: true
   },
   {
     stars: 5,
@@ -2302,21 +2308,34 @@ const guestReviews = [
   {
     stars: 5,
     property: "Casa Racél",
-    text: "We loved that the apartment is in a private gated community. It has a washer and dryer, which is a necessity when traveling with kids to the beach. Everything is close. The apartment is clean and the layout is nice. There's a private community pool — the water wasn't cold at all and our girls still enjoyed it. The balcony was the perfect work space for my husband and me. The decor was simple and pretty. The host and their property manager were nice and easy to reach if needed. We'd stay there again.",
-    textES: "Nos encantó que el apartamento esté en una comunidad privada y cerrada. Cuenta con lavadora y secadora, algo indispensable cuando se viaja con niños a la playa. Todo queda cerca. El apartamento está limpio y la distribución es agradable. Hay una alberca comunitaria privada — el agua no estaba nada fría y aun así nuestras niñas la disfrutaron. El balcón fue el espacio de trabajo perfecto para mi esposo y para mí. La decoración era sencilla y bonita. El anfitrión y su administrador de la propiedad fueron amables y fáciles de contactar cuando se necesitaba. Sin duda regresaríamos.",
-    author: "Kimberly",
-    date: "June 8, 2026",
-    isBookingCom: true
+    origin: "es",
+    text: "The place is simply beautiful — the beach is very close, the views are incredible, and the pool water is warm, which I loved. The beach has a marina where we got to watch the cruise ships come in 😍, and it's excellent for kids. The facilities are new and modern. We would absolutely come back. 10/10",
+    textES: "El lugar es simplemente hermoso, la playa está muy cerca, tienen una vista increíble, el agua de la piscina es templada lo cual me encantó, la playa tiene un puerto donde pudimos ver cruceros 😍 y la playa es excelente para los niños, las instalaciones son nuevas y modernas sin duda regresaríamos a este lugar 10/10",
+    author: "Jazmin",
+    date: "May 13, 2026",
+    isFacebook: true
   },
   {
     stars: 5,
     property: "Casa Racél",
-    origin: "es",
-    text: "The place itself — the A/C, spotlessly clean, two bathrooms, everything in excellent condition. All good.",
-    textES: "La instalación: el clima, muy limpio, dos baños, todo en excelentes condiciones. Todo bien.",
-    author: "José Ricardo",
-    date: "June 15, 2026",
-    isBookingCom: true
+    visited: "Also visited Casa Lucky",
+    visitedES: "También visitó Casa Lucky",
+    text: "We had an amazing time, from the moment we arrived, we felt right at home. Every inch of the accommodation is designed for your maximum enjoyment. Casa Racél has it all: comfort, style, and breathtaking views of the mountains. The host treated us exceptionally well, and the service was unparalleled. In short, it's the perfect place to relax and forget your worries. The complex boasts all sorts of amenities, including a large swimming pool, a gym, a court to play games, barbecue area, and beautiful gardens. The beach, just a 5-minute walk from the room, is a truly special place. The ocean is calm, making it the perfect place for families, and we were able to watch the cruise ships arrive during our stay. ¡An unforgettable experience!",
+    textES: "Tuvimos un tiempo increíble; desde el momento en que llegamos, nos sentimos como en casa. Cada rincón del alojamiento está diseñado para el máximo disfrute. Casa Racél lo tiene todo: comodidad, estilo y vistas impresionantes a las montañas. El anfitrión nos trató excepcionalmente bien y el servicio fue inigualable. En resumen, es el lugar perfecto para relajarse y olvidar las preocupaciones. El complejo cuenta con todo tipo de amenidades, incluyendo una gran alberca, un gimnasio, una cancha de juegos, área de asador y hermosos jardines. La playa, a solo 5 minutos a pie del cuarto, es un lugar verdaderamente especial. El océano es tranquilo, lo que lo convierte en el lugar ideal para familias, y pudimos ver los cruceros llegar durante nuestra estancia. ¡Una experiencia inolvidable!",
+    author: "Everardo",
+    date: "May 7, 2026",
+    isGoogle: true
+  },
+  {
+    stars: 5,
+    property: "Casa Racél",
+    visited: "Also visited Casa Lucky",
+    visitedES: "También visitó Casa Lucky",
+    text: "If I could give this place more than 5 stars, I absolutely would. This beach house was the perfect mix of peaceful relaxation and fun. From the moment we arrived, it felt like a little slice of paradise. The condo itself was beautiful, clean, and incredibly comfortable — everything you'd want for a stress-free getaway. But the real magic? Location. Being just steps away from some of the best spots to visit made the entire trip effortless. Whether we wanted to explore, grab food, hang at the beach, grab a boat ride, or just wander, everything was right there. Mornings were slow and peaceful with coffee and ocean views, while the afternoons and evenings were full of laughter, good food, and adventure. It truly gave us the best of both worlds — quiet when we wanted it and excitement when we didn't. We left feeling refreshed, happy, and already talking about when we can come back. Highly recommend this place to anyone looking for a perfect beach escape!",
+    textES: "Si pudiera dar más de 5 estrellas a este lugar, absolutamente lo haría. Esta casa de playa fue la combinación perfecta de relajación tranquila y diversión. Desde el momento en que llegamos, se sintió como un pequeño paraíso. El condominio en sí era hermoso, limpio e increíblemente cómodo — todo lo que uno querría para unas vacaciones sin estrés. ¿Pero la verdadera magia? La ubicación. Estar a solo pasos de algunos de los mejores lugares para visitar hizo que todo el viaje fuera sin esfuerzo. Ya fuera para explorar, comer algo, estar en la playa, dar un paseo en bote o simplemente caminar, todo estaba justo ahí. Las mañanas eran tranquilas y apacibles con café y vistas al mar, mientras que las tardes y las noches estaban llenas de risas, buena comida y aventuras. Verdaderamente nos dio lo mejor de dos mundos — tranquilidad cuando la queríamos y emoción cuando no. Nos fuimos sintiéndonos renovados, felices y ya hablando de cuándo podemos volver. ¡Muy recomendado para cualquiera que busque la escapada de playa perfecta!",
+    author: "Melissa",
+    date: "May 4, 2026",
+    isGoogle: true
   }
 ];
 
@@ -2366,6 +2385,8 @@ function renderReviews() {
       sourceLine = `<div class="review-fb-tag"><span class="review-fb-icon">f</span> ${isES ? 'Reseña de Facebook' : 'Facebook Review'} · ${r.date}</div>`;
     } else if (r.isBookingCom) {
       sourceLine = `<div class="review-bcom-tag"><span class="review-bcom-icon">B.</span> Booking.com · ${r.date}</div>`;
+    } else if (r.isAirbnb) {
+      sourceLine = `<div class="review-airbnb-tag"><span class="review-airbnb-icon">A</span> Airbnb · ${r.date}</div>`;
     } else {
       sourceLine = `<div class="review-source">${r.date || r.source || ''}</div>`;
     }
