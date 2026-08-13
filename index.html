@@ -358,6 +358,25 @@ img[onclick]{cursor:pointer;}
 
 /* POLICIES */
 #policies{background:var(--cream);padding-top:1.5rem;}
+#getting-there{background:var(--cream);padding-top:2rem;}
+.gt-intro{max-width:760px;margin:0 0 2.4rem;font-size:.95rem;line-height:1.7;color:var(--navy);}
+.gt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.gt-card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:1.9rem 1.7rem;display:flex;flex-direction:column;box-shadow:0 2px 20px rgba(12,31,63,.05);}
+.gt-flag{font-size:1.9rem;line-height:1;margin-bottom:.7rem;}
+.gt-card h3{font-size:1.7rem;color:var(--navy);margin:0 0 .15rem;}
+.gt-tag{font-family:'Jost',sans-serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:1.1rem;}
+.gt-card p{font-size:.83rem;line-height:1.7;color:var(--navy);margin:0 0 .9rem;}
+.gt-card p:last-child{margin-bottom:0;}
+.gt-card strong{color:var(--ocean);font-weight:600;}
+.gt-route{border-top:1px solid var(--border);padding-top:.85rem;margin-top:.2rem;}
+.gt-route-hd{font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--ocean);margin-bottom:.5rem;}
+.gt-card ul{list-style:none;padding:0;margin:0 0 .9rem;}
+.gt-card ul li{position:relative;padding-left:1.05rem;margin-bottom:.4rem;font-size:.82rem;line-height:1.55;color:var(--navy);}
+.gt-card ul li::before{content:"✈";position:absolute;left:0;top:.05rem;color:var(--gold);font-size:.72rem;}
+.gt-note{background:rgba(201,168,76,.1);border-left:2px solid var(--gold);border-radius:0 3px 3px 0;padding:.7rem .85rem;font-size:.78rem;line-height:1.6;color:var(--navy);margin-top:auto;}
+.gt-assist{max-width:760px;margin:2.2rem 0 0;font-size:.86rem;line-height:1.7;color:var(--navy);}
+.gt-assist strong{color:var(--ocean);}
+@media(max-width:860px){.gt-grid{grid-template-columns:1fr;}}
 .pol-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-bottom:2.5rem;}
 .pol-card{background:var(--cream);padding:1.55rem;border-radius:4px;border-top:3px solid var(--gold);}
 .pol-head{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ocean);font-weight:600;margin-bottom:.85rem;}
@@ -524,6 +543,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
       <li><a onclick="goTo('niru')" data-i18n="nav_niru">Nirú Complex</a></li>
       <li><a onclick="goTo('about')" data-i18n="nav_story">Our Story</a></li>
       <li><a onclick="goTo('huatulco')" data-i18n="nav_huat">Huatulco</a></li>
+      <li><a onclick="goTo('getting-there')" data-i18n-en="Getting Here" data-i18n-es="Cómo Llegar">Getting Here</a></li>
       <li><a onclick="goTo('policies')" data-i18n="nav_pol">Policies</a></li>
       <li><a class="nav-cta" onclick="goTo('contact')" data-i18n="nav_cta">Inquire Now</a></li>
     </ul>
@@ -543,6 +563,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
   <a onclick="goTo('niru')" data-i18n="nav_niru">Nirú Complex</a>
   <a onclick="goTo('about')" data-i18n="nav_story">Our Story</a>
   <a onclick="goTo('huatulco')" data-i18n="nav_huat">Huatulco</a>
+  <a onclick="goTo('getting-there')" data-i18n-en="Getting Here" data-i18n-es="Cómo Llegar">Getting Here</a>
   <a onclick="goTo('policies')" data-i18n="nav_pol">Policies</a>
   <a onclick="goTo('contact')" data-i18n="nav_cta">Inquire Now</a>
 </div>
@@ -1063,6 +1084,71 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         <p data-i18n="cult_d">Wander lively market stalls for handcrafted jewelry and Oaxacan textiles. Then follow the waterfront to the marina, where fishing boats head out at dawn and return with the day's catch.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- GETTING THERE -->
+<section id="getting-there">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n-en="Planning Your Trip" data-i18n-es="Planee Su Viaje">Planning Your Trip</p>
+    <h2 class="sec-title" data-i18n-en="Getting to Huatulco" data-i18n-es="Cómo Llegar a Huatulco">Getting to Huatulco</h2>
+    <div class="gold-bar"></div>
+    <p class="gt-intro" data-i18n-en="Our condos are just 20 minutes from Huatulco International Airport (HUX). How you get here depends on where you're traveling from — below is a quick guide for the three countries our guests most often fly from. Flight schedules change seasonally, so we always recommend confirming current routes directly with the airline." data-i18n-es="Nuestros condominios están a solo 20 minutos del Aeropuerto Internacional de Huatulco (HUX). La mejor manera de llegar depende de su punto de origen — a continuación encontrará una guía breve para los tres países desde los que viajan con más frecuencia nuestros huéspedes. Los horarios de vuelo cambian según la temporada, por lo que siempre recomendamos confirmar las rutas vigentes directamente con la aerolínea.">Our condos are just 20 minutes from Huatulco International Airport (HUX). How you get here depends on where you're traveling from — below is a quick guide for the three countries our guests most often fly from. Flight schedules change seasonally, so we always recommend confirming current routes directly with the airline.</p>
+
+    <div class="gt-grid">
+
+      <!-- CANADA -->
+      <div class="gt-card">
+        <div class="gt-flag">🇨🇦</div>
+        <h3 data-i18n-en="From Canada" data-i18n-es="Desde Canadá">From Canada</h3>
+        <div class="gt-tag" data-i18n-en="Seasonal Direct · Nov – Apr" data-i18n-es="Directo Estacional · Nov – Abr">Seasonal Direct · Nov – Apr</div>
+        <p data-i18n-en="Canadian travelers enjoy seasonal nonstop service to Huatulco during the winter dry season — roughly November through April." data-i18n-es="Los viajeros canadienses cuentan con vuelos directos estacionales a Huatulco durante la temporada seca de invierno — aproximadamente de noviembre a abril.">Canadian travelers enjoy seasonal nonstop service to Huatulco during the winter dry season — roughly November through April.</p>
+        <div class="gt-route">
+          <div class="gt-route-hd" data-i18n-en="Nonstop Routes" data-i18n-es="Rutas Directas">Nonstop Routes</div>
+          <ul>
+            <li data-i18n-en="WestJet — from Calgary, Vancouver, Toronto, Edmonton & Winnipeg" data-i18n-es="WestJet — desde Calgary, Vancouver, Toronto, Edmonton y Winnipeg">WestJet — from Calgary, Vancouver, Toronto, Edmonton & Winnipeg</li>
+            <li data-i18n-en="Air Canada — from Toronto & Vancouver" data-i18n-es="Air Canada — desde Toronto y Vancouver">Air Canada — from Toronto & Vancouver</li>
+          </ul>
+        </div>
+        <div class="gt-note" data-i18n-en="Most routes run once or twice weekly and sell out early in peak season — book well ahead." data-i18n-es="La mayoría de las rutas operan una o dos veces por semana y se agotan pronto en temporada alta — reserve con anticipación.">Most routes run once or twice weekly and sell out early in peak season — book well ahead.</div>
+      </div>
+
+      <!-- UNITED STATES -->
+      <div class="gt-card">
+        <div class="gt-flag">🇺🇸</div>
+        <h3 data-i18n-en="From the United States" data-i18n-es="Desde Estados Unidos">From the United States</h3>
+        <div class="gt-tag" data-i18n-en="Direct Seasonal · Year-Round Options" data-i18n-es="Directo Estacional · Opciones Todo el Año">Direct Seasonal · Year-Round Options</div>
+        <p data-i18n-en="American Airlines flies direct from Dallas (DFW) to Huatulco (HUX) seasonally, from early November to early May." data-i18n-es="American Airlines vuela directo de Dallas (DFW) a Huatulco (HUX) de forma estacional, de principios de noviembre a principios de mayo.">American Airlines flies direct from Dallas (DFW) to Huatulco (HUX) seasonally, from early November to early May.</p>
+        <div class="gt-route">
+          <div class="gt-route-hd" data-i18n-en="Outside That Season" data-i18n-es="Fuera de Esa Temporada">Outside That Season</div>
+          <p data-i18n-en="American offers year-round, twice-weekly service from Dallas to Puerto Escondido (PXM) — about a 2½-hour drive from our condos. From there, guests can rent a car, hire a taxi or private driver, or take a bus. We're happy to help arrange options." data-i18n-es="American ofrece servicio todo el año, dos veces por semana, de Dallas a Puerto Escondido (PXM) — a unas 2½ horas en auto de nuestros condominios. Desde allí, los huéspedes pueden rentar un auto, contratar un taxi o chofer privado, o tomar un autobús. Con gusto le ayudamos a coordinar las opciones.">American offers year-round, twice-weekly service from Dallas to Puerto Escondido (PXM) — about a 2½-hour drive from our condos. From there, guests can rent a car, hire a taxi or private driver, or take a bus. We're happy to help arrange options.</p>
+        </div>
+        <div class="gt-note" data-i18n-en="Tip: You can also book two separate round trips — US to Mexico City (MEX), then MEX to HUX, which has multiple daily nonstops." data-i18n-es="Consejo: También puede reservar dos viajes redondos por separado — de EE. UU. a la Ciudad de México (MEX) y luego de MEX a HUX, que cuenta con múltiples vuelos directos diarios.">Tip: You can also book two separate round trips — US to Mexico City (MEX), then MEX to HUX, which has multiple daily nonstops.</div>
+      </div>
+
+      <!-- MEXICO -->
+      <div class="gt-card">
+        <div class="gt-flag">🇲🇽</div>
+        <h3 data-i18n-en="From Within Mexico" data-i18n-es="Desde México">From Within Mexico</h3>
+        <div class="gt-tag" data-i18n-en="Daily Nonstop · Year-Round" data-i18n-es="Directo Diario · Todo el Año">Daily Nonstop · Year-Round</div>
+        <p data-i18n-en="Huatulco is easy to reach from across Mexico year-round. Mexico City is the main gateway with multiple daily nonstops — a quick 1½-hour hop — and several other cities offer direct service too." data-i18n-es="Huatulco es fácil de alcanzar desde todo México durante todo el año. La Ciudad de México es la principal puerta de entrada, con múltiples vuelos directos diarios — un vuelo corto de 1½ horas — y varias otras ciudades también ofrecen servicio directo.">Huatulco is easy to reach from across Mexico year-round. Mexico City is the main gateway with multiple daily nonstops — a quick 1½-hour hop — and several other cities offer direct service too.</p>
+        <div class="gt-route">
+          <div class="gt-route-hd" data-i18n-en="Direct Origins to HUX" data-i18n-es="Orígenes Directos a HUX">Direct Origins to HUX</div>
+          <ul>
+            <li data-i18n-en="Mexico City · MEX — Aeroméxico, Viva & Volaris" data-i18n-es="Ciudad de México · MEX — Aeroméxico, Viva y Volaris">Mexico City · MEX — Aeroméxico, Viva & Volaris</li>
+            <li data-i18n-en="Mexico City · Felipe Ángeles / NLU — Viva" data-i18n-es="Ciudad de México · Felipe Ángeles / NLU — Viva">Mexico City · Felipe Ángeles / NLU — Viva</li>
+            <li data-i18n-en="Guadalajara · GDL — Volaris" data-i18n-es="Guadalajara · GDL — Volaris">Guadalajara · GDL — Volaris</li>
+            <li data-i18n-en="Monterrey · MTY — Viva" data-i18n-es="Monterrey · MTY — Viva">Monterrey · MTY — Viva</li>
+            <li data-i18n-en="Puebla · PBC — Volaris" data-i18n-es="Puebla · PBC — Volaris">Puebla · PBC — Volaris</li>
+            <li data-i18n-en="Oaxaca · OAX — Aerotucán" data-i18n-es="Oaxaca · OAX — Aerotucán">Oaxaca · OAX — Aerotucán</li>
+          </ul>
+        </div>
+        <div class="gt-note" data-i18n-en="With this many direct origins, it's easy to connect from almost anywhere in Mexico — often on the same day." data-i18n-es="Con tantos orígenes directos, es fácil conectar desde casi cualquier punto de México — a menudo el mismo día.">With this many direct origins, it's easy to connect from almost anywhere in Mexico — often on the same day.</div>
+      </div>
+
+    </div>
+
+    <p class="gt-assist" data-i18n-en="Not sure which route makes the most sense for you? We're glad to help you weigh the options — including airport transfers from HUX or, for guests routing through Puerto Escondido, arranging a car, private driver, or bus. Just reach out." data-i18n-es="¿No está seguro de qué ruta le conviene más? Con gusto le ayudamos a evaluar las opciones — incluyendo el traslado desde el aeropuerto de HUX o, para huéspedes que llegan vía Puerto Escondido, la coordinación de un auto, chofer privado o autobús. No dude en contactarnos.">Not sure which route makes the most sense for you? We're glad to help you weigh the options — including airport transfers from HUX or, for guests routing through Puerto Escondido, arranging a car, private driver, or bus. Just reach out.</p>
   </div>
 </section>
 
@@ -2256,6 +2342,16 @@ function bookDirectFromCal(){
 // source: where/when they stayed (e.g. "Airbnb · March 2025")
 // ═══════════════════════════════════════════════════════
 const guestReviews = [
+  {
+    stars: 5,
+    property: "Casa Racél",
+    origin: "es",
+    text: "From the moment you book, they send you a step-by-step guide to the area and the apartment, along with a tourist guide full of excellent recommendations. From the very beginning they were incredibly kind and attentive at every stage — before, during, and at check-out; that communication is deeply appreciated, from both the owners and the managers. I'd like to mention that the apartment has it all — they thought of every detail, you won't lack for anything, they even lend you beach gear, how wonderful is that! We would definitely return; give yourselves the chance to spend a few days here and you won't regret it. The place offers a great deal of independence yet security at the same time. As a suggestion for the complex, it would be nice to add a shade sail over the pool area since the floor gets quite hot, but it's worth noting it's a beautiful pool with a finish that makes it look gorgeous — we enjoyed it very much all the same.",
+    textES: "Desde que realizas la compra, te mandan un paso a paso del área y del departamento, así como una guía turística con recomendaciones excelentes. Desde el principio fueron muy amables y estuvieron al tanto en todo momento antes, durante y a la salida, esa comunicación se aprecia muchísimo, tanto de los dueños como de los administradores. Me gustaría comentar que el departamento lo tiene todo, pensaron en cada detalle, no te falta nada por que hasta te prestan cosas para la playa, ¡qué genial es eso! Definitivamente volveríamos; dense la oportunidad de pasar unos días aquí no se van a arrepentir, el lugar tiene mucha autonomía pero a su vez seguridad. Como sugerencia para el complejo de apartamentos, sería bueno que se logre poner una malla sombra en el área de la alberca ya que el piso se calienta bastante, pero cabe mencionar que es una hermosa piscina con un material que hace que se vea divina, como quiera la disfrutamos mucho.",
+    author: "Laura",
+    date: "August 13, 2026",
+    isBookingCom: true
+  },
   {
     stars: 5,
     property: "Casa Racél",
