@@ -113,14 +113,14 @@ section{padding:4rem 2rem;}
 .badge-blue{background:var(--ocean);color:#fff;}
 .badge-rust{background:var(--rust);color:#fff;}
 /* Hero promo seal + expanding codes panel */
-.promo-seal{position:absolute;top:9rem;left:1.5rem;z-index:4;width:112px;height:112px;border-radius:50%;background:var(--gold);border:3px double var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:opacity .25s,transform .25s;animation:sealIn 1s ease .8s both;}
-.promo-seal:hover{transform:scale(1.04);}
-@keyframes sealIn{from{opacity:0;transform:scale(.6) rotate(-12deg);}to{opacity:1;transform:scale(1) rotate(0);}}
+.promo-seal{position:absolute;top:50%;left:max(1.5rem, calc(50% - 430px - 128px));transform:translateY(-50%);z-index:4;width:112px;height:112px;border-radius:50%;background:var(--gold);border:3px double var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:opacity .25s;animation:sealIn 1s ease .8s both;}
+.promo-seal:hover{opacity:.92;}
+@keyframes sealIn{from{opacity:0;transform:translateY(-50%) scale(.6);}to{opacity:1;transform:translateY(-50%) scale(1);}}
 .promo-seal .ps-top{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);font-weight:600;}
 .promo-seal .ps-pct{font-family:'Cormorant Garamond',serif;font-size:2.1rem;line-height:1;color:var(--navy);font-weight:600;}
 .promo-seal .ps-cta{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-top:2px;}
-.promo-panel{position:absolute;top:9rem;left:1.5rem;z-index:5;width:312px;max-width:calc(100vw - 3rem);background:var(--navy);border:1px solid var(--gold);border-radius:12px;padding:1rem 1.15rem;opacity:0;transform:scale(.9);transform-origin:top left;pointer-events:none;transition:opacity .22s,transform .22s;box-shadow:0 8px 28px rgba(0,0,0,.4);}
-.promo-panel.open{opacity:1;transform:scale(1);pointer-events:auto;}
+.promo-panel{position:absolute;top:50%;left:max(1.5rem, calc(50% - 430px - 128px));transform:translateY(-50%) scale(.9);z-index:5;width:312px;max-width:calc(100vw - 3rem);background:var(--navy);border:1px solid var(--gold);border-radius:12px;padding:1rem 1.15rem;opacity:0;transform-origin:center left;pointer-events:none;transition:opacity .22s,transform .22s;box-shadow:0 8px 28px rgba(0,0,0,.4);}
+.promo-panel.open{opacity:1;transform:translateY(-50%) scale(1);pointer-events:auto;}
 .promo-panel-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;}
 .promo-panel-hd .pp-title{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;}
 .promo-panel-hd .pp-close{color:rgba(255,255,255,.7);cursor:pointer;font-size:1rem;line-height:1;background:none;border:none;padding:.2rem;}
@@ -131,7 +131,8 @@ section{padding:4rem 2rem;}
 .promo-code-row .pcr-code{font-family:monospace;font-size:.66rem;letter-spacing:.03em;color:#fff;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.4);border-radius:4px;padding:.26rem .5rem;white-space:nowrap;}
 .promo-toast{text-align:center;font-size:.66rem;color:var(--gold);margin-top:.55rem;height:.9rem;opacity:0;transition:opacity .2s;}
 .promo-toast.show{opacity:1;}
-@media(max-width:640px){.promo-seal{width:92px;height:92px;top:7rem;left:1rem;}.promo-seal .ps-pct{font-size:1.7rem;}.promo-panel{top:7rem;left:1rem;width:auto;right:1rem;}}
+@media(max-width:900px){.promo-seal,.promo-panel{top:6rem;left:1rem;transform:none;}.promo-seal{animation:sealInTop 1s ease .8s both;}@keyframes sealInTop{from{opacity:0;transform:scale(.6);}to{opacity:1;transform:scale(1);}}.promo-panel{transform:scale(.9);transform-origin:top left;}.promo-panel.open{transform:scale(1);}}
+@media(max-width:640px){.promo-seal{width:84px;height:84px;top:5.5rem;left:1rem;}.promo-seal .ps-pct{font-size:1.55rem;}.promo-seal .ps-top{font-size:.5rem;}.promo-seal .ps-cta{font-size:.44rem;}.promo-panel{top:5.5rem;left:1rem;width:auto;right:1rem;max-width:none;}}
 .card-body{padding:1.75rem;}
 .card-name{font-size:1.65rem;color:var(--navy);margin-bottom:.2rem;}
 .card-unit{font-size:.67rem;color:var(--muted);letter-spacing:.11em;text-transform:uppercase;margin-bottom:.8rem;font-weight:500;}
