@@ -112,6 +112,26 @@ section{padding:4rem 2rem;}
 .badge-green{background:#27AE60;color:#fff;}
 .badge-blue{background:var(--ocean);color:#fff;}
 .badge-rust{background:var(--rust);color:#fff;}
+/* Hero promo seal + expanding codes panel */
+.promo-seal{position:absolute;top:9rem;left:1.5rem;z-index:4;width:112px;height:112px;border-radius:50%;background:var(--gold);border:3px double var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:opacity .25s,transform .25s;animation:sealIn 1s ease .8s both;}
+.promo-seal:hover{transform:scale(1.04);}
+@keyframes sealIn{from{opacity:0;transform:scale(.6) rotate(-12deg);}to{opacity:1;transform:scale(1) rotate(0);}}
+.promo-seal .ps-top{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);font-weight:600;}
+.promo-seal .ps-pct{font-family:'Cormorant Garamond',serif;font-size:2.1rem;line-height:1;color:var(--navy);font-weight:600;}
+.promo-seal .ps-cta{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-top:2px;}
+.promo-panel{position:absolute;top:9rem;left:1.5rem;z-index:5;width:312px;max-width:calc(100vw - 3rem);background:var(--navy);border:1px solid var(--gold);border-radius:12px;padding:1rem 1.15rem;opacity:0;transform:scale(.9);transform-origin:top left;pointer-events:none;transition:opacity .22s,transform .22s;box-shadow:0 8px 28px rgba(0,0,0,.4);}
+.promo-panel.open{opacity:1;transform:scale(1);pointer-events:auto;}
+.promo-panel-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;}
+.promo-panel-hd .pp-title{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+.promo-panel-hd .pp-close{color:rgba(255,255,255,.7);cursor:pointer;font-size:1rem;line-height:1;background:none;border:none;padding:.2rem;}
+.promo-code-row{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer;}
+.promo-code-row:last-of-type{border-bottom:none;}
+.promo-code-row .pcr-desc .pct{color:var(--gold);font-weight:600;font-size:.86rem;}
+.promo-code-row .pcr-desc .cond{color:rgba(255,255,255,.68);font-weight:400;font-size:.7rem;}
+.promo-code-row .pcr-code{font-family:monospace;font-size:.66rem;letter-spacing:.03em;color:#fff;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.4);border-radius:4px;padding:.26rem .5rem;white-space:nowrap;}
+.promo-toast{text-align:center;font-size:.66rem;color:var(--gold);margin-top:.55rem;height:.9rem;opacity:0;transition:opacity .2s;}
+.promo-toast.show{opacity:1;}
+@media(max-width:640px){.promo-seal{width:92px;height:92px;top:7rem;left:1rem;}.promo-seal .ps-pct{font-size:1.7rem;}.promo-panel{top:7rem;left:1rem;width:auto;right:1rem;}}
 .card-body{padding:1.75rem;}
 .card-name{font-size:1.65rem;color:var(--navy);margin-bottom:.2rem;}
 .card-unit{font-size:.67rem;color:var(--muted);letter-spacing:.11em;text-transform:uppercase;margin-bottom:.8rem;font-weight:500;}
@@ -584,6 +604,33 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
       <a class="btn-ghost" onclick="goTo('contact')" data-i18n="hero_b2">Book Direct & Save</a>
     </div>
   </div>
+
+  <div class="promo-seal" id="promoSeal" onclick="openPromoPanel()" role="button" tabindex="0" aria-label="View discount codes">
+    <span class="ps-top"><span data-i18n-en="Save up to" data-i18n-es="Ahorre hasta">Save up to</span></span>
+    <span class="ps-pct">25%</span>
+    <span class="ps-cta"><span data-i18n-en="Tap for codes" data-i18n-es="Ver códigos">Tap for codes</span></span>
+  </div>
+
+  <div class="promo-panel" id="promoPanel" role="dialog" aria-label="Discount codes">
+    <div class="promo-panel-hd">
+      <span class="pp-title"><span data-i18n-en="Offers · Ofertas" data-i18n-es="Ofertas · Offers">Offers · Ofertas</span></span>
+      <button class="pp-close" onclick="closePromoPanel()" aria-label="Close">✕</button>
+    </div>
+    <div class="promo-code-row" data-code="TRICOLOR26" onclick="copyPromoCode('TRICOLOR26')">
+      <span class="pcr-desc"><span class="pct">20%</span> <span class="cond" data-i18n-en="· stays through August" data-i18n-es="· estancias hasta agosto">· stays through August</span></span>
+      <span class="pcr-code">TRICOLOR26 📋</span>
+    </div>
+    <div class="promo-code-row" data-code="MesPatrio25" onclick="copyPromoCode('MesPatrio25')">
+      <span class="pcr-desc"><span class="pct">25%</span> <span class="cond" data-i18n-en="· all September · Mes Patrio" data-i18n-es="· todo septiembre · Mes Patrio">· all September · Mes Patrio</span></span>
+      <span class="pcr-code">MesPatrio25 📋</span>
+    </div>
+    <div class="promo-code-row" data-code="BravoHuatulco25" onclick="copyPromoCode('BravoHuatulco25')">
+      <span class="pcr-desc"><span class="pct">15%</span> <span class="cond" data-i18n-en="· stays through Nov 14 · followers" data-i18n-es="· estancias hasta 14 nov · seguidores">· stays through Nov 14 · followers</span></span>
+      <span class="pcr-code">BravoHuatulco25 📋</span>
+    </div>
+    <div class="promo-toast" id="promoToast"></div>
+  </div>
+
   <div class="hero-scroll-hint" data-i18n="hero_scroll">Scroll</div>
 </section>
 
@@ -2324,6 +2371,32 @@ function showSummary(){
 window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
 window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCal();closeLB();}});
 function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.getElementById('mobileMenu').classList.remove('open');}
+
+/* ---- Hero promo seal / discount codes ---- */
+function openPromoPanel(){
+  var s=document.getElementById('promoSeal'),p=document.getElementById('promoPanel');
+  if(!s||!p) return;
+  s.style.opacity='0'; s.style.pointerEvents='none';
+  p.classList.add('open');
+  trackEvent('promo_panel_open',{});
+}
+function closePromoPanel(){
+  var s=document.getElementById('promoSeal'),p=document.getElementById('promoPanel');
+  if(!s||!p) return;
+  p.classList.remove('open');
+  s.style.opacity='1'; s.style.pointerEvents='auto';
+}
+function copyPromoCode(code){
+  try{ if(navigator.clipboard){ navigator.clipboard.writeText(code); } }catch(e){}
+  var t=document.getElementById('promoToast');
+  if(t){
+    var lng=(typeof lang!=='undefined'&&lang==='es')?'es':'en';
+    t.textContent=(lng==='es'?'Copiado: ':'Copied: ')+code;
+    t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show');},1500);
+  }
+  trackEvent('promo_code_copy',{promo_code:code});
+}
 
 function bookDirectFromCal(){
   // Each property routes to its own OwnerRez modal for direct booking + payment.
