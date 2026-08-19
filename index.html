@@ -2669,7 +2669,7 @@ window.addEventListener('message', function(e){
 
 document.addEventListener('DOMContentLoaded', ()=>{
   populateNiruBeyond();
-  renderReviews();
+  setLang('en');   // initialize both i18n systems (keyed data-i18n + inline data-i18n-en/es) on first load; also calls renderReviews()
   captureInquiryTemplates();
   loadOwnerRezWidget();
 });
