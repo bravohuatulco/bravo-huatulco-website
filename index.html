@@ -155,22 +155,13 @@ section{padding:4rem 2rem;}
 
 /* PRICING REDESIGN */
 .price-label{font-size:.6rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:700;margin-bottom:.6rem;}
-.price-seasons{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:1.1rem;border-radius:4px;overflow:hidden;border:1px solid var(--border);}
-.ps-cell{padding:.7rem .6rem;text-align:center;border-right:1px solid var(--border);}
-.ps-cell:last-child{border-right:none;}
-.ps-cell.ps-low{background:rgba(12,31,63,.05);}
-.ps-cell.ps-high{background:rgba(12,31,63,.09);}
-.ps-cell.ps-peak{background:rgba(12,31,63,.14);}
-.ps-season{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem;}
-.ps-low .ps-season{color:#1A5276;}
-.ps-high .ps-season{color:#1E8449;}
-.ps-peak .ps-season{color:#C0392B;}
-.ps-dates{font-size:.56rem;color:var(--muted);margin-bottom:.4rem;line-height:1.35;}
-.ps-price{font-family:'Cormorant Garamond',serif;font-size:1.4rem;line-height:1;}
-.ps-low .ps-price{color:#1A5276;}
-.ps-high .ps-price{color:#1E8449;}
-.ps-peak .ps-price{color:#C0392B;}
-.ps-night{font-size:.55rem;color:var(--muted);display:block;margin-top:.1rem;}.ps-cur{font-size:.6rem;color:var(--muted);font-weight:400;vertical-align:middle;}.ps-mxn{font-size:.62rem;color:var(--muted);font-style:italic;margin:.08rem 0 .18rem;}.cal-fx-note{font-size:.63rem;color:var(--muted);font-style:italic;text-align:right;margin:-.3rem 0 .9rem;}.qpn-fx{margin-top:.25rem;}
+.price-seasons{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-bottom:1.1rem;}
+.ps-cell{background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:.9rem .55rem .8rem;text-align:center;position:relative;overflow:hidden;}
+.ps-cell::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);}
+.ps-season{font-size:.56rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--navy);margin-bottom:.28rem;}
+.ps-dates{font-size:.54rem;color:var(--muted);margin-bottom:.5rem;line-height:1.35;min-height:1.9em;}
+.ps-price{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;line-height:1;color:var(--navy);}
+.ps-night{font-size:.55rem;color:var(--muted);display:block;margin-top:.35rem;}.ps-cur{font-size:.55rem;color:var(--muted);font-weight:400;vertical-align:middle;letter-spacing:.04em;}.ps-mxn{font-size:.58rem;color:var(--muted);font-style:italic;margin:.32rem 0 0;}.cal-fx-note{font-size:.63rem;color:var(--muted);font-style:italic;text-align:right;margin:-.3rem 0 .9rem;}.qpn-fx{margin-top:.25rem;}
 .ps-usd{font-size:.6rem;text-align:center;color:var(--muted);margin-bottom:1.1rem;letter-spacing:.06em;}
 
 .card-btn{width:100%;padding:.875rem;background:var(--navy);color:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.73rem;letter-spacing:.13em;text-transform:uppercase;font-weight:500;transition:background .25s;border-radius:2px;margin-top:.5rem;text-decoration:none;display:block;text-align:center;}
@@ -533,8 +524,6 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
   .season-key{grid-template-columns:1fr;}
   .amen-items{grid-template-columns:1fr;}
   .price-seasons{grid-template-columns:1fr;}
-  .ps-cell{border-right:none;border-bottom:1px solid var(--border);}
-  .ps-cell:last-child{border-bottom:none;}
   .gpanel{grid-template-columns:1fr 1fr;}
   .niru-photos{grid-template-columns:1fr;}
   .niru-ph-wide img,.niru-ph img{height:200px;}
@@ -670,19 +659,19 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
               <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 14</div>
-              <div class="ps-price">$110 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $1,930 MXN</div>
+              <div class="ps-price">$110 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $1,870 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-high">
               <div class="ps-season" data-i18n="p_high">High Season</div>
               <div class="ps-dates" data-i18n="p_high_d">Nov 15 – Dec 16 · Jan 8 – Apr 30</div>
-              <div class="ps-price">$175 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,060 MXN</div>
+              <div class="ps-price">$175 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,980 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-peak">
               <div class="ps-season" data-i18n="p_peak">Holiday / Peak</div>
               <div class="ps-dates" data-i18n="p_peak_d">Dec 17 – Jan 7</div>
-              <div class="ps-price">$245 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,290 MXN</div>
+              <div class="ps-price">$245 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,170 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
@@ -720,19 +709,19 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
               <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 14</div>
-              <div class="ps-price">$135 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,360 MXN</div>
+              <div class="ps-price">$135 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,300 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-high">
               <div class="ps-season" data-i18n="p_high">High Season</div>
               <div class="ps-dates" data-i18n="p_high_d">Nov 15 – Dec 16 · Jan 8 – Apr 30</div>
-              <div class="ps-price">$195 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,410 MXN</div>
+              <div class="ps-price">$195 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,320 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-peak">
               <div class="ps-season" data-i18n="p_peak">Holiday / Peak</div>
               <div class="ps-dates" data-i18n="p_peak_d">Dec 17 – Jan 7</div>
-              <div class="ps-price">$270 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,730 MXN</div>
+              <div class="ps-price">$270 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,590 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
@@ -766,19 +755,19 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
               <div class="ps-dates" data-i18n="p_low_d">May 1 – Nov 14</div>
-              <div class="ps-price">$145 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,540 MXN</div>
+              <div class="ps-price">$145 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $2,470 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-high">
               <div class="ps-season" data-i18n="p_high">High Season</div>
               <div class="ps-dates" data-i18n="p_high_d">Nov 15 – Dec 16 · Jan 8 – Apr 30</div>
-              <div class="ps-price">$205 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,590 MXN</div>
+              <div class="ps-price">$205 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $3,490 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
             <div class="ps-cell ps-peak">
               <div class="ps-season" data-i18n="p_peak">Holiday / Peak</div>
               <div class="ps-dates" data-i18n="p_peak_d">Dec 17 – Jan 7</div>
-              <div class="ps-price">$280 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,900 MXN</div>
+              <div class="ps-price">$280 <span class="ps-cur">USD</span></div><div class="ps-mxn">≈ $4,760 MXN</div>
               <span class="ps-night" data-i18n="per_n">/ night</span>
             </div>
           </div>
@@ -816,11 +805,11 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         <span data-i18n="cal_wl_msg">Casa Rico opens February 2027 and is accepting direct bookings now — 20% off founding-guest stays Feb–Apr 2027.</span>
       </div>
       <div class="season-key">
-        <div class="sk-item sk-low"><span class="sk-label" id="skLowL">Low Season</span><span class="sk-price" id="skLowP">$110/night</span><span class="sk-mxn" id="skLowM">≈ $1,930 MXN</span></div>
-        <div class="sk-item sk-high"><span class="sk-label" id="skHighL">High Season</span><span class="sk-price" id="skHighP">$175/night</span><span class="sk-mxn" id="skHighM">≈ $3,060 MXN</span></div>
-        <div class="sk-item sk-peak"><span class="sk-label" id="skPeakL">Holiday / Peak</span><span class="sk-price" id="skPeakP">$245/night</span><span class="sk-mxn" id="skPeakM">≈ $4,290 MXN</span></div>
+        <div class="sk-item sk-low"><span class="sk-label" id="skLowL">Low Season</span><span class="sk-price" id="skLowP">$110/night</span><span class="sk-mxn" id="skLowM">≈ $1,870 MXN</span></div>
+        <div class="sk-item sk-high"><span class="sk-label" id="skHighL">High Season</span><span class="sk-price" id="skHighP">$175/night</span><span class="sk-mxn" id="skHighM">≈ $2,980 MXN</span></div>
+        <div class="sk-item sk-peak"><span class="sk-label" id="skPeakL">Holiday / Peak</span><span class="sk-price" id="skPeakP">$245/night</span><span class="sk-mxn" id="skPeakM">≈ $4,170 MXN</span></div>
       </div>
-      <div class="cal-fx-note" data-i18n="cal_fx_note">Prices in USD · Approx. $17.50 MXN per USD (updated May 2026)</div>
+      <div class="cal-fx-note" data-i18n="cal_fx_note">Prices in USD · Approx. $17.00 MXN per USD (updated August 2026)</div>
       <div class="cal-nav">
         <button class="cal-arrow" onclick="calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCalendar()">&#8249;</button>
         <div class="cal-month-lbl" id="calMonthLbl"></div>
@@ -1886,7 +1875,7 @@ en:{
   cal_wl_msg:"Casa Rico opens February 2027 and is accepting direct bookings now — 20% off founding-guest stays Feb–Apr 2027.",
   cal_wl_btn:"Join Waitlist — Contact Us",
   cal_notice:"Dates shown reflect estimated availability. Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking.",
-  cal_fx_note:"Prices in USD · Approx. $17.50 MXN per USD (updated May 2026)",
+  cal_fx_note:"Prices in USD · Approx. $17.00 MXN per USD (updated August 2026)",
   stories_ey:"Behind the Names",
   stories_title:"The Stories Behind Our Casitas",
   stories_sub:"Every name carries a story worth telling — of family, of love, and of lives well lived. When you stay with us, you stay in their honor.",
@@ -2042,7 +2031,7 @@ es:{
   cal_wl_msg:"Casa Rico abre en febrero de 2027 y ya acepta reservas directas — 20% de descuento para huéspedes fundadores en estancias de febrero a abril de 2027.",
   cal_wl_btn:"Lista de Espera — Contáctenos",
   cal_notice:"Las fechas mostradas reflejan disponibilidad estimada. Los impuestos (16% IVA + 5% ISH) y el cargo de limpieza se agregan al reservar.",
-  cal_fx_note:"Precios en USD · Aprox. $17.50 MXN por USD (actualizado mayo 2026)",
+  cal_fx_note:"Precios en USD · Aprox. $17.00 MXN por USD (actualizado agosto 2026)",
   stories_ey:"Detrás de los Nombres",
   stories_title:"Las Historias Detrás de Nuestras Casitas",
   stories_sub:"Cada nombre lleva una historia que vale la pena contar — de familia, de amor y de vidas bien vividas. Cuando te quedas con nosotros, te quedas en su honor.",
@@ -2133,7 +2122,7 @@ function closeLB(){document.getElementById('lbOverlay').classList.remove('open')
 
 /* === CALENDAR === */
 const RATES={lucky:{low:110,high:175,peak:245},rico:{low:145,high:205,peak:280},racel:{low:135,high:195,peak:270}};
-const FX_MXN=17.5;
+const FX_MXN=17.0;
 const fxMXN=(usd)=>Math.round(usd*FX_MXN/10)*10;
 function getSeason(d){const m=d.getMonth()+1,day=d.getDate();if((m===12&&day>=17)||(m===1&&day<=7))return'peak';if(m>=5&&m<=10)return'low';if(m===11&&day<=14)return'low';return'high';}
 function getRate(prop,d){return RATES[prop][getSeason(d)];}
