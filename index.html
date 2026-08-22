@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glyphicons-only-bootstrap@1.0.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-:root{--navy:#0C1F3F;--ocean:#1A5276;--sky:#1A5276;--teal:#1A5276;--gold:#C9A84C;--cream:#FAF8F3;--muted:#6B8CAE;--border:rgba(12,31,63,0.12);--rust:#0C1F3F;--success:#2E7D5B;--r-sm:4px;--r-md:8px;--r-lg:16px;--r-pill:999px;--sh-sm:var(--sh-sm);--sh-md:0 12px 32px rgba(12,31,63,.10);--sh-lg:0 28px 70px rgba(12,31,63,.16);}
+:root{--navy:#0C1F3F;--ocean:#1A5276;--sky:#1A5276;--teal:#1A5276;--gold:#C9A84C;--cream:#FAF8F3;--muted:#4C6B8A;--border:rgba(12,31,63,0.12);--rust:#0C1F3F;--success:#2E7D5B;--r-sm:4px;--r-md:8px;--r-lg:16px;--r-pill:999px;--sh-sm:var(--sh-sm);--sh-md:0 12px 32px rgba(12,31,63,.10);--sh-lg:0 28px 70px rgba(12,31,63,.16);}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Jost',sans-serif;color:var(--navy);background:var(--cream);overflow-x:hidden;}
@@ -502,15 +502,15 @@ img[onclick]{cursor:pointer;}
 footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
 .foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:#fff;margin-bottom:.6rem;}
 .foot-logo span{color:var(--gold);}
-.foot-tag{font-size:.77rem;color:rgba(255,255,255,.35);margin-bottom:1.75rem;letter-spacing:.06em;}
+.foot-tag{font-size:.77rem;color:rgba(255,255,255,.62);margin-bottom:1.75rem;letter-spacing:.06em;}
 .foot-links{display:flex;gap:1.75rem;justify-content:center;margin-bottom:2rem;flex-wrap:wrap;}
-.foot-links a{font-size:.69rem;color:rgba(255,255,255,.38);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;cursor:pointer;}
+.foot-links a{font-size:.69rem;color:rgba(255,255,255,.72);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;cursor:pointer;}
 .foot-links a:hover{color:var(--gold);}
 .foot-social{display:flex;gap:.85rem;justify-content:center;margin:0 0 1.5rem;}
 .foot-social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.55);transition:color .2s,border-color .2s,background .2s;}
 .foot-social a:hover{color:#fff;border-color:var(--gold);background:rgba(201,168,76,.12);}
 .foot-social svg{width:16px;height:16px;display:block;}
-.foot-copy{font-size:.67rem;color:rgba(255,255,255,.22);}
+.foot-copy{font-size:.67rem;color:rgba(255,255,255,.52);}
 
 @media(max-width:960px){
   .nav-links{display:none;}
@@ -563,6 +563,43 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
 .sb-rule{width:40px;height:2px;background:var(--gold);margin:0 auto 1.6rem;}
 .sb-line{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;color:#fff;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.18;letter-spacing:.01em;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Bravo Huatulco",
+  "description": "Boutique short-term condo rentals at Nirú Las Casitas in Santa Cruz, Huatulco, Oaxaca, Mexico.",
+  "url": "https://bravohuatulco.com",
+  "image": "https://bravohuatulco.com/images/og-image-huatulco.jpg",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Nirú Las Casitas, Santa Cruz",
+    "addressLocality": "Huatulco",
+    "addressRegion": "Oaxaca",
+    "addressCountry": "MX"
+  },
+  "sameAs": [
+    "https://www.instagram.com/bravohuatulco",
+    "https://www.facebook.com/share/18WuBmd7Aq/"
+  ]
+}
+</script>
+<style>
+/* Mobile-only sticky booking bar (do-now change #2) — hidden on desktop by default */
+.sticky-cta{display:none}
+@media(max-width:768px){
+  .sticky-cta{display:flex;gap:.55rem;align-items:center;position:fixed;left:0;right:0;bottom:0;z-index:80;
+    padding:.55rem .7rem calc(.55rem + env(safe-area-inset-bottom));
+    background:rgba(250,248,243,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border-top:1px solid var(--border);box-shadow:0 -6px 20px rgba(12,31,63,.14);}
+  .sticky-cta .sticky-book{flex:1;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r-sm);
+    font-family:'Jost',sans-serif;font-weight:600;font-size:.92rem;letter-spacing:.02em;padding:.85rem 1rem;cursor:pointer;}
+  .sticky-cta .sticky-ask{flex:none;background:transparent;color:var(--navy);border:1px solid var(--gold);
+    border-radius:var(--r-sm);font-family:'Jost',sans-serif;font-weight:600;font-size:.82rem;padding:.85rem 1rem;cursor:pointer;white-space:nowrap;}
+  body{padding-bottom:64px;}
+}
+</style>
 </head>
 <body>
 
@@ -601,7 +638,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
       <li><a onclick="goTo('huatulco')" data-i18n="nav_huat">Huatulco</a></li>
       <li><a onclick="goTo('getting-there')" data-i18n-en="Getting Here" data-i18n-es="Cómo Llegar">Getting Here</a></li>
       <li><a onclick="goTo('policies')" data-i18n="nav_pol">Policies</a></li>
-      <li><a class="nav-cta" onclick="goTo('contact')" data-i18n="nav_cta">Inquire Now</a></li>
+      <li><a class="nav-cta" onclick="trackEvent('check_availability_click',{source:'nav'});goTo('properties')" data-i18n="nav_check">Check Availability</a></li>
     </ul>
     <div class="lang-toggle">
       <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
@@ -621,7 +658,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
   <a onclick="goTo('huatulco')" data-i18n="nav_huat">Huatulco</a>
   <a onclick="goTo('getting-there')" data-i18n-en="Getting Here" data-i18n-es="Cómo Llegar">Getting Here</a>
   <a onclick="goTo('policies')" data-i18n="nav_pol">Policies</a>
-  <a onclick="goTo('contact')" data-i18n="nav_cta">Inquire Now</a>
+  <a onclick="trackEvent('check_availability_click',{source:'nav_mobile'});goTo('properties')" data-i18n="nav_check">Check Availability</a>
 </div>
 
 <!-- HERO -->
@@ -636,8 +673,8 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
     </h1>
     <p class="hero-sub" data-i18n="hero_sub">Boutique condo rentals in one of Mexico's most beloved and unspoiled coastal destinations. Personally hosted by Francisco & Mateo Bravo.</p>
     <div class="hero-btns">
-      <a class="btn-gold" onclick="goTo('properties')" data-i18n="hero_b1">View Our Properties</a>
-      <a class="btn-ghost" onclick="goTo('contact')" data-i18n="hero_b2">Book Direct & Save</a>
+      <a class="btn-gold" onclick="trackEvent('check_availability_click',{source:'hero'});goTo('properties')" data-i18n="hero_b1">Check Availability</a>
+      <a class="btn-ghost" onclick="trackEvent('ask_question_click',{source:'hero'});goTo('contact')" data-i18n="hero_b2">Ask a Question</a>
     </div>
   </div>
 
@@ -684,7 +721,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
       <!-- CASA LUCKY -->
       <div class="card">
         <div class="card-img-wrap">
-          <img class="card-img" id="heroLucky_1" onclick="openLB('heroLucky_1')" src="images/image-33.jpg" alt="Casa Lucky outdoor patio">
+          <img loading="lazy" decoding="async" class="card-img" id="heroLucky_1" onclick="openLB('heroLucky_1')" src="images/image-33.jpg" alt="Casa Lucky outdoor patio">
           <span class="badge badge-green" data-i18n="badge_now">Available Now</span>
         </div>
         <div class="card-body">
@@ -700,7 +737,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             <span data-i18n="lucky_amen_btn">View All Amenities</span> <span class="tog-arrow">▾</span>
           </button>
           <div class="amenities-panel" id="panel-lucky"><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Entertainment" data-i18n-es="Entretenimiento">Entertainment</div><div class="amen-items"><div class="amen-item"><span class="" data-i18n-en="Smart TV — Living Room" data-i18n-es="Smart TV — Sala">Smart TV — Living Room</span></div><div class="amen-item"><span class="" data-i18n-en="Smart TV — King Bedroom" data-i18n-es="Smart TV — Recámara King">Smart TV — King Bedroom</span></div><div class="amen-item"><span class="" data-i18n-en="Starlink High-Speed Wi-Fi" data-i18n-es="Wi-Fi Starlink de Alta Velocidad">Starlink High-Speed Wi-Fi</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Kitchen" data-i18n-es="Cocina">Kitchen</div><div class="amen-items"><div class="amen-item"><span class="" data-i18n-en="Coffee Maker — Drip" data-i18n-es="Cafetera de Goteo">Coffee Maker — Drip</span></div><div class="amen-item"><span class="" data-i18n-en="Cooking Basics — Pots, Pans, Oil, Salt & Pepper" data-i18n-es="Utensilios Básicos — Ollas, Sartenes, Aceite, Sal y Pimienta">Cooking Basics — Pots, Pans, Oil, Salt & Pepper</span></div><div class="amen-item"><span class="" data-i18n-en="Dishes & Silverware" data-i18n-es="Vajilla y Cubiertos">Dishes & Silverware</span></div><div class="amen-item"><span class="" data-i18n-en="Dishwasher" data-i18n-es="Lavavajillas">Dishwasher</span></div><div class="amen-item"><span class="" data-i18n-en="Refrigerator" data-i18n-es="Refrigerador">Refrigerator</span></div><div class="amen-item"><span class="" data-i18n-en="Microwave" data-i18n-es="Microondas">Microwave</span></div><div class="amen-item"><span class="" data-i18n-en="Oven — Stainless Steel" data-i18n-es="Horno — Acero Inoxidable">Oven — Stainless Steel</span></div><div class="amen-item"><span class="" data-i18n-en="Stove — Electric, 4 Burners" data-i18n-es="Estufa — Eléctrica, 4 Quemadores">Stove — Electric, 4 Burners</span></div><div class="amen-item"><span class="" data-i18n-en="Toaster" data-i18n-es="Tostador">Toaster</span></div><div class="amen-item"><span class="" data-i18n-en="Hot Water Kettle" data-i18n-es="Hervidor de Agua">Hot Water Kettle</span></div><div class="amen-item"><span class="" data-i18n-en="Baking Sheet" data-i18n-es="Charola para Hornear">Baking Sheet</span></div><div class="amen-item"><span class="" data-i18n-en="Wine Glasses" data-i18n-es="Copas de Vino">Wine Glasses</span></div><div class="amen-item"><span class="" data-i18n-en="Blender" data-i18n-es="Licuadora">Blender</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Bathroom & Laundry" data-i18n-es="Baño y Lavandería">Bathroom & Laundry</div><div class="amen-items"><div class="amen-item"><span class="" data-i18n-en="Shampoo & Conditioner" data-i18n-es="Champú y Acondicionador">Shampoo & Conditioner</span></div><div class="amen-item"><span class="" data-i18n-en="Body Soap & Shower Gel" data-i18n-es="Jabón Corporal y Gel de Ducha">Body Soap & Shower Gel</span></div><div class="amen-item"><span class="" data-i18n-en="Hair Dryer" data-i18n-es="Secadora de Cabello">Hair Dryer</span></div><div class="amen-item"><span class="" data-i18n-en="Hot Water" data-i18n-es="Agua Caliente">Hot Water</span></div><div class="amen-item"><span class="" data-i18n-en="Washer — In Unit" data-i18n-es="Lavadora — En la Unidad">Washer — In Unit</span></div><div class="amen-item"><span class="" data-i18n-en="Dryer — In Unit" data-i18n-es="Secadora — En la Unidad">Dryer — In Unit</span></div><div class="amen-item"><span class="" data-i18n-en="Drying Rack" data-i18n-es="Tendedero">Drying Rack</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Bedroom & Comfort" data-i18n-es="Recámara y Comodidad">Bedroom & Comfort</div><div class="amen-items"><div class="amen-item"><span class="" data-i18n-en="Air Conditioning — All Rooms" data-i18n-es="Aire Acondicionado — Todas las Habitaciones">Air Conditioning — All Rooms</span></div><div class="amen-item"><span class="" data-i18n-en="Bed Linens" data-i18n-es="Ropa de Cama">Bed Linens</span></div><div class="amen-item"><span class="" data-i18n-en="Ceiling Fan" data-i18n-es="Ventilador de Techo">Ceiling Fan</span></div><div class="amen-item"><span class="" data-i18n-en="Clothing Storage" data-i18n-es="Almacenamiento de Ropa">Clothing Storage</span></div><div class="amen-item"><span class="" data-i18n-en="Extra Pillows & Blankets" data-i18n-es="Almohadas y Cobijas Extra">Extra Pillows & Blankets</span></div><div class="amen-item"><span class="" data-i18n-en="Hangers" data-i18n-es="Ganchos">Hangers</span></div><div class="amen-item"><span class="" data-i18n-en="Iron" data-i18n-es="Plancha">Iron</span></div><div class="amen-item"><span class="" data-i18n-en="Room-Darkening Shades" data-i18n-es="Persianas Oscurecedoras">Room-Darkening Shades</span></div><div class="amen-item"><span class="" data-i18n-en="Safe" data-i18n-es="Caja de Seguridad">Safe</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Outdoor" data-i18n-es="Exterior">Outdoor</div><div class="amen-items"><div class="amen-item"><span class="" data-i18n-en="Private Plunge Pool" data-i18n-es="Alberca Pequeña Privada">Private Plunge Pool</span></div><div class="amen-item"><span class="" data-i18n-en="Electric Outdoor Grill — Private" data-i18n-es="Parrilla Eléctrica Exterior — Privada">Electric Outdoor Grill — Private</span></div><div class="amen-item"><span class="" data-i18n-en="Barbecue Utensils" data-i18n-es="Utensilios para Barbacoa">Barbecue Utensils</span></div><div class="amen-item"><span class="" data-i18n-en="Sun Loungers" data-i18n-es="Tumbonas">Sun Loungers</span></div><div class="amen-item"><span class="" data-i18n-en="Private Patio" data-i18n-es="Patio Privado">Private Patio</span></div><div class="amen-item"><span class="" data-i18n-en="Outdoor Dining Area — Alfresco for 4" data-i18n-es="Área de Comedor Exterior — Al Aire Libre para 4">Outdoor Dining Area — Alfresco for 4</span></div><div class="amen-item"><span class="" data-i18n-en="Outdoor Furniture" data-i18n-es="Mobiliario Exterior">Outdoor Furniture</span></div><div class="amen-item"><span class="" data-i18n-en="Outdoor Shower" data-i18n-es="Ducha Exterior">Outdoor Shower</span></div><div class="amen-item"><span class="" data-i18n-en="Beach Access — 2-min Walk" data-i18n-es="Acceso a la Playa — 2 Min a Pie">Beach Access — 2-min Walk</span></div><div class="amen-item"><span class="" data-i18n-en="Beach Essentials — Towels, Chairs & Umbrella" data-i18n-es="Artículos de Playa — Toallas, Sillas y Sombrilla">Beach Essentials — Towels, Chairs & Umbrella</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="Property & Features" data-i18n-es="Propiedad y Características">Property & Features</div><div class="amen-items"><div class="amen-item"><span class="" data-i18n-en="Private Entrance" data-i18n-es="Entrada Privada">Private Entrance</span></div><div class="amen-item"><span class="" data-i18n-en="Private Living Room" data-i18n-es="Sala de Estar Privada">Private Living Room</span></div><div class="amen-item"><span class="" data-i18n-en="Single-Level Home" data-i18n-es="Casa de Un Solo Nivel">Single-Level Home</span></div><div class="amen-item"><span class="" data-i18n-en="Free Parking On Premises" data-i18n-es="Estacionamiento Gratuito en las Instalaciones">Free Parking On Premises</span></div><div class="amen-item"><span class="" data-i18n-en="Gated Development — 24/7 Security" data-i18n-es="Desarrollo Cerrado — Seguridad 24/7">Gated Development — 24/7 Security</span></div><div class="amen-item"><span class="" data-i18n-en="Cleaning Products Provided" data-i18n-es="Productos de Limpieza Proporcionados">Cleaning Products Provided</span></div><div class="amen-item"><span class="" data-i18n-en="Long-Term Stays Welcome — 28+ Nights" data-i18n-es="Estancias Largas Bienvenidas — 28+ Noches">Long-Term Stays Welcome — 28+ Nights</span></div></div></div><div class="amen-cat"><div class="amen-cat-title" data-i18n-en="On-Site Amenities" data-i18n-es="Amenidades en el Lugar">On-Site Amenities</div><div class="amen-items"><div class="amen-item"><span class="" data-i18n-en="Exercise Equipment — Elliptical, Free Weights, Stationary Bike, Treadmill, Workout Bench, Yoga Mat" data-i18n-es="Equipo de Ejercicio — Elíptica, Pesas Libres, Bicicleta Estacionaria, Caminadora, Banco de Ejercicio, Tapete de Yoga">Exercise Equipment — Elliptical, Free Weights, Stationary Bike, Treadmill, Workout Bench, Yoga Mat</span></div><div class="amen-item"><span class="" data-i18n-en="Gym — Shared, In Building" data-i18n-es="Gimnasio — Compartido, En el Edificio">Gym — Shared, In Building</span></div><div class="amen-item"><span class="" data-i18n-en="Resort Access — Available at Extra Cost" data-i18n-es="Acceso al Resort — Disponible con Costo Adicional">Resort Access — Available at Extra Cost</span></div></div></div></div>
-          <button class="amenities-toggle" id="btn-lucky-gallery" onclick="toggleAmen('lucky-gallery')" style="margin-top:.5rem"><span data-i18n="lucky_gallery_btn">Browse Photos</span> <span class="tog-arrow">▾</span></button><div class="amenities-panel" id="panel-lucky-gallery"><div class="gallery-wrap"><div class="gtabs" id="luckyGTabs"><button class="gtab gtab-active" onclick="switchGTab(this,'lc0')">Living Room</button><button class="gtab" onclick="switchGTab(this,'lc1')">Kitchen</button><button class="gtab" onclick="switchGTab(this,'lc2')">Bathroom</button><button class="gtab" onclick="switchGTab(this,'lc3')">Bedroom</button><button class="gtab" onclick="switchGTab(this,'lc4')">Details</button><button class="gtab" onclick="switchGTab(this,'lc5')">Patio & Pool</button><button class="gtab" onclick="switchGTab(this,'lc6')">Nirú &amp; Beyond</button></div><div id="lc0" class="gpanel" style="display:grid"><div class="gthumb" onclick="openLB('l_living1','Patio with BBQ grill and lounge chair')"><img id="l_living1" src="images/image-12.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living2','Patio with BBQ grill and lounge chair')"><img id="l_living2" src="images/image-16.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living3','Patio with BBQ grill and lounge chair')"><img id="l_living3" src="images/image-20.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living4','Patio with BBQ grill and lounge chair')"><img id="l_living4" src="images/image-11.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living5','Patio with BBQ grill and lounge chair')"><img id="l_living5" src="images/image-14.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living6','Patio with BBQ grill and lounge chair')"><img id="l_living6" src="images/image-32.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc1" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_kitchen1','Patio with BBQ grill and lounge chair')"><img id="l_kitchen1" src="images/image-15.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_kitchen2','Patio with BBQ grill and lounge chair')"><img id="l_kitchen2" src="images/image-06.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_kitchen3','Patio with BBQ grill and lounge chair')"><img id="l_kitchen3" src="images/image-22.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_kitchen4','Patio with BBQ grill and lounge chair')"><img id="l_kitchen4" src="images/image-25.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc2" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_bath1','Patio with BBQ grill and lounge chair')"><img id="l_bath1" src="images/image-41.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bath2','Patio with BBQ grill and lounge chair')"><img id="l_bath2" src="images/image-19.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bath3','Patio with BBQ grill and lounge chair')"><img id="l_bath3" src="images/image-10.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc3" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_bed1','Patio with BBQ grill and lounge chair')"><img id="l_bed1" src="images/image-37.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed2','Patio with BBQ grill and lounge chair')"><img id="l_bed2" src="images/image-28.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed3','Patio with BBQ grill and lounge chair')"><img id="l_bed3" src="images/image-31.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed4','Patio with BBQ grill and lounge chair')"><img id="l_bed4" src="images/image-30.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed5','Patio with BBQ grill and lounge chair')"><img id="l_bed5" src="images/image-18.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed6','Patio with BBQ grill and lounge chair')"><img id="l_bed6" src="images/image-24.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc4" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_detail1','Patio with BBQ grill and lounge chair')"><img id="l_detail1" src="images/image-27.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_detail2','Patio with BBQ grill and lounge chair')"><img id="l_detail2" src="images/image-08.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc5" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_patio1','Patio with BBQ grill and lounge chair')"><img id="l_patio1" src="images/image-02.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio2','Patio with BBQ grill and lounge chair')"><img id="l_patio2" src="images/image-09.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio3','Patio with BBQ grill and lounge chair')"><img id="l_patio3" src="images/image-05.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio4','Patio with BBQ grill and lounge chair')"><img id="l_patio4" src="images/image-04.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio5','Patio with BBQ grill and lounge chair')"><img id="l_patio5" src="images/image-03.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio6','Patio with BBQ grill and lounge chair')"><img id="l_patio6" src="images/image-07.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc6" class="gpanel" style="display:none"></div></div></div><p class="price-label" data-i18n="usd_note">Nightly rates in USD · Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking, as required by Mexican law.</p>
+          <button class="amenities-toggle" id="btn-lucky-gallery" onclick="toggleAmen('lucky-gallery')" style="margin-top:.5rem"><span data-i18n="lucky_gallery_btn">Browse Photos</span> <span class="tog-arrow">▾</span></button><div class="amenities-panel" id="panel-lucky-gallery"><div class="gallery-wrap"><div class="gtabs" id="luckyGTabs"><button class="gtab gtab-active" onclick="switchGTab(this,'lc0')">Living Room</button><button class="gtab" onclick="switchGTab(this,'lc1')">Kitchen</button><button class="gtab" onclick="switchGTab(this,'lc2')">Bathroom</button><button class="gtab" onclick="switchGTab(this,'lc3')">Bedroom</button><button class="gtab" onclick="switchGTab(this,'lc4')">Details</button><button class="gtab" onclick="switchGTab(this,'lc5')">Patio & Pool</button><button class="gtab" onclick="switchGTab(this,'lc6')">Nirú &amp; Beyond</button></div><div id="lc0" class="gpanel" style="display:grid"><div class="gthumb" onclick="openLB('l_living1','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_living1" src="images/image-12.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living2','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_living2" src="images/image-16.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living3','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_living3" src="images/image-20.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living4','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_living4" src="images/image-11.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living5','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_living5" src="images/image-14.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_living6','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_living6" src="images/image-32.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc1" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_kitchen1','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_kitchen1" src="images/image-15.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_kitchen2','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_kitchen2" src="images/image-06.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_kitchen3','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_kitchen3" src="images/image-22.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_kitchen4','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_kitchen4" src="images/image-25.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc2" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_bath1','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_bath1" src="images/image-41.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bath2','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_bath2" src="images/image-19.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bath3','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_bath3" src="images/image-10.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc3" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_bed1','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_bed1" src="images/image-37.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed2','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_bed2" src="images/image-28.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed3','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_bed3" src="images/image-31.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed4','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_bed4" src="images/image-30.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed5','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_bed5" src="images/image-18.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_bed6','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_bed6" src="images/image-24.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc4" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_detail1','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_detail1" src="images/image-27.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_detail2','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_detail2" src="images/image-08.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc5" class="gpanel" style="display:none"><div class="gthumb" onclick="openLB('l_patio1','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_patio1" src="images/image-02.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio2','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_patio2" src="images/image-09.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio3','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_patio3" src="images/image-05.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio4','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_patio4" src="images/image-04.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio5','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_patio5" src="images/image-03.jpg" alt="Patio with BBQ grill and lounge chair"></div><div class="gthumb" onclick="openLB('l_patio6','Patio with BBQ grill and lounge chair')"><img loading="lazy" decoding="async" id="l_patio6" src="images/image-07.jpg" alt="Patio with BBQ grill and lounge chair"></div></div><div id="lc6" class="gpanel" style="display:none"></div></div></div><p class="price-label" data-i18n="usd_note">Nightly rates in USD · Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking, as required by Mexican law.</p>
           <div class="price-seasons">
             <div class="ps-cell ps-low">
               <div class="ps-season" data-i18n="p_low">Low Season</div>
@@ -722,14 +759,14 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             </div>
           </div>
           <div style="text-align:center;margin:.8rem 0 .15rem"><a href="#followPromo" onclick="document.getElementById('followPromo').scrollIntoView({behavior:'smooth',block:'center'});return false;" style="text-decoration:none;cursor:pointer;"><span data-i18n="card_promo_badge" style="display:inline-block;background:rgba(184,150,62,.13);border:1px solid var(--gold);border-radius:3px;padding:.28rem .75rem;font-size:.62rem;letter-spacing:.07em;color:var(--navy);font-family:'Jost',sans-serif;font-weight:600;cursor:pointer;transition:background .15s;" onmouseover="this.style.background='rgba(184,150,62,.28)'" onmouseout="this.style.background='rgba(184,150,62,.13)'">Follow us & save 15% low season →</span></a></div>
-          <button class="card-btn" onclick="openORModal()" data-i18n="lucky_btn">Check Availability &amp; Book</button>
+          <button class="card-btn" onclick="trackEvent('check_availability_click',{property:'lucky'});openORModal()" data-i18n="lucky_btn">Check Availability</button>
         </div>
       </div>
 
       <!-- CASA RACEL -->
       <div class="card">
         <div class="card-img-wrap">
-          <img class="card-img" id="heroRacel_1" onclick="openLB('heroRacel_1')" src="images/image-49.jpg" alt="Casa Racél living room">
+          <img loading="lazy" decoding="async" class="card-img" id="heroRacel_1" onclick="openLB('heroRacel_1')" src="images/image-49.jpg" alt="Casa Racél living room">
           <span class="badge badge-green" data-i18n="badge_racel">Available Now</span>
         </div>
         <div class="card-body">
@@ -772,14 +809,14 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             </div>
           </div>
           <div style="text-align:center;margin:.8rem 0 .15rem"><a href="#followPromo" onclick="document.getElementById('followPromo').scrollIntoView({behavior:'smooth',block:'center'});return false;" style="text-decoration:none;cursor:pointer;"><span data-i18n="card_promo_badge" style="display:inline-block;background:rgba(184,150,62,.13);border:1px solid var(--gold);border-radius:3px;padding:.28rem .75rem;font-size:.62rem;letter-spacing:.07em;color:var(--navy);font-family:'Jost',sans-serif;font-weight:600;cursor:pointer;transition:background .15s;" onmouseover="this.style.background='rgba(184,150,62,.28)'" onmouseout="this.style.background='rgba(184,150,62,.13)'">Follow us & save 15% low season →</span></a></div>
-          <button class="card-btn" onclick="openRacelORModal()" data-i18n="racel_btn">Check Availability &amp; Book</button>
+          <button class="card-btn" onclick="trackEvent('check_availability_click',{property:'racel'});openRacelORModal()" data-i18n="racel_btn">Check Availability</button>
         </div>
       </div>
 
       <!-- CASA RICO -->
       <div class="card">
         <div class="card-img-wrap">
-          <img class="card-img" id="heroRico_1" onclick="openLB('heroRico_1')" src="images/image-59.jpg" alt="Casa Rico — view from balcony over Nirú pool and Santa Cruz hillside">
+          <img loading="lazy" decoding="async" class="card-img" id="heroRico_1" onclick="openLB('heroRico_1')" src="images/image-59.jpg" alt="Casa Rico — view from balcony over Nirú pool and Santa Cruz hillside">
           <span class="badge badge-blue" data-i18n="badge_wl">Now Booking · Feb 2027</span>
         </div>
         <div class="card-body">
@@ -822,7 +859,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
             <div class="disc-txt" data-i18n="rico_status_d"><strong>Casa Rico is currently under construction</strong>, on track to finish in Fall 2026. We're opening it for stays beginning February 2027 and accepting direct bookings now at our <strong>Founding Guest Rate — 20% off stays February through April 2027</strong>. Since it's brand new, there are no unit photos yet; Casa Rico shares Casa Racél's exact layout one floor up, with even better views and the same build and finish quality — but its own décor and personality. Same bones, its own soul. Browse <strong>Casa Racél's</strong> gallery to preview the floor plan and finish standard; Rico will be styled in its own character. <strong>The one difference: Rico's second bedroom has two twin beds that combine into one large bed.</strong></div>
             <div class="disc-txt" style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(27,58,92,.18);" data-i18n="rico_guarantee_d"><strong>Our promise to you:</strong> If Casa Rico isn't ready at least 30 days before your arrival, you'll receive a <strong>full refund</strong> — no questions asked. (If Casa Lucky or Casa Racél happens to be available for your dates, we'll gladly offer it as an alternative, your choice.) Because construction timelines can shift, <strong>we recommend booking flexible or refundable travel</strong> until we've confirmed your stay 30 days out.</div>
           </div>
-          <button class="card-btn" onclick="openRicoORModal()" data-i18n="rico_btn">Check Availability &amp; Book</button>
+          <button class="card-btn" onclick="trackEvent('check_availability_click',{property:'rico'});openRicoORModal()" data-i18n="rico_btn">Check Availability</button>
           </div>
       </div>
       <div class="direct-strip" style="grid-column:1 / -1;margin-top:1rem">
@@ -830,7 +867,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         <div class="direct-head" data-i18n="direct_h">Why Book Direct?</div>
         <div class="direct-desc" data-i18n="direct_d">Booking through BravoHuatulco.com saves you Airbnb & VRBO platform fees. Guests typically save around 40% on average compared with platform pricing. We price with full respect for Mexico, so our nightly rates show the base rental cost — and the mandatory 16% VAT and 5% lodging tax are added transparently at booking. Same homes, clearer pricing, and more personal service from first message to checkout. Returning guests also receive <strong>10% off</strong> their next stay — Low and High seasons only, Peak Holiday dates excluded.</div>
       </div>
-      <a class="btn-gold" onclick="goTo('contact')" data-i18n="direct_btn">Inquire & Book Direct</a>
+      <a class="btn-gold" onclick="trackEvent('check_availability_click',{source:'why_direct'});goTo('properties')" data-i18n="direct_btn">Check Availability</a>
     </div>
       <div class="disc-box" id="followPromo" style="grid-column:1 / -1;margin-top:.75rem;border-left-color:var(--navy);background:rgba(27,58,92,.07);scroll-margin-top:90px;">
         <div class="disc-head" data-i18n="promo_h">Follow Us &amp; Save 15% — Low Season</div>
@@ -960,7 +997,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
 <!-- LIGHTBOX -->
 <div class="lb-overlay" id="lbOverlay" onclick="if(event.target===this)closeLB()">
   <button class="lb-close" onclick="closeLB()">&#x2715;</button>
-  <img class="lb-img" id="lbImg" src="" alt="">
+  <img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt="">
   <p class="lb-cap" id="lbCap"></p>
   <div class="lb-nav">
     <button onclick="lbPrev()" data-i18n="lb_prev">← Prev</button>
@@ -999,12 +1036,12 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
       </div>
       <div>
         <div class="niru-photos">
-          <div class="niru-ph niru-ph-wide"><img id="niru_1" onclick="openLB('niru_1')" src="images/image-23.jpg" alt="Nirú Las Casitas pool at sunset with Sierra Madre backdrop"></div>
-          <div class="niru-ph"><img id="niru_2" onclick="openLB('niru_2')" src="images/image-29.jpg" alt="Nirú Las Casitas pool and building exterior"></div>
-          <div class="niru-ph"><img id="niru_3" onclick="openLB('niru_3')" src="images/image-83.jpg" alt="Nirú fitness centre with pickleball court visible through the window"></div>
-          <div class="niru-ph"><img id="niru_4" onclick="openLB('niru_4')" src="images/image-85.jpg" alt="Cunard's Queen Elizabeth docked at Santa Cruz beach — a common sight from the bay"></div>
-          <div class="niru-ph"><img id="niru_5" onclick="openLB('niru_5')" src="images/image-82.jpg" alt="Santa Cruz beach at sunset, with the Nirú hillside on the right"></div>
-          <div class="niru-ph niru-ph-wide"><img id="niru_6" onclick="openLB('niru_6')" src="images/image-86.jpg" alt="View from the Nirú Beach Club — mimosa overlooking Santa Cruz beach and bay"></div>
+          <div class="niru-ph niru-ph-wide"><img loading="lazy" decoding="async" id="niru_1" onclick="openLB('niru_1')" src="images/image-23.jpg" alt="Nirú Las Casitas pool at sunset with Sierra Madre backdrop"></div>
+          <div class="niru-ph"><img loading="lazy" decoding="async" id="niru_2" onclick="openLB('niru_2')" src="images/image-29.jpg" alt="Nirú Las Casitas pool and building exterior"></div>
+          <div class="niru-ph"><img loading="lazy" decoding="async" id="niru_3" onclick="openLB('niru_3')" src="images/image-83.jpg" alt="Nirú fitness centre with pickleball court visible through the window"></div>
+          <div class="niru-ph"><img loading="lazy" decoding="async" id="niru_4" onclick="openLB('niru_4')" src="images/image-85.jpg" alt="Cunard's Queen Elizabeth docked at Santa Cruz beach — a common sight from the bay"></div>
+          <div class="niru-ph"><img loading="lazy" decoding="async" id="niru_5" onclick="openLB('niru_5')" src="images/image-82.jpg" alt="Santa Cruz beach at sunset, with the Nirú hillside on the right"></div>
+          <div class="niru-ph niru-ph-wide"><img loading="lazy" decoding="async" id="niru_6" onclick="openLB('niru_6')" src="images/image-86.jpg" alt="View from the Nirú Beach Club — mimosa overlooking Santa Cruz beach and bay"></div>
         </div>
         <div class="distances-panel">
           <div class="dist-header" data-i18n="dist_head">Distances from Nirú Las Casitas</div>
@@ -1060,8 +1097,8 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
         </div>
       </div>
       <div class="about-imgs">
-        <img class="about-main" id="about_1" onclick="openLB('about_1')" src="images/image-13.jpg" alt="Santa Cruz marina">
-        <img class="about-accent" id="about_2" onclick="openLB('about_2')" src="images/image-36.jpg" alt="Huatulco sign">
+        <img loading="lazy" decoding="async" class="about-main" id="about_1" onclick="openLB('about_1')" src="images/image-13.jpg" alt="Santa Cruz marina">
+        <img loading="lazy" decoding="async" class="about-accent" id="about_2" onclick="openLB('about_2')" src="images/image-36.jpg" alt="Huatulco sign">
       </div>
     </div>
   </div>
@@ -1162,14 +1199,14 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
           <div class="feature"><div class="feat-icon"><svg class="feat-svg"><use href="#i-waves"/></svg></div><div><div class="feat-title" data-i18n="f1t">Nine Bays, 36 Beaches</div><div class="feat-desc" data-i18n="f1d">From calm swimming coves to secluded anchorages — most remain blissfully uncrowded.</div></div></div>
           <div class="feature"><div class="feat-icon"><svg class="feat-svg"><use href="#i-mountains"/></svg></div><div><div class="feat-title" data-i18n="f2t">Sierra Madre Meets the Sea</div><div class="feat-desc" data-i18n="f2d">The dramatic backdrop of jungle-draped mountains tumbling to the Pacific creates scenery unlike any other resort town in Mexico.</div></div></div>
           <div class="feature"><div class="feat-icon"><svg class="feat-svg"><use href="#i-fish"/></svg></div><div><div class="feat-title" data-i18n="f3t">World-Class Eco-Tourism</div><div class="feat-desc" data-i18n="f3d">Snorkel, dive, kayak, raft jungle rivers, hike to waterfalls. Huatulco is a UNESCO Biosphere Reserve.</div></div></div>
-          <div class="feature"><div class="feat-icon"><svg class="feat-svg"><use href="#i-dining"/></svg></div><div><div class="feat-title" data-i18n="f4t">Authentic Oaxacan Culture</div><div class="feat-desc" data-i18n="f4d">From the vibrant markets of La Crucecita to fresh seafood right on the sand — this is Mexico as it's meant to be.</div></div></div>
-          <div class="feature"><div class="feat-icon"><svg class="feat-svg"><use href="#i-plane"/></svg></div><div><div class="feat-title" data-i18n="f5t">Easily Accessible</div><div class="feat-desc" data-i18n="f5d">Huatulco International Airport (HUX) is just 20 minutes away, with direct flights from Mexico City, Guadalajara, and growing international routes.</div></div></div>
+          <div class="feature"><div class="feat-icon"><svg class="feat-svg"><use href="#i-dining"/></svg></div><div><div class="feat-title" data-i18n="f4t">Authentic Oaxacan Culture</div><div class="feat-desc" data-i18n="f4d">From the vibrant markets of La Crucecita to fresh seafood right on the sand — a distinctly Oaxacan rhythm of markets, mezcal and coastal life.</div></div></div>
+          <div class="feature"><div class="feat-icon"><svg class="feat-svg"><use href="#i-plane"/></svg></div><div><div class="feat-title" data-i18n="f5t">Surprisingly Easy to Reach</div><div class="feat-desc" data-i18n="f5d">Huatulco International Airport (HUX) is just 20 minutes away, with direct flights from Mexico City, Guadalajara, and growing international routes.</div></div></div>
         </div>
       </div>
       <div class="mosaic">
-        <img class="mos-img mos-wide" id="mosaic_1" onclick="openLB('mosaic_1')" src="images/image-17.jpg" alt="Santa Cruz Huatulco sign at the marina" style="object-position:center top;">
-        <img class="mos-img" id="mosaic_2" onclick="openLB('mosaic_2')" src="images/image-44.jpg" alt="Fresh ceviche with cruise ship in Santa Cruz bay">
-        <img class="mos-img" id="mosaic_3" onclick="openLB('mosaic_3')" src="images/image-35.jpg" alt="Mimosa on the waterfront with cruise ship in the bay">
+        <img loading="lazy" decoding="async" class="mos-img mos-wide" id="mosaic_1" onclick="openLB('mosaic_1')" src="images/image-17.jpg" alt="Santa Cruz Huatulco sign at the marina" style="object-position:center top;">
+        <img loading="lazy" decoding="async" class="mos-img" id="mosaic_2" onclick="openLB('mosaic_2')" src="images/image-44.jpg" alt="Fresh ceviche with cruise ship in Santa Cruz bay">
+        <img loading="lazy" decoding="async" class="mos-img" id="mosaic_3" onclick="openLB('mosaic_3')" src="images/image-35.jpg" alt="Mimosa on the waterfront with cruise ship in the bay">
       </div>
     </div>
     <div class="culture-strip">
@@ -1766,6 +1803,11 @@ function agrLang(lang){
   </div>
 </section>
 
+<!-- Mobile sticky booking bar (do-now change #2) -->
+<div class="sticky-cta" role="region" aria-label="Booking">
+  <button class="sticky-book" onclick="trackEvent('check_availability_click',{source:'sticky'});goTo('properties')" data-i18n-en="Check Availability" data-i18n-es="Ver Disponibilidad">Check Availability</button>
+  <button class="sticky-ask" onclick="trackEvent('ask_question_click',{source:'sticky'});goTo('contact')" data-i18n-en="Ask" data-i18n-es="Consultar">Ask</button>
+</div>
 <footer>
   <div class="wrap">
     <div class="foot-logo" style="display:flex;align-items:center;justify-content:center;"><svg width="36" height="34" viewBox="140 60 380 140" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0;">
@@ -1781,7 +1823,7 @@ function agrLang(lang){
       <a onclick="goTo('about')" data-i18n="nav_story">Our Story</a>
       <a onclick="goTo('huatulco')" data-i18n="nav_huat">Huatulco</a>
       <a onclick="goTo('policies')" data-i18n="nav_pol">Policies</a>
-      <a onclick="goTo('contact')" data-i18n="nav_cta">Inquire Now</a>
+      <a onclick="trackEvent('ask_question_click',{source:'footer'});goTo('contact')" data-i18n="nav_cta">Ask a Question</a>
     </div>
     <div class="foot-social">
       <a href="https://www.facebook.com/share/18WuBmd7Aq/" target="_blank" rel="noopener" aria-label="Bravo Huatulco on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg></a>
@@ -1798,11 +1840,11 @@ const LB_DATA = {"nbr_00": {"en": "Casa Rico under construction (marked in red) 
 const T={
 en:{
   nav_props:"Properties",nav_niru:"Nirú Complex",nav_story:"Our Story",
-  nav_huat:"Huatulco",nav_pol:"Policies",nav_cta:"Inquire Now",
+  nav_huat:"Huatulco",nav_pol:"Policies",nav_check:"Check Availability",nav_cta:"Ask a Question",
   hero_eyebrow:"Nirú Las Casitas · Santa Cruz · Huatulco, Oaxaca",
   hero_t1:"Where the Sierra Madre",hero_t2:"Meets the",hero_em:"Sea",
   hero_sub:"Boutique condo rentals in one of Mexico's most beloved and unspoiled coastal destinations. Personally hosted by Francisco & Mateo Bravo.",
-  hero_b1:"View Our Properties",hero_b2:"Book Direct & Save",hero_scroll:"Scroll",
+  hero_b1:"Check Availability",hero_b2:"Ask a Question",hero_scroll:"Scroll",
   props_ey:"Our Collection",
   props_title:"Three Homes.<br>One Extraordinary Destination.",
   props_sub:"Each condo is personally managed within the gated Nirú Las Casitas development — steps from Santa Cruz Beach.",
@@ -1816,14 +1858,14 @@ en:{
   p_low:"Low Season",p_high:"High Season",p_peak:"Holiday / Peak",
   p_low_d:"May 1 – Nov 14",p_high_d:"Nov 15 – Dec 16 · Jan 8 – Apr 30",p_peak_d:"Dec 17 – Jan 7",
   per_n:"/ night",usd_note:"Rates in USD and MXN · Taxes (16% VAT + 5% ISH) and cleaning fee are added at booking, as required by Mexican law.",
-  lucky_btn:"Check Availability & Book",
+  lucky_btn:"Check Availability",
   ls_eyebrow:"Staying 28+ Nights?",
   ls_body:"Long stays are arranged via a custom quote with bespoke pricing and a tailored payment schedule.",
   ls_link:"Send us a long-stay inquiry →",
   rico_unit:"2 Bed · 2 Bath · 2nd Floor · Nirú Las Casitas",
   rico_sz:"121.7 m² / 1,310 ft²",rico_sl:"Sleeps 6",rico_view:"Elevated Ocean Views",
   rico_desc:"Situated one floor above Casa Racél, Casa Rico offers even more expansive views over the Nirú pool and Santa Cruz hillside. A 2BR/2BA built to the same high standard as Racél — expect bold design, cool colors, and a personality all its own. King bedroom with ensuite; second bedroom with two twin beds that combine into one large bed; plus a sleeper sofa. Smart TV in every room. High-speed Starlink Wi-Fi. Opening February 2027 — now booking direct.",
-  rico_btn:"Check Availability & Book",
+  rico_btn:"Check Availability",
   rico_status_h:"Construction On Track for Fall 2026 · Booking Now",
   rico_status_d:"<strong>Casa Rico is currently under construction</strong>, on track to finish in Fall 2026. We're opening it for stays beginning February 2027 and accepting direct bookings now at our <strong>Founding Guest Rate — 20% off stays February through April 2027</strong>. Since it's brand new, there are no unit photos yet; Casa Rico shares Casa Racél's exact layout one floor up, with even better views and the same build and finish quality — but its own décor and personality. Same bones, its own soul. Browse <strong>Casa Racél's</strong> gallery to preview the floor plan and finish standard; Rico will be styled in its own character. <strong>The one difference: Rico's second bedroom has two twin beds that combine into one large bed.</strong>",
   rico_guarantee_d:"<strong>Our promise to you:</strong> If Casa Rico isn't ready at least 30 days before your arrival, you'll receive a <strong>full refund</strong> — no questions asked. (If Casa Lucky or Casa Racél happens to be available for your dates, we'll gladly offer it as an alternative, your choice.) Because construction timelines can shift, <strong>we recommend booking flexible or refundable travel</strong> until we've confirmed your stay 30 days out.",
@@ -1831,7 +1873,7 @@ en:{
   racel_sz:"121.7 m² / 1,310 ft²",racel_sl:"Sleeps 6",racel_view:"Mountain & Harbor Views",
   racel_gallery_btn:"Browse Photos",
   racel_desc:"Bold Mexican color, original artwork, and elevated Sierra Madre views set Casa Racél apart. Two bedrooms, two spa-style baths, and a private balcony with alfresco dining for six — designed for families and groups who want personality and space in equal measure.",
-  racel_btn:"Check Availability & Book",
+  racel_btn:"Check Availability",
   niru_ey:"The Development",niru_title:"Nirú Las Casitas",
   niru_sub:"A boutique gated community in the heart of Santa Cruz, Huatulco — where modern design meets direct beach access.",
   niru_p1:"Nirú Las Casitas is a newly completed boutique residential development in Santa Cruz, Huatulco — designed for the ideal balance of privacy, resort-style amenities, and authentic coastal living. The complex is fully gated with 24-hour security, and every unit is finished to a high modern standard.",
@@ -1868,8 +1910,8 @@ en:{
   f1t:"Nine Bays, 36 Beaches",f1d:"From calm swimming coves to secluded anchorages — most beaches remain blissfully uncrowded.",
   f2t:"Sierra Madre Meets the Sea",f2d:"The dramatic backdrop of jungle-draped mountains tumbling to the Pacific creates scenery unlike any other resort town in Mexico.",
   f3t:"World-Class Eco-Tourism",f3d:"Snorkel, dive, kayak, raft jungle rivers, hike to waterfalls. Huatulco is a UNESCO Biosphere Reserve.",
-  f4t:"Authentic Oaxacan Culture",f4d:"From the vibrant markets of La Crucecita to fresh seafood right on the sand — this is Mexico as it's meant to be.",
-  f5t:"Easily Accessible",f5d:"Huatulco International Airport (HUX) is just 20 minutes away, with direct flights from Mexico City, Guadalajara, and growing international routes.",
+  f4t:"Authentic Oaxacan Culture",f4d:"From the vibrant markets of La Crucecita to fresh seafood right on the sand — a distinctly Oaxacan rhythm of markets, mezcal and coastal life.",
+  f5t:"Surprisingly Easy to Reach",f5d:"Huatulco International Airport (HUX) is just 20 minutes away, with direct flights from Mexico City, Guadalajara, and growing international routes.",
   cult_t:"La Crucecita & Santa Cruz",
   cult_d:"Wander lively market stalls for handcrafted jewelry and Oaxacan textiles. Then follow the waterfront to the marina, where fishing boats head out at dawn and return with the day's catch. This is the Huatulco that stays with you.",
   pol_ey:"Booking Information",pol_title:"Rates, Policies & Fees",
@@ -1902,7 +1944,7 @@ en:{
   cancel_note:"Travel insurance, the damage protection waiver, and any administrative fees are non-refundable. All guests are strongly encouraged to purchase independent travel insurance.",
   direct_h:"Why Book Direct?",
   direct_d:"Booking through BravoHuatulco.com saves you Airbnb & VRBO platform fees. Guests typically save around 40% on average compared with platform pricing. We price with full respect for Mexico, so our nightly rates show the base rental cost — and the mandatory 16% VAT and 5% lodging tax are added transparently at booking. Same homes, clearer pricing, and more personal service from first message to checkout. Returning guests also receive <strong>10% off<\/strong> their next stay — Low and High seasons only, Peak Holiday dates excluded.",
-  direct_btn:"Inquire & Book Direct",
+  direct_btn:"Check Availability",
   cont_ey:"Get in Touch",cont_title:"Ready to Plan<br>Your Escape?",
   cont_desc:"Send us an inquiry and we'll respond within 24 hours with availability, pricing, and everything you need to make your Huatulco visit unforgettable.",
   ci_email:"Email",ci_mateo:"WhatsApp — Mateo",ci_fco:"WhatsApp — Francisco",
@@ -1954,11 +1996,11 @@ en:{
 },
 es:{
   nav_props:"Propiedades",nav_niru:"Complejo Nirú",nav_story:"Nuestra Historia",
-  nav_huat:"Huatulco",nav_pol:"Políticas",nav_cta:"Consultar Ahora",
+  nav_huat:"Huatulco",nav_pol:"Políticas",nav_check:"Ver Disponibilidad",nav_cta:"Contáctenos",
   hero_eyebrow:"Nirú Las Casitas · Santa Cruz · Huatulco, Oaxaca",
   hero_t1:"Donde la Sierra Madre",hero_t2:"Se Encuentra con el",hero_em:"Mar",
   hero_sub:"Alquiler exclusivo de condominios en uno de los destinos costeros más hermosos de México. Atendidos personalmente por Francisco y Mateo Bravo.",
-  hero_b1:"Ver Nuestras Propiedades",hero_b2:"Reserve Directo y Ahorre",hero_scroll:"Bajar",
+  hero_b1:"Ver Disponibilidad",hero_b2:"Contáctenos",hero_scroll:"Bajar",
   props_ey:"Nuestra Colección",
   props_title:"Tres Hogares.<br>Un Destino Extraordinario.",
   props_sub:"Cada condominio es administrado personalmente dentro del exclusivo desarrollo Nirú Las Casitas — a pasos de la Playa Santa Cruz.",
@@ -1972,14 +2014,14 @@ es:{
   p_low:"Temporada Baja",p_high:"Temporada Alta",p_peak:"Temporada Navideña",
   p_low_d:"1 May – 14 Nov",p_high_d:"15 Nov – 16 Dic · 8 Ene – 30 Abr",p_peak_d:"17 Dic – 7 Ene",
   per_n:"/ noche",usd_note:"Tarifas en USD y MXN · Los impuestos (16% IVA + 5% ISH) y el cargo de limpieza se agregan al reservar, conforme a la ley mexicana.",
-  lucky_btn:"Ver Disponibilidad y Reservar",
+  lucky_btn:"Ver Disponibilidad",
   ls_eyebrow:"¿Estancia de 28+ noches?",
   ls_body:"Las estancias largas se gestionan mediante una cotización personalizada, con precios a medida y un calendario de pagos adaptado a su reserva.",
   ls_link:"Envíenos una solicitud de estancia larga →",
   rico_unit:"2 Recámaras · 2 Baños · 2do Piso · Nirú Las Casitas",
   rico_sz:"121.7 m²",rico_sl:"Hasta 6 personas",rico_view:"Vistas Elevadas al Océano",
   rico_desc:"Ubicado un piso encima de Casa Racél, Casa Rico ofrece vistas aún más amplias sobre la alberca de Nirú y la colina de Santa Cruz. Un 2BR/2BA construido con el mismo alto estándar que Racél — diseño atrevido, colores frescos y una personalidad única. Recámara principal con baño privado; segunda recámara con dos camas individuales que se combinan en una cama grande; además de un sofá cama. Smart TV en cada habitación. Wi-Fi Starlink de alta velocidad. Apertura febrero 2027 — ahora reservando directo.",
-  rico_btn:"Ver Disponibilidad y Reservar",
+  rico_btn:"Ver Disponibilidad",
   rico_status_h:"Construcción en Marcha para Otoño 2026 · Reservando Ahora",
   rico_status_d:"<strong>Casa Rico está actualmente en construcción</strong>, con finalización prevista para el otoño de 2026. La abrimos para estancias a partir de febrero de 2027 y ya estamos aceptando reservas directas con nuestra <strong>Tarifa de Huésped Fundador — 20% de descuento en estancias de febrero a abril de 2027</strong>. Al ser de construcción nueva, todavía no hay fotos del condominio; Casa Rico comparte la distribución exacta de Casa Racél un piso más arriba, con vistas aún mejores y la misma calidad de construcción y acabados — pero con su propia decoración y personalidad. La misma esencia, su propio carácter. Explore la galería de <strong>Casa Racél</strong> para conocer la distribución y el estándar de acabados; Rico tendrá su propio estilo. <strong>La única diferencia: la segunda recámara de Rico tiene dos camas individuales que se combinan en una cama grande.</strong>",
   rico_guarantee_d:"<strong>Nuestra promesa para usted:</strong> Si Casa Rico no está lista al menos 30 días antes de su llegada, recibirá un <strong>reembolso completo</strong> — sin preguntas. (Si Casa Lucky o Casa Racél está disponible para sus fechas, con gusto se la ofreceremos como alternativa, usted elige.) Como los plazos de construcción pueden cambiar, <strong>le recomendamos reservar viajes flexibles o reembolsables</strong> hasta que confirmemos su estancia 30 días antes.",
@@ -1987,7 +2029,7 @@ es:{
   racel_sz:"121.7 m²",racel_sl:"Hasta 6 personas",racel_view:"Vistas a Montañas y Puerto",
   racel_gallery_btn:"Ver Fotos",
   racel_desc:"Color mexicano audaz, arte original y vistas elevadas a la Sierra Madre distinguen a Casa Racél. Dos recámaras, dos baños tipo spa y un balcón privado con comedor al aire libre para seis — diseñado para familias y grupos que desean personalidad y espacio a partes iguales.",
-  racel_btn:"Ver Disponibilidad y Reservar",
+  racel_btn:"Ver Disponibilidad",
   niru_ey:"El Desarrollo",niru_title:"Nirú Las Casitas",
   niru_sub:"Una exclusiva comunidad privada en el corazón de Santa Cruz, Huatulco — donde el diseño moderno se une al acceso directo a la playa.",
   niru_p1:"Nirú Las Casitas es un boutique desarrollo residencial en Santa Cruz, Huatulco — diseñado con el equilibrio ideal entre privacidad, amenidades tipo resort y vida costera auténtica. El complejo es completamente privado con seguridad las 24 horas.",
@@ -2024,8 +2066,8 @@ es:{
   f1t:"Nueve Bahías, 36 Playas",f1d:"Desde tranquilas ensenadas hasta ancladeros aislados — la mayoría permanecen deliciosamente tranquilas.",
   f2t:"La Sierra Madre Encuentra el Mar",f2d:"El dramático telón de fondo de montañas selváticas crea paisajes únicos en México.",
   f3t:"Ecoturismo de Clase Mundial",f3d:"Snorkel, buceo, kayak, rafting y cascadas. Huatulco es Reserva de la Biosfera UNESCO.",
-  f4t:"Cultura Oaxaqueña Auténtica",f4d:"Desde los mercados de La Crucecita hasta mariscos frescos en la playa — México como debe ser.",
-  f5t:"Fácil Acceso",f5d:"El Aeropuerto de Huatulco (HUX) está a 20 minutos, con vuelos directos desde Ciudad de México, Guadalajara y rutas internacionales.",
+  f4t:"Cultura Oaxaqueña Auténtica",f4d:"Desde los mercados de La Crucecita hasta mariscos frescos en la playa — un ritmo auténticamente oaxaqueño de mercados, mezcal y vida costera.",
+  f5t:"Sorprendentemente Fácil de Llegar",f5d:"El Aeropuerto de Huatulco (HUX) está a 20 minutos, con vuelos directos desde Ciudad de México, Guadalajara y rutas internacionales.",
   cult_t:"La Crucecita y Santa Cruz",
   cult_d:"Explora los animados puestos del mercado con joyería artesanal y textiles oaxaqueños. Luego sigue el malecón hasta la marina, donde los botes de pesca parten al amanecer.",
   pol_ey:"Información de Reservación",pol_title:"Tarifas, Políticas y Cargos",
@@ -2058,7 +2100,7 @@ es:{
   cancel_note:"El seguro de viaje, la cobertura de protección contra daños y cualquier cargo administrativo no son reembolsables. Se recomienda encarecidamente adquirir un seguro de viaje independiente.",
   direct_h:"¿Por Qué Reservar Directo?",
   direct_d:"Reservar en BravoHuatulco.com le evita las comisiones de Airbnb y VRBO. Los huéspedes suelen ahorrar alrededor de 40% en promedio frente a las plataformas. Fijamos nuestros precios con respeto total por México: nuestras tarifas por noche reflejan el costo base del hospedaje, y el 16% de IVA y el 5% de impuesto de hospedaje — obligatorios por ley — se agregan de forma transparente al reservar. Las mismas casas, precios más claros y atención más personal desde el primer mensaje hasta su salida. Los huéspedes que regresan también reciben un <strong>10% de descuento<\/strong> en su próxima estadía — temporadas Baja y Alta únicamente; fechas de Temporada Pico excluidas.",
-  direct_btn:"Consultar y Reservar Directo",
+  direct_btn:"Ver Disponibilidad",
   cont_ey:"Contáctenos",cont_title:"¿Listo para Planear<br>su Escapada?",
   cont_desc:"Envíenos una consulta y le responderemos en 24 horas con disponibilidad, precios y todo lo que necesita.",
   ci_email:"Correo",ci_mateo:"WhatsApp — Mateo",ci_fco:"WhatsApp — Francisco",ci_whatsapp_link:"Abrir chat de WhatsApp",
