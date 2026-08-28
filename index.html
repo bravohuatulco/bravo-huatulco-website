@@ -312,7 +312,7 @@ img[onclick]{cursor:pointer;}
 .niru-ph img{height:180px;}
 
 /* DISTANCES */
-.distances-panel{background:rgba(255,255,255,.05);border-radius:var(--r-md);overflow:hidden;margin-top:1.25rem;}
+.niru-map{margin:1.25rem 0 0;border-radius:var(--r-md);overflow:hidden;border:1px solid rgba(201,168,76,.35);box-shadow:var(--sh-md);}.niru-map-img{width:100%;height:auto;display:block;cursor:zoom-in;}.niru-map-cap{font-size:.72rem;line-height:1.6;color:rgba(255,255,255,.62);padding:.7rem 1rem .15rem;font-weight:300;}.distances-panel{background:rgba(255,255,255,.05);border-radius:var(--r-md);overflow:hidden;margin-top:1.25rem;}
 .dist-header{background:rgba(255,255,255,.09);padding:.55rem 1.1rem;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;}
 .dist-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(120px,150px) minmax(150px,190px);gap:.75rem;padding:.4rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.07);align-items:center;}
 .dist-row:last-child{border-bottom:none;}
@@ -1051,6 +1051,18 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
           <div class="niru-ph"><img loading="lazy" decoding="async" id="niru_5" onclick="openLB('niru_5')" src="images/image-82.jpg" alt="Santa Cruz beach at sunset, with the Nirú hillside on the right"></div>
           <div class="niru-ph niru-ph-wide"><img loading="lazy" decoding="async" id="niru_6" onclick="openLB('niru_6')" src="images/image-86.jpg" alt="View from the Nirú Beach Club — mimosa overlooking Santa Cruz beach and bay"></div>
         </div>
+        <figure class="niru-map">
+          <img class="niru-map-img" id="niru_map"
+               src="images/niru-location-map.webp"
+               srcset="images/niru-location-map.webp 1600w, images/niru-location-map@2x.webp 2400w"
+               sizes="(max-width:900px) 100vw, 560px"
+               loading="lazy" decoding="async"
+               onclick="openLB('niru_map','Nirú Las Casitas — Santa Cruz, Huatulco')"
+               alt="Satellite map of Santa Cruz, Huatulco showing Nirú Las Casitas beside Playa Santa Cruz and Marina Santa Cruz">
+          <figcaption class="niru-map-cap"
+               data-i18n-en="Nirú Las Casitas sits steps from Playa Santa Cruz and the marina — the calm swimming beach, waterfront restaurants, and boat tours are all a short walk away."
+               data-i18n-es="Nirú Las Casitas se encuentra a pasos de la Playa Santa Cruz y la marina — la tranquila playa para nadar, los restaurantes frente al mar y los tours en lancha están todos a poca distancia a pie.">Nirú Las Casitas sits steps from Playa Santa Cruz and the marina — the calm swimming beach, waterfront restaurants, and boat tours are all a short walk away.</figcaption>
+        </figure>
         <div class="distances-panel">
           <div class="dist-header" data-i18n="dist_head">Distances from Nirú Las Casitas</div>
           <div class="dist-row"><span class="dist-place" data-i18n="dist_p1">Santa Cruz Beach</span><span class="dist-badge dist-walk" data-i18n="dist_t1">2 min walk</span><span class="dist-badge dist-drive" data-i18n="dist_d1">Direct access</span></div>
