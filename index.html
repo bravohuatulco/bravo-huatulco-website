@@ -124,6 +124,9 @@ section{padding:4rem 2rem;}
 .promo-panel-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;}
 .promo-panel-hd .pp-title{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;}
 .promo-panel-hd .pp-close{color:rgba(255,255,255,.7);cursor:pointer;font-size:1rem;line-height:1;background:none;border:none;padding:.2rem;}
+.promo-blurb{font-size:.7rem;line-height:1.5;color:rgba(255,255,255,.78);margin:0 0 .7rem;}
+.promo-blurb a{color:var(--gold);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.45);}
+.promo-blurb a:hover{border-bottom-color:var(--gold);}
 .promo-code-row{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer;}
 .promo-code-row:last-of-type{border-bottom:none;}
 .promo-code-row .pcr-desc .pct{color:var(--gold);font-weight:600;font-size:.86rem;}
@@ -686,28 +689,21 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
     </div>
   </div>
 
-  <div class="promo-seal" id="promoSeal" onclick="openPromoPanel()" role="button" tabindex="0" aria-label="View discount codes">
-    <span class="ps-top"><span data-i18n-en="Save up to" data-i18n-es="Ahorre hasta">Save up to</span></span>
-    <span class="ps-pct">25%</span>
-    <span class="ps-cta"><span data-i18n-en="Tap for codes" data-i18n-es="Ver códigos">Tap for codes</span></span>
+  <div class="promo-seal" id="promoSeal" onclick="openPromoPanel()" role="button" tabindex="0" aria-label="View discount code">
+    <span class="ps-top"><span data-i18n-en="Save" data-i18n-es="Ahorre">Save</span></span>
+    <span class="ps-pct">15%</span>
+    <span class="ps-cta"><span data-i18n-en="Tap for code" data-i18n-es="Ver código">Tap for code</span></span>
   </div>
 
-  <div class="promo-panel" id="promoPanel" role="dialog" aria-label="Discount codes">
+  <div class="promo-panel" id="promoPanel" role="dialog" aria-label="Discount code">
     <div class="promo-panel-hd">
       <span class="pp-title"><span data-i18n-en="Offers · Ofertas" data-i18n-es="Ofertas · Offers">Offers · Ofertas</span></span>
       <button class="pp-close" onclick="closePromoPanel()" aria-label="Close">✕</button>
     </div>
-    <div class="promo-code-row" data-code="TRICOLOR26" onclick="copyPromoCode('TRICOLOR26')">
-      <span class="pcr-desc"><span class="pct">20%</span> <span class="cond" data-i18n-en="· stays through August" data-i18n-es="· estancias hasta agosto">· stays through August</span></span>
-      <span class="pcr-code">TRICOLOR26 <svg class="icon-xs"><use href="#i-copy"/></svg></span>
-    </div>
-    <div class="promo-code-row" data-code="MesPatrio25" onclick="copyPromoCode('MesPatrio25')">
-      <span class="pcr-desc"><span class="pct">25%</span> <span class="cond" data-i18n-en="· all September · Mes Patrio" data-i18n-es="· todo septiembre · Mes Patrio">· all September · Mes Patrio</span></span>
-      <span class="pcr-code">MesPatrio25 <svg class="icon-xs"><use href="#i-copy"/></svg></span>
-    </div>
-    <div class="promo-code-row" data-code="BravoHuatulco25" onclick="copyPromoCode('BravoHuatulco25')">
-      <span class="pcr-desc"><span class="pct">15%</span> <span class="cond" data-i18n-en="· stays through Nov 14 · followers" data-i18n-es="· estancias hasta 14 nov · seguidores">· stays through Nov 14 · followers</span></span>
-      <span class="pcr-code">BravoHuatulco25 <svg class="icon-xs"><use href="#i-copy"/></svg></span>
+    <div class="promo-blurb" data-i18n-en="Follow us on <a href='https://www.instagram.com/bravohuatulco' target='_blank' rel='noopener'>Instagram</a> or <a href='https://www.facebook.com/share/18WuBmd7Aq/' target='_blank' rel='noopener'>Facebook</a>, then use the code below when you book direct — 15% off low-season stays, May 1 to Nov 14." data-i18n-es="Síguenos en <a href='https://www.instagram.com/bravohuatulco' target='_blank' rel='noopener'>Instagram</a> o <a href='https://www.facebook.com/share/18WuBmd7Aq/' target='_blank' rel='noopener'>Facebook</a>, y usa el código de abajo al reservar directo — 15% de descuento en temporada baja, del 1 de mayo al 14 de noviembre.">Follow us on <a href="https://www.instagram.com/bravohuatulco" target="_blank" rel="noopener">Instagram</a> or <a href="https://www.facebook.com/share/18WuBmd7Aq/" target="_blank" rel="noopener">Facebook</a>, then use the code below when you book direct — 15% off low-season stays, May 1 to Nov 14.</div>
+    <div class="promo-code-row" data-code="BRAVOAMIGOS" onclick="copyPromoCode('BRAVOAMIGOS')">
+      <span class="pcr-desc"><span class="pct">15%</span> <span class="cond" data-i18n-en="· May 1 – Nov 14 · followers" data-i18n-es="· 1 may – 14 nov · seguidores">· May 1 – Nov 14 · followers</span></span>
+      <span class="pcr-code">BRAVOAMIGOS <svg class="icon-xs"><use href="#i-copy"/></svg></span>
     </div>
     <div class="promo-toast" id="promoToast"></div>
   </div>
@@ -879,7 +875,7 @@ footer{background:#07101F;padding:2.25rem 2rem;text-align:center;}
     </div>
       <div class="disc-box" id="followPromo" style="grid-column:1 / -1;margin-top:.75rem;border-left-color:var(--navy);background:rgba(27,58,92,.07);scroll-margin-top:90px;">
         <div class="disc-head" data-i18n="promo_h">Follow Us &amp; Save 15% — Low Season</div>
-        <div class="disc-txt" data-i18n="promo_d">Follow us at <a href="https://www.instagram.com/bravohuatulco" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600;">@bravohuatulco</a> on Instagram or <a href="https://www.facebook.com/share/18WuBmd7Aq/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600;">BravoHuatulco</a> on Facebook, then DM us the word <strong>BRAVO25</strong> from your account and we'll send you a private 15% discount code — valid for direct bookings at Casa Lucky or Casa Racél during low season (May 1–November 14). One code per booking, not combinable with other offers.</div>
+        <div class="disc-txt" data-i18n="promo_d">Follow us at <a href="https://www.instagram.com/bravohuatulco" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600;">@bravohuatulco</a> on Instagram or <a href="https://www.facebook.com/share/18WuBmd7Aq/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600;">BravoHuatulco</a> on Facebook, then book direct with code <strong>BRAVOAMIGOS</strong> for 15% off — valid at Casa Lucky or Casa Racél during low season (May 1–November 14). One code per booking, not combinable with other offers.</div>
       </div>
     </div>
   </div>
@@ -1991,7 +1987,7 @@ en:{
   disc_h:"Why Book Direct?",
   disc_d:"Booking directly on our site means platform fees stay in your pocket — not the booking platforms'. Expect a lower rate, faster responses, and a more personal experience from inquiry to checkout. Returning guests receive <strong>10% off<\/strong> — Low and High seasons only.",
   promo_h:"Follow Us & Save 15% — Low Season",
-  promo_d:"Follow us at <a href=\"https://www.instagram.com/bravohuatulco\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">@bravohuatulco<\/a> on Instagram or <a href=\"https://www.facebook.com/share/18WuBmd7Aq\/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">BravoHuatulco<\/a> on Facebook, then DM us the word <strong>BRAVO25<\/strong> from your account and we\u2019ll send you a private 15% discount code \u2014 valid for direct bookings at Casa Lucky or Casa Rac\u00e9l during low season (May\u00a01\u2013November\u00a014). One code per booking, not combinable with other offers.",
+  promo_d:"Follow us at <a href=\"https://www.instagram.com/bravohuatulco\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">@bravohuatulco<\/a> on Instagram or <a href=\"https://www.facebook.com/share/18WuBmd7Aq\/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">BravoHuatulco<\/a> on Facebook, then book direct with code <strong>BRAVOAMIGOS<\/strong> for 15% off \u2014 valid at Casa Lucky or Casa Rac\u00e9l during low season (May\u00a01\u2013November\u00a014). One code per booking, not combinable with other offers.",
   card_promo_badge:"Follow us \u0026 save 15% low season \u2192",
   form_h:"Request a Booking",form_s:"Choose your villa and dates below. We confirm availability and send a secure Stripe payment link for your deposit.",
   inq_again:"↺ Send another inquiry",
@@ -2147,7 +2143,7 @@ es:{
   disc_h:"¿Por Qué Reservar Directo?",
   disc_d:"Reservar directamente en nuestro sitio significa que las comisiones de plataforma se quedan en su bolsillo. Los huéspedes a menudo ahorran alrededor de 40% frente a las plataformas principales para fechas comparables. También recibe precios más claros, respuestas más rápidas y atención más personal antes de su llegada. Los huéspedes que regresan reciben un <strong>10% de descuento<\/strong> — solo temporadas Baja y Alta.",
   promo_h:"Síguenos y Ahorra 15% — Temporada Baja",
-  promo_d:"Síguenos como <a href=\"https://www.instagram.com/bravohuatulco\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">@bravohuatulco<\/a> en Instagram o <a href=\"https://www.facebook.com/share/18WuBmd7Aq\/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">BravoHuatulco<\/a> en Facebook, luego env\u00edanos un DM con la palabra <strong>BRAVO25<\/strong> desde tu cuenta y te enviaremos un c\u00f3digo de descuento privado del 15\u00a0% \u2014 v\u00e1lido para reservas directas en Casa Lucky o Casa Rac\u00e9l durante la temporada baja (1\u00a0de mayo\u00a0\u2013\u00a014\u00a0de noviembre). Un c\u00f3digo por reserva, no acumulable con otras ofertas.",
+  promo_d:"Síguenos como <a href=\"https://www.instagram.com/bravohuatulco\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">@bravohuatulco<\/a> en Instagram o <a href=\"https://www.facebook.com/share/18WuBmd7Aq\/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--navy);font-weight:600;\">BravoHuatulco<\/a> en Facebook, y reserva directo con el c\u00f3digo <strong>BRAVOAMIGOS<\/strong> para 15\u00a0% de descuento \u2014 v\u00e1lido en Casa Lucky o Casa Rac\u00e9l durante la temporada baja (1\u00a0de mayo\u00a0\u2013\u00a014\u00a0de noviembre). Un c\u00f3digo por reserva, no acumulable con otras ofertas.",
   card_promo_badge:"S\u00edguenos y ahorra 15% temp. baja \u2192",
   form_h:"Solicitar una Reservación",form_s:"Elija su villa y fechas a continuación. Confirmamos disponibilidad y enviamos un enlace de pago Stripe seguro para su depósito.",
   inq_again:"↺ Enviar otra consulta",
